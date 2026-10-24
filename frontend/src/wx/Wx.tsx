@@ -14,10 +14,19 @@ export function FlightCat({ cat }: { cat?: string | null }) {
   return <span className="fcat" style={{ background: CAT_COLOR[c] ?? CAT_COLOR.UNK }}>{c === "UNK" ? "—" : c}</span>;
 }
 
-function SummaryChips({ s }: { s: WxSummary }) {
+// The decoder's summary has no wind; its group meanings do ("wind from
+// 280° true at 16 kt"), so the chip is taken from there.
+function windOf(groups?: Group[]) {
+  const g = groups?.find((x) => /^(wind |calm)/.test(x.meaning));
+  return g?.meaning.replace(/^wind from /, "").replace(" true", "");
+}
+
+function SummaryChips({ s, groups }: { s: WxSummary; groups?: Group[] }) {
+  const wind = windOf(groups);
   return (
     <div className="chips">
       <FlightCat cat={s.flight_category} />
+      {wind && <span>{wind}</span>}
       {s.visibility && <span>vis {s.visibility}</span>}
       {s.ceiling && <span>{s.ceiling.startsWith("none") ? "no ceiling" : `ceiling ${s.ceiling}`}</span>}
       {s.weather?.map((w) => <span key={w} className="wxchip">{w}</span>)}
@@ -52,7 +61,7 @@ export function MetarCard({ raw, decoded, time, compact = false }:
   return (
     <div className="wxcard">
       <div className="wxhead" onClick={() => setOpen((o) => !o)}>
-        {decoded ? <SummaryChips s={decoded.summary} /> : <FlightCat />}
+        {decoded ? <SummaryChips s={decoded.summary} groups={decoded.decoded} /> : <FlightCat />}
         {time && <span className="dim when">{ago(time)}</span>}
       </div>
       <code className="wxraw">{raw}</code>
@@ -71,13 +80,17 @@ export function MetarCard({ raw, decoded, time, compact = false }:
   );
 }
 
-export function TafTimeline({ raw, decoded, current = true }: { raw: string; decoded: TafDecoded; current?: boolean }) {
+// `expired`: say so (station panel, which checks valid_to). Inside a
+// product the TAF is a record of what was forecast, so neither "now" nor
+// "expired" is shown.
+export function TafTimeline({ raw, decoded, current = true, expired = false }:
+  { raw: string; decoded: TafDecoded; current?: boolean; expired?: boolean }) {
   const [expanded, setExpanded] = useState<number | null>(null);
   const now = decoded.at?.prevailing?.group;
   const alsoNow = new Set(decoded.at?.also_possible?.map((p) => p.group) ?? []);
   return (
     <div className="wxcard">
-      {!current && <div className="dim">This TAF has expired.</div>}
+      {expired && <div className="dim">This TAF has expired.</div>}
       <code className="wxraw">{raw}</code>
       <div className="taf">
         {decoded.periods.map((p, i) => {
@@ -91,7 +104,7 @@ export function TafTimeline({ raw, decoded, current = true }: { raw: string; dec
                 {isNow && <span className="nowtag">now</span>}
                 <span className="when">{p.when}</span>
               </div>
-              <SummaryChips s={p.summary} />
+              <SummaryChips s={p.summary} groups={p.decoded} />
               {expanded === i && <Groups groups={p.decoded} />}
             </div>
           );

@@ -105,6 +105,9 @@ def _title(text: str, fallback: str) -> str:
         s = line.strip()
         if not s or s.startswith("/") or s.endswith("-") or s.startswith("BULLETIN") or s.startswith("$$") or "BROADCAST REQUESTED" in s.upper():
             continue
+        # A coded report is not a title ("TAF AMD", "METAR KSFO ...").
+        if s.split()[0] in ("TAF", "METAR", "SPECI"):
+            continue
         # Header tokens: "000", the WMO line, the AWIPS id.
         if " " not in s or (len(s.split()) == 3 and s.split()[2].isdigit()):
             continue
