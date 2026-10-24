@@ -15,8 +15,8 @@ const NAV = [
   { to: "/satellite", label: "Satellite" },
   { to: "/radar", label: "Radar & charts" },
   { to: "/map", label: "Map" },
-  { to: "/text", label: "Text" },
   { to: "/tropical", label: "Tropical & Meso" },
+  { to: "/text", label: "Text" },
 ];
 
 export default function App() {
