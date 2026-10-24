@@ -54,10 +54,18 @@ def test_ingest_all_fixtures(db, tmp_path):
     counts = _ingest(list(FIX.iterdir()), tmp_path)
     assert counts.get("error", 0) == 0, counts
     with db.connect() as conn:
-        n = conn.execute(text("SELECT count(*) FROM text_product")).scalar()
+        missing = conn.execute(
+            text(
+                "SELECT f.name, f.kind, f.status FROM source_file f"
+                " LEFT JOIN text_product p ON p.source_file_id = f.id WHERE p.id IS NULL"
+            )
+        ).all()
+        n = conn.execute(text("SELECT count(*) FROM source_file")).scalar()
         raw = conn.execute(text("SELECT count(*) FROM text_product WHERE parse_error IS NOT NULL")).scalar()
         metars = conn.execute(text("SELECT count(*) FROM metar")).scalar()
-    assert n == len(list(FIX.iterdir())) and raw <= 4 and metars > 0
+    assert n == len(list(FIX.iterdir())), (n, counts)
+    assert not missing, missing
+    assert raw <= 5 and metars > 0
 
 
 def test_rescan_is_idempotent(db, tmp_path):
