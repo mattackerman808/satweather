@@ -31,6 +31,12 @@ class Settings(BaseSettings):
     # Tachbase's API, for the positions of PIREP /OV identifiers
     # (lookup_waypoints needs no account). Empty disables placement.
     tachbase_api_url: str = "https://www.tachbase.com/api"
+    # The receiver's SatDump stats (--http_server), for the Signal page, and
+    # its settings as salt renders them from its pillar. Empty: no page data.
+    signal_url: str = ""
+    receiver: dict = {}
+    # Signal samples are small but many (one per 10 s).
+    keep_signal_days: int = 30
 
 
 @lru_cache

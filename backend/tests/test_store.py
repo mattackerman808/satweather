@@ -592,3 +592,27 @@ def test_tropical_active_and_outlooks(db, tmp_path):
     o = c.get("/api/tropical/outlooks").json()
     assert [(x["basin"], [a["chance_7d"] for a in x["areas"]]) for x in o] == [("Eastern Pacific", [20])]
     assert c.get("/api/tropical/storm/ep222026").json()["history"][0]["wind_kt"] == 95
+
+
+def test_signal_api(db, monkeypatch):
+    from fastapi.testclient import TestClient
+
+    from satweather import signal as sig
+    from satweather.api.app import app
+    from satweather.config import get_settings
+
+    monkeypatch.setenv("SATWEATHER_SIGNAL_URL", "http://rtl.example:8081/api")
+    monkeypatch.setenv("SATWEATHER_RECEIVER", '{"host": "rtl", "frequency": "1694.1e6", "bias": true}')
+    get_settings.cache_clear()
+    sig.store(sig.sample({"psk_demod": {"snr": 6.0, "peak_snr": 8.0, "freq": 100.0},
+                          "ccsds_conv_concat_decoder": {"deframer_lock": True, "viterbi_ber": 0.02, "viterbi_lock": 1,
+                                                        "rs_avg": 1}}))
+    with db.begin() as conn:
+        conn.execute(text("INSERT INTO signal_sample (t, ok) VALUES (now() - interval '1 minute', false)"))
+        conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES"
+                          " ('a', 'emwin_text', 1, now(), 'ok'), ('b', 'emwin_image', 1, now(), 'ok')"))
+    d = TestClient(app).get("/api/signal", params={"hours": 1}).json()
+    assert d["configured"] and d["receiver"]["host"] == "rtl" and d["receiver"]["bias"] is True
+    assert d["latest"]["ok"] and d["latest"]["snr"] == 6.0 and d["last_ok"] == d["latest"]["t"]
+    assert sum(h["n"] for h in d["history"]) == 2 and d["bucket_s"] == 60
+    assert [(x["text"], x["graphics"], x["images"]) for x in d["throughput"]] == [(1, 1, 0)]

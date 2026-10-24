@@ -109,6 +109,18 @@ export type Outlook = { basin: string; product_id: number; awips: string; receiv
   active: string | null;
   areas: { title: string; text: string; chance_48h: number | null; chance_7d: number | null; level_7d: string | null }[] };
 
+export type SignalSample = { t: string; ok: boolean; snr: number | null; peak_snr: number | null;
+  freq_hz: number | null; viterbi_ber: number | null; viterbi_lock: boolean | null; deframer_lock: boolean | null;
+  rs_avg: number | null };
+export type SignalBucket = { t: string; snr: number | null; snr_min: number | null; snr_max: number | null;
+  peak_snr: number | null; ber: number | null; freq_hz: number | null; locked: number | null; reachable: number; n: number };
+export type SignalData = {
+  configured: boolean; receiver: { host?: string; pipeline?: string; frequency?: string; samplerate?: string;
+    gain?: string; bias?: boolean };
+  latest: SignalSample | null; recent: SignalSample[]; last_ok: string | null; bucket_s: number;
+  history: SignalBucket[];
+  throughput: { h: string; text: number; graphics: number; images: number }[];
+};
 export type ZoneInfo = { kind: string; ugc: string; name: string; state: string | null; cwa: string | null };
 export type ZoneHazard = { office: string; phenomena: string; significance: string; etn: number; action: string;
   begins: string | null; ends: string | null; product_id: number; issued: string; storm_based: boolean;
@@ -152,6 +164,7 @@ export const api = {
   zoneBrief: (lon: number, lat: number) => get<ZoneAt>("/api/zones/at", { lon, lat, brief: "1" }),
   places: (q: string, near?: [number, number]) =>
     get<Place[]>("/api/places", { q, near: near?.map((x) => x.toFixed(3)).join(",") }),
+  signal: (hours: number) => get<SignalData>("/api/signal", { hours }),
   tropical: () => get<{ storms: Storm[]; sectors: Sector[] }>("/api/tropical/active"),
   outlooks: () => get<Outlook[]>("/api/tropical/outlooks"),
   imageCatalog: () => get<Catalog>("/api/imagery/catalog"),

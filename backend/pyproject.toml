@@ -33,6 +33,7 @@ satweather-ingest = "satweather.ingest:main"
 satweather-refdata = "satweather.refdata:main"
 satweather-imaging = "satweather.imaging:main"
 satweather-housekeep = "satweather.housekeeping:main"
+satweather-signal = "satweather.signal:main"
 
 [build-system]
 requires = ["setuptools>=75"]
