@@ -36,14 +36,14 @@
 .landing a:focus-visible, .landing .btn:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
 
 /* Hero: the photograph, text over the dark sky on the left. */
-.hero {
+.landing .hero {
   position: relative;
   min-height: min(86vh, 780px);
   display: grid;
   grid-template-rows: 1fr auto;
   isolation: isolate;
 }
-.hero picture, .hero img {
+.landing .hero picture, .landing .hero img {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -54,7 +54,7 @@
   object-position: 60% 8%;
   z-index: -2;
 }
-.hero::after {
+.landing .hero::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -63,20 +63,20 @@
     linear-gradient(90deg, rgba(10, 16, 36, 0.92) 0%, rgba(10, 16, 36, 0.6) 38%, rgba(10, 16, 36, 0) 62%),
     linear-gradient(0deg, rgba(10, 16, 36, 0.95) 0%, rgba(10, 16, 36, 0) 30%);
 }
-.hero-text {
+.landing .hero-text {
   align-self: center;
   max-width: 34rem;
   padding: 72px 0 32px clamp(20px, 6vw, 88px);
 }
-.hero h1 {
+.landing .hero h1 {
   font-size: clamp(36px, 5.4vw, 64px);
   line-height: 1.02;
   font-weight: 800;
   margin: 0 0 20px;
 }
-.lede { color: #c9d5e6; font-size: 19px; margin: 0 0 28px; max-width: 30rem; }
-.hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
-.btn {
+.landing .lede { color: #c9d5e6; font-size: 19px; margin: 0 0 28px; max-width: 30rem; }
+.landing .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.landing .btn {
   display: inline-block;
   padding: 11px 18px;
   border-radius: 999px;
@@ -91,7 +91,7 @@
 .landing .btn:hover { border-color: var(--signal); }
 
 /* The live line along the bottom of the hero. */
-.now {
+.landing .now {
   display: flex;
   flex-wrap: wrap;
   gap: 8px 28px;
@@ -100,32 +100,32 @@
   color: var(--haze);
   font-variant-numeric: tabular-nums;
 }
-.now a { color: var(--starlight); text-decoration: none; border-bottom: 1px solid rgba(95, 176, 255, 0.5); }
-.signal { display: inline-flex; align-items: center; gap: 8px; color: var(--starlight); font-weight: 600; }
-.signal::before {
+.landing .now a { color: var(--starlight); text-decoration: none; border-bottom: 1px solid rgba(95, 176, 255, 0.5); }
+.landing .rx-state { display: inline-flex; align-items: center; gap: 8px; color: var(--starlight); font-weight: 600; }
+.landing .rx-state::before {
   content: "";
   width: 9px;
   height: 9px;
   border-radius: 50%;
   background: var(--haze);
 }
-.signal.on::before { background: var(--porch); box-shadow: 0 0 10px 2px rgba(242, 182, 90, 0.55); }
+.landing .rx-state.on::before { background: var(--porch); box-shadow: 0 0 10px 2px rgba(242, 182, 90, 0.55); }
 
 /* How it gets here: the stages hang off one dotted signal line, the
    photograph's beam carried down the page. */
-.path, .tabs-intro {
+.landing .path, .landing .tabs-intro {
   padding: 72px clamp(20px, 6vw, 88px);
   max-width: 1100px;
 }
 .landing h2 { font-size: clamp(26px, 3vw, 34px); font-weight: 700; margin: 0 0 32px; }
-.stages {
+.landing .stages {
   list-style: none;
   margin: 0;
   padding: 0 0 0 36px;
   position: relative;
   max-width: 40rem;
 }
-.stages::before {
+.landing .stages::before {
   content: "";
   position: absolute;
   left: 6px;
@@ -138,9 +138,9 @@
   opacity: 0.9;
 }
 @keyframes downlink { from { background-position: 0 0; } to { background-position: 0 10px; } }
-@media (prefers-reduced-motion: reduce) { .stages::before { animation: none; } }
-.stages li { position: relative; padding-bottom: 36px; }
-.stages li::before {
+@media (prefers-reduced-motion: reduce) { .landing .stages::before { animation: none; } }
+.landing .stages li { position: relative; padding-bottom: 36px; }
+.landing .stages li::before {
   content: "";
   position: absolute;
   left: -36px;
@@ -152,29 +152,29 @@
   border: 2px solid var(--signal);
   box-shadow: 0 0 12px rgba(95, 176, 255, 0.45);
 }
-.stages li:last-child::before { background: var(--signal); }
-.stages h3 { font-size: 21px; font-weight: 700; margin: 0 0 6px; line-height: 1.2; }
-.stages p { margin: 0; color: #c9d5e6; }
-.stages .detail { margin-top: 6px; color: var(--haze); font-size: 14.5px; }
-.aside { max-width: 40rem; margin: 8px 0 0 36px; color: var(--haze); font-size: 15px; }
+.landing .stages li:last-child::before { background: var(--signal); }
+.landing .stages h3 { font-size: 21px; font-weight: 700; margin: 0 0 6px; line-height: 1.2; }
+.landing .stages p { margin: 0; color: #c9d5e6; }
+.landing .stages .detail { margin-top: 6px; color: var(--haze); font-size: 14.5px; }
+.landing .aside { max-width: 40rem; margin: 8px 0 0 36px; color: var(--haze); font-size: 15px; }
 
 /* What's here: the tabs, beside the latest full disk. */
-.tabs-intro {
+.landing .tabs-intro {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(220px, 340px);
   gap: 48px;
   align-items: start;
   border-top: 1px solid rgba(139, 153, 179, 0.18);
 }
-.tabs-intro dl { margin: 0; display: grid; gap: 18px; max-width: 40rem; }
-.tabs-intro dt { font-family: "Archivo", system-ui, sans-serif; font-stretch: 112%; font-weight: 700; font-size: 18px; }
-.tabs-intro dt a { color: var(--starlight); text-decoration: none; border-bottom: 1px solid rgba(95, 176, 255, 0.5); }
-.tabs-intro dt a:hover { border-bottom-color: var(--signal); }
-.tabs-intro dd { margin: 4px 0 0; color: #c9d5e6; }
-.disk { display: block; text-decoration: none; color: var(--haze); font-size: 14px; text-align: center; }
-.disk img { width: 100%; aspect-ratio: 1; object-fit: contain; display: block; margin-bottom: 10px; border-radius: 50%; }
+.landing .tabs-intro dl { margin: 0; display: grid; gap: 18px; max-width: 40rem; }
+.landing .tabs-intro dt { font-family: "Archivo", system-ui, sans-serif; font-stretch: 112%; font-weight: 700; font-size: 18px; }
+.landing .tabs-intro dt a { color: var(--starlight); text-decoration: none; border-bottom: 1px solid rgba(95, 176, 255, 0.5); }
+.landing .tabs-intro dt a:hover { border-bottom-color: var(--signal); }
+.landing .tabs-intro dd { margin: 4px 0 0; color: #c9d5e6; }
+.landing .disk { display: block; text-decoration: none; color: var(--haze); font-size: 14px; text-align: center; }
+.landing .disk img { width: 100%; aspect-ratio: 1; object-fit: contain; display: block; margin-bottom: 10px; border-radius: 50%; }
 
-.credits {
+.landing .credits {
   padding: 28px clamp(20px, 6vw, 88px) 48px;
   color: var(--haze);
   font-size: 14px;
@@ -183,13 +183,13 @@
 
 @media (max-width: 760px) {
   .landing { font-size: 16px; }
-  .hero { min-height: 92vh; }
-  .hero img { object-position: 72% 40%; }
-  .hero::after {
+  .landing .hero { min-height: 92vh; }
+  .landing .hero img { object-position: 72% 40%; }
+  .landing .hero::after {
     background: linear-gradient(0deg, rgba(10, 16, 36, 0.96) 0%, rgba(10, 16, 36, 0.75) 55%, rgba(10, 16, 36, 0.35) 100%);
   }
-  .hero-text { align-self: end; padding-top: 140px; padding-right: 20px; }
-  .lede { font-size: 17px; }
-  .tabs-intro { grid-template-columns: 1fr; }
-  .disk { max-width: 300px; }
+  .landing .hero-text { align-self: end; padding-top: 140px; padding-right: 20px; }
+  .landing .lede { font-size: 17px; }
+  .landing .tabs-intro { grid-template-columns: 1fr; }
+  .landing .disk { max-width: 300px; }
 }

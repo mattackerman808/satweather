@@ -101,7 +101,7 @@ export default function LandingView() {
           </div>
         </div>
         <div className="now" aria-live="polite">
-          <span className={`signal${receiving ? " on" : ""}`}>
+          <span className={`rx-state${receiving ? " on" : ""}`}>
             {health === null ? "Checking the dish" : receiving ? "Receiving" : "Not receiving"}
           </span>
           <span>Last file {since(health?.feed?.newest_age_s)}</span>

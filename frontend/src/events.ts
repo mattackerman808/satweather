@@ -17,6 +17,8 @@ export type LiveEvent =
       vtec: boolean;
     }
   | { type: "image"; source_id: number; awips: string; received: string }
+  // A receiver signal sample (satweather-signal, every 10 s).
+  | ({ type: "signal" } & import("./api").SignalSample)
   // An image's web copy is ready (satweather-imaging).
   | { type: "frame"; id: number; source: string; sector: string; product: string; kind: string; overlay: boolean;
       scan_time: string; display: string; thumb: string; width: number; height: number; orig: string | null };

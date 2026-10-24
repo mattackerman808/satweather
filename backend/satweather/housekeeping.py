@@ -15,7 +15,8 @@ idempotent:
    directories under IMAGES/ and L2/, LRIT charts in IMAGES/NWS/, and
    whole days of EMWIN/archive/. Only names that parse as one of those
    are ever deleted.
-3. Copies (keep_copies_days): image_frame rows and their WebPs.
+3. Copies (keep_copies_days): image_frame rows and their WebPs; and
+   receiver signal samples (keep_signal_days).
 
 --dry-run reports what each job would do and changes nothing.
 """
@@ -154,6 +155,17 @@ def prune_copies(media_root: Path, days: int, dry: bool = False) -> int:
     return len(rows)
 
 
+def prune_signal(days: int, dry: bool = False) -> int:
+    """Delete receiver signal samples older than `days`."""
+    if days <= 0:
+        return 0
+    sql = "FROM signal_sample WHERE t < now() - make_interval(days => :d)"
+    with get_engine().begin() as conn:
+        if dry:
+            return conn.execute(text(f"SELECT count(*) {sql}"), {"d": days}).scalar()
+        return conn.execute(text(f"DELETE {sql}"), {"d": days}).rowcount
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(prog="satweather-housekeep")
     ap.add_argument("--dry-run", action="store_true", help="report what would be done, change nothing")
@@ -166,6 +178,7 @@ def main() -> None:
         ("emwin archived", lambda: archive_emwin(s.data_root, s.emwin_archive_hours, args.dry_run)),
         ("originals deleted", lambda: prune_originals(s.data_root, s.keep_originals_days, args.dry_run)),
         ("copies deleted", lambda: prune_copies(s.media_root, s.keep_copies_days, args.dry_run)),
+        ("signal samples deleted", lambda: prune_signal(s.keep_signal_days, args.dry_run)),
     ]
     for what, job in jobs:
         try:
