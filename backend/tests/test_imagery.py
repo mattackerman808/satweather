@@ -2,7 +2,7 @@ import shutil
 from datetime import UTC, datetime
 from pathlib import Path
 
-from satweather.imagery import from_emwin, label, parse_path, read_projection
+from satweather.imagery import from_emwin, label, orig_url, parse_path, read_projection
 from satweather.imaging import media_rel
 
 FIX = Path(__file__).parent / "fixtures" / "images"
@@ -69,3 +69,9 @@ def test_media_paths_are_url_safe():
     t = datetime(2026, 10, 24, 2, 51, tzinfo=UTC)
     assert media_rel("Himawari", "Full Disk", t, "AHI_False_Color_(WIP)", True) == \
         "sat/himawari/full-disk/20261024T025100Z/ahi-false-color-wip_map"
+
+
+def test_orig_urls():
+    assert orig_url("GOES-18", "IMAGES/GOES-18/Full Disk/2026-10-24_03-50-22/ahi_rgb_AHI_False_Color_(WIP).png") == \
+        "/orig/IMAGES/GOES-18/Full%20Disk/2026-10-24_03-50-22/ahi_rgb_AHI_False_Color_%28WIP%29.png"
+    assert orig_url("NWS", "EMWIN/x.GIF") is None

@@ -45,7 +45,7 @@ export default function LiveView() {
       const k = tileKey(e);
       if (TILES.some((t) => tileKey(t) === k) && e.scan_time > (latest[k]?.scan_time ?? "")) {
         setLatest((l) => ({ ...l, [k]: { id: e.id, scan_time: e.scan_time, display: `/media/${e.display}`,
-          thumb: `/media/${e.thumb}`, width: e.width, height: e.height } }));
+          thumb: `/media/${e.thumb}`, width: e.width, height: e.height, orig: e.orig } }));
       }
       return;
     }

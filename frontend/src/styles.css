@@ -246,6 +246,7 @@ button { font: inherit; color: inherit; }
 .scrub { flex: 1; min-width: 160px; accent-color: var(--accent); }
 .sattime { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .satopt { display: flex; align-items: center; gap: 4px; cursor: pointer; }
+.fullres { font-size: 12px; color: var(--accent); border: 1px solid #2c5b86; border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
 @media (max-width: 760px) {
   .satview { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
   .satside { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line);

@@ -248,6 +248,7 @@ def test_images_catalog_convert_and_list(db, tmp_path, monkeypatch):
                                              "product": "13"}).json()["frames"]
     assert [datetime.fromisoformat(x["scan_time"]) for x in f] == times
     assert f[0]["display"].startswith("/media/sat/goes-18/mesoscale-1/") and (f[0]["width"], f[0]["height"]) == (64, 48)
+    assert f[0]["orig"].startswith("/orig/IMAGES/GOES-18/Mesoscale%201/")
     assert (media / f[0]["display"].removeprefix("/media/")).stat().st_size > 0
 
 

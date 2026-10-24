@@ -29,6 +29,7 @@ from sqlalchemy import text
 from satweather.config import get_settings
 from satweather.db import get_engine
 from satweather.emwin import archived_path
+from satweather.imagery import orig_url
 from satweather.store import notify
 
 log = logging.getLogger("satweather.imaging")
@@ -148,7 +149,8 @@ def process_one() -> bool:
             notify(conn, {"type": "frame", "id": row["id"], "source": row["source"], "sector": row["sector"],
                           "product": row["product"], "kind": row["kind"], "overlay": row["overlay"],
                           "scan_time": row["scan_time"].isoformat(), "display": upd["display"],
-                          "thumb": upd["thumb"], "width": upd["w"], "height": upd["h"]})
+                          "thumb": upd["thumb"], "width": upd["w"], "height": upd["h"],
+                          "orig": orig_url(row["source"], row["path"])})
     return True
 
 

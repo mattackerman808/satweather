@@ -10,7 +10,7 @@ from fastapi import APIRouter, HTTPException, Query
 from sqlalchemy import text
 
 from satweather.db import get_engine
-from satweather.imagery import NWS, RADAR, SATELLITES, label
+from satweather.imagery import NWS, RADAR, SATELLITES, label, orig_url
 
 router = APIRouter(prefix="/api")
 
@@ -74,13 +74,14 @@ def frames(
     hours: float = Query(6, gt=0, le=24 * 30),
     limit: int = Query(300, ge=1, le=2000),
 ) -> dict:
-    """Frames of one loop, oldest first, the newest `limit` of them."""
+    """Frames of one loop, oldest first, the newest `limit` of them.
+    `orig` is the full-resolution original (satellites only)."""
     with get_engine().connect() as conn:
         rows = conn.execute(
             text(
                 """
                 SELECT * FROM (
-                    SELECT id, scan_time, display, thumb, width, height FROM image_frame
+                    SELECT id, path, scan_time, display, thumb, width, height FROM image_frame
                     WHERE status = 'ok' AND source = :src AND sector = :sector AND product = :product
                       AND overlay = :overlay AND scan_time > now() - make_interval(secs => :secs)
                     ORDER BY scan_time DESC LIMIT :limit
@@ -93,4 +94,5 @@ def frames(
     if not rows and source not in (*SATELLITES, NWS):
         raise HTTPException(404, f"unknown source {source}")
     return {"frames": [{"id": r["id"], "scan_time": r["scan_time"], "display": _media(r["display"]),
-                        "thumb": _media(r["thumb"]), "width": r["width"], "height": r["height"]} for r in rows]}
+                        "thumb": _media(r["thumb"]), "width": r["width"], "height": r["height"],
+                        "orig": orig_url(source, r["path"])} for r in rows]}

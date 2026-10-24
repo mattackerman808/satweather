@@ -88,7 +88,8 @@ export type ImageProduct = { product: string; kind: "band" | "rgb" | "graphic"; 
 export type ImageSource = { source: string; sector: string; group: "satellite" | "nws"; last: string;
   products: ImageProduct[] };
 export type Catalog = { sources: ImageSource[]; queue: { pending: number; error: number } };
-export type Frame = { id: number; scan_time: string; display: string; thumb: string; width: number; height: number };
+export type Frame = { id: number; scan_time: string; display: string; thumb: string; width: number; height: number;
+  orig: string | null };
 export type LoopQuery = { source: string; sector: string; product: string; overlay: boolean; hours: number };
 
 export type Filters = { q?: string; category?: string[]; nnn?: string[]; office?: string; ugc?: string };

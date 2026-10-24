@@ -41,6 +41,7 @@ import time
 from dataclasses import dataclass
 from datetime import UTC, datetime
 from pathlib import Path
+from urllib.parse import quote
 
 from sqlalchemy import Connection, text
 
@@ -175,6 +176,13 @@ def read_projection(scan_dir: Path) -> dict | None:
         return cfg if isinstance(cfg, dict) else None
     except Exception:
         return None
+
+
+def orig_url(source: str, path: str) -> str | None:
+    """Where Apache serves a satellite original (/orig is the share), for
+    full-resolution zoom; None for NWS graphics, whose copy is already
+    native size."""
+    return None if source == NWS else "/orig/" + quote(path)
 
 
 def load_seen(conn: Connection, days: int) -> set[str]:
