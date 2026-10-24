@@ -19,7 +19,7 @@ export type LiveEvent =
   | { type: "image"; source_id: number; awips: string; received: string }
   // An image's web copy is ready (satweather-imaging).
   | { type: "frame"; id: number; source: string; sector: string; product: string; kind: string; overlay: boolean;
-      scan_time: string; display: string; thumb: string; width: number; height: number };
+      scan_time: string; display: string; thumb: string; width: number; height: number; orig: string | null };
 
 type Handler = (e: LiveEvent) => void;
 const handlers = new Set<Handler>();

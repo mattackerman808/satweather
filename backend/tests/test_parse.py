@@ -10,7 +10,7 @@ FIX = Path(__file__).parent / "fixtures" / "emwin"
 NOW = datetime(2026, 10, 24, 1, 0, tzinfo=UTC)
 
 # Products pyiem cannot parse today; they must still come back (raw).
-KNOWN_RAW = {"DAY", "EPH", "WWA", "TAF"}
+KNOWN_RAW = {"EPH", "WWA", "TAF"}
 
 
 def _parse(glob: str):
@@ -58,7 +58,7 @@ def test_tropical_outlook_takes_afos_from_text():
     assert p.nnn == "TWO" and p.category == "tropical"
 
 
-@pytest.mark.parametrize("glob", ["*-DAY*", "*-EPH*"])
+@pytest.mark.parametrize("glob", ["*-EPH*"])
 def test_unparseable_kept_raw(glob):
     p = _parse(glob)
     assert p.error and not p.segments
@@ -66,3 +66,12 @@ def test_unparseable_kept_raw(glob):
 
 def test_taf_collective_title_is_catalog_name():
     assert _parse("A_FTUS*TAF*").title == "Terminal Aerodrome Forecast"
+
+
+def test_specialist_parser_misfits_fall_back_to_generic():
+    """pyiem sends every SWO/FFG to its MCD parser; the day 1 outlook and
+    plain flash flood guidance have no LAT...LON and must still parse."""
+    for glob in ("*-SWODY1US.txt", "*-FFGSJUGA.txt"):
+        p = _parse(glob)
+        assert p.error is None, (glob, p.error)
+    assert _parse("*-SWODY1US.txt").title == "Day 1 Convective Outlook"

@@ -1,0 +1,40 @@
+ACUS01 KWNS 240104
+SWODY1
+SPC AC 240102
+
+Day 1 Convective Outlook  
+NWS Storm Prediction Center Norman OK
+0802 PM CDT Fri Oct 23 2026
+
+Valid 240100Z - 241200Z
+
+...THERE IS A MARGINAL RISK OF SEVERE THUNDERSTORMS OVER PORTIONS OF
+NEW MEXICO...SOUTHERN COLORADO AND FAR WEST TEXAS...
+
+...SUMMARY...
+Isolated severe thunderstorms with large hail, severe gusts, and
+perhaps a tornado remain possible across portions of New Mexico,
+southern Colorado, and Far West Texas this evening.
+
+...New Mexico and Far West Texas...
+Evening satellite imagery showed a broad upper trough over the Great
+Basin and western US with a basal shortwave feature approaching the
+Desert Southwest from northern Baja. Modest low-level moisture has
+been advected northward ahead of these features supporting
+destabilization over much of NM and Far West TX. This has resulted
+in scattered thunderstorms from northern Mexico to southern CO this
+afternoon and evening. Enhanced southerly mid-level flow of 40-50
+kts has aided in organizing the storms into a mix of into supercells
+and clusters with hail and severe gusts as the primary risk.
+
+While sufficient for severe storms, the general environment is
+expected to become less conducive through the remainder of this
+evening with gradually decreasing buoyancy and favorable deep-layer
+shear for organized storms. The onset of nocturnal cooling and
+storms moving into a drier/more deeply mixed air mass farther east
+across NM and Far West TX suggest the severe threat for severe gusts
+and hail will become increasingly more isolated and focused tonight.
+
+..Lyons.. 10/24/2026
+
+$$

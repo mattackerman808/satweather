@@ -207,7 +207,9 @@ def store_reports(conn: Connection, pid: int, reports) -> None:
                  "raw": r.raw, "dec": json.dumps(r.decoded)},
             )
         elif r.kind == "PIREP":
-            # Placed at the filing station (an FAA id such as BFL), so approx.
+            # Placed at the filing station (an FAA id such as BFL), so approx,
+            # until satweather.pireps places it by its /OV. A re-decode
+            # refreshes the decoded form and hazards, not the placement.
             conn.execute(
                 text(
                     """
@@ -215,7 +217,7 @@ def store_reports(conn: Connection, pid: int, reports) -> None:
                     VALUES (:pid, :st, :obs, :urg, :hz, :raw, CAST(:dec AS jsonb),
                             (SELECT geom FROM station WHERE faa = :st OR id = :st OR id = 'K' || :st
                              ORDER BY (faa = :st) DESC LIMIT 1))
-                    ON CONFLICT (raw) DO NOTHING
+                    ON CONFLICT (raw) DO UPDATE SET hazards = EXCLUDED.hazards, decoded = EXCLUDED.decoded
                     """
                 ),
                 {"pid": pid, "st": r.station, "obs": r.issued, "urg": r.urgent, "hz": r.hazards,

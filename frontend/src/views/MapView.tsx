@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
-import maplibregl, { type GeoJSONSource, type MapGeoJSONFeature } from "maplibre-gl";
+import * as maplibregl from "maplibre-gl";
+import type { GeoJSONSource, MapGeoJSONFeature } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { basemapStyle } from "../map/basemap";
 import { api, type PirepDecoded } from "../api";
 import { useLiveEvents } from "../events";
 import Inspector, { type Inspect } from "../map/Inspector";
+import PlaceSearch from "../map/PlaceSearch";
 import { CAT_COLOR } from "../wx/Wx";
 
 // GOES-18 sits at 137.0°W: open over the western US and the eastern
@@ -14,9 +16,10 @@ const START = { center: [-118, 38] as [number, number], zoom: 3.6 };
 const EMPTY: GeoJSON.FeatureCollection = { type: "FeatureCollection", features: [] };
 
 type Legend = { name: string; color: string; n: number }[];
-type Layers = { warnings: boolean; stations: boolean; pireps: boolean };
+type Layers = { warnings: boolean; discussions: boolean; stations: boolean; pireps: boolean };
 const LAYER_IDS: Record<keyof Layers, string[]> = {
   warnings: ["warnings-fill", "warnings-line"],
+  discussions: ["disc-fill", "disc-line", "disc-label"],
   stations: ["stations-dot", "stations-label"],
   pireps: ["pireps-dot"],
 };
@@ -25,11 +28,31 @@ const catColor = ["match", ["get", "flight_category"],
   "VFR", CAT_COLOR.VFR, "MVFR", CAT_COLOR.MVFR, "IFR", CAT_COLOR.IFR, "LIFR", CAT_COLOR.LIFR, CAT_COLOR.UNK,
 ] as unknown as maplibregl.ExpressionSpecification;
 
+// Point in a GeoJSON (multi)polygon: inside an outer ring, outside its holes.
+function inside([x, y]: [number, number], g: GeoJSON.Geometry): boolean {
+  const polys = g.type === "Polygon" ? [g.coordinates] : g.type === "MultiPolygon" ? g.coordinates : [];
+  const inRing = (ring: GeoJSON.Position[]) => {
+    let c = false;
+    for (let a = 0, b = ring.length - 1; a < ring.length; b = a++) {
+      const [xa, ya] = ring[a], [xb, yb] = ring[b];
+      if ((ya > y) !== (yb > y) && x < ((xb - xa) * (y - ya)) / (yb - ya) + xa) c = !c;
+    }
+    return c;
+  };
+  return polys.some(([outer, ...holes]) => inRing(outer) && !holes.some(inRing));
+}
+
+// Layers that open something of their own when clicked; elsewhere a click
+// opens the zone forecast, and hovering previews which zone.
+const FEATURE_LAYERS = ["stations-dot", "pireps-dot", "disc-fill", "warnings-fill"];
+
 function addLayers(map: maplibregl.Map) {
   map.addSource("warnings", { type: "geojson", data: EMPTY });
   map.addSource("focus", { type: "geojson", data: EMPTY });
+  map.addSource("hover", { type: "geojson", data: EMPTY });
   map.addSource("stations", { type: "geojson", data: EMPTY });
   map.addSource("pireps", { type: "geojson", data: EMPTY });
+  map.addSource("discussions", { type: "geojson", data: EMPTY });
   map.addLayer({
     id: "warnings-fill", type: "fill", source: "warnings",
     paint: {
@@ -41,9 +64,33 @@ function addLayers(map: maplibregl.Map) {
     id: "warnings-line", type: "line", source: "warnings",
     paint: { "line-color": ["get", "color"], "line-width": ["case", ["get", "storm_based"], 2.2, 1.1] },
   });
+  // SPC mesoscale discussions and WPC precipitation discussions: dashed,
+  // above the warnings they often precede.
+  map.addLayer({
+    id: "disc-fill", type: "fill", source: "discussions",
+    paint: { "fill-color": ["get", "color"], "fill-opacity": 0.08 },
+  });
+  map.addLayer({
+    id: "disc-line", type: "line", source: "discussions",
+    paint: { "line-color": ["get", "color"], "line-width": 2, "line-dasharray": [3, 2] },
+  });
+  map.addLayer({
+    id: "disc-label", type: "symbol", source: "discussions",
+    layout: { "text-field": ["get", "label"], "text-font": ["Noto Sans Bold"], "text-size": 12 },
+    paint: { "text-color": ["get", "color"], "text-halo-color": "#0b1016", "text-halo-width": 1.5 },
+  });
+  map.addLayer({
+    id: "hover-line", type: "line", source: "hover",
+    paint: { "line-color": "#ffffff", "line-width": 1.5, "line-opacity": 0.55 },
+  });
   map.addLayer({
     id: "focus-line", type: "line", source: "focus",
     paint: { "line-color": "#ffffff", "line-width": 3, "line-dasharray": [2, 1] },
+  });
+  // The spot clicked for a zone forecast.
+  map.addLayer({
+    id: "focus-pt", type: "circle", source: "focus", filter: ["==", ["geometry-type"], "Point"],
+    paint: { "circle-radius": 5, "circle-color": "#ffffff", "circle-stroke-color": "#0b1016", "circle-stroke-width": 2 },
   });
   map.addLayer({
     id: "stations-dot", type: "circle", source: "stations",
@@ -85,17 +132,23 @@ export default function MapView() {
   const [err, setErr] = useState<string | null>(null);
   const [legend, setLegend] = useState<Legend>([]);
   const [counts, setCounts] = useState({ stations: 0, pireps: 0 });
-  const [layers, setLayers] = useState<Layers>({ warnings: true, stations: true, pireps: true });
+  const [layers, setLayers] = useState<Layers>({ warnings: true, discussions: true, stations: true, pireps: true });
+  const [nDisc, setNDisc] = useState(0);
+  // Hover preview: the zone under a resting cursor. The tooltip follows the
+  // mouse through its ref (no re-render per mousemove); only its text is state.
+  const [hoverZone, setHoverZone] = useState<string | null>(null);
+  const tipRef = useRef<HTMLDivElement>(null);
   const [inspect, setInspect] = useState<Inspect | null>(null);
   const [sp, setSp] = useSearchParams();
 
   const openRef = useRef<(i: Inspect | null) => void>(() => {});
   const open = useCallback((i: Inspect | null) => {
     setInspect(i);
-    // Keep the URL shareable: ?product=… / ?station=… reopen the panel.
+    // Keep the URL shareable: ?product=… / ?station=… / ?at=lon,lat reopen the panel.
     const p = new URLSearchParams();
     if (i?.kind === "product") p.set("product", String(i.id));
     if (i?.kind === "station") p.set("station", i.id);
+    if (i?.kind === "zone") p.set("at", `${i.lon.toFixed(4)},${i.lat.toFixed(4)}`);
     setSp(p, { replace: true });
   }, [setSp]);
   openRef.current = open;
@@ -119,6 +172,13 @@ export default function MapView() {
         m.set(p.name, e);
       }
       setLegend([...m.values()].sort((a, b) => b.n - a.n));
+    });
+  }), []);
+
+  const refreshDiscussions = useMemo(() => debounced(() => {
+    api.discussions().then((fc) => {
+      (mapRef.current?.getSource("discussions") as GeoJSONSource | undefined)?.setData(fc);
+      setNDisc(fc.features.length);
     });
   }), []);
 
@@ -164,10 +224,45 @@ export default function MapView() {
           addLayers(map);
           setReady(true);
         });
+        let hoverTimer: number | undefined;
+        let hoverSeq = 0;
+        let hoverGeom: GeoJSON.Geometry | null = null;
+        const hideHover = () => {
+          clearTimeout(hoverTimer);
+          hoverSeq++;
+          hoverGeom = null;
+          (map.getSource("hover") as GeoJSONSource | undefined)?.setData(EMPTY);
+          setHoverZone(null);
+        };
+        map.on("mousemove", (e) => {
+          if (tipRef.current) {
+            tipRef.current.style.left = `${e.point.x + 14}px`;
+            tipRef.current.style.top = `${e.point.y + 14}px`;
+          }
+          const layers = FEATURE_LAYERS.filter((l) => map.getLayer(l));
+          if (map.queryRenderedFeatures(e.point, { layers }).length) return hideHover();
+          const ll: [number, number] = [e.lngLat.lng, e.lngLat.lat];
+          if (hoverGeom && inside(ll, hoverGeom)) return;
+          clearTimeout(hoverTimer);
+          hoverTimer = window.setTimeout(() => {
+            const n = ++hoverSeq;
+            api.zoneBrief(ll[0], ll[1]).then((z) => {
+              if (n !== hoverSeq) return;
+              hoverGeom = z.zone?.geometry ?? null;
+              (map.getSource("hover") as GeoJSONSource | undefined)?.setData(
+                hoverGeom ? { type: "Feature", geometry: hoverGeom, properties: {} } : EMPTY);
+              setHoverZone(z.zone?.name ?? null);
+              map.getCanvas().style.cursor = z.zone ? "pointer" : "";
+            }).catch(() => {});
+          }, 250);
+        });
+        map.on("mouseout", hideHover);
+        map.on("dragstart", hideHover);
         // Stations are fetched for the view: the set changes with zoom.
         map.on("moveend", () => refreshObsRef.current());
         // One click handler, most specific layer first: a station or a
-        // PIREP sits on top of the warning polygon it is inside.
+        // PIREP sits on top of the warning polygon it is inside. Anywhere
+        // else opens the zone forecast for that spot.
         map.on("click", (e) => {
           const hit = (ids: string[]) =>
             map.queryRenderedFeatures(e.point, { layers: ids.filter((l) => map.getLayer(l)) });
@@ -177,19 +272,24 @@ export default function MapView() {
           if (pr.length) {
             const p = pr[0].properties;
             return openRef.current({ kind: "pirep", raw: p.raw, time: p.observed,
-              decoded: { type: "PIREP", station: p.station, decoded: JSON.parse(p.decoded) } as PirepDecoded });
+              // maplibre 6 keeps nested GeoJSON properties as objects (5 gave a JSON string).
+              decoded: { type: "PIREP", station: p.station,
+                         decoded: typeof p.decoded === "string" ? JSON.parse(p.decoded) : p.decoded } as PirepDecoded });
           }
+          const at: [number, number] = [e.lngLat.lng, e.lngLat.lat];
+          const d = hit(["disc-fill"]);
+          if (d.length) return openRef.current({ kind: "product", id: d[0].properties.product_id as number, at });
           const w = hit(["warnings-fill"]);
-          if (!w.length) return;
+          if (!w.length) return openRef.current({ kind: "zone", lon: at[0], lat: at[1] });
           const seen = new Map<number, MapGeoJSONFeature>();
           w.forEach((f) => seen.set(f.properties.product_id, f));
           const items = [...seen.values()].map((f) => ({
             id: f.properties.product_id as number, name: f.properties.name as string,
             color: f.properties.color as string, office: f.properties.office as string,
           }));
-          openRef.current(items.length === 1 ? { kind: "product", id: items[0].id } : { kind: "products", items });
+          openRef.current(items.length === 1 ? { kind: "product", id: items[0].id, at } : { kind: "products", items, at });
         });
-        for (const l of ["stations-dot", "pireps-dot", "warnings-fill"]) {
+        for (const l of ["stations-dot", "pireps-dot", "disc-fill", "warnings-fill"]) {
           map.on("mouseenter", l, () => (map.getCanvas().style.cursor = "pointer"));
           map.on("mouseleave", l, () => (map.getCanvas().style.cursor = ""));
         }
@@ -208,16 +308,19 @@ export default function MapView() {
   useEffect(() => {
     if (!ready) return;
     refreshWarnings();
+    refreshDiscussions();
     refreshObs();
     const t = setInterval(() => {
       refreshWarnings();
+      refreshDiscussions();
       refreshObs();
     }, 60_000);
     return () => clearInterval(t);
-  }, [ready, refreshWarnings, refreshObs]);
+  }, [ready, refreshWarnings, refreshDiscussions, refreshObs]);
   useLiveEvents((e) => {
     if (!ready || e.type !== "product") return;
     if (e.vtec) refreshWarnings();
+    if (e.nnn === "SWO" || e.nnn === "FFG") refreshDiscussions();
     if (e.category === "observation" || e.nnn === "TAF" || e.nnn === "UAB") refreshObs();
   });
 
@@ -249,19 +352,49 @@ export default function MapView() {
     if (!ready) return;
     const src = mapRef.current?.getSource("focus") as GeoJSONSource | undefined;
     if (inspect?.kind === "product") showProduct(inspect.id, false);
+    else if (inspect?.kind === "zone") showZone(null);
     else src?.setData(EMPTY);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready, inspect, showProduct]);
+
+  // The zone panel hands back its zone's outline once loaded; the clicked
+  // point is drawn at once. A deep link (?at=) also brings the zone into
+  // view; a click leaves the map where it is.
+  const flyToZone = useRef(false);
+  const showZone = useCallback((g: GeoJSON.Geometry | null) => {
+    const map = mapRef.current;
+    const src = map?.getSource("focus") as GeoJSONSource | undefined;
+    if (!map || !src || inspect?.kind !== "zone") return;
+    if (g && flyToZone.current) {
+      flyToZone.current = false;
+      const b = new maplibregl.LngLatBounds();
+      const walk = (c: unknown): void => {
+        if (Array.isArray(c) && typeof c[0] === "number") b.extend(c as [number, number]);
+        else if (Array.isArray(c)) c.forEach(walk);
+      };
+      walk((g as GeoJSON.Polygon | GeoJSON.MultiPolygon).coordinates);
+      map.fitBounds(b, { padding: { top: 80, bottom: 80, left: 80, right: 480 }, maxZoom: 9 });
+    }
+    const pt: GeoJSON.Feature = { type: "Feature", geometry: { type: "Point", coordinates: [inspect.lon, inspect.lat] },
+      properties: {} };
+    src.setData({ type: "FeatureCollection",
+      features: g ? [{ type: "Feature", geometry: g, properties: {} }, pt] : [pt] });
+  }, [inspect]);
 
   // Deep links: /map?product=<id> or /map?station=<id> open the panel.
   useEffect(() => {
     if (!ready) return;
     const pid = sp.get("product");
     const sid = sp.get("station");
+    const at = sp.get("at")?.split(",").map(Number);
     if (pid && !(inspect?.kind === "product" && inspect.id === Number(pid))) {
       setInspect({ kind: "product", id: Number(pid) });
       showProduct(Number(pid), true);
     } else if (sid && !(inspect?.kind === "station" && inspect.id === sid)) {
       setInspect({ kind: "station", id: sid });
+    } else if (at?.length === 2 && at.every(Number.isFinite)) {
+      flyToZone.current = true;
+      setInspect({ kind: "zone", lon: at[0], lat: at[1] });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ready]);
@@ -270,12 +403,20 @@ export default function MapView() {
     <div className="mapwrap">
       <div ref={el} className="map" />
       {err && <div className="maperr">Basemap unavailable: {err}</div>}
+      <div ref={tipRef} className="maptip" style={{ display: hoverZone ? "block" : "none" }}>
+        <b>{hoverZone}</b> · click for forecast
+      </div>
       <div className="mapside">
+        <PlaceSearch
+          near={() => { const c = mapRef.current?.getCenter(); return c ? [c.lng, c.lat] : undefined; }}
+          onPick={(lon, lat) => { flyToZone.current = true; open({ kind: "zone", lon, lat }); }}
+        />
         <div className="layers">
-          {(["warnings", "stations", "pireps"] as const).map((k) => (
+          {(["warnings", "discussions", "stations", "pireps"] as const).map((k) => (
             <label key={k}>
               <input type="checkbox" checked={layers[k]} onChange={(e) => setLayers({ ...layers, [k]: e.target.checked })} />
               {k === "warnings" ? `Warnings (${legend.reduce((a, l) => a + l.n, 0)})`
+                : k === "discussions" ? `Mesoscale discussions (${nDisc})`
                 : k === "stations" ? `METAR stations (${counts.stations} in view)` : `PIREPs (${counts.pireps})`}
             </label>
           ))}
@@ -300,7 +441,7 @@ export default function MapView() {
         )}
       </div>
       {inspect && (
-        <Inspector item={inspect} onClose={() => open(null)} onOpen={open}
+        <Inspector item={inspect} onClose={() => open(null)} onOpen={open} onZone={showZone}
           onShowProduct={(id) => showProduct(id, true)} />
       )}
     </div>

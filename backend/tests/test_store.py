@@ -248,6 +248,7 @@ def test_images_catalog_convert_and_list(db, tmp_path, monkeypatch):
                                              "product": "13"}).json()["frames"]
     assert [datetime.fromisoformat(x["scan_time"]) for x in f] == times
     assert f[0]["display"].startswith("/media/sat/goes-18/mesoscale-1/") and (f[0]["width"], f[0]["height"]) == (64, 48)
+    assert f[0]["orig"].startswith("/orig/IMAGES/GOES-18/Mesoscale%201/")
     assert (media / f[0]["display"].removeprefix("/media/")).stat().st_size > 0
 
 
@@ -357,3 +358,198 @@ def test_housekeeping(db, tmp_path):
     assert not (media / "sat/goes-18/full-disk/0").exists() and (media / "sat/goes-18/full-disk/1/x.webp").exists()
     with db.connect() as conn:
         assert conn.execute(text("SELECT path FROM image_frame")).scalars().all() == ["p1"]
+
+
+def test_zone_at_point(db):
+    """Forecast, hazards and products for a clicked point."""
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+
+    sq = "ST_Multi(ST_GeomFromText('POLYGON((-123 37,-122 37,-122 38,-123 38,-123 37))', 4326))"
+    with db.begin() as conn:
+        for kind, ugc in (("public", "CAZ508"), ("county", "CAC001"), ("fire", "CAZ508")):
+            conn.execute(text(f"INSERT INTO ugc_zone (kind, ugc, name, state, cwa, geom, centroid, source) VALUES"
+                              f" (:k, :u, 'SF Bay Shoreline', 'CA', 'MTR', {sq}, ST_Centroid({sq}), 't')"),
+                         {"k": kind, "u": ugc})
+        ids = {}
+        for i, (nnn, title) in enumerate((("ZFP", "Zone Forecast"), ("ZFP", "Zone Forecast"), ("PFM", "Point Forecast"),
+                                          ("WSW", "Winter Storm"), ("SVR", "Severe Thunderstorm Warning"))):
+            conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES (:n, 'emwin_text', 1, now(), 'ok')"),
+                         {"n": f"f{i}"})
+            ids[i] = conn.execute(text(
+                "INSERT INTO text_product (source_file_id, wmo, cccc, awips, nnn, office, issued, received, priority, title,"
+                " category, raw) SELECT id, 'FPUS56', 'KMTR', :nnn || 'MTR', :nnn, 'MTR', now() - make_interval(mins => :age),"
+                " now() - make_interval(mins => :age), 3, :title, 'forecast', 'r' FROM source_file WHERE name = :n RETURNING id"),
+                {"nnn": nnn, "title": title, "age": 60 - i, "n": f"f{i}"}).scalar()
+            ugcs = ["CAC001"] if nnn == "SVR" else ["CAZ508", "CAZ509"]
+            poly = "POLYGON((-122.2 37.1,-122.1 37.1,-122.1 37.2,-122.2 37.1))" if nnn == "SVR" else None
+            conn.execute(text("INSERT INTO product_segment (product_id, seq, ugcs, headlines, body, polygon)"
+                              " VALUES (:p, 1, :u, :h, :b, ST_GeomFromText(:poly, 4326))"),
+                         {"p": ids[i], "u": ugcs, "h": [f"H{i}"], "b": f"body {i}", "poly": poly})
+        for pid, ph, sig, ugc, poly in ((ids[3], "WS", "W", "CAZ508", None),
+                                        (ids[4], "SV", "W", "CAC001", "POLYGON((-122.2 37.1,-122.1 37.1,-122.1 37.2,-122.2 37.1))")):
+            conn.execute(text(
+                "INSERT INTO vtec_event_state (office, phenomena, significance, etn, year, action, polygon, product_id, issued)"
+                " VALUES ('KMTR', :ph, :sig, 1, 2026, 'NEW', ST_GeomFromText(:poly, 4326), :p, now())"),
+                {"ph": ph, "sig": sig, "poly": poly, "p": pid})
+            conn.execute(text(
+                "INSERT INTO vtec_ugc_state (office, phenomena, significance, etn, year, ugc, action, ends, product_id, issued)"
+                " VALUES ('KMTR', :ph, :sig, 1, 2026, :u, 'NEW', now() + interval '6 hours', :p, now())"),
+                {"ph": ph, "sig": sig, "u": ugc, "p": pid})
+    c = TestClient(app)
+    d = c.get("/api/zones/at", params={"lon": -122.5, "lat": 37.5}).json()
+    assert d["zone"]["ugc"] == "CAZ508" and d["zone"]["kind"] == "public"
+    assert d["forecast"]["product_id"] == ids[1] and d["forecast"]["headlines"] == ["H1"]  # the newer ZFP
+    assert [h["phenomena"] for h in d["hazards"]] == ["WS"]  # the SVR polygon is elsewhere in the county
+    assert [p["nnn"] for p in d["products"]] == ["PFM"]  # not the ZFP again, not the hazards' products
+    inside = c.get("/api/zones/at", params={"lon": -122.12, "lat": 37.12}).json()
+    assert sorted(h["phenomena"] for h in inside["hazards"]) == ["SV", "WS"]
+    sea = c.get("/api/zones/at", params={"lon": -150, "lat": 20}).json()
+    assert sea["zone"] is None and sea["forecast"] is None
+
+
+def _mcd(t, number: int, hours: int) -> str:
+    """An SPC mesoscale discussion as EMWIN carries it, issued at t and
+    valid for `hours`."""
+    from datetime import timedelta
+
+    end = t + timedelta(hours=hours)
+    local = (t - timedelta(hours=5)).strftime("%I%M %p CDT %a %b %d %Y").lstrip("0")
+    return (f"ACUS11 KWNS {t:%d%H%M}\nSWOMCD\nSPC MCD {t:%d%H%M}\nTXZ000-OKZ000-{end:%d%H%M}-\n\n"
+            f"Mesoscale Discussion {number}\nNWS Storm Prediction Center Norman OK\n{local}\n\n"
+            f"Areas affected...Parts of north Texas into southern Oklahoma\n\n"
+            f"Concerning...Severe potential...Watch likely\n\n"
+            f"Valid {t:%d%H%M}Z - {end:%d%H%M}Z\n\n"
+            f"Probability of Watch Issuance...80 percent\n\n"
+            f"SUMMARY...Supercells capable of large hail are expected.\n\n"
+            f"..Forecaster.. {t:%m/%d/%Y}\n\nATTN...WFO...FWD...OUN...\n\n"
+            f"LAT...LON   33449829 34029723 33679622 33029674 32729770 33449829\n\n")
+
+
+def test_discussions_active(db, tmp_path):
+    from datetime import timedelta
+
+    from fastapi.testclient import TestClient
+
+    from satweather import ingest
+    from satweather.api.app import app
+
+    now = datetime.now(UTC).replace(second=0, microsecond=0)
+    emwin = tmp_path / "EMWIN"
+    emwin.mkdir()
+    for number, issued, hours in ((1234, now - timedelta(minutes=10), 2), (1201, now - timedelta(hours=5), 2)):
+        name = f"A_ACUS11KWNS{issued:%d%H%M}_C_KWIN_{issued:%Y%m%d%H%M%S}_00{number}-2-SWOMCDUS.TXT"
+        (emwin / name).write_text(_mcd(issued, number, hours))
+    assert ingest.scan([emwin], set(), settle_s=0) == {"ok": 2}
+    fc = TestClient(app).get("/api/discussions/active").json()
+    assert [f["properties"]["label"] for f in fc["features"]] == ["MCD 1234"]  # 1201 expired
+    f = fc["features"][0]
+    assert f["geometry"]["type"] == "Polygon"
+    assert f["properties"]["concerning"] == "Severe potential...Watch likely"
+    assert f["properties"]["expires"].startswith(f"{now + timedelta(minutes=110):%Y-%m-%dT%H}")
+
+
+def test_pirep_placement(db, monkeypatch):
+    """Station placement at ingest, then /OV placement via a stubbed Tachbase:
+    resolved and cached, airport by its K id, retried on an outage, left
+    in place when unresolvable."""
+    import httpx
+
+    from satweather import pireps
+
+    with db.begin() as conn:
+        conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES ('u', 'emwin_text', 1, now(), 'ok')"))
+        pid = conn.execute(text(
+            "INSERT INTO text_product (source_file_id, wmo, cccc, awips, nnn, office, received, priority, title, category, raw)"
+            " SELECT id, 'UBUS01', 'KWBC', 'UABWBC', 'UAB', 'KWBC', now(), 3, 'p', 'aviation', 'r' FROM source_file"
+            " RETURNING id")).scalar()
+        for i, raw in enumerate(["BIH UA /OV FIM305020/TM 0153/FL220/TP B738/TB LGT",
+                                 "PRB UA /OV PRB360020 /TM 0105 /FL140/TP C210",
+                                 "XYZ UA /OV QQQQQ/TM 0105 /FL140/TP C210",
+                                 "SAN UA /OV SAN-JLI/TM 0105 /FL140/TP C210"]):
+            conn.execute(text("INSERT INTO pirep (product_id, station, observed, raw, decoded, geom)"
+                              " VALUES (:p, 'X', now(), :raw, '{}', ST_SetSRID(ST_MakePoint(-100, 40), 4326))"),
+                         {"p": pid, "raw": raw})
+
+    calls = []
+
+    class Resp:
+        def __init__(self, payload):
+            self.payload = payload
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return self.payload
+
+    known = {"FIM": (34.357, -118.881), "KPRB": (35.673, -120.627), "SAN": (32.733, -117.190),
+             "JLI": (33.140, -116.586)}
+
+    def ok(url, params, **kw):
+        calls.append(params["ids"].split(","))
+        return Resp({"success": True, "waypoints": {
+            i: {"lat": known[i][0], "lng": known[i][1], "type": "navaid", "name": i}
+            for i in params["ids"].split(",") if i in known}})
+
+    def down(url, params, **kw):
+        raise httpx.ConnectError("no route to host")
+
+    monkeypatch.setattr(httpx, "get", down)
+    assert pireps.place_pending(db) == {"retry": 4}
+    with db.connect() as conn:
+        assert conn.execute(text("SELECT max(place_tries), count(placed_at) FROM pirep")).one() == (1, 0)
+
+    monkeypatch.setattr(httpx, "get", ok)
+    assert pireps.place_pending(db) == {"placed": 3, "unplaced": 1}
+    assert "KPRB" in calls[0] and "PRB" in calls[0]  # FAA id, and its ICAO form for the airport
+    with db.connect() as conn:
+        rows = {r[0][:3]: r[1:] for r in conn.execute(text(
+            "SELECT raw, approx, round(ST_Y(geom)::numeric, 2), round(ST_X(geom)::numeric, 2) FROM pirep")).all()}
+        cached = conn.execute(text("SELECT count(*), count(lat) FROM waypoint")).one()
+    assert rows["XYZ"] == (True, 40, -100)  # unresolvable: stays at the station, approx
+    assert rows["BIH"][0] is False and 34.4 < rows["BIH"][1] < 34.7 and -119.3 < rows["BIH"][2] < -118.9
+    assert rows["PRB"][0] is False and rows["PRB"][1] > 35.9  # 20 NM north
+    assert rows["SAN"][0] is True  # a route: midway, still approx
+    assert cached == (5, 4)  # FIM, PRB (as KPRB), SAN, JLI known; QQQQQ remembered as a miss
+    assert pireps.place_pending(db) == {} and len(calls) == 1  # all placed, nothing asked again
+
+
+def test_places_search_and_brief_zone(db):
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+
+    sq = lambda x, y: f"ST_Multi(ST_GeomFromText('POLYGON(({x} {y},{x+1} {y},{x+1} {y+1},{x} {y+1},{x} {y}))', 4326))"  # noqa: E731
+    with db.begin() as conn:
+        for ugc, name, x, y in (("CAZ508", "SF Bay Shoreline", -123, 37), ("MIZ069", "Oakland", -84, 42)):
+            conn.execute(text(f"INSERT INTO ugc_zone (kind, ugc, name, state, cwa, geom, centroid, source)"
+                              f" VALUES ('public', :u, :n, 'XX', 'X', {sq(x, y)}, ST_Centroid({sq(x, y)}), 't')"),
+                         {"u": ugc, "n": name})
+        conn.execute(text(
+            "INSERT INTO station (id, icao, faa, name, state, country, geom) VALUES"
+            " ('KOAK', 'KOAK', 'OAK', 'Metro Oakland Intl', 'CA', 'US', ST_SetSRID(ST_MakePoint(-122.2, 37.7), 4326)),"
+            " ('46214', NULL, NULL, 'Oakland Buoy', 'CA', 'US', ST_SetSRID(ST_MakePoint(-123.5, 37.9), 4326))"))
+        conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES ('z', 'emwin_text', 1, now(), 'ok')"))
+        conn.execute(text(
+            "INSERT INTO text_product (source_file_id, wmo, cccc, awips, nnn, office, received, priority, title, category, raw)"
+            " SELECT id, 'FPUS56', 'KMTR', 'ZFPMTR', 'ZFP', 'MTR', now(), 3, 'ZFP', 'forecast', 'r' FROM source_file"))
+        conn.execute(text(
+            "INSERT INTO product_segment (product_id, seq, ugcs, headlines, body) SELECT id, 1, '{CAZ508}', '{}',"
+            " E'CAZ508-241900-\\nSF Bay Shoreline-\\nIncluding the cities of San Francisco, Oakland,\\nand Daly City\\n"
+            "902 PM PDT Fri Oct 23 2026\\n\\n.TONIGHT...Clear.\\n' FROM text_product"))
+    c = TestClient(app)
+    b = c.get("/api/zones/at", params={"lon": -122.5, "lat": 37.5, "brief": 1}).json()
+    assert b["zone"]["ugc"] == "CAZ508" and b["zone"]["geometry"] and b["forecast"] is None and b["products"] == []
+
+    def labels(**q):
+        return [(r["kind"], r["label"]) for r in c.get("/api/places", params=q).json()]
+
+    near_sf = labels(q="Oakland", near="-122.3,37.8")
+    # The city (a prefix match) before the airport whose name only contains it.
+    assert near_sf[:2] == [("city", "Oakland, XX"), ("station", "KOAK · Metro Oakland Intl")]
+    assert ("zone", "Oakland") in near_sf and not any("Buoy" in label for _, label in near_sf)
+    assert labels(q="Oakland", near="-84,42")[0] == ("zone", "Oakland")
+    assert labels(q="oak")[0] == ("station", "KOAK · Metro Oakland Intl")  # the FAA id, exactly
+    assert labels(q="Daly")[0] == ("city", "Daly City, XX")

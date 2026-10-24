@@ -29,6 +29,7 @@ from sqlalchemy import text
 from satweather.config import get_settings
 from satweather.db import get_engine
 from satweather.emwin import archived_path
+from satweather.imagery import orig_url
 from satweather.store import notify
 
 log = logging.getLogger("satweather.imaging")
@@ -36,7 +37,7 @@ log = logging.getLogger("satweather.imaging")
 # Full Disk is 5424 px square; 2048 keeps a loop of them light enough for
 # a browser. Meso sectors (2000 px) pass through at native size.
 DISPLAY_PX = 2048
-THUMB_PX = 320
+THUMB_PX = 512  # sharp on the Live dashboard tiles at 2x
 IDLE_S = 2.0
 
 _stop = False
@@ -148,7 +149,8 @@ def process_one() -> bool:
             notify(conn, {"type": "frame", "id": row["id"], "source": row["source"], "sector": row["sector"],
                           "product": row["product"], "kind": row["kind"], "overlay": row["overlay"],
                           "scan_time": row["scan_time"].isoformat(), "display": upd["display"],
-                          "thumb": upd["thumb"], "width": upd["w"], "height": upd["h"]})
+                          "thumb": upd["thumb"], "width": upd["w"], "height": upd["h"],
+                          "orig": orig_url(row["source"], row["path"])})
     return True
 
 

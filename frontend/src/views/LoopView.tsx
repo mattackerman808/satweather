@@ -15,6 +15,9 @@ import { useLiveEvents } from "../events";
 const RANGES = [1, 3, 6, 12, 24];
 const SPEEDS = [2, 4, 8, 12];
 const MAX_FRAMES = 96;
+// satweather-imaging caps display copies at this; a copy this wide has a
+// larger original behind it.
+const DISPLAY_PX = 2048;
 const SECTOR_SHORT: Record<string, string> = { "Mesoscale 1": "Meso 1", "Mesoscale 2": "Meso 2" };
 
 type Group = ImageSource["group"];
@@ -56,6 +59,50 @@ export default function LoopView({ group }: { group: Group }) {
   framesRef.current = frames;
   const idxRef = useRef(idx);
   idxRef.current = idx;
+  const playingRef = useRef(playing);
+  playingRef.current = playing;
+
+  // Full resolution: paused and zoomed in past the display copy, the
+  // frame's original (/orig, the share) is laid exactly over the copy.
+  // Stepping while zoomed brings each frame's original in; playing or a
+  // new selection drops it. No tiles to build or store: the LAN moves a
+  // 5-30 MB PNG in well under a second.
+  const [full, setFull] = useState<"off" | "loading" | "on">("off");
+  const hi = useRef<{ id: number; item: OpenSeadragon.TiledImage | null } | null>(null);
+
+  const dropFull = useCallback(() => {
+    if (hi.current?.item) viewer.current?.world.removeItem(hi.current.item);
+    hi.current = null;
+    setFull("off");
+  }, []);
+
+  const maybeFull = useCallback(() => {
+    const v = viewer.current;
+    const f = framesRef.current[idxRef.current];
+    const base = f && items.current.get(f.id);
+    if (!v || !base || playingRef.current || !f.orig || f.width < DISPLAY_PX || hi.current?.id === f.id) return;
+    // Image zoom is display-copy pixels per screen pixel; past 1 the copy
+    // is being magnified (device pixels, so retina screens count).
+    if (base.viewportToImageZoom(v.viewport.getZoom(true)) * devicePixelRatio <= 1.1) return;
+    if (hi.current?.item) v.world.removeItem(hi.current.item);
+    hi.current = { id: f.id, item: null };
+    setFull("loading");
+    const b = base.getBounds();
+    v.addTiledImage({
+      tileSource: { type: "image", url: f.orig, buildPyramid: false },
+      x: b.x, y: b.y, width: b.width,
+      success: (e) => {
+        const item = (e as unknown as { item: OpenSeadragon.TiledImage }).item;
+        if (hi.current?.id !== f.id) return void v.world.removeItem(item);
+        hi.current.item = item;
+        const on = () => { if (hi.current?.item === item) setFull("on"); };
+        if (item.getFullyLoaded()) on();
+        else item.addOnceHandler("fully-loaded-change", on);
+      },
+      // The share keeps originals for a while only; the copy stays.
+      error: () => { if (hi.current?.id === f.id) { hi.current = null; setFull("off"); } },
+    });
+  }, []);
 
   useEffect(() => {
     api.imageCatalog()
@@ -102,6 +149,7 @@ export default function LoopView({ group }: { group: Group }) {
       visibilityRatio: 0.5,
       gestureSettingsMouse: { clickToZoom: false, dblClickToZoom: true },
     });
+    v.addHandler("animation-finish", maybeFull);
     viewer.current = v;
     return () => {
       v.destroy();
@@ -175,6 +223,12 @@ export default function LoopView({ group }: { group: Group }) {
 
   useEffect(sync, [idx, frames, sync]);
 
+  useEffect(() => {
+    const f = frames[idx];
+    if (playing || (hi.current && hi.current.id !== f?.id)) dropFull();
+    if (!playing) maybeFull();
+  }, [idx, playing, frames, dropFull, maybeFull]);
+
   // Play: step at `fps`, holding the newest frame a little longer.
   useEffect(() => {
     if (!playing || frames.length < 2) return;
@@ -206,7 +260,7 @@ export default function LoopView({ group }: { group: Group }) {
     if (e.source !== sel.source || e.sector !== sel.sector || e.product !== sel.product
         || e.overlay !== sel.overlay) return;
     const f: Frame = { id: e.id, scan_time: e.scan_time, display: `/media/${e.display}`, thumb: `/media/${e.thumb}`,
-      width: e.width, height: e.height };
+      width: e.width, height: e.height, orig: e.orig };
     if (frames.some((x) => x.id === f.id)) return;
     const cutoff = Date.now() - sel.hours * 3600_000;
     const next = [...frames, f].filter((x) => new Date(x.scan_time).getTime() >= cutoff)
@@ -270,6 +324,9 @@ export default function LoopView({ group }: { group: Group }) {
             {cur ? <>{fmtTime(cur.scan_time)} <span className="dim">· {idx + 1}/{frames.length}</span></> : "—"}
             {loaded < frames.length && <span className="dim"> · loading {loaded}/{frames.length}</span>}
           </span>
+          {full !== "off" && (
+            <span className="fullres">{full === "loading" ? "Loading full resolution…" : "Full resolution"}</span>
+          )}
           {prod?.overlay && prod.plain && (
             <label className="satopt">
               <input type="checkbox" checked={sel!.overlay}

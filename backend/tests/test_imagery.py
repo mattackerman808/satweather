@@ -2,7 +2,7 @@ import shutil
 from datetime import UTC, datetime
 from pathlib import Path
 
-from satweather.imagery import from_emwin, label, parse_path, read_projection
+from satweather.imagery import from_emwin, label, orig_url, parse_path, read_projection
 from satweather.imaging import media_rel
 
 FIX = Path(__file__).parent / "fixtures" / "images"
@@ -22,6 +22,12 @@ def test_himawari_has_no_sector_level():
     h = parse_path("IMAGES/Himawari/2026-10-24_02-51-00/ahi_rgb_AHI_False_Color_(WIP)_map.png")
     assert (h.source, h.sector, h.product, h.overlay) == ("Himawari", "Full Disk", "AHI_False_Color_(WIP)", True)
     assert parse_path("IMAGES/Himawari/2026-10-24_02-51-00/HIM_3_20261024T025100Z.png").product == "3"
+
+
+def test_l2_composites_only():
+    c = parse_path("L2/GOES-18/Full Disk/2026-10-23_22-40-22/abi_rgb_Total_Precipitable_Water_map.png")
+    assert (c.source, c.sector, c.product, c.kind, c.overlay) == ("GOES-18", "L2", "Total_Precipitable_Water", "rgb", True)
+    assert parse_path("L2/GOES-18/Full Disk/2026-10-23_22-40-22/G18_TPW_20261023T224022Z.png") is None
 
 
 def test_lrit_charts():
@@ -63,3 +69,9 @@ def test_media_paths_are_url_safe():
     t = datetime(2026, 10, 24, 2, 51, tzinfo=UTC)
     assert media_rel("Himawari", "Full Disk", t, "AHI_False_Color_(WIP)", True) == \
         "sat/himawari/full-disk/20261024T025100Z/ahi-false-color-wip_map"
+
+
+def test_orig_urls():
+    assert orig_url("GOES-18", "IMAGES/GOES-18/Full Disk/2026-10-24_03-50-22/ahi_rgb_AHI_False_Color_(WIP).png") == \
+        "/orig/IMAGES/GOES-18/Full%20Disk/2026-10-24_03-50-22/ahi_rgb_AHI_False_Color_%28WIP%29.png"
+    assert orig_url("NWS", "EMWIN/x.GIF") is None

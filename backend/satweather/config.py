@@ -28,6 +28,9 @@ class Settings(BaseSettings):
     keep_originals_days: int = 0
     # Web copies in media_root and their image_frame rows.
     keep_copies_days: int = 30
+    # Tachbase's API, for the positions of PIREP /OV identifiers
+    # (lookup_waypoints needs no account). Empty disables placement.
+    tachbase_api_url: str = "https://www.tachbase.com/api"
 
 
 @lru_cache

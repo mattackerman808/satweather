@@ -23,6 +23,13 @@ TAF_NNN = {"TAF"}
 PIREP_NNN = {"UAB", "PRC", "PIR"}
 
 _DDHHMMZ = re.compile(r"\b(\d{2})(\d{2})(\d{2})Z\b")
+# A TB or IC group is a hazard only if it reports some: "TB NEG", "TB SMTH"
+# and "IC NEGCLR" are pilots saying there was none.
+# Pilots and controllers abbreviate freely ("LGT", "LT", "LIGHT", "MDT").
+_INTENSITY = {
+    "TB": re.compile(r"\b(?:LGT|LT|LIGHT|MOD|MDT|MODERATE|SEV|SEVERE|EXTRM|EXTREME)\b"),
+    "IC": re.compile(r"\b(?:TRACE|TRC|LGT|LT|LIGHT|MOD|MDT|MODERATE|SEV|SEVERE)\b"),
+}
 _VALID = re.compile(r"\b(\d{2})(\d{2})/(\d{2})(\d{2})\b")
 _PIREP_START = re.compile(r"\b([A-Z0-9]{3,4}\s+UU?A\b)")
 _TM = re.compile(r"/TM\s*(\d{2})(\d{2})")
@@ -107,8 +114,9 @@ def _pirep(chunk: str, ref: datetime) -> Report | None:
     if (t := _TM.search(text)):
         cand = ref.replace(hour=int(t[1]), minute=int(t[2]), second=0, microsecond=0)
         when = cand - timedelta(days=1) if cand > ref + timedelta(hours=1) else cand
-    hazards = sorted({g["group"].split()[0] for g in d.get("decoded", [])
-                      if g["group"].split()[0] in ("TB", "IC", "WS", "WX")})
+    hazards = sorted({k for g in d.get("decoded", [])
+                      if (k := g["group"].split()[0]) in ("TB", "IC", "WS", "WX")
+                      and (k not in _INTENSITY or _INTENSITY[k].search(g["group"]))})
     return Report("PIREP", d.get("station"), text, d, None, when, urgent=" UUA" in f" {text}", hazards=hazards)
 
 
