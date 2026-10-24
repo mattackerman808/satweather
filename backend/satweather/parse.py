@@ -19,6 +19,7 @@ from datetime import datetime
 
 from satweather.catalog import describe
 from satweather.emwin import EmwinName
+from satweather.reports import extract as extract_reports
 
 warnings.filterwarnings("ignore", module="pyiem")
 
@@ -90,6 +91,7 @@ class Parsed:
     category: str
     segments: list[Segment] = field(default_factory=list)
     metars: list[Metar] = field(default_factory=list)
+    reports: list = field(default_factory=list)  # satweather.reports.Report (TAF, PIREP)
     error: str | None = None
 
 
@@ -172,6 +174,10 @@ def parse(text: str, name: EmwinName, utcnow: datetime) -> Parsed:
     nnn = name.nnn
     display, category = describe(nnn)
     out = Parsed(afos=name.pil, nnn=nnn, office=name.cccc, issued=None, title=display, category=category)
+    try:
+        out.reports = extract_reports(nnn, text, name.received)
+    except Exception:  # a decoder bug must not lose the product
+        out.reports = []
     text_parser, metar_parser = _load()
     try:
         if nnn in METAR_NNN:
