@@ -17,6 +17,9 @@ dependencies = [
     # Imaging: libvips itself comes from apt (salt/satweather).
     "pyvips>=2.2",
     "cbor2>=5.6",
+    # PIREP placement: Tachbase lookups, and magnetic declination (WMM).
+    "httpx>=0.28",
+    "pygeomag>=1.1",
 ]
 
 [project.optional-dependencies]

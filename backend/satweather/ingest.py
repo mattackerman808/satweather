@@ -34,6 +34,7 @@ from satweather.emwin import normalize, parse_name
 from satweather.imagery import Scanner, from_emwin, store_image
 from satweather.imagery import load_seen as load_seen_images
 from satweather.parse import parse
+from satweather.pireps import place_pending as place_pireps
 from satweather.store import store_other, store_text
 
 log = logging.getLogger("satweather.ingest")
@@ -224,6 +225,11 @@ def main() -> None:
                 log.info("catalogued %d images in %.1fs", n, time.time() - t0)
         except Exception:
             log.exception("image scan failed")
+        try:
+            if placed := place_pireps(get_engine()):
+                log.info("pireps: %s", placed)
+        except Exception:
+            log.exception("pirep placement failed")
         if args.once:
             return
         # Forget names rtl has archived long ago, so the sets stay bounded.

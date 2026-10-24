@@ -448,3 +448,69 @@ def test_discussions_active(db, tmp_path):
     assert f["geometry"]["type"] == "Polygon"
     assert f["properties"]["concerning"] == "Severe potential...Watch likely"
     assert f["properties"]["expires"].startswith(f"{now + timedelta(minutes=110):%Y-%m-%dT%H}")
+
+
+def test_pirep_placement(db, monkeypatch):
+    """Station placement at ingest, then /OV placement via a stubbed Tachbase:
+    resolved and cached, airport by its K id, retried on an outage, left
+    in place when unresolvable."""
+    import httpx
+
+    from satweather import pireps
+
+    with db.begin() as conn:
+        conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES ('u', 'emwin_text', 1, now(), 'ok')"))
+        pid = conn.execute(text(
+            "INSERT INTO text_product (source_file_id, wmo, cccc, awips, nnn, office, received, priority, title, category, raw)"
+            " SELECT id, 'UBUS01', 'KWBC', 'UABWBC', 'UAB', 'KWBC', now(), 3, 'p', 'aviation', 'r' FROM source_file"
+            " RETURNING id")).scalar()
+        for i, raw in enumerate(["BIH UA /OV FIM305020/TM 0153/FL220/TP B738/TB LGT",
+                                 "PRB UA /OV PRB360020 /TM 0105 /FL140/TP C210",
+                                 "XYZ UA /OV QQQQQ/TM 0105 /FL140/TP C210",
+                                 "SAN UA /OV SAN-JLI/TM 0105 /FL140/TP C210"]):
+            conn.execute(text("INSERT INTO pirep (product_id, station, observed, raw, decoded, geom)"
+                              " VALUES (:p, 'X', now(), :raw, '{}', ST_SetSRID(ST_MakePoint(-100, 40), 4326))"),
+                         {"p": pid, "raw": raw})
+
+    calls = []
+
+    class Resp:
+        def __init__(self, payload):
+            self.payload = payload
+
+        def raise_for_status(self):
+            pass
+
+        def json(self):
+            return self.payload
+
+    known = {"FIM": (34.357, -118.881), "KPRB": (35.673, -120.627), "SAN": (32.733, -117.190),
+             "JLI": (33.140, -116.586)}
+
+    def ok(url, params, **kw):
+        calls.append(params["ids"].split(","))
+        return Resp({"success": True, "waypoints": {
+            i: {"lat": known[i][0], "lng": known[i][1], "type": "navaid", "name": i}
+            for i in params["ids"].split(",") if i in known}})
+
+    def down(url, params, **kw):
+        raise httpx.ConnectError("no route to host")
+
+    monkeypatch.setattr(httpx, "get", down)
+    assert pireps.place_pending(db) == {"retry": 4}
+    with db.connect() as conn:
+        assert conn.execute(text("SELECT max(place_tries), count(placed_at) FROM pirep")).one() == (1, 0)
+
+    monkeypatch.setattr(httpx, "get", ok)
+    assert pireps.place_pending(db) == {"placed": 3, "unplaced": 1}
+    assert "KPRB" in calls[0] and "PRB" in calls[0]  # FAA id, and its ICAO form for the airport
+    with db.connect() as conn:
+        rows = {r[0][:3]: r[1:] for r in conn.execute(text(
+            "SELECT raw, approx, round(ST_Y(geom)::numeric, 2), round(ST_X(geom)::numeric, 2) FROM pirep")).all()}
+        cached = conn.execute(text("SELECT count(*), count(lat) FROM waypoint")).one()
+    assert rows["XYZ"] == (True, 40, -100)  # unresolvable: stays at the station, approx
+    assert rows["BIH"][0] is False and 34.4 < rows["BIH"][1] < 34.7 and -119.3 < rows["BIH"][2] < -118.9
+    assert rows["PRB"][0] is False and rows["PRB"][1] > 35.9  # 20 NM north
+    assert rows["SAN"][0] is True  # a route: midway, still approx
+    assert cached == (5, 4)  # FIM, PRB (as KPRB), SAN, JLI known; QQQQQ remembered as a miss
+    assert pireps.place_pending(db) == {} and len(calls) == 1  # all placed, nothing asked again

@@ -60,6 +60,8 @@ Ingest pipeline: `emwin.py` (filename grammar → `EmwinName`; text normalizatio
 
 Imagery layout on the share: `IMAGES/<GOES-18|GOES-19>/<Full Disk|Mesoscale 1|Mesoscale 2>/<YYYY-MM-DD_HH-MM-SS UTC>/` and `IMAGES/Himawari/<scan>/` (no sector level). Files are bands (`G18_13_<t>Z.png`) or SatDump RGB composites (`abi_rgb_<Name>.png`, plus a `_map.png` variant with borders drawn in); `product.cbor` holds the geostationary projection (stored on each row for later reprojection). A scan directory fills over minutes, so files are catalogued one by one as they settle. The share keeps only a few hours; loops come from the copies in `media/`.
 
+PIREPs are stored at their filing station (`approx`), then `pireps.place_pending` (run from the ingest loop) moves each to its `/OV` position: radial/distance, offset (`15 SW FAT`), over-a-point, route midpoint (stays approx) or lat/lon. Identifiers resolve through Tachbase's anonymous `lookup_waypoints` (`tachbase_api_url`), cached in `waypoint` for a NASR cycle (misses for a day), with our station table for small airports with no ICAO id; radials are magnetic, so WMM declination (pygeomag) is added. Unreachable Tachbase → retried up to `MAX_TRIES`. `reports.py` counts TB/IC as a hazard only with an intensity (not `NEG`/`SMTH`).
+
 Live updates: `store.py` notifies → `api/events.py` LISTENs on a dedicated psycopg connection per client and streams SSE (`/api/events`) → `frontend/src/events.ts` keeps one shared `EventSource` for all subscribers.
 
 Key invariants:
