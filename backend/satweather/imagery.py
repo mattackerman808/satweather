@@ -1,6 +1,7 @@
-"""Satellite images on the share: what each file is, and cataloguing them.
+"""Images on the share: what each file is, and cataloguing them.
 
-SatDump writes one directory per scan, named for its UTC start time:
+Satellite imagery. SatDump writes one directory per scan, named for its
+UTC start time:
 
     IMAGES/GOES-18/Full Disk/2026-10-24_03-00-22/G18_13_20261024T030022Z.png
     IMAGES/GOES-18/Mesoscale 1/2026-10-24_03-07-26/abi_rgb_ABI_False_Color_map.png
@@ -12,6 +13,14 @@ borders (<...>_map.png). A scan directory fills over several minutes
 (Full Disk bands arrive one at a time), so files are catalogued one by
 one as each settles, not per directory. product.cbor beside them holds
 the geostationary projection, kept for reprojecting onto the map later.
+
+NWS graphics, all under source "NWS":
+  - LRIT charts, IMAGES/NWS/<YYYYmmddHHMMSS>-<chart>_latest[BW].lrit.gif
+    (TAFB/OPC Pacific analyses and forecasts), re-sent hourly whether or
+    not they changed; satweather.imaging drops the byte-identical repeats.
+  - EMWIN graphics, the non-text files in EMWIN/ (RADxxxxx regional radar
+    mosaics, the national hazards map, SPC/WPC outlooks, ...), catalogued
+    by satweather.ingest as each one is ingested; `from_emwin`.
 
 Cataloguing only records the file (status pending); satweather.imaging
 makes the web copies.
@@ -35,10 +44,40 @@ log = logging.getLogger("satweather.imagery")
 _SCAN_DIR = re.compile(r"^(\d{4})-(\d{2})-(\d{2})_(\d{2})-(\d{2})-(\d{2})$")
 _BAND = re.compile(r"^[A-Z0-9]+_(?P<band>\d{1,2})_\d{8}T\d{6}Z\.png$")
 _RGB = re.compile(r"^[a-z]+_rgb_(?P<name>.+?)(?P<map>_map)?\.png$")
+_LRIT = re.compile(r"^(\d{4})(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})-(?P<chart>.+?)(?:_latest(?:BW)?)?\.lrit\.gif$", re.I)
+_TROPICAL = re.compile(r"^(AL|EP|CP)(\d{2})")
 
-# The satellites SatDump writes under IMAGES/. NWS/ (LRIT charts) and
-# Unknown/ are other things.
+# The satellites SatDump writes under IMAGES/; NWS/ holds LRIT charts.
 SATELLITES = ("GOES-18", "GOES-19", "Himawari")
+NWS = "NWS"
+
+# Radar mosaics by region (EMWIN RADxxxxx), in the order the picker shows.
+RADAR = {
+    "RADREFUS": "CONUS", "RADPACNW": "Pacific Northwest", "RADPACSW": "Pacific Southwest",
+    "RADRCKNT": "Northern Rockies", "RADRCKST": "Southern Rockies", "RADNTHPL": "Northern Plains",
+    "RADSTHPL": "Southern Plains", "RADUMSVY": "Upper Mississippi Valley",
+    "RADSMSVY": "Southern Mississippi Valley", "RADGRTLK": "Great Lakes", "RADNTHES": "Northeast",
+    "RADSTHES": "Southeast", "RADALLAK": "Alaska", "RADALLHI": "Hawaii", "RADALLPR": "Puerto Rico",
+    "RADALLGU": "Guam",
+}
+CHARTS = {
+    "IMGWWAUS": "US watches, warnings & advisories",
+    "MODDY1US": "SPC day 1 convective outlook",
+    "MOD94SUS": "WPC day 1 excessive rainfall outlook",
+    "GPHJ88US": "Significant river flood outlook",
+    "IMGFNT00": "North America surface analysis",
+    "NPSA01US": "Pacific surface analysis (OPC)",
+    "CSA001US": "Caribbean surface analysis (NHC)",
+    # LRIT
+    "pacsfc24": "Tropical E Pacific 24 h surface forecast",
+    "pacsfc48": "Tropical E Pacific 48 h surface forecast",
+    "pac24": "Tropical E Pacific 24 h wind/wave forecast",
+    "pac48": "Tropical E Pacific 48 h wind/wave forecast",
+    "pac48per": "Tropical E Pacific 48 h wave period forecast",
+    "pacsea": "Tropical E Pacific sea state analysis",
+    "WATL": "SW North Atlantic surface analysis",
+}
+_TROPICAL_KIND = {"WS": "surface wind field"}
 
 _ABI = {
     1: "Blue 0.47 µm", 2: "Red 0.64 µm", 3: "Veggie 0.86 µm", 4: "Cirrus 1.37 µm", 5: "Snow/ice 1.6 µm",
@@ -58,17 +97,21 @@ _AHI = {
 
 @dataclass(frozen=True)
 class ImageName:
-    satellite: str
+    source: str
     sector: str
     scan_time: datetime
-    product: str  # band number ("13") or composite name as in the file ("ABI_False_Color")
-    kind: str  # band | rgb
+    product: str  # band ("13"), composite as in the file ("ABI_False_Color"), or chart id ("RADREFUS")
+    kind: str  # band | rgb | graphic
     overlay: bool
 
 
 def parse_path(rel: str) -> ImageName | None:
-    """IMAGES/<sat>[/<sector>]/<scan dir>/<file> -> what it is, or None."""
+    """IMAGES/<sat>[/<sector>]/<scan dir>/<file> or IMAGES/NWS/<chart> ->
+    what it is, or None."""
     parts = rel.split("/")
+    if len(parts) == 3 and parts[:2] == ["IMAGES", NWS] and (m := _LRIT.match(parts[2])):
+        t = datetime(*(int(x) for x in m.groups()[:6]), tzinfo=UTC)
+        return ImageName(NWS, "Charts", t, m["chart"], "graphic", False)
     if len(parts) not in (4, 5) or parts[0] != "IMAGES" or parts[1] not in SATELLITES:
         return None
     satellite, scan_dir, name = parts[1], parts[-2], parts[-1]
@@ -84,10 +127,22 @@ def parse_path(rel: str) -> ImageName | None:
     return None
 
 
-def label(satellite: str, product: str, kind: str) -> str:
-    """'Band 13 · Clean longwave IR 10.3 µm', 'ABI False Color'."""
+def from_emwin(awips: str, received: datetime) -> ImageName:
+    """An EMWIN graphic (awips as in the filename, e.g. RADREFUS)."""
+    return ImageName(NWS, "Radar" if awips.startswith("RAD") else "Charts", received, awips, "graphic", False)
+
+
+def label(source: str, product: str, kind: str) -> str:
+    """'Band 13 · Clean longwave IR 10.3 µm', 'ABI False Color', 'Pacific Southwest'."""
+    if kind == "graphic":
+        if name := RADAR.get(product) or CHARTS.get(product):
+            return name
+        if m := _TROPICAL.match(product):
+            what = _TROPICAL_KIND.get(product[-2:], product[4:])
+            return f"{m[1]}{m[2]} {what}"
+        return product
     if kind == "band":
-        names = _AHI if satellite == "Himawari" else _ABI
+        names = _AHI if source == "Himawari" else _ABI
         n = int(product)
         return f"Band {n} · {names[n]}" if n in names else f"Band {n}"
     return product.replace("_", " ")
@@ -113,10 +168,10 @@ def load_seen(conn: Connection, days: int) -> set[str]:
 
 
 class Scanner:
-    """Walks IMAGES/ each pass. A scan directory whose mtime has not moved
-    since a pass that found nothing unsettled in it is skipped without
-    listing: NFS readdirs are the cost here, and finished scans are most
-    of the tree."""
+    """Walks IMAGES/ each pass (satellite scan directories and NWS/). A
+    directory whose mtime has not moved since a pass that found nothing
+    unsettled in it is skipped without listing: NFS readdirs are the cost
+    here, and finished scans are most of the tree."""
 
     def __init__(self, root: Path, seen: set[str]):
         self.root = root
@@ -124,6 +179,10 @@ class Scanner:
         self._done: dict[str, float] = {}
 
     def _scan_dirs(self):
+        try:
+            yield from (e for e in os.scandir(self.root / "IMAGES") if e.name == NWS and e.is_dir())
+        except OSError:
+            pass
         for sat in SATELLITES:
             base = self.root / "IMAGES" / sat
             try:
@@ -161,7 +220,7 @@ class Scanner:
             except OSError:
                 continue
             for f in entries:
-                if not f.name.endswith(".png"):
+                if not f.name.endswith((".png", ".gif")):
                     continue
                 rel = os.path.relpath(f.path, self.root)
                 if rel in self.seen:
@@ -175,11 +234,11 @@ class Scanner:
                     continue
                 new.append((rel, st))
             if new:
-                proj = read_projection(Path(d.path))
+                proj = None if d.name == NWS else read_projection(Path(d.path))
                 with conn_factory() as conn:
                     for rel, st in new:
                         if (im := parse_path(rel)) is not None:
-                            store_image(conn, rel, im, st.st_size, proj)
+                            store_image(conn, rel, im, st.st_size, st.st_mtime, proj)
                             n += 1
                         self.seen.add(rel)
             if not unsettled:
@@ -189,16 +248,19 @@ class Scanner:
         return n
 
 
-def store_image(conn: Connection, rel: str, im: ImageName, size: int, projection: dict | None) -> None:
-    conn.execute(
+def store_image(conn: Connection, rel: str, im: ImageName, size: int, mtime: float,
+                projection: dict | None = None) -> bool:
+    """True if the image is new (not already catalogued)."""
+    return conn.execute(
         text(
             """
-            INSERT INTO image_frame (path, satellite, sector, product, kind, overlay, scan_time, size, projection)
-            VALUES (:path, :sat, :sector, :product, :kind, :overlay, :t, :size, CAST(:proj AS jsonb))
+            INSERT INTO image_frame (path, source, sector, product, kind, overlay, scan_time, size, mtime, projection)
+            VALUES (:path, :src, :sector, :product, :kind, :overlay, :t, :size, to_timestamp(:mtime),
+                    CAST(:proj AS jsonb))
             ON CONFLICT (path) DO NOTHING
             """
         ),
-        {"path": rel, "sat": im.satellite, "sector": im.sector, "product": im.product, "kind": im.kind,
-         "overlay": im.overlay, "t": im.scan_time, "size": size,
+        {"path": rel, "src": im.source, "sector": im.sector, "product": im.product, "kind": im.kind,
+         "overlay": im.overlay, "t": im.scan_time, "size": size, "mtime": mtime,
          "proj": json.dumps(projection) if projection else None},
-    )
+    ).rowcount == 1

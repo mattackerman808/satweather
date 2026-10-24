@@ -183,15 +183,16 @@ def test_station_declutter_by_zoom(db):
     assert ids(bbox="160,-50,-110,60", zoom=3) == ["KLAX", "NZAA"]
 
 
-def _png(path: Path, w: int = 64, h: int = 48) -> None:
-    """A real grayscale PNG, written without an image library."""
+def _png(path: Path, w: int = 64, h: int = 48, seed: int = 0) -> None:
+    """A real grayscale PNG, written without an image library. Different
+    seeds give different bytes (identical originals are dups)."""
     import struct
     import zlib
 
     def chunk(kind: bytes, data: bytes) -> bytes:
         return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data))
 
-    rows = b"".join(b"\x00" + bytes((x * 4) % 256 for x in range(w)) for _ in range(h))
+    rows = b"".join(b"\x00" + bytes((x * 4 + seed) % 256 for x in range(w)) for _ in range(h))
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 0, 0, 0, 0))
                      + chunk(b"IDAT", zlib.compress(rows)) + chunk(b"IEND", b""))
@@ -213,9 +214,9 @@ def test_images_catalog_convert_and_list(db, tmp_path, monkeypatch):
     scan = tmp_path / "IMAGES" / "GOES-18" / "Mesoscale 1"
     now = datetime.now(UTC).replace(microsecond=0)
     times = [now - timedelta(minutes=11), now - timedelta(minutes=10)]
-    for t in times:
-        _png(scan / f"{t:%Y-%m-%d_%H-%M-%S}" / f"G18_13_{t:%Y%m%dT%H%M%S}Z.png")
-        _png(scan / f"{t:%Y-%m-%d_%H-%M-%S}" / "abi_rgb_ABI_False_Color_map.png")
+    for i, t in enumerate(times):
+        _png(scan / f"{t:%Y-%m-%d_%H-%M-%S}" / f"G18_13_{t:%Y%m%dT%H%M%S}Z.png", seed=i)
+        _png(scan / f"{t:%Y-%m-%d_%H-%M-%S}" / "abi_rgb_ABI_False_Color_map.png", seed=i)
     last = scan / f"{times[1]:%Y-%m-%d_%H-%M-%S}"
     shutil.copy(Path(__file__).parent / "fixtures" / "images" / "himawari_product.cbor", last / "product.cbor")
     (last / f"G18_2_{times[1]:%Y%m%dT%H%M%S}Z.png").touch()  # still being written
@@ -239,11 +240,48 @@ def test_images_catalog_convert_and_list(db, tmp_path, monkeypatch):
         pass
     c = TestClient(app)
     cat = c.get("/api/imagery/catalog").json()
-    assert [(g["satellite"], g["sector"]) for g in cat["sources"]] == [("GOES-18", "Mesoscale 1")]
+    assert [(g["source"], g["sector"], g["group"]) for g in cat["sources"]] == [("GOES-18", "Mesoscale 1", "satellite")]
     assert [(p["product"], p["overlay"], p["plain"]) for p in cat["sources"][0]["products"]] == \
         [("ABI_False_Color", True, False), ("13", False, True)]
-    f = c.get("/api/imagery/frames", params={"satellite": "GOES-18", "sector": "Mesoscale 1",
+    f = c.get("/api/imagery/frames", params={"source": "GOES-18", "sector": "Mesoscale 1",
                                              "product": "13"}).json()["frames"]
     assert [datetime.fromisoformat(x["scan_time"]) for x in f] == times
     assert f[0]["display"].startswith("/media/sat/goes-18/mesoscale-1/") and (f[0]["width"], f[0]["height"]) == (64, 48)
     assert (media / f[0]["display"].removeprefix("/media/")).stat().st_size > 0
+
+
+def test_emwin_graphics_archive_and_dups(db, tmp_path, monkeypatch):
+    """EMWIN graphic -> image_frame at ingest; converted after rtl archived
+    it; a byte-identical re-send is a dup with no copies."""
+    from satweather import ingest
+    from satweather.config import get_settings
+    from satweather.emwin import archived_path
+
+    monkeypatch.setenv("SATWEATHER_MEDIA_ROOT", str(tmp_path / "media"))
+    get_settings.cache_clear()
+    emwin = tmp_path / "EMWIN"
+    names = ["A_PNUS71KWBC240322_C_KWIN_20261024032200_000001-2-RADPACSW.GIF",
+             "A_PNUS71KWBC240422_C_KWIN_20261024042200_000002-2-RADPACSW.GIF"]
+    for n in names:
+        _png(emwin / n)  # libvips goes by content, not extension
+    assert ingest.scan([emwin], set(), settle_s=0) == {"image": 2}
+    with db.connect() as conn:
+        rows = conn.execute(text("SELECT path, source, sector, product FROM image_frame ORDER BY path")).all()
+    assert [tuple(r) for r in rows] == [(f"EMWIN/{n}", "NWS", "Radar", "RADPACSW") for n in names]
+
+    first = emwin / names[0]
+    moved = tmp_path / archived_path(names[0], first.stat().st_mtime)
+    moved.parent.mkdir(parents=True)
+    first.rename(moved)
+    try:
+        import pyvips  # noqa: F401
+    except Exception as exc:
+        pytest.skip(f"pyvips unavailable: {exc}")
+    from satweather import imaging
+
+    while imaging.process_one():
+        pass
+    with db.connect() as conn:
+        st = dict(conn.execute(text("SELECT path, status FROM image_frame")).all())
+    # Newest first: the 04:22 copy is made, the archived 03:22 one is its dup.
+    assert st == {f"EMWIN/{names[1]}": "ok", f"EMWIN/{names[0]}": "dup"}

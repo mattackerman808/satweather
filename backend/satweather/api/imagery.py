@@ -1,4 +1,5 @@
-"""Satellite imagery: what is available, and the frames of one loop.
+"""Imagery (satellites, NWS radar mosaics and charts): what is available,
+and the frames of one loop.
 
 Paths in responses are under /media/ (Apache serves media_root there).
 """
@@ -9,11 +10,12 @@ from fastapi import APIRouter, HTTPException, Query
 from sqlalchemy import text
 
 from satweather.db import get_engine
-from satweather.imagery import SATELLITES, label
+from satweather.imagery import NWS, RADAR, SATELLITES, label
 
 router = APIRouter(prefix="/api")
 
-SECTORS = ("Full Disk", "Mesoscale 1", "Mesoscale 2")
+SECTORS = ("Full Disk", "Mesoscale 1", "Mesoscale 2", "Radar", "Charts")
+_RADAR_ORDER = {k: i for i, k in enumerate(RADAR)}
 
 
 def _media(rel: str | None) -> str | None:
@@ -22,17 +24,18 @@ def _media(rel: str | None) -> str | None:
 
 @router.get("/imagery/catalog")
 def catalog(days: int = Query(30, ge=1, le=90)) -> dict:
-    """Every satellite/sector with its products: composites first, then
-    bands in order. `overlay`/`plain` say which variants exist (bands
-    have no borders-drawn variant)."""
+    """Every source/sector with its products: composites first, then bands
+    in order; radar regions in RADAR's order, charts by name. `group` is
+    satellite or nws. `overlay`/`plain` say which variants exist (only
+    composites have a borders-drawn one)."""
     with get_engine().connect() as conn:
         rows = conn.execute(
             text(
                 """
-                SELECT satellite, sector, product, kind, bool_or(overlay) AS overlay, bool_or(NOT overlay) AS plain,
+                SELECT source, sector, product, kind, bool_or(overlay) AS overlay, bool_or(NOT overlay) AS plain,
                        count(*) AS n, max(scan_time) AS last, min(scan_time) AS first
                 FROM image_frame WHERE status = 'ok' AND scan_time > now() - make_interval(days => :d)
-                GROUP BY satellite, sector, product, kind
+                GROUP BY source, sector, product, kind
                 """
             ),
             {"d": days},
@@ -41,19 +44,20 @@ def catalog(days: int = Query(30, ge=1, le=90)) -> dict:
             "SELECT status, count(*) FROM image_frame WHERE status IN ('pending', 'error') GROUP BY status")).all())
     groups: dict[tuple[str, str], dict] = {}
     for r in rows:
-        g = groups.setdefault((r["satellite"], r["sector"]),
-                              {"satellite": r["satellite"], "sector": r["sector"], "last": None, "products": []})
+        g = groups.setdefault((r["source"], r["sector"]),
+                              {"source": r["source"], "sector": r["sector"], "last": None, "products": [],
+                               "group": "nws" if r["source"] == NWS else "satellite"})
         g["last"] = max(filter(None, [g["last"], r["last"]]))
         g["products"].append({"product": r["product"], "kind": r["kind"],
-                              "label": label(r["satellite"], r["product"], r["kind"]),
+                              "label": label(r["source"], r["product"], r["kind"]),
                               "overlay": r["overlay"], "plain": r["plain"], "n": r["n"],
                               "first": r["first"], "last": r["last"]})
     for g in groups.values():
         g["products"].sort(key=lambda p: (p["kind"] != "rgb", int(p["product"]) if p["kind"] == "band" else 0,
-                                          p["label"]))
+                                          _RADAR_ORDER.get(p["product"], 99), p["label"]))
 
     def order(g: dict):
-        sat = SATELLITES.index(g["satellite"]) if g["satellite"] in SATELLITES else 99
+        sat = SATELLITES.index(g["source"]) if g["source"] in SATELLITES else 99
         sec = SECTORS.index(g["sector"]) if g["sector"] in SECTORS else 99
         return sat, sec
 
@@ -63,7 +67,7 @@ def catalog(days: int = Query(30, ge=1, le=90)) -> dict:
 
 @router.get("/imagery/frames")
 def frames(
-    satellite: str,
+    source: str,
     sector: str,
     product: str,
     overlay: bool = False,
@@ -77,16 +81,16 @@ def frames(
                 """
                 SELECT * FROM (
                     SELECT id, scan_time, display, thumb, width, height FROM image_frame
-                    WHERE status = 'ok' AND satellite = :sat AND sector = :sector AND product = :product
+                    WHERE status = 'ok' AND source = :src AND sector = :sector AND product = :product
                       AND overlay = :overlay AND scan_time > now() - make_interval(secs => :secs)
                     ORDER BY scan_time DESC LIMIT :limit
                 ) f ORDER BY scan_time
                 """
             ),
-            {"sat": satellite, "sector": sector, "product": product, "overlay": overlay,
+            {"src": source, "sector": sector, "product": product, "overlay": overlay,
              "secs": hours * 3600, "limit": limit},
         ).mappings().all()
-    if not rows and satellite not in SATELLITES:
-        raise HTTPException(404, f"unknown satellite {satellite}")
+    if not rows and source not in (*SATELLITES, NWS):
+        raise HTTPException(404, f"unknown source {source}")
     return {"frames": [{"id": r["id"], "scan_time": r["scan_time"], "display": _media(r["display"]),
                         "thumb": _media(r["thumb"]), "width": r["width"], "height": r["height"]} for r in rows]}

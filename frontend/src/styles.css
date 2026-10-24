@@ -33,6 +33,7 @@ body { background: var(--bg); color: var(--text); }
 .badge { font-size: 12px; padding: 3px 8px; border-radius: 999px; border: 1px solid var(--line); white-space: nowrap; }
 .badge.ok { color: var(--ok); border-color: #1d5a40; }
 .badge.bad { color: var(--bad); border-color: #6a2a24; }
+.badge.upd { color: #0b1016; background: var(--accent); border-color: var(--accent); font-weight: 600; cursor: pointer; }
 
 main { flex: 1; min-height: 0; position: relative; }
 

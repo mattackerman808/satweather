@@ -4,27 +4,41 @@ import { useSearchParams } from "react-router";
 import { ago, api, fmtTime, type Catalog, type Frame, type ImageSource } from "../api";
 import { useLiveEvents } from "../events";
 
-// Satellite loops in the native (geostationary) view. Every frame of the
-// loop is an image in one OpenSeadragon world, preloaded, and playing
-// just switches which one is opaque: no flicker, and pan/zoom carry over
-// from frame to frame. The viewer is created once; selections only
-// change what is in its world (rebuilding it would reset the view).
+// Image loops: satellite imagery in its native (geostationary) view on
+// the Satellite tab, NWS radar mosaics and charts on Radar & charts.
+// Every frame of the loop is an image in one OpenSeadragon world,
+// preloaded, and playing just switches which one is opaque: no flicker,
+// and pan/zoom carry over from frame to frame. The viewer is created
+// once; selections only change what is in its world (rebuilding it would
+// reset the view).
 
 const RANGES = [1, 3, 6, 12, 24];
 const SPEEDS = [2, 4, 8, 12];
 const MAX_FRAMES = 96;
 const SECTOR_SHORT: Record<string, string> = { "Mesoscale 1": "Meso 1", "Mesoscale 2": "Meso 2" };
 
-type Sel = { satellite: string; sector: string; product: string; overlay: boolean; hours: number };
+type Group = ImageSource["group"];
+type Sel = { source: string; sector: string; product: string; overlay: boolean; hours: number };
 
-// Infrared by default: the visible composites (False Color) are black for
-// half of every day.
+// Satellites default to infrared: the visible composites (False Color)
+// are black for half of every day. Radar to CONUS, charts to the national
+// hazards map.
 function defaultProduct(src: ImageSource): string {
-  const rgb = src.products.filter((p) => p.kind === "rgb");
-  return (rgb.find((p) => /^Clean_Longwave/i.test(p.product)) ?? rgb[0] ?? src.products[0])?.product ?? "";
+  const prefer = src.group === "nws" ? [/^RADREFUS$/, /^IMGWWAUS$/] : [/^Clean_Longwave/i];
+  const pool = src.group === "nws" ? src.products : src.products.filter((p) => p.kind === "rgb");
+  for (const re of prefer) {
+    const hit = pool.find((p) => re.test(p.product));
+    if (hit) return hit.product;
+  }
+  return (pool[0] ?? src.products[0])?.product ?? "";
 }
 
-export default function SatelliteView() {
+// Charts change a few times a day; loops of them want a longer range.
+const defaultHours = (src: ImageSource) => (src.sector === "Charts" ? 24 : 3);
+
+const KIND_HEADING: Record<string, string> = { rgb: "Composites", band: "Bands" };
+
+export default function LoopView({ group }: { group: Group }) {
   const [sp, setSp] = useSearchParams();
   const [cat, setCat] = useState<Catalog | null>(null);
   const [frames, setFrames] = useState<Frame[]>([]);
@@ -44,23 +58,26 @@ export default function SatelliteView() {
   idxRef.current = idx;
 
   useEffect(() => {
-    api.imageCatalog().then(setCat).catch((e) => setErr(String(e)));
+    api.imageCatalog()
+      .then((c) => { setCat({ ...c, sources: c.sources.filter((s) => s.group === group) }); setErr(null); })
+      .catch((e) => setErr(String(e)));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Selection lives in the URL, so a loop can be linked and survives reload.
   const sel: Sel | null = useMemo(() => {
     if (!cat?.sources.length) return null;
-    const src = cat.sources.find((s) => s.satellite === sp.get("sat") && s.sector === sp.get("sector"))
+    const src = cat.sources.find((s) => s.source === sp.get("src") && s.sector === sp.get("sector"))
       ?? cat.sources[0];
     const product = src.products.find((p) => p.product === sp.get("product"))?.product ?? defaultProduct(src);
     const p = src.products.find((x) => x.product === product);
     const wantBorders = sp.get("borders") !== "0";
     const overlay = p ? (p.overlay && (wantBorders || !p.plain)) : false;
-    const hours = Number(sp.get("hours")) || 3;
-    return { satellite: src.satellite, sector: src.sector, product, overlay, hours };
+    const hours = Number(sp.get("hours")) || defaultHours(src);
+    return { source: src.source, sector: src.sector, product, overlay, hours };
   }, [cat, sp]);
 
-  const source = cat?.sources.find((s) => s.satellite === sel?.satellite && s.sector === sel?.sector);
+  const source = cat?.sources.find((s) => s.source === sel?.source && s.sector === sel?.sector);
   const prod = source?.products.find((p) => p.product === sel?.product);
 
   const choose = (patch: Record<string, string | null>) => {
@@ -95,12 +112,13 @@ export default function SatelliteView() {
   }, []);
 
   // Load the loop for the selection.
-  const key = sel && `${sel.satellite}|${sel.sector}|${sel.product}|${sel.overlay}|${sel.hours}`;
+  const key = sel && `${sel.source}|${sel.sector}|${sel.product}|${sel.overlay}|${sel.hours}`;
   useEffect(() => {
     if (!sel) return;
     let stale = false;
     api.frames({ ...sel }).then((f) => {
       if (stale) return;
+      setErr(null);
       setFrames(f.slice(-MAX_FRAMES));
       setIdx(Math.max(0, Math.min(f.length, MAX_FRAMES) - 1));
     }).catch((e) => setErr(String(e)));
@@ -185,7 +203,7 @@ export default function SatelliteView() {
   // New frames for this loop arrive as the imaging worker makes them.
   useLiveEvents((e) => {
     if (e.type !== "frame" || !sel) return;
-    if (e.satellite !== sel.satellite || e.sector !== sel.sector || e.product !== sel.product
+    if (e.source !== sel.source || e.sector !== sel.sector || e.product !== sel.product
         || e.overlay !== sel.overlay) return;
     const f: Frame = { id: e.id, scan_time: e.scan_time, display: `/media/${e.display}`, thumb: `/media/${e.thumb}`,
       width: e.width, height: e.height };
@@ -199,7 +217,7 @@ export default function SatelliteView() {
     const dropped = frames.length + 1 - next.length;
     setFrames(next);
     setIdx(atEnd ? next.length - 1 : Math.max(0, idx - dropped));
-    setCat((c) => c && { ...c, sources: c.sources.map((s) => s.satellite === e.satellite && s.sector === e.sector
+    setCat((c) => c && { ...c, sources: c.sources.map((s) => s.source === e.source && s.sector === e.sector
       ? { ...s, last: e.scan_time > s.last ? e.scan_time : s.last } : s) });
   });
 
@@ -211,10 +229,10 @@ export default function SatelliteView() {
       <aside className="satside">
         <div className="satgroup">
           {cat?.sources.map((s) => (
-            <button key={`${s.satellite}|${s.sector}`}
-              className={`srcbtn${s.satellite === sel?.satellite && s.sector === sel?.sector ? " on" : ""}`}
-              onClick={() => choose({ sat: s.satellite, sector: s.sector })}>
-              <span>{s.satellite} <b>{SECTOR_SHORT[s.sector] ?? s.sector}</b></span>
+            <button key={`${s.source}|${s.sector}`}
+              className={`srcbtn${s.source === sel?.source && s.sector === sel?.sector ? " on" : ""}`}
+              onClick={() => choose({ src: s.source, sector: s.sector, product: null, hours: null })}>
+              <span>{group === "satellite" && `${s.source} `}<b>{SECTOR_SHORT[s.sector] ?? s.sector}</b></span>
               <span className="n">{ago(s.last)}</span>
             </button>
           ))}
@@ -224,11 +242,11 @@ export default function SatelliteView() {
         </div>
         {source && (
           <div className="satgroup">
-            {(["rgb", "band"] as const).map((k) => {
+            {(["rgb", "band", "graphic"] as const).map((k) => {
               const ps = source.products.filter((p) => p.kind === k);
               return ps.length > 0 && (
                 <div key={k} className="prodgroup">
-                  <div className="hint">{k === "rgb" ? "Composites" : "Bands"}</div>
+                  {KIND_HEADING[k] && <div className="hint">{KIND_HEADING[k]}</div>}
                   {ps.map((p) => (
                     <button key={p.product} className={`prodbtn${p.product === sel?.product ? " on" : ""}`}
                       onClick={() => choose({ product: p.product })}>{p.label}</button>

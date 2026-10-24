@@ -83,12 +83,13 @@ export type StationDetail = {
 
 export type ProductType = { nnn: string; name: string; category: string; n: number; last: string };
 
-export type ImageProduct = { product: string; kind: "band" | "rgb"; label: string; overlay: boolean; plain: boolean;
+export type ImageProduct = { product: string; kind: "band" | "rgb" | "graphic"; label: string; overlay: boolean; plain: boolean;
   n: number; first: string; last: string };
-export type ImageSource = { satellite: string; sector: string; last: string; products: ImageProduct[] };
+export type ImageSource = { source: string; sector: string; group: "satellite" | "nws"; last: string;
+  products: ImageProduct[] };
 export type Catalog = { sources: ImageSource[]; queue: { pending: number; error: number } };
 export type Frame = { id: number; scan_time: string; display: string; thumb: string; width: number; height: number };
-export type LoopQuery = { satellite: string; sector: string; product: string; overlay: boolean; hours: number };
+export type LoopQuery = { source: string; sector: string; product: string; overlay: boolean; hours: number };
 
 export type Filters = { q?: string; category?: string[]; nnn?: string[]; office?: string; ugc?: string };
 

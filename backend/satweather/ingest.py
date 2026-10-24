@@ -31,7 +31,7 @@ from sqlalchemy import text
 from satweather.config import get_settings
 from satweather.db import get_engine
 from satweather.emwin import normalize, parse_name
-from satweather.imagery import Scanner
+from satweather.imagery import Scanner, from_emwin, store_image
 from satweather.imagery import load_seen as load_seen_images
 from satweather.parse import parse
 from satweather.store import store_other, store_text
@@ -71,6 +71,8 @@ def ingest_file(path: Path, st: os.stat_result) -> str:
         if not en.is_text:
             store_other(conn, name=name, kind="emwin_image", size=st.st_size, mtime=st.st_mtime, en=en,
                         status="ok")
+            rel = os.path.relpath(path, get_settings().data_root)
+            store_image(conn, rel, from_emwin(en.awips_long, en.received), st.st_size, st.st_mtime)
             return "image"
         raw = normalize(path.read_bytes(), en)
         parsed = parse(raw, en, datetime.now(UTC))
@@ -152,16 +154,44 @@ def redecode() -> dict[str, int]:
     return counts
 
 
+def graphics_backfill(days: int) -> int:
+    """Catalog EMWIN graphics ingested before image_frame existed, from
+    rtl's archive, so radar loops have history from the start."""
+    from satweather.emwin import archived_path
+
+    root = get_settings().data_root
+    n = 0
+    with get_engine().begin() as conn:
+        rows = conn.execute(text(
+            "SELECT name, size, mtime FROM source_file WHERE kind = 'emwin_image' AND status = 'ok'"
+            " AND mtime > now() - make_interval(days => :d)"), {"d": days}).all()
+        for name, size, mtime in rows:
+            en = parse_name(name)
+            # Still in EMWIN/ if it arrived in the last few hours.
+            rel = next((r for r in (f"EMWIN/{name}", str(archived_path(name, mtime.timestamp())))
+                        if (root / r).exists()), None)
+            if en is None or rel is None:
+                continue
+            n += store_image(conn, rel, from_emwin(en.awips_long, en.received), size, mtime.timestamp())
+    return n
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(prog="satweather-ingest")
     ap.add_argument("--once", action="store_true", help="one scan, then exit")
     ap.add_argument("--backfill", action="store_true", help="also walk EMWIN/archive/*/ (implies --once)")
+    ap.add_argument("--graphics-backfill", type=int, metavar="DAYS",
+                    help="catalog EMWIN graphics from the last DAYS in rtl's archive for imaging, then exit")
     ap.add_argument("--redecode", action="store_true",
                     help="re-run the METAR/TAF/PIREP decoders over stored products, then exit")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
     signal.signal(signal.SIGTERM, _handle_stop)
     signal.signal(signal.SIGINT, _handle_stop)
+
+    if args.graphics_backfill:
+        log.info("graphics backfill: %d catalogued", graphics_backfill(args.graphics_backfill))
+        return
 
     if args.redecode:
         log.info("redecode: %s", redecode())

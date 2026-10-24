@@ -5,15 +5,19 @@ held for the conversion, so the row is the job: a crash rolls the claim
 back and the row is pending again. Newest first, so after downtime the
 live view is current at once and the backlog fills in behind it.
 
-Copies go to <media_root>/sat/<satellite>/<sector>/<scan>/<product>.webp
+Copies go to <media_root>/sat/<source>/<sector>/<scan>/<product>.webp
 (plus a _t.webp thumbnail), written to a temporary name and renamed, so
-Apache never serves half a file. An original the share has already
-pruned is marked gone; any other failure is recorded and not retried.
+Apache never serves half a file. An original byte-identical to one
+already made for the same product is marked dup (LRIT charts are re-sent
+hourly unchanged) and gets no copies. EMWIN graphics are looked for in
+rtl's archive once moved there; an original the share has pruned is
+marked gone; any other failure is recorded and not retried.
 """
 
 from __future__ import annotations
 
 import argparse
+import hashlib
 import logging
 import re
 import signal
@@ -24,6 +28,7 @@ from sqlalchemy import text
 
 from satweather.config import get_settings
 from satweather.db import get_engine
+from satweather.emwin import archived_path
 from satweather.store import notify
 
 log = logging.getLogger("satweather.imaging")
@@ -46,9 +51,30 @@ def _slug(s: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
 
 
-def media_rel(satellite: str, sector: str, scan_time, product: str, overlay: bool) -> str:
+def media_rel(source: str, sector: str, scan_time, product: str, overlay: bool) -> str:
     stem = _slug(product) + ("_map" if overlay else "")
-    return f"sat/{_slug(satellite)}/{_slug(sector)}/{scan_time:%Y%m%dT%H%M%SZ}/{stem}"
+    return f"sat/{_slug(source)}/{_slug(sector)}/{scan_time:%Y%m%dT%H%M%SZ}/{stem}"
+
+
+def locate(data_root: Path, rel: str, mtime) -> Path | None:
+    """The original, wherever it is now: EMWIN files move to rtl's archive
+    a few hours after they arrive."""
+    src = data_root / rel
+    if src.exists():
+        return src
+    if rel.startswith("EMWIN/") and rel.count("/") == 1:
+        moved = data_root / archived_path(rel.removeprefix("EMWIN/"), mtime.timestamp())
+        if moved.exists():
+            return moved
+    return None
+
+
+def _digest(path: Path) -> str:
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        while chunk := f.read(1 << 20):
+            h.update(chunk)
+    return h.hexdigest()
 
 
 def _save(img, dst: Path, q: int) -> None:
@@ -80,7 +106,7 @@ def process_one() -> bool:
         row = conn.execute(
             text(
                 """
-                SELECT id, path, satellite, sector, product, kind, overlay, scan_time FROM image_frame
+                SELECT id, path, source, sector, product, kind, overlay, scan_time, mtime FROM image_frame
                 WHERE status = 'pending' ORDER BY scan_time DESC, id DESC LIMIT 1
                 FOR UPDATE SKIP LOCKED
                 """
@@ -88,29 +114,38 @@ def process_one() -> bool:
         ).mappings().first()
         if row is None:
             return False
-        src = s.data_root / row["path"]
-        upd = {"id": row["id"], "err": None, "display": None, "thumb": None, "w": None, "h": None}
-        if not src.exists():
+        src = locate(s.data_root, row["path"], row["mtime"])
+        upd = {"id": row["id"], "err": None, "display": None, "thumb": None, "w": None, "h": None, "digest": None}
+        if src is None:
             upd["status"] = "gone"
         else:
             try:
-                rel = media_rel(row["satellite"], row["sector"], row["scan_time"], row["product"], row["overlay"])
-                upd["display"], upd["thumb"], upd["w"], upd["h"] = make_copies(src, s.media_root, rel)
-                upd["status"] = "ok"
+                upd["digest"] = _digest(src)
+                dup = conn.execute(text(
+                    "SELECT 1 FROM image_frame WHERE status = 'ok' AND source = :src AND sector = :sector"
+                    " AND product = :product AND overlay = :overlay AND digest = :digest LIMIT 1"),
+                    {"src": row["source"], "sector": row["sector"], "product": row["product"],
+                     "overlay": row["overlay"], "digest": upd["digest"]}).first()
+                if dup:
+                    upd["status"] = "dup"
+                else:
+                    rel = media_rel(row["source"], row["sector"], row["scan_time"], row["product"], row["overlay"])
+                    upd["display"], upd["thumb"], upd["w"], upd["h"] = make_copies(src, s.media_root, rel)
+                    upd["status"] = "ok"
             except Exception as exc:
                 log.exception("failed: %s", row["path"])
                 upd["status"], upd["err"] = "error", f"{type(exc).__name__}: {exc}"[:500]
         conn.execute(
             text(
                 """
-                UPDATE image_frame SET status = :status, error = :err, display = :display, thumb = :thumb,
-                       width = :w, height = :h, made_at = now() WHERE id = :id
+                UPDATE image_frame SET status = :status, error = :err, digest = :digest, display = :display,
+                       thumb = :thumb, width = :w, height = :h, made_at = now() WHERE id = :id
                 """
             ),
             upd,
         )
         if upd["status"] == "ok":
-            notify(conn, {"type": "frame", "id": row["id"], "satellite": row["satellite"], "sector": row["sector"],
+            notify(conn, {"type": "frame", "id": row["id"], "source": row["source"], "sector": row["sector"],
                           "product": row["product"], "kind": row["kind"], "overlay": row["overlay"],
                           "scan_time": row["scan_time"].isoformat(), "display": upd["display"],
                           "thumb": upd["thumb"], "width": upd["w"], "height": upd["h"]})
