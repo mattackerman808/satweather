@@ -20,6 +20,8 @@ dependencies = [
     # PIREP placement: Tachbase lookups, and magnetic declination (WMM).
     "httpx>=0.28",
     "pygeomag>=1.1",
+    # The basemap's world tier, extracted from the Protomaps planet.
+    "pmtiles>=3.8",
 ]
 
 [project.optional-dependencies]

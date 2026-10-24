@@ -1,4 +1,5 @@
-"""`satweather-refdata`: load NWS zone/county shapes and the station list.
+"""`satweather-refdata`: load NWS zone/county shapes and the station list,
+and build the basemap's world tier (satweather.basemap).
 
 UGC codes in products (NMC013, ALZ019, PZZ350) only become places on a
 map through these tables. The NWS republishes its shapefiles under
@@ -186,13 +187,18 @@ def load_stations() -> int:
 def main() -> None:
     ap = argparse.ArgumentParser(prog="satweather-refdata")
     ap.add_argument("--force", action="store_true", help="reload sets even if the source is unchanged")
-    ap.add_argument("--only", choices=[*SETS, "station"], action="append")
+    ap.add_argument("--only", choices=[*SETS, "station", "basemap"], action="append")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
     failed = False
-    for kind in args.only or [*SETS, "station"]:
+    for kind in args.only or [*SETS, "station", "basemap"]:
         try:
-            load_stations() if kind == "station" else load_zones(kind, force=args.force)
+            if kind == "basemap":
+                from satweather.basemap import refresh_world
+
+                log.info("basemap: %s", refresh_world(force=args.force))
+            else:
+                load_stations() if kind == "station" else load_zones(kind, force=args.force)
         except Exception:
             log.exception("%s failed", kind)
             failed = True

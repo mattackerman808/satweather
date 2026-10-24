@@ -14,6 +14,11 @@ maplibregl.setWorkerUrl(workerUrl);
 // dates and change on refresh, so they come from manifest.json at startup and
 // are never hard-coded (overwriting an archive in place would corrupt open
 // readers, which is why swiftcamp publishes under new names).
+//
+// swiftcamp's street archive is CONUS only; most of GOES-18's disk is Pacific.
+// A zoom 0-6 world extract of the same Protomaps schema, built by
+// satweather-refdata (satweather.basemap) and served from /media/basemap/, is
+// drawn first: the street layers paint over it wherever they have tiles.
 export const CDN = "https://cdn.swiftcamp.app";
 
 type Manifest = {
@@ -26,6 +31,17 @@ function ensureProtocol() {
   if (protocolAdded) return;
   maplibregl.addProtocol("pmtiles", new Protocol().tile);
   protocolAdded = true;
+}
+
+type WorldManifest = { world?: { file: string; maxzoom: number } };
+
+async function loadWorld(): Promise<WorldManifest["world"] | null> {
+  try {
+    const r = await fetch("/media/basemap/manifest.json", { cache: "no-cache" });
+    return r.ok ? ((await r.json()) as WorldManifest).world ?? null : null;
+  } catch {
+    return null; // not built yet: the map still works, CONUS only
+  }
 }
 
 export async function loadManifest(): Promise<Manifest> {
@@ -52,20 +68,21 @@ const C = {
 const FONT_REG = ["Noto Sans Regular"];
 const FONT_BOLD = ["Noto Sans Bold"];
 
-function layers(): LayerSpecification[] {
+// The vector layers for one source; `p` prefixes ids so the world and
+// street copies can coexist. Hillshade only goes with the street set.
+function vectorLayers(src: string, p: string, hillshade: boolean): LayerSpecification[] {
   return [
-    { id: "background", type: "background", paint: { "background-color": C.background } },
-    { id: "earth", type: "fill", source: "streets", "source-layer": "earth", paint: { "fill-color": C.earth } },
+    { id: `${p}earth`, type: "fill", source: src, "source-layer": "earth", paint: { "fill-color": C.earth } },
     {
-      id: "landuse",
+      id: `${p}landuse`,
       type: "fill",
-      source: "streets",
+      source: src,
       "source-layer": "landuse",
       minzoom: 8,
       paint: { "fill-color": C.landuse, "fill-opacity": 0.6 },
     },
-    {
-      id: "hillshade",
+    ...(hillshade ? [{
+      id: `${p}hillshade`,
       type: "hillshade",
       source: "terrain",
       paint: {
@@ -73,46 +90,56 @@ function layers(): LayerSpecification[] {
         "hillshade-shadow-color": "#05080b",
         "hillshade-highlight-color": "rgba(255,255,255,0.04)",
       },
-    },
-    { id: "water", type: "fill", source: "streets", "source-layer": "water", paint: { "fill-color": C.water } },
+    } as LayerSpecification] : []),
+    { id: `${p}water`, type: "fill", source: src, "source-layer": "water", paint: { "fill-color": C.water } },
     {
-      id: "roads-minor",
+      id: `${p}roads-minor`,
       type: "line",
-      source: "streets",
+      source: src,
       "source-layer": "roads",
       minzoom: 10,
       filter: ["in", ["get", "kind"], ["literal", ["minor_road", "other"]]],
       paint: { "line-color": C.roadMinor, "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.4, 15, 2] },
     },
     {
-      id: "roads-major",
+      id: `${p}roads-major`,
       type: "line",
-      source: "streets",
+      source: src,
       "source-layer": "roads",
       minzoom: 5,
       filter: ["in", ["get", "kind"], ["literal", ["highway", "major_road"]]],
       paint: { "line-color": C.roadMajor, "line-width": ["interpolate", ["linear"], ["zoom"], 5, 0.4, 14, 3] },
     },
     {
-      id: "boundaries-state",
+      id: `${p}boundaries-state`,
       type: "line",
-      source: "streets",
+      source: src,
       "source-layer": "boundaries",
       filter: ["==", ["get", "kind"], "region"],
       paint: { "line-color": C.boundaryState, "line-width": 0.8, "line-dasharray": [3, 2] },
     },
     {
-      id: "boundaries-country",
+      id: `${p}boundaries-country`,
       type: "line",
-      source: "streets",
+      source: src,
       "source-layer": "boundaries",
       filter: ["==", ["get", "kind"], "country"],
       paint: { "line-color": C.boundaryCountry, "line-width": 1.2 },
     },
     {
-      id: "places-region",
+      id: `${p}places-country`,
       type: "symbol",
-      source: "streets",
+      source: src,
+      "source-layer": "places",
+      filter: ["==", ["get", "kind"], "country"],
+      maxzoom: 6,
+      layout: { "text-field": ["get", "name"], "text-font": FONT_BOLD, "text-size": 12, "text-transform": "uppercase", "text-letter-spacing": 0.15 },
+      paint: { "text-color": C.label, "text-opacity": 0.5, "text-halo-color": C.labelHalo, "text-halo-width": 1 },
+    },
+    {
+      id: `${p}places-region`,
+      type: "symbol",
+      source: src,
       "source-layer": "places",
       filter: ["==", ["get", "kind"], "region"],
       maxzoom: 8,
@@ -120,9 +147,9 @@ function layers(): LayerSpecification[] {
       paint: { "text-color": C.label, "text-opacity": 0.55, "text-halo-color": C.labelHalo, "text-halo-width": 1 },
     },
     {
-      id: "places-locality",
+      id: `${p}places-locality`,
       type: "symbol",
-      source: "streets",
+      source: src,
       "source-layer": "places",
       filter: ["==", ["get", "kind"], "locality"],
       minzoom: 5,
@@ -142,6 +169,7 @@ export async function basemapStyle(): Promise<StyleSpecification> {
   const m = await loadManifest();
   const street = m.layers.street;
   const terrain = m.layers.terrain;
+  const world = await loadWorld();
   return {
     version: 8,
     glyphs: `${location.origin}/glyphs/{fontstack}/{range}.pbf`,
@@ -157,7 +185,18 @@ export async function basemapStyle(): Promise<StyleSpecification> {
         encoding: (terrain.encoding as "terrarium") ?? "terrarium",
         tileSize: terrain.tileSize ?? 512,
       },
+      ...(world ? {
+        world: {
+          type: "vector" as const,
+          url: `pmtiles://${location.origin}/media/basemap/${world.file}`,
+          attribution: "© OpenStreetMap contributors",
+        },
+      } : {}),
     },
-    layers: layers(),
+    layers: [
+      { id: "background", type: "background", paint: { "background-color": C.background } },
+      ...(world ? vectorLayers("world", "w-", false) : []),
+      ...vectorLayers("streets", "", true),
+    ],
   };
 }
