@@ -148,3 +148,36 @@ def test_redecode_backfills(db, tmp_path):
     assert ingest.redecode()["products"] >= 1
     with db.connect() as conn:
         assert conn.execute(text("SELECT count(*) FROM pirep")).scalar() == 2
+
+
+def test_station_declutter_by_zoom(db):
+    """Tachbase's tiers: zoomed out only important stations, all from z7."""
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+
+    with db.begin() as conn:
+        conn.execute(text(
+            "INSERT INTO station (id, icao, name, priority, geom) VALUES"
+            " ('KLAX', 'KLAX', 'Los Angeles', 0, ST_SetSRID(ST_MakePoint(-118.4, 33.94), 4326)),"
+            " ('K04V', 'K04V', 'Saguache', 5, ST_SetSRID(ST_MakePoint(-106.17, 38.10), 4326)),"
+            " ('NZAA', 'NZAA', 'Auckland', 0, ST_SetSRID(ST_MakePoint(174.79, -37.0), 4326))"))
+        conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES ('x', 'emwin_text', 1, now(), 'ok')"))
+        conn.execute(text(
+            "INSERT INTO text_product (source_file_id, wmo, cccc, awips, nnn, office, received, priority, title,"
+            " category, raw) SELECT id, 'SAUS70', 'KWBC', 'SAHUS', 'SAH', 'KWBC', now(), 2, 't', 'observation', 'r'"
+            " FROM source_file"))
+        conn.execute(text(
+            "INSERT INTO metar (product_id, station, valid, kind, raw, flight_category)"
+            " SELECT p.id, s, now(), 'METAR', s || ' 240000Z', 'VFR' FROM text_product p,"
+            " unnest(ARRAY['KLAX','K04V','NZAA']) s"))
+    c = TestClient(app)
+
+    def ids(**q):
+        return sorted(f["properties"]["station"] for f in c.get("/api/stations/latest", params=q).json()["features"])
+
+    usa = "-130,20,-60,55"
+    assert ids(bbox=usa, zoom=3) == ["KLAX"]
+    assert ids(bbox=usa, zoom=8) == ["K04V", "KLAX"]
+    # Across the antimeridian: 160°E .. 120°W.
+    assert ids(bbox="160,-50,-120,60", zoom=3) == ["KLAX", "NZAA"]
