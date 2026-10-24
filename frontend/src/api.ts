@@ -83,6 +83,13 @@ export type StationDetail = {
 
 export type ProductType = { nnn: string; name: string; category: string; n: number; last: string };
 
+export type ImageProduct = { product: string; kind: "band" | "rgb"; label: string; overlay: boolean; plain: boolean;
+  n: number; first: string; last: string };
+export type ImageSource = { satellite: string; sector: string; last: string; products: ImageProduct[] };
+export type Catalog = { sources: ImageSource[]; queue: { pending: number; error: number } };
+export type Frame = { id: number; scan_time: string; display: string; thumb: string; width: number; height: number };
+export type LoopQuery = { satellite: string; sector: string; product: string; overlay: boolean; hours: number };
+
 export type Filters = { q?: string; category?: string[]; nnn?: string[]; office?: string; ugc?: string };
 
 async function get<T>(path: string, params?: Record<string, string | string[] | number | undefined>): Promise<T> {
@@ -107,6 +114,9 @@ export const api = {
     get<GeoJSON.FeatureCollection>("/api/stations/latest", q),
   station: (id: string) => get<StationDetail>(`/api/stations/${encodeURIComponent(id)}`),
   pireps: (hours = 3) => get<GeoJSON.FeatureCollection>("/api/pireps/recent", { hours }),
+  imageCatalog: () => get<Catalog>("/api/imagery/catalog"),
+  frames: (q: LoopQuery) =>
+    get<{ frames: Frame[] }>("/api/imagery/frames", { ...q, overlay: String(q.overlay) }).then((r) => r.frames),
 };
 
 // "23:54Z · 4:54 PM PDT"

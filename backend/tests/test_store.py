@@ -181,3 +181,69 @@ def test_station_declutter_by_zoom(db):
     assert ids(bbox=usa, zoom=8) == ["K04V", "KLAX"]
     # Across the antimeridian: 160°E .. 110°W (KLAX is at 118.4°W).
     assert ids(bbox="160,-50,-110,60", zoom=3) == ["KLAX", "NZAA"]
+
+
+def _png(path: Path, w: int = 64, h: int = 48) -> None:
+    """A real grayscale PNG, written without an image library."""
+    import struct
+    import zlib
+
+    def chunk(kind: bytes, data: bytes) -> bytes:
+        return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data))
+
+    rows = b"".join(b"\x00" + bytes((x * 4) % 256 for x in range(w)) for _ in range(h))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 0, 0, 0, 0))
+                     + chunk(b"IDAT", zlib.compress(rows)) + chunk(b"IEND", b""))
+
+
+def test_images_catalog_convert_and_list(db, tmp_path, monkeypatch):
+    """IMAGES/ -> image_frame (pending) -> WebP copies (ok) -> loop API."""
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+    from satweather.config import get_settings
+    from satweather.imagery import Scanner
+
+    media = tmp_path / "media"
+    monkeypatch.setenv("SATWEATHER_MEDIA_ROOT", str(media))
+    get_settings.cache_clear()
+    from datetime import timedelta
+
+    scan = tmp_path / "IMAGES" / "GOES-18" / "Mesoscale 1"
+    now = datetime.now(UTC).replace(microsecond=0)
+    times = [now - timedelta(minutes=11), now - timedelta(minutes=10)]
+    for t in times:
+        _png(scan / f"{t:%Y-%m-%d_%H-%M-%S}" / f"G18_13_{t:%Y%m%dT%H%M%S}Z.png")
+        _png(scan / f"{t:%Y-%m-%d_%H-%M-%S}" / "abi_rgb_ABI_False_Color_map.png")
+    last = scan / f"{times[1]:%Y-%m-%d_%H-%M-%S}"
+    shutil.copy(Path(__file__).parent / "fixtures" / "images" / "himawari_product.cbor", last / "product.cbor")
+    (last / f"G18_2_{times[1]:%Y%m%dT%H%M%S}Z.png").touch()  # still being written
+
+    s = Scanner(tmp_path, set())
+    assert s.scan(db.begin, settle_s=0) == 4
+    assert s.scan(db.begin, settle_s=0) == 0  # seen, and the empty file is still unsettled
+    with db.connect() as conn:
+        rows = conn.execute(text("SELECT product, overlay, status, projection->>'type' FROM image_frame"
+                                 " ORDER BY scan_time, product")).all()
+    assert [tuple(r) for r in rows] == [("13", False, "pending", None), ("ABI_False_Color", True, "pending", None),
+                                        ("13", False, "pending", "geos"), ("ABI_False_Color", True, "pending", "geos")]
+
+    try:  # libvips is a system library; without it pyvips raises OSError, not ImportError
+        import pyvips  # noqa: F401
+    except Exception as exc:
+        pytest.skip(f"pyvips unavailable: {exc}")
+    from satweather import imaging
+
+    while imaging.process_one():
+        pass
+    c = TestClient(app)
+    cat = c.get("/api/imagery/catalog").json()
+    assert [(g["satellite"], g["sector"]) for g in cat["sources"]] == [("GOES-18", "Mesoscale 1")]
+    assert [(p["product"], p["overlay"], p["plain"]) for p in cat["sources"][0]["products"]] == \
+        [("ABI_False_Color", True, False), ("13", False, True)]
+    f = c.get("/api/imagery/frames", params={"satellite": "GOES-18", "sector": "Mesoscale 1",
+                                             "product": "13"}).json()["frames"]
+    assert [datetime.fromisoformat(x["scan_time"]) for x in f] == times
+    assert f[0]["display"].startswith("/media/sat/goes-18/mesoscale-1/") and (f[0]["width"], f[0]["height"]) == (64, 48)
+    assert (media / f[0]["display"].removeprefix("/media/")).stat().st_size > 0

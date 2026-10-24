@@ -5,8 +5,10 @@ import StatusBadge from "./StatusBadge";
 import LiveView from "./views/LiveView";
 import TextView from "./views/TextView";
 
-// MapLibre is most of the bundle; only the map pages should pay for it.
+// MapLibre and OpenSeadragon are most of the bundle; only the pages that
+// use them should pay for them.
 const MapView = lazy(() => import("./views/MapView"));
+const SatelliteView = lazy(() => import("./views/SatelliteView"));
 
 const NAV = [
   { to: "/", label: "Live" },
@@ -33,7 +35,7 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<LiveView />} />
-          <Route path="/satellite" element={<Placeholder title="Satellite" note="Full Disk, Meso 1/2 and L2 viewer with loops (phase 3)." />} />
+          <Route path="/satellite" element={<Suspense fallback={null}><SatelliteView /></Suspense>} />
           <Route path="/map" element={<Suspense fallback={null}><MapView /></Suspense>} />
           <Route path="/text" element={<TextView />} />
           <Route path="/text/:id" element={<TextView />} />

@@ -7,7 +7,8 @@ creates files before it fills them, so a fresh 0-byte file is normal and
 must not be ingested yet.
 
 rtl's archiver moves files out of EMWIN/ after a few hours, which keeps
-the listing small. `--backfill` also walks EMWIN/archive/*/, for catching
+the listing small. The same loop catalogs satellite images under IMAGES/
+(satweather.imagery) for satweather-imaging to convert. `--backfill` also walks EMWIN/archive/*/, for catching
 up after this service was down longer than that.
 
 Each file is one transaction. A file that fails is recorded with its
@@ -30,6 +31,8 @@ from sqlalchemy import text
 from satweather.config import get_settings
 from satweather.db import get_engine
 from satweather.emwin import normalize, parse_name
+from satweather.imagery import Scanner
+from satweather.imagery import load_seen as load_seen_images
 from satweather.parse import parse
 from satweather.store import store_other, store_text
 
@@ -177,18 +180,27 @@ def main() -> None:
         log.info("backfill done: %s", scan([*archive, emwin], seen))
         return
 
+    with get_engine().connect() as conn:
+        images = Scanner(get_settings().data_root, load_seen_images(conn, SEEN_DAYS))
     last_prune = time.time()
     while not _stop:
         t0 = time.time()
         counts = scan([emwin], seen)
         if counts:
             log.info("ingested %s in %.1fs", counts, time.time() - t0)
+        t0 = time.time()
+        try:
+            if n := images.scan(get_engine().begin, SETTLE_S, stop=lambda: _stop):
+                log.info("catalogued %d images in %.1fs", n, time.time() - t0)
+        except Exception:
+            log.exception("image scan failed")
         if args.once:
             return
-        # Forget names rtl has archived long ago, so the set stays bounded.
+        # Forget names rtl has archived long ago, so the sets stay bounded.
         if time.time() - last_prune > 6 * 3600:
             with get_engine().connect() as conn:
                 seen = load_seen(conn)
+                images.seen = load_seen_images(conn, SEEN_DAYS)
             last_prune = time.time()
         for _ in range(SCAN_S * 10):
             if _stop:

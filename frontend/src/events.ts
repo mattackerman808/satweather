@@ -16,7 +16,10 @@ export type LiveEvent =
       priority: number;
       vtec: boolean;
     }
-  | { type: "image"; source_id: number; awips: string; received: string };
+  | { type: "image"; source_id: number; awips: string; received: string }
+  // A satellite image's web copy is ready (satweather-imaging).
+  | { type: "frame"; id: number; satellite: string; sector: string; product: string; kind: string; overlay: boolean;
+      scan_time: string; display: string; thumb: string; width: number; height: number };
 
 type Handler = (e: LiveEvent) => void;
 const handlers = new Set<Handler>();

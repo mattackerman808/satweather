@@ -5,6 +5,7 @@
 #   make deb VERSION=1.2.3     # build with explicit version
 #   make test                  # backend tests
 #   make push                  # this working tree straight onto satweather
+#   make remote-test           # backend tests on satweather, against real PostGIS
 #   make clean
 #
 # CI (.github/workflows/publish.yml) builds on every push to main and
@@ -20,8 +21,13 @@
 # `make push` is for iterating: it rsyncs the backend source and a fresh
 # frontend build into those paths on $(HOST), reinstalls the venv only if
 # pyproject.toml changed (the same marker salt checks), migrates, and
-# restarts the API and ingest. The install is editable, so that is all new
-# code needs. The next deb from CI replaces whatever was pushed.
+# restarts the workers. The install is editable, so that is all new code
+# needs. The next deb from CI replaces whatever was pushed.
+#
+# `make remote-test` runs the backend tests on $(HOST) before a push: its
+# own venv under $(TEST_DIR) (pip reruns when pyproject.toml changes), as
+# the postgres superuser (PostGIS is not a trusted extension, and the DB
+# tests recreate it) against satweather_test, never the live database.
 
 VERSION   ?= $(shell date +%Y%m%d.%H%M%S)
 REPO_URL  ?= https://apt-upload.808.org/upload
@@ -29,8 +35,9 @@ BUILD_DIR := build
 ROOT      := $(BUILD_DIR)/satweather_$(VERSION)_all
 NPM       ?= npm
 HOST      ?= satweather
+TEST_DIR  ?= /var/tmp/satweather-test
 
-.PHONY: all deb web test push publish clean
+.PHONY: all deb web test push remote-test publish clean
 
 all: deb
 
@@ -66,7 +73,23 @@ push:
 			sudo sh -c "sha256sum /opt/satweather/backend/pyproject.toml > venv/.pyproject.sha256"; }; \
 		sudo -u satweather sh -c "set -a; . /etc/satweather/satweather.env; exec venv/bin/satweather-migrate"; \
 		sudo systemctl restart satweather-api satweather-ingest; \
-		systemctl is-active satweather-api satweather-ingest'
+		sudo systemctl try-restart satweather-imaging 2>/dev/null || true; \
+		systemctl is-active satweather-api satweather-ingest satweather-imaging || true'
+
+remote-test:
+	rsync -rlt --mkpath --delete --exclude __pycache__ --exclude '*.pyc' --exclude .venv --exclude '*.egg-info' \
+		backend/ $(HOST):$(TEST_DIR)/backend/
+	ssh $(HOST) 'set -e; cd $(TEST_DIR); \
+		[ -x venv/bin/python ] || python3 -m venv venv; \
+		sha256sum -c --status venv/.pyproject.sha256 2>/dev/null || { \
+			venv/bin/pip install --quiet -e "backend[test]" && \
+			sha256sum $(TEST_DIR)/backend/pyproject.toml > venv/.pyproject.sha256; }; \
+		sudo -u postgres psql -Atc "SELECT 1 FROM pg_database WHERE datname = '"'"'satweather_test'"'"'" | grep -q 1 \
+			|| sudo -u postgres createdb satweather_test; \
+		cd /tmp && sudo -u postgres env PYTHONDONTWRITEBYTECODE=1 \
+			SATWEATHER_TEST_DATABASE_URL="postgresql+psycopg://postgres@/satweather_test?host=/var/run/postgresql" \
+			$(TEST_DIR)/venv/bin/python -m pytest -q -p no:cacheprovider --rootdir $(TEST_DIR)/backend \
+			-c $(TEST_DIR)/backend/pyproject.toml $(TEST_DIR)/backend/tests $(ARGS)'
 
 publish: deb
 ifndef REPO_API_KEY

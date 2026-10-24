@@ -32,10 +32,13 @@ npm run build
 make test     # backend pytest
 make web      # frontend ci + build
 make deb      # build the .deb locally
-make push     # rsync this working tree onto the satweather host, migrate, restart API + ingest
+make push         # rsync this working tree onto the satweather host, migrate, restart the services
+make remote-test  # backend tests on the host against real PostGIS (ARGS="-k imaging" to narrow)
 ```
 
 `make push` is the fast loop: the host's venv is an editable install of `/opt/satweather/backend`, so new code only needs the rsync and a restart (pip reruns only when `pyproject.toml` changes). Pushed code stays until the next deb from CI replaces it. Salt only reinstalls the package when a newer version is published.
+
+This Mac has no Postgres, so DB tests run on the host: `make remote-test` keeps its own venv in `/var/tmp/satweather-test` and runs pytest as the `postgres` superuser (PostGIS isn't a trusted extension) against the throwaway `satweather_test` database. Non-DB tests (`test_imagery`, `test_emwin`, `test_wxdecode`) also run locally with just sqlalchemy, pydantic-settings, cbor2 and pytest.
 
 `tests/test_store.py` drops and recreates the `public` schema of whatever `SATWEATHER_TEST_DATABASE_URL` points at, then runs migrations — only point it at a disposable PostGIS database. CI uses a `postgis/postgis:17-3.5` service container.
 
@@ -45,13 +48,16 @@ Every push to `main` builds `satweather_<yy.m.d.run>_all.deb` in CI (`.github/wo
 
 ## Architecture
 
-Three processes share one PostgreSQL/PostGIS database:
+Four processes share one PostgreSQL/PostGIS database:
 
-1. **`satweather-ingest`** (`ingest.py`) polls `EMWIN/` (NFS has no cross-client inotify) and ingests files only once they have *settled* (non-empty, unmodified for `SETTLE_S`) — SatDump creates files empty before filling them. One transaction per file; a failing file is recorded with its error and never retried.
-2. **FastAPI** (`api/app.py`, uvicorn on 127.0.0.1:8400). Apache serves the built frontend and proxies `/api`.
-3. **`satweather-refdata`** loads NWS zone/county shapefiles (discovered by date-coded name from weather.gov/gis, simplified on load) and the global station list from aviationweather.gov. UGC codes and station IDs only become map geometry via these tables.
+1. **`satweather-ingest`** (`ingest.py`) polls `EMWIN/` (NFS has no cross-client inotify) and ingests files only once they have *settled* (non-empty, unmodified for `SETTLE_S`) — SatDump creates files empty before filling them. One transaction per file; a failing file is recorded with its error and never retried. The same loop catalogs satellite PNGs under `IMAGES/` (`imagery.Scanner`) into `image_frame` as `pending`.
+2. **`satweather-imaging`** (`imaging.py`) claims pending `image_frame` rows newest-first with `FOR UPDATE SKIP LOCKED` (the row is the job; a crash rolls the claim back) and writes WebP display copies (≤2048 px) + thumbnails with pyvips into `media_root`, served by Apache at `/media`. Needs libvips from apt (salt); its unit is memory-capped.
+3. **FastAPI** (`api/app.py`, uvicorn on 127.0.0.1:8400). Apache serves the built frontend and proxies `/api`.
+4. **`satweather-refdata`** loads NWS zone/county shapefiles (discovered by date-coded name from weather.gov/gis, simplified on load) and the global station list from aviationweather.gov. UGC codes and station IDs only become map geometry via these tables.
 
 Ingest pipeline: `emwin.py` (filename grammar → `EmwinName`; text normalization, latin-1, injected AWIPS line for international products) → `parse.py` (pyiem NWS parsers → `Parsed`) → `reports.py` (splits `=`-terminated METAR/TAF/PIREP collectives and decodes each with `wxdecode`) → `store.py` (inserts + `pg_notify('satweather', …)` inside the same transaction). `catalog.py` maps AWIPS NNN codes to human names and UI categories; unlisted types still ingest under "other".
+
+Imagery layout on the share: `IMAGES/<GOES-18|GOES-19>/<Full Disk|Mesoscale 1|Mesoscale 2>/<YYYY-MM-DD_HH-MM-SS UTC>/` and `IMAGES/Himawari/<scan>/` (no sector level). Files are bands (`G18_13_<t>Z.png`) or SatDump RGB composites (`abi_rgb_<Name>.png`, plus a `_map.png` variant with borders drawn in); `product.cbor` holds the geostationary projection (stored on each row for later reprojection). A scan directory fills over minutes, so files are catalogued one by one as they settle. The share keeps only a few hours; loops come from the copies in `media/`.
 
 Live updates: `store.py` notifies → `api/events.py` LISTENs on a dedicated psycopg connection per client and streams SSE (`/api/events`) → `frontend/src/events.ts` keeps one shared `EventSource` for all subscribers.
 
@@ -66,4 +72,4 @@ Key invariants:
 
 Test fixtures in `backend/tests/fixtures/emwin/` are real EMWIN files, roughly one per product type seen; add one when supporting a new type.
 
-Frontend: Vite + React 19 + react-router 7 + MapLibre. `MapView` is lazy-loaded since MapLibre dominates the bundle. Clicking anything on the map opens the right-hand `Inspector` rather than navigating (`?product=` / `?station=` deep-link). The basemap (`map/basemap.ts`) reads swiftcamp's Protomaps archives from `https://cdn.swiftcamp.app` via the pmtiles protocol; archive names change on refresh and must come from `manifest.json`, never be hard-coded. Glyphs in `frontend/public/glyphs` are copied from swiftcamp.
+Frontend: Vite + React 19 + react-router 7 + MapLibre + OpenSeadragon. `MapView` and `SatelliteView` are lazy-loaded since those libraries dominate the bundle. `SatelliteView` creates its OpenSeadragon viewer once and puts every loop frame in its world as a preloaded image, playing by switching opacity; it uses the canvas drawer because the WebGL one aliases a downscaled single image. Clicking anything on the map opens the right-hand `Inspector` rather than navigating (`?product=` / `?station=` deep-link). The basemap (`map/basemap.ts`) reads swiftcamp's Protomaps archives from `https://cdn.swiftcamp.app` via the pmtiles protocol; archive names change on refresh and must come from `manifest.json`, never be hard-coded. Glyphs in `frontend/public/glyphs` are copied from swiftcamp.
