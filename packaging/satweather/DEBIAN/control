@@ -1,0 +1,13 @@
+Package: satweather
+Version: {{VERSION}}
+Architecture: all
+Maintainer: Matthew Ackerman
+Section: web
+Priority: optional
+Depends: python3 (>= 3.13), python3-venv
+Description: GOES-18 HRIT / EMWIN weather viewer
+ Parses and serves everything rtl's dish decodes from GOES-18: satellite
+ imagery, EMWIN text products, radar mosaics and NWS graphics. Installs
+ the backend to /opt/satweather/backend and the built web UI to
+ /opt/satweather/web. The venv, systemd units, Apache vhost and database
+ are managed by the satweather Salt state, not by this package.
