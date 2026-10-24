@@ -39,6 +39,7 @@ export type Segment = {
   tags: Record<string, string | boolean>;
   polygon: GeoJSON.Polygon | null;
   places: { ugc: string; name: string; kind: string }[];
+  body: string;
 };
 
 export type ProductDetail = ProductSummary & {
