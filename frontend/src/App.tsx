@@ -1,6 +1,7 @@
 import { lazy, Suspense } from "react";
-import { NavLink, Route, Routes } from "react-router";
+import { Link, NavLink, Route, Routes } from "react-router";
 import StatusBadge from "./StatusBadge";
+import LandingView from "./views/LandingView";
 import LiveView from "./views/LiveView";
 import TextView from "./views/TextView";
 
@@ -11,7 +12,7 @@ const LoopView = lazy(() => import("./views/LoopView"));
 const TropicalView = lazy(() => import("./views/TropicalView"));
 
 const NAV = [
-  { to: "/", label: "Live" },
+  { to: "/live", label: "Live" },
   { to: "/satellite", label: "Satellite" },
   { to: "/radar", label: "Radar & charts" },
   { to: "/map", label: "Map" },
@@ -23,10 +24,10 @@ export default function App() {
   return (
     <div className="app">
       <header className="topbar">
-        <span className="brand">satweather</span>
+        <Link className="brand" to="/">satweather</Link>
         <nav>
           {NAV.map((n) => (
-            <NavLink key={n.to} to={n.to} end={n.to === "/"}>
+            <NavLink key={n.to} to={n.to}>
               {n.label}
             </NavLink>
           ))}
@@ -35,7 +36,8 @@ export default function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<LiveView />} />
+          <Route path="/" element={<LandingView />} />
+          <Route path="/live" element={<LiveView />} />
           {/* key: a fresh instance per group, not one reused across the two routes */}
           <Route path="/satellite" element={<Suspense fallback={null}><LoopView key="satellite" group="satellite" /></Suspense>} />
           <Route path="/radar" element={<Suspense fallback={null}><LoopView key="nws" group="nws" /></Suspense>} />
