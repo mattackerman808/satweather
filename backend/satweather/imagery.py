@@ -14,6 +14,11 @@ borders (<...>_map.png). A scan directory fills over several minutes
 one as each settles, not per directory. product.cbor beside them holds
 the geostationary projection, kept for reprojecting onto the map later.
 
+L2/ (derived products: cloud height and temperature, precipitable water,
+stability, rain rate, SST, LST) has the same layout as IMAGES/ and is
+catalogued under sector "L2". Only the colorized composites are taken;
+the raw grayscale product beside each adds nothing a viewer can read.
+
 NWS graphics, all under source "NWS":
   - LRIT charts, IMAGES/NWS/<YYYYmmddHHMMSS>-<chart>_latest[BW].lrit.gif
     (TAFB/OPC Pacific analyses and forecasts), re-sent hourly whether or
@@ -106,21 +111,21 @@ class ImageName:
 
 
 def parse_path(rel: str) -> ImageName | None:
-    """IMAGES/<sat>[/<sector>]/<scan dir>/<file> or IMAGES/NWS/<chart> ->
-    what it is, or None."""
+    """IMAGES/<sat>[/<sector>]/<scan dir>/<file>, L2/<sat>/<sector>/<scan
+    dir>/<file> or IMAGES/NWS/<chart> -> what it is, or None."""
     parts = rel.split("/")
     if len(parts) == 3 and parts[:2] == ["IMAGES", NWS] and (m := _LRIT.match(parts[2])):
         t = datetime(*(int(x) for x in m.groups()[:6]), tzinfo=UTC)
         return ImageName(NWS, "Charts", t, m["chart"], "graphic", False)
-    if len(parts) not in (4, 5) or parts[0] != "IMAGES" or parts[1] not in SATELLITES:
+    if len(parts) not in (4, 5) or parts[0] not in ("IMAGES", "L2") or parts[1] not in SATELLITES:
         return None
     satellite, scan_dir, name = parts[1], parts[-2], parts[-1]
-    sector = parts[2] if len(parts) == 5 else "Full Disk"
+    sector = "L2" if parts[0] == "L2" else parts[2] if len(parts) == 5 else "Full Disk"
     m = _SCAN_DIR.match(scan_dir)
     if not m:
         return None
     scan_time = datetime(*(int(x) for x in m.groups()), tzinfo=UTC)
-    if b := _BAND.match(name):
+    if sector != "L2" and (b := _BAND.match(name)):
         return ImageName(satellite, sector, scan_time, str(int(b["band"])), "band", False)
     if r := _RGB.match(name):
         return ImageName(satellite, sector, scan_time, r["name"], "rgb", bool(r["map"]))
@@ -180,10 +185,10 @@ def load_seen(conn: Connection, days: int) -> set[str]:
 
 
 class Scanner:
-    """Walks IMAGES/ each pass (satellite scan directories and NWS/). A
-    directory whose mtime has not moved since a pass that found nothing
-    unsettled in it is skipped without listing: NFS readdirs are the cost
-    here, and finished scans are most of the tree."""
+    """Walks IMAGES/ and L2/ each pass (satellite scan directories and
+    NWS/). A directory whose mtime has not moved since a pass that found
+    nothing unsettled in it is skipped without listing: NFS readdirs are
+    the cost here, and finished scans are most of the tree."""
 
     def __init__(self, root: Path, seen: set[str]):
         self.root = root
@@ -195,8 +200,8 @@ class Scanner:
             yield from (e for e in os.scandir(self.root / "IMAGES") if e.name == NWS and e.is_dir())
         except OSError:
             pass
-        for sat in SATELLITES:
-            base = self.root / "IMAGES" / sat
+        for top, sat in ((t, s) for t in ("IMAGES", "L2") for s in SATELLITES):
+            base = self.root / top / sat
             try:
                 subs = [e for e in os.scandir(base) if e.is_dir(follow_symlinks=False)]
             except OSError:

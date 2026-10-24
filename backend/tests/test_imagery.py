@@ -24,6 +24,12 @@ def test_himawari_has_no_sector_level():
     assert parse_path("IMAGES/Himawari/2026-10-24_02-51-00/HIM_3_20261024T025100Z.png").product == "3"
 
 
+def test_l2_composites_only():
+    c = parse_path("L2/GOES-18/Full Disk/2026-10-23_22-40-22/abi_rgb_Total_Precipitable_Water_map.png")
+    assert (c.source, c.sector, c.product, c.kind, c.overlay) == ("GOES-18", "L2", "Total_Precipitable_Water", "rgb", True)
+    assert parse_path("L2/GOES-18/Full Disk/2026-10-23_22-40-22/G18_TPW_20261023T224022Z.png") is None
+
+
 def test_lrit_charts():
     c = parse_path("IMAGES/NWS/20261024030050-pac48per_latestBW.lrit.gif")
     assert (c.source, c.sector, c.product, c.kind) == ("NWS", "Charts", "pac48per", "graphic")

@@ -14,7 +14,7 @@ from satweather.imagery import NWS, RADAR, SATELLITES, label
 
 router = APIRouter(prefix="/api")
 
-SECTORS = ("Full Disk", "Mesoscale 1", "Mesoscale 2", "Radar", "Charts")
+SECTORS = ("Full Disk", "Mesoscale 1", "Mesoscale 2", "L2", "Radar", "Charts")
 _RADAR_ORDER = {k: i for i, k in enumerate(RADAR)}
 
 

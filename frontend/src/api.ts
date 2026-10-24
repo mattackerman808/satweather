@@ -116,8 +116,9 @@ export const api = {
   station: (id: string) => get<StationDetail>(`/api/stations/${encodeURIComponent(id)}`),
   pireps: (hours = 3) => get<GeoJSON.FeatureCollection>("/api/pireps/recent", { hours }),
   imageCatalog: () => get<Catalog>("/api/imagery/catalog"),
-  frames: (q: LoopQuery) =>
-    get<{ frames: Frame[] }>("/api/imagery/frames", { ...q, overlay: String(q.overlay) }).then((r) => r.frames),
+  frames: (q: LoopQuery, limit?: number) =>
+    get<{ frames: Frame[] }>("/api/imagery/frames", { ...q, overlay: String(q.overlay), limit })
+      .then((r) => r.frames),
 };
 
 // "23:54Z · 4:54 PM PDT"
