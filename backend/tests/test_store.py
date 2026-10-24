@@ -358,3 +358,52 @@ def test_housekeeping(db, tmp_path):
     assert not (media / "sat/goes-18/full-disk/0").exists() and (media / "sat/goes-18/full-disk/1/x.webp").exists()
     with db.connect() as conn:
         assert conn.execute(text("SELECT path FROM image_frame")).scalars().all() == ["p1"]
+
+
+def test_zone_at_point(db):
+    """Forecast, hazards and products for a clicked point."""
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+
+    sq = "ST_Multi(ST_GeomFromText('POLYGON((-123 37,-122 37,-122 38,-123 38,-123 37))', 4326))"
+    with db.begin() as conn:
+        for kind, ugc in (("public", "CAZ508"), ("county", "CAC001"), ("fire", "CAZ508")):
+            conn.execute(text(f"INSERT INTO ugc_zone (kind, ugc, name, state, cwa, geom, centroid, source) VALUES"
+                              f" (:k, :u, 'SF Bay Shoreline', 'CA', 'MTR', {sq}, ST_Centroid({sq}), 't')"),
+                         {"k": kind, "u": ugc})
+        ids = {}
+        for i, (nnn, title) in enumerate((("ZFP", "Zone Forecast"), ("ZFP", "Zone Forecast"), ("PFM", "Point Forecast"),
+                                          ("WSW", "Winter Storm"), ("SVR", "Severe Thunderstorm Warning"))):
+            conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES (:n, 'emwin_text', 1, now(), 'ok')"),
+                         {"n": f"f{i}"})
+            ids[i] = conn.execute(text(
+                "INSERT INTO text_product (source_file_id, wmo, cccc, awips, nnn, office, issued, received, priority, title,"
+                " category, raw) SELECT id, 'FPUS56', 'KMTR', :nnn || 'MTR', :nnn, 'MTR', now() - make_interval(mins => :age),"
+                " now() - make_interval(mins => :age), 3, :title, 'forecast', 'r' FROM source_file WHERE name = :n RETURNING id"),
+                {"nnn": nnn, "title": title, "age": 60 - i, "n": f"f{i}"}).scalar()
+            ugcs = ["CAC001"] if nnn == "SVR" else ["CAZ508", "CAZ509"]
+            poly = "POLYGON((-122.2 37.1,-122.1 37.1,-122.1 37.2,-122.2 37.1))" if nnn == "SVR" else None
+            conn.execute(text("INSERT INTO product_segment (product_id, seq, ugcs, headlines, body, polygon)"
+                              " VALUES (:p, 1, :u, :h, :b, ST_GeomFromText(:poly, 4326))"),
+                         {"p": ids[i], "u": ugcs, "h": [f"H{i}"], "b": f"body {i}", "poly": poly})
+        for pid, ph, sig, ugc, poly in ((ids[3], "WS", "W", "CAZ508", None),
+                                        (ids[4], "SV", "W", "CAC001", "POLYGON((-122.2 37.1,-122.1 37.1,-122.1 37.2,-122.2 37.1))")):
+            conn.execute(text(
+                "INSERT INTO vtec_event_state (office, phenomena, significance, etn, year, action, polygon, product_id, issued)"
+                " VALUES ('KMTR', :ph, :sig, 1, 2026, 'NEW', ST_GeomFromText(:poly, 4326), :p, now())"),
+                {"ph": ph, "sig": sig, "poly": poly, "p": pid})
+            conn.execute(text(
+                "INSERT INTO vtec_ugc_state (office, phenomena, significance, etn, year, ugc, action, ends, product_id, issued)"
+                " VALUES ('KMTR', :ph, :sig, 1, 2026, :u, 'NEW', now() + interval '6 hours', :p, now())"),
+                {"ph": ph, "sig": sig, "u": ugc, "p": pid})
+    c = TestClient(app)
+    d = c.get("/api/zones/at", params={"lon": -122.5, "lat": 37.5}).json()
+    assert d["zone"]["ugc"] == "CAZ508" and d["zone"]["kind"] == "public"
+    assert d["forecast"]["product_id"] == ids[1] and d["forecast"]["headlines"] == ["H1"]  # the newer ZFP
+    assert [h["phenomena"] for h in d["hazards"]] == ["WS"]  # the SVR polygon is elsewhere in the county
+    assert [p["nnn"] for p in d["products"]] == ["PFM"]  # not the ZFP again, not the hazards' products
+    inside = c.get("/api/zones/at", params={"lon": -122.12, "lat": 37.12}).json()
+    assert sorted(h["phenomena"] for h in inside["hazards"]) == ["SV", "WS"]
+    sea = c.get("/api/zones/at", params={"lon": -150, "lat": 20}).json()
+    assert sea["zone"] is None and sea["forecast"] is None

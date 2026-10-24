@@ -139,6 +139,13 @@ button { font: inherit; color: inherit; }
 .inspector-bar { display: flex; align-items: center; gap: 12px; padding: 6px 10px; border-bottom: 1px solid var(--line);
   font-size: 13px; }
 .inspector-bar a { color: var(--accent); }
+.linkbtn { background: none; border: 0; color: var(--accent); cursor: pointer; padding: 0; font-size: 13px; }
+.zonepanel { padding: 12px 16px 32px; }
+.zonepanel h2 { margin: 4px 0 6px; font-size: 19px; }
+.zonepanel section { margin-top: 14px; }
+.zonepanel h3 { font-size: 14px; margin: 0 0 6px; }
+.fcst p { margin: 0 0 8px; font-size: 14px; line-height: 1.45; }
+.fcst b { color: var(--text); }
 .inspector-bar .close { margin-left: auto; background: none; border: 0; font-size: 22px; line-height: 1; cursor: pointer;
   color: var(--muted); }
 .inspector-bar .close:hover { color: var(--text); }

@@ -92,6 +92,20 @@ export type Frame = { id: number; scan_time: string; display: string; thumb: str
   orig: string | null };
 export type LoopQuery = { source: string; sector: string; product: string; overlay: boolean; hours: number };
 
+export type ZoneInfo = { kind: string; ugc: string; name: string; state: string | null; cwa: string | null };
+export type ZoneHazard = { office: string; phenomena: string; significance: string; etn: number; action: string;
+  begins: string | null; ends: string | null; product_id: number; issued: string; storm_based: boolean;
+  name: string; color: string };
+export type ZoneAt = {
+  lon: number; lat: number; zones: ZoneInfo[];
+  zone: (ZoneInfo & { geometry: GeoJSON.Geometry }) | null;
+  forecast: null | { product_id: number; nnn: string; awips: string; office: string; title: string;
+    issued: string | null; received: string; ugc_expire: string | null; headlines: string[]; body: string };
+  hazards: ZoneHazard[];
+  products: { id: number; nnn: string; awips: string; office: string; title: string; issued: string | null;
+    received: string; type_name: string }[];
+};
+
 export type Filters = { q?: string; category?: string[]; nnn?: string[]; office?: string; ugc?: string };
 
 async function get<T>(path: string, params?: Record<string, string | string[] | number | undefined>): Promise<T> {
@@ -116,6 +130,7 @@ export const api = {
     get<GeoJSON.FeatureCollection>("/api/stations/latest", q),
   station: (id: string) => get<StationDetail>(`/api/stations/${encodeURIComponent(id)}`),
   pireps: (hours = 3) => get<GeoJSON.FeatureCollection>("/api/pireps/recent", { hours }),
+  zoneAt: (lon: number, lat: number) => get<ZoneAt>("/api/zones/at", { lon, lat }),
   imageCatalog: () => get<Catalog>("/api/imagery/catalog"),
   frames: (q: LoopQuery, limit?: number) =>
     get<{ frames: Frame[] }>("/api/imagery/frames", { ...q, overlay: String(q.overlay), limit })
