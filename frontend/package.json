@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "maplibre-gl": "5.6.1",
+    "openseadragon": "6.1.1",
     "pmtiles": "4.5.0",
     "react": "19.3.1",
     "react-dom": "19.3.1",
     "react-router": "7.18.4"
   },
   "devDependencies": {
+    "@types/openseadragon": "6.0.0",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "@vitejs/plugin-react": "4.7.0",

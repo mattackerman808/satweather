@@ -161,7 +161,7 @@ def get_product(pid: int) -> dict:
     from satweather.api.warnings import vtec_label
 
     out = dict(p)
-    # rtl's archiver moves files out of EMWIN/ after a few hours.
+    # satweather-housekeep moves files out of EMWIN/ after a few hours.
     live = f"EMWIN/{p['filename']}"
     out["orig_path"] = live if (get_settings().data_root / live).exists() else str(
         archived_path(p["filename"], p["mtime"].timestamp()))

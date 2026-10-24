@@ -6,8 +6,9 @@ seen that has *settled*: non-empty and not modified for SETTLE_S. satdump
 creates files before it fills them, so a fresh 0-byte file is normal and
 must not be ingested yet.
 
-rtl's archiver moves files out of EMWIN/ after a few hours, which keeps
-the listing small. `--backfill` also walks EMWIN/archive/*/, for catching
+satweather-housekeep moves files out of EMWIN/ after a few hours, which keeps
+the listing small. The same loop catalogs satellite images under IMAGES/
+(satweather.imagery) for satweather-imaging to convert. `--backfill` also walks EMWIN/archive/*/, for catching
 up after this service was down longer than that.
 
 Each file is one transaction. A file that fails is recorded with its
@@ -30,6 +31,8 @@ from sqlalchemy import text
 from satweather.config import get_settings
 from satweather.db import get_engine
 from satweather.emwin import normalize, parse_name
+from satweather.imagery import Scanner, from_emwin, store_image
+from satweather.imagery import load_seen as load_seen_images
 from satweather.parse import parse
 from satweather.store import store_other, store_text
 
@@ -68,6 +71,8 @@ def ingest_file(path: Path, st: os.stat_result) -> str:
         if not en.is_text:
             store_other(conn, name=name, kind="emwin_image", size=st.st_size, mtime=st.st_mtime, en=en,
                         status="ok")
+            rel = os.path.relpath(path, get_settings().data_root)
+            store_image(conn, rel, from_emwin(en.awips_long, en.received), st.st_size, st.st_mtime)
             return "image"
         raw = normalize(path.read_bytes(), en)
         parsed = parse(raw, en, datetime.now(UTC))
@@ -149,16 +154,44 @@ def redecode() -> dict[str, int]:
     return counts
 
 
+def graphics_backfill(days: int) -> int:
+    """Catalog EMWIN graphics ingested before image_frame existed, from
+    the EMWIN archive, so radar loops have history from the start."""
+    from satweather.emwin import archived_path
+
+    root = get_settings().data_root
+    n = 0
+    with get_engine().begin() as conn:
+        rows = conn.execute(text(
+            "SELECT name, size, mtime FROM source_file WHERE kind = 'emwin_image' AND status = 'ok'"
+            " AND mtime > now() - make_interval(days => :d)"), {"d": days}).all()
+        for name, size, mtime in rows:
+            en = parse_name(name)
+            # Still in EMWIN/ if it arrived in the last few hours.
+            rel = next((r for r in (f"EMWIN/{name}", str(archived_path(name, mtime.timestamp())))
+                        if (root / r).exists()), None)
+            if en is None or rel is None:
+                continue
+            n += store_image(conn, rel, from_emwin(en.awips_long, en.received), size, mtime.timestamp())
+    return n
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(prog="satweather-ingest")
     ap.add_argument("--once", action="store_true", help="one scan, then exit")
     ap.add_argument("--backfill", action="store_true", help="also walk EMWIN/archive/*/ (implies --once)")
+    ap.add_argument("--graphics-backfill", type=int, metavar="DAYS",
+                    help="catalog EMWIN graphics from the last DAYS (live or archived) for imaging, then exit")
     ap.add_argument("--redecode", action="store_true",
                     help="re-run the METAR/TAF/PIREP decoders over stored products, then exit")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
     signal.signal(signal.SIGTERM, _handle_stop)
     signal.signal(signal.SIGINT, _handle_stop)
+
+    if args.graphics_backfill:
+        log.info("graphics backfill: %d catalogued", graphics_backfill(args.graphics_backfill))
+        return
 
     if args.redecode:
         log.info("redecode: %s", redecode())
@@ -177,18 +210,27 @@ def main() -> None:
         log.info("backfill done: %s", scan([*archive, emwin], seen))
         return
 
+    with get_engine().connect() as conn:
+        images = Scanner(get_settings().data_root, load_seen_images(conn, SEEN_DAYS))
     last_prune = time.time()
     while not _stop:
         t0 = time.time()
         counts = scan([emwin], seen)
         if counts:
             log.info("ingested %s in %.1fs", counts, time.time() - t0)
+        t0 = time.time()
+        try:
+            if n := images.scan(get_engine().begin, SETTLE_S, stop=lambda: _stop):
+                log.info("catalogued %d images in %.1fs", n, time.time() - t0)
+        except Exception:
+            log.exception("image scan failed")
         if args.once:
             return
-        # Forget names rtl has archived long ago, so the set stays bounded.
+        # Forget names rtl has archived long ago, so the sets stay bounded.
         if time.time() - last_prune > 6 * 3600:
             with get_engine().connect() as conn:
                 seen = load_seen(conn)
+                images.seen = load_seen_images(conn, SEEN_DAYS)
             last_prune = time.time()
         for _ in range(SCAN_S * 10):
             if _stop:

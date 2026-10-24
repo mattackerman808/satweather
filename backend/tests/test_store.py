@@ -7,6 +7,7 @@ is rebuilt from the migrations for every run.
 
 import os
 import shutil
+import time
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -181,3 +182,178 @@ def test_station_declutter_by_zoom(db):
     assert ids(bbox=usa, zoom=8) == ["K04V", "KLAX"]
     # Across the antimeridian: 160°E .. 110°W (KLAX is at 118.4°W).
     assert ids(bbox="160,-50,-110,60", zoom=3) == ["KLAX", "NZAA"]
+
+
+def _png(path: Path, w: int = 64, h: int = 48, seed: int = 0) -> None:
+    """A real grayscale PNG, written without an image library. Different
+    seeds give different bytes (identical originals are dups)."""
+    import struct
+    import zlib
+
+    def chunk(kind: bytes, data: bytes) -> bytes:
+        return struct.pack(">I", len(data)) + kind + data + struct.pack(">I", zlib.crc32(kind + data))
+
+    rows = b"".join(b"\x00" + bytes((x * 4 + seed) % 256 for x in range(w)) for _ in range(h))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_bytes(b"\x89PNG\r\n\x1a\n" + chunk(b"IHDR", struct.pack(">IIBBBBB", w, h, 8, 0, 0, 0, 0))
+                     + chunk(b"IDAT", zlib.compress(rows)) + chunk(b"IEND", b""))
+
+
+def test_images_catalog_convert_and_list(db, tmp_path, monkeypatch):
+    """IMAGES/ -> image_frame (pending) -> WebP copies (ok) -> loop API."""
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+    from satweather.config import get_settings
+    from satweather.imagery import Scanner
+
+    media = tmp_path / "media"
+    monkeypatch.setenv("SATWEATHER_MEDIA_ROOT", str(media))
+    get_settings.cache_clear()
+    from datetime import timedelta
+
+    scan = tmp_path / "IMAGES" / "GOES-18" / "Mesoscale 1"
+    now = datetime.now(UTC).replace(microsecond=0)
+    times = [now - timedelta(minutes=11), now - timedelta(minutes=10)]
+    for i, t in enumerate(times):
+        _png(scan / f"{t:%Y-%m-%d_%H-%M-%S}" / f"G18_13_{t:%Y%m%dT%H%M%S}Z.png", seed=i)
+        _png(scan / f"{t:%Y-%m-%d_%H-%M-%S}" / "abi_rgb_ABI_False_Color_map.png", seed=i)
+    last = scan / f"{times[1]:%Y-%m-%d_%H-%M-%S}"
+    shutil.copy(Path(__file__).parent / "fixtures" / "images" / "himawari_product.cbor", last / "product.cbor")
+    (last / f"G18_2_{times[1]:%Y%m%dT%H%M%S}Z.png").touch()  # still being written
+
+    s = Scanner(tmp_path, set())
+    assert s.scan(db.begin, settle_s=0) == 4
+    assert s.scan(db.begin, settle_s=0) == 0  # seen, and the empty file is still unsettled
+    with db.connect() as conn:
+        rows = conn.execute(text("SELECT product, overlay, status, projection->>'type' FROM image_frame"
+                                 " ORDER BY scan_time, product")).all()
+    assert [tuple(r) for r in rows] == [("13", False, "pending", None), ("ABI_False_Color", True, "pending", None),
+                                        ("13", False, "pending", "geos"), ("ABI_False_Color", True, "pending", "geos")]
+
+    try:  # libvips is a system library; without it pyvips raises OSError, not ImportError
+        import pyvips  # noqa: F401
+    except Exception as exc:
+        pytest.skip(f"pyvips unavailable: {exc}")
+    from satweather import imaging
+
+    while imaging.process_one():
+        pass
+    c = TestClient(app)
+    cat = c.get("/api/imagery/catalog").json()
+    assert [(g["source"], g["sector"], g["group"]) for g in cat["sources"]] == [("GOES-18", "Mesoscale 1", "satellite")]
+    assert [(p["product"], p["overlay"], p["plain"]) for p in cat["sources"][0]["products"]] == \
+        [("ABI_False_Color", True, False), ("13", False, True)]
+    f = c.get("/api/imagery/frames", params={"source": "GOES-18", "sector": "Mesoscale 1",
+                                             "product": "13"}).json()["frames"]
+    assert [datetime.fromisoformat(x["scan_time"]) for x in f] == times
+    assert f[0]["display"].startswith("/media/sat/goes-18/mesoscale-1/") and (f[0]["width"], f[0]["height"]) == (64, 48)
+    assert (media / f[0]["display"].removeprefix("/media/")).stat().st_size > 0
+
+
+def test_emwin_graphics_archive_and_dups(db, tmp_path, monkeypatch):
+    """EMWIN graphic -> image_frame at ingest; converted after rtl archived
+    it; a byte-identical re-send is a dup with no copies."""
+    from satweather import ingest
+    from satweather.config import get_settings
+    from satweather.emwin import archived_path
+
+    monkeypatch.setenv("SATWEATHER_MEDIA_ROOT", str(tmp_path / "media"))
+    get_settings.cache_clear()
+    emwin = tmp_path / "EMWIN"
+    names = ["A_PNUS71KWBC240322_C_KWIN_20261024032200_000001-2-RADPACSW.GIF",
+             "A_PNUS71KWBC240422_C_KWIN_20261024042200_000002-2-RADPACSW.GIF"]
+    for n in names:
+        _png(emwin / n)  # libvips goes by content, not extension
+    assert ingest.scan([emwin], set(), settle_s=0) == {"image": 2}
+    with db.connect() as conn:
+        rows = conn.execute(text("SELECT path, source, sector, product FROM image_frame ORDER BY path")).all()
+    assert [tuple(r) for r in rows] == [(f"EMWIN/{n}", "NWS", "Radar", "RADPACSW") for n in names]
+
+    first = emwin / names[0]
+    moved = tmp_path / archived_path(names[0], first.stat().st_mtime)
+    moved.parent.mkdir(parents=True)
+    first.rename(moved)
+    try:
+        import pyvips  # noqa: F401
+    except Exception as exc:
+        pytest.skip(f"pyvips unavailable: {exc}")
+    from satweather import imaging
+
+    while imaging.process_one():
+        pass
+    with db.connect() as conn:
+        st = dict(conn.execute(text("SELECT path, status FROM image_frame")).all())
+    # Newest first: the 04:22 copy is made, the archived 03:22 one is its dup.
+    assert st == {f"EMWIN/{names[1]}": "ok", f"EMWIN/{names[0]}": "dup"}
+
+
+def test_housekeeping(db, tmp_path):
+    """Archive only old, ingested EMWIN files; delete only old originals
+    whose names parse; drop old copies with their rows."""
+    from datetime import timedelta
+
+    from satweather import housekeeping as hk
+    from satweather.emwin import archived_path
+
+    emwin = tmp_path / "EMWIN"
+    emwin.mkdir()
+    old = time.time() - 5 * 3600
+    names = {"ingested": "A_PNUS71KWBC240322_C_KWIN_20261024032200_000001-2-RADPACSW.GIF",
+             "unseen": "A_PNUS71KWBC240323_C_KWIN_20261024032300_000002-2-RADPACNW.GIF",
+             "fresh": "A_PNUS71KWBC240324_C_KWIN_20261024032400_000003-2-RADREFUS.GIF"}
+    for k, n in names.items():
+        (emwin / n).write_bytes(b"x")
+        if k != "fresh":
+            os.utime(emwin / n, (old, old))
+    with db.begin() as conn:
+        for k in ("ingested", "fresh"):
+            conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status)"
+                              " VALUES (:n, 'emwin_image', 1, now(), 'ok')"), {"n": names[k]})
+    assert hk.archive_emwin(tmp_path, 3, dry=True) == 1 and (emwin / names["ingested"]).exists()
+    assert hk.archive_emwin(tmp_path, 3) == 1
+    assert (tmp_path / archived_path(names["ingested"], old)).exists()
+    assert sorted(p.name for p in emwin.iterdir() if p.is_file()) == sorted([names["unseen"], names["fresh"]])
+
+    now = datetime.now(UTC)
+    stamp = lambda t: f"{t:%Y-%m-%d_%H-%M-%S}"  # noqa: E731
+    fd = tmp_path / "IMAGES" / "GOES-18" / "Full Disk"
+    for t in (now - timedelta(days=20), now - timedelta(days=1)):
+        (fd / stamp(t)).mkdir(parents=True)
+        (fd / stamp(t) / "x.png").write_bytes(b"x")
+    (fd / "keep-me").mkdir()
+    (tmp_path / "L2" / "GOES-18" / "Full Disk" / stamp(now - timedelta(days=20))).mkdir(parents=True)
+    (tmp_path / "IMAGES" / "Himawari" / stamp(now - timedelta(days=20))).mkdir(parents=True)
+    nws = tmp_path / "IMAGES" / "NWS"
+    nws.mkdir()
+    for t in (now - timedelta(days=20), now):
+        (nws / f"{t:%Y%m%d%H%M%S}-pac24_latestBW.lrit.gif").write_bytes(b"x")
+    (nws / "notes.txt").write_bytes(b"x")
+    arch = emwin / "archive"
+    (arch / f"{now - timedelta(days=20):%Y-%m-%d}").mkdir()
+    (arch / "misc").mkdir()
+
+    assert hk.prune_originals(tmp_path, 0) == {"scans": 0, "charts": 0, "emwin_days": 0}  # keep forever
+    assert hk.prune_originals(tmp_path, 14, dry=True) == {"scans": 3, "charts": 1, "emwin_days": 1}
+    assert hk.prune_originals(tmp_path, 14) == {"scans": 3, "charts": 1, "emwin_days": 1}
+    assert sorted(p.name for p in fd.iterdir()) == sorted([stamp(now - timedelta(days=1)), "keep-me"])
+    assert sorted(p.name for p in nws.iterdir()) == sorted([f"{now:%Y%m%d%H%M%S}-pac24_latestBW.lrit.gif",
+                                                            "notes.txt"])
+    assert sorted(p.name for p in arch.iterdir()) == sorted(["misc", archived_path(names["ingested"], old).parent.name])
+
+    media = tmp_path / "media"
+    for i, age in enumerate((40, 1)):
+        rel = f"sat/goes-18/full-disk/{i}/x"
+        (media / rel).parent.mkdir(parents=True)
+        for suffix in (".webp", "_t.webp"):
+            (media / f"{rel}{suffix}").write_bytes(b"x")
+        with db.begin() as conn:
+            conn.execute(text(
+                "INSERT INTO image_frame (path, source, sector, product, kind, scan_time, size, mtime, status,"
+                " display, thumb) VALUES (:p, 'GOES-18', 'Full Disk', '13', 'band', now() - make_interval(days => :a),"
+                " 1, now(), 'ok', :d, :t)"), {"p": f"p{i}", "a": age, "d": f"{rel}.webp", "t": f"{rel}_t.webp"})
+    assert hk.prune_copies(media, 30, dry=True) == 1
+    assert hk.prune_copies(media, 30) == 1
+    assert not (media / "sat/goes-18/full-disk/0").exists() and (media / "sat/goes-18/full-disk/1/x.webp").exists()
+    with db.connect() as conn:
+        assert conn.execute(text("SELECT path FROM image_frame")).scalars().all() == ["p1"]
