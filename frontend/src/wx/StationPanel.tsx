@@ -56,7 +56,7 @@ export default function StationPanel({ id }: { id: string }) {
 
       <h3>Forecast (TAF)</h3>
       {d.taf ? (
-        <TafTimeline raw={d.taf.raw} decoded={d.taf.decoded} current={d.taf.current} />
+        <TafTimeline raw={d.taf.raw} decoded={d.taf.decoded} current={d.taf.current} expired={!d.taf.current} />
       ) : (
         <p className="dim">No TAF received for this station.</p>
       )}

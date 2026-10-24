@@ -36,3 +36,5 @@ include = ["satweather*"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+# A hung test dumps every thread's stack instead of sitting silent.
+faulthandler_timeout = 120

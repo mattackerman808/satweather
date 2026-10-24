@@ -135,10 +135,11 @@ def redecode() -> dict[str, int]:
             conn.execute(text("UPDATE metar SET decoded = CAST(:d AS jsonb), flight_category = :c WHERE id = :i"),
                          {"d": json.dumps(d), "c": cat, "i": mid})
             counts["metar"] += 1
-    rows = engine.connect().execute(
-        text("SELECT id, nnn, raw, received FROM text_product WHERE nnn = ANY(:n) OR raw LIKE '% UA /OV%'"),
-        {"n": sorted(TAF_NNN | PIREP_NNN)},
-    ).all()
+    with engine.connect() as conn:
+        rows = conn.execute(
+            text("SELECT id, nnn, raw, received FROM text_product WHERE nnn = ANY(:n) OR raw LIKE '% UA /OV%'"),
+            {"n": sorted(TAF_NNN | PIREP_NNN)},
+        ).all()
     for pid, nnn, raw, received in rows:
         reps = extract(nnn, raw, received)
         if reps:

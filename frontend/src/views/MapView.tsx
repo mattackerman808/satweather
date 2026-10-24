@@ -89,6 +89,7 @@ export default function MapView() {
   const [inspect, setInspect] = useState<Inspect | null>(null);
   const [sp, setSp] = useSearchParams();
 
+  const openRef = useRef<(i: Inspect | null) => void>(() => {});
   const open = useCallback((i: Inspect | null) => {
     setInspect(i);
     // Keep the URL shareable: ?product=… / ?station=… reopen the panel.
@@ -97,6 +98,7 @@ export default function MapView() {
     if (i?.kind === "station") p.set("station", i.id);
     setSp(p, { replace: true });
   }, [setSp]);
+  openRef.current = open;
 
   const debounced = (fn: () => void) => {
     let t: number | undefined;
@@ -121,19 +123,33 @@ export default function MapView() {
   }), []);
 
   const refreshObs = useMemo(() => debounced(() => {
-    api.stations().then((fc) => {
+    const map = mapRef.current;
+    if (!map) return;
+    const b = map.getBounds();
+    // Longitudes are wrapped into [-180, 180); a view that crosses 180°
+    // then has west > east, which the API treats as an antimeridian box.
+    // Zoomed out past one full world, ask for everything.
+    const wrap = (v: number) => ((((v + 180) % 360) + 360) % 360) - 180;
+    const lat = (v: number) => Math.max(-90, Math.min(90, v));
+    const bbox = b.getEast() - b.getWest() >= 360
+      ? "-180,-90,180,90"
+      : [wrap(b.getWest()), lat(b.getSouth()), wrap(b.getEast()), lat(b.getNorth())].map((v) => v.toFixed(3)).join(",");
+    api.stations({ bbox, zoom: Math.floor(map.getZoom()) }).then((fc) => {
       for (const f of fc.features) {
-        const p = f.properties as { temp_c: number | null; temp_f?: number };
+        const p = f.properties as { temp_c?: number; temp_f?: number };
         if (p.temp_c != null) p.temp_f = Math.round((p.temp_c * 9) / 5 + 32);
       }
-      (mapRef.current?.getSource("stations") as GeoJSONSource | undefined)?.setData(fc);
+      (map.getSource("stations") as GeoJSONSource | undefined)?.setData(fc);
       setCounts((c) => ({ ...c, stations: fc.features.length }));
     });
     api.pireps().then((fc) => {
-      (mapRef.current?.getSource("pireps") as GeoJSONSource | undefined)?.setData(fc);
+      (map.getSource("pireps") as GeoJSONSource | undefined)?.setData(fc);
       setCounts((c) => ({ ...c, pireps: fc.features.length }));
     });
   }), []);
+
+  const refreshObsRef = useRef(refreshObs);
+  refreshObsRef.current = refreshObs;
 
   useEffect(() => {
     let cancelled = false;
@@ -148,17 +164,19 @@ export default function MapView() {
           addLayers(map);
           setReady(true);
         });
+        // Stations are fetched for the view: the set changes with zoom.
+        map.on("moveend", () => refreshObsRef.current());
         // One click handler, most specific layer first: a station or a
         // PIREP sits on top of the warning polygon it is inside.
         map.on("click", (e) => {
           const hit = (ids: string[]) =>
             map.queryRenderedFeatures(e.point, { layers: ids.filter((l) => map.getLayer(l)) });
           const st = hit(["stations-dot"]);
-          if (st.length) return open({ kind: "station", id: st[0].properties.station });
+          if (st.length) return openRef.current({ kind: "station", id: st[0].properties.station });
           const pr = hit(["pireps-dot"]);
           if (pr.length) {
             const p = pr[0].properties;
-            return open({ kind: "pirep", raw: p.raw, time: p.observed,
+            return openRef.current({ kind: "pirep", raw: p.raw, time: p.observed,
               decoded: { type: "PIREP", station: p.station, decoded: JSON.parse(p.decoded) } as PirepDecoded });
           }
           const w = hit(["warnings-fill"]);
@@ -169,7 +187,7 @@ export default function MapView() {
             id: f.properties.product_id as number, name: f.properties.name as string,
             color: f.properties.color as string, office: f.properties.office as string,
           }));
-          open(items.length === 1 ? { kind: "product", id: items[0].id } : { kind: "products", items });
+          openRef.current(items.length === 1 ? { kind: "product", id: items[0].id } : { kind: "products", items });
         });
         for (const l of ["stations-dot", "pireps-dot", "warnings-fill"]) {
           map.on("mouseenter", l, () => (map.getCanvas().style.cursor = "pointer"));
@@ -182,7 +200,8 @@ export default function MapView() {
       mapRef.current?.remove();
       mapRef.current = null;
     };
-  }, [open]);
+    // Created once. Anything it calls back into goes through refs.
+  }, []);
 
   // Load, then keep current: on every relevant product, and every minute
   // so expired warnings and stale observations drop off.
@@ -257,7 +276,7 @@ export default function MapView() {
             <label key={k}>
               <input type="checkbox" checked={layers[k]} onChange={(e) => setLayers({ ...layers, [k]: e.target.checked })} />
               {k === "warnings" ? `Warnings (${legend.reduce((a, l) => a + l.n, 0)})`
-                : k === "stations" ? `METAR stations (${counts.stations})` : `PIREPs (${counts.pireps})`}
+                : k === "stations" ? `METAR stations (${counts.stations} in view)` : `PIREPs (${counts.pireps})`}
             </label>
           ))}
           {layers.stations && (

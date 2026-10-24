@@ -62,3 +62,7 @@ def test_tropical_outlook_takes_afos_from_text():
 def test_unparseable_kept_raw(glob):
     p = _parse(glob)
     assert p.error and not p.segments
+
+
+def test_taf_collective_title_is_catalog_name():
+    assert _parse("A_FTUS*TAF*").title == "Terminal Aerodrome Forecast"

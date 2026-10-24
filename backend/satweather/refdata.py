@@ -154,15 +154,15 @@ def load_stations() -> int:
         if not sid or s.get("lat") is None or s.get("lon") is None:
             continue
         rows.append({"id": sid, "icao": s.get("icaoId"), "faa": s.get("faaId"), "name": s.get("site"),
-                     "state": s.get("state") or None,
+                     "priority": s.get("priority"), "state": s.get("state") or None,
                      "country": s.get("country"), "elev": s.get("elev"), "lat": s["lat"], "lon": s["lon"]})
     with get_engine().begin() as conn:
         conn.execute(text("DELETE FROM station"))
         conn.execute(
             text(
                 """
-                INSERT INTO station (id, icao, faa, name, state, country, elev_m, geom)
-                VALUES (:id, :icao, :faa, :name, :state, :country, :elev,
+                INSERT INTO station (id, icao, faa, name, priority, state, country, elev_m, geom)
+                VALUES (:id, :icao, :faa, :name, :priority, :state, :country, :elev,
                         ST_SetSRID(ST_MakePoint(:lon, :lat), 4326))
                 ON CONFLICT (id) DO NOTHING
                 """
