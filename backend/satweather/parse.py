@@ -31,10 +31,11 @@ _parsers = None
 def _load():
     global _parsers
     if _parsers is None:
+        from pyiem.nws.product import TextProduct
         from pyiem.nws.products import parser as text_parser
         from pyiem.nws.products.metarcollect import parser as metar_parser
 
-        _parsers = (text_parser, metar_parser)
+        _parsers = (text_parser, metar_parser, TextProduct)
     return _parsers
 
 
@@ -181,7 +182,7 @@ def parse(text: str, name: EmwinName, utcnow: datetime) -> Parsed:
         out.reports = extract_reports(nnn, text, name.received)
     except Exception:  # a decoder bug must not lose the product
         out.reports = []
-    text_parser, metar_parser = _load()
+    text_parser, metar_parser, generic = _load()
     try:
         if nnn in METAR_NNN:
             p = metar_parser(text, utcnow=utcnow, ugc_provider={}, nwsli_provider={})
@@ -189,8 +190,18 @@ def parse(text: str, name: EmwinName, utcnow: datetime) -> Parsed:
         else:
             p = text_parser(text, utcnow=utcnow, ugc_provider={}, nwsli_provider={})
     except Exception as exc:
-        out.error = f"{type(exc).__name__}: {str(exc)[:300]}"
-        return out
+        # pyiem picks a specialist parser by NNN, and some NNNs cover more
+        # than one product: every SWO goes to the MCD parser, so the day 1
+        # outlook (SWODY1) fails on its missing LAT...LON, as does FFG
+        # guidance that is not an MPD. The generic parser still gets the
+        # segments, UGCs and VTEC.
+        try:
+            if nnn in METAR_NNN:
+                raise
+            p = generic(text, utcnow=utcnow, ugc_provider={}, nwsli_provider={})
+        except Exception:
+            out.error = f"{type(exc).__name__}: {str(exc)[:300]}"
+            return out
 
     out.afos = p.afos or name.pil
     # pyiem's AFOS can differ from the filename's (HAW files carry TWOAT):

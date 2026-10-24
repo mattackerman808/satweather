@@ -126,6 +126,7 @@ export const api = {
     get<Page>("/api/products", { ...f, limit, before: cursor?.before, before_id: cursor?.before_id }),
   product: (id: number) => get<ProductDetail>(`/api/products/${id}`),
   warnings: () => get<GeoJSON.FeatureCollection>("/api/warnings/active"),
+  discussions: () => get<GeoJSON.FeatureCollection>("/api/discussions/active"),
   stations: (q: { bbox?: string; zoom?: number; hours?: number }) =>
     get<GeoJSON.FeatureCollection>("/api/stations/latest", q),
   station: (id: string) => get<StationDetail>(`/api/stations/${encodeURIComponent(id)}`),

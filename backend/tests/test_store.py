@@ -407,3 +407,44 @@ def test_zone_at_point(db):
     assert sorted(h["phenomena"] for h in inside["hazards"]) == ["SV", "WS"]
     sea = c.get("/api/zones/at", params={"lon": -150, "lat": 20}).json()
     assert sea["zone"] is None and sea["forecast"] is None
+
+
+def _mcd(t, number: int, hours: int) -> str:
+    """An SPC mesoscale discussion as EMWIN carries it, issued at t and
+    valid for `hours`."""
+    from datetime import timedelta
+
+    end = t + timedelta(hours=hours)
+    local = (t - timedelta(hours=5)).strftime("%I%M %p CDT %a %b %d %Y").lstrip("0")
+    return (f"ACUS11 KWNS {t:%d%H%M}\nSWOMCD\nSPC MCD {t:%d%H%M}\nTXZ000-OKZ000-{end:%d%H%M}-\n\n"
+            f"Mesoscale Discussion {number}\nNWS Storm Prediction Center Norman OK\n{local}\n\n"
+            f"Areas affected...Parts of north Texas into southern Oklahoma\n\n"
+            f"Concerning...Severe potential...Watch likely\n\n"
+            f"Valid {t:%d%H%M}Z - {end:%d%H%M}Z\n\n"
+            f"Probability of Watch Issuance...80 percent\n\n"
+            f"SUMMARY...Supercells capable of large hail are expected.\n\n"
+            f"..Forecaster.. {t:%m/%d/%Y}\n\nATTN...WFO...FWD...OUN...\n\n"
+            f"LAT...LON   33449829 34029723 33679622 33029674 32729770 33449829\n\n")
+
+
+def test_discussions_active(db, tmp_path):
+    from datetime import timedelta
+
+    from fastapi.testclient import TestClient
+
+    from satweather import ingest
+    from satweather.api.app import app
+
+    now = datetime.now(UTC).replace(second=0, microsecond=0)
+    emwin = tmp_path / "EMWIN"
+    emwin.mkdir()
+    for number, issued, hours in ((1234, now - timedelta(minutes=10), 2), (1201, now - timedelta(hours=5), 2)):
+        name = f"A_ACUS11KWNS{issued:%d%H%M}_C_KWIN_{issued:%Y%m%d%H%M%S}_00{number}-2-SWOMCDUS.TXT"
+        (emwin / name).write_text(_mcd(issued, number, hours))
+    assert ingest.scan([emwin], set(), settle_s=0) == {"ok": 2}
+    fc = TestClient(app).get("/api/discussions/active").json()
+    assert [f["properties"]["label"] for f in fc["features"]] == ["MCD 1234"]  # 1201 expired
+    f = fc["features"][0]
+    assert f["geometry"]["type"] == "Polygon"
+    assert f["properties"]["concerning"] == "Severe potential...Watch likely"
+    assert f["properties"]["expires"].startswith(f"{now + timedelta(minutes=110):%Y-%m-%dT%H}")

@@ -15,9 +15,10 @@ const START = { center: [-118, 38] as [number, number], zoom: 3.6 };
 const EMPTY: GeoJSON.FeatureCollection = { type: "FeatureCollection", features: [] };
 
 type Legend = { name: string; color: string; n: number }[];
-type Layers = { warnings: boolean; stations: boolean; pireps: boolean };
+type Layers = { warnings: boolean; discussions: boolean; stations: boolean; pireps: boolean };
 const LAYER_IDS: Record<keyof Layers, string[]> = {
   warnings: ["warnings-fill", "warnings-line"],
+  discussions: ["disc-fill", "disc-line", "disc-label"],
   stations: ["stations-dot", "stations-label"],
   pireps: ["pireps-dot"],
 };
@@ -31,6 +32,7 @@ function addLayers(map: maplibregl.Map) {
   map.addSource("focus", { type: "geojson", data: EMPTY });
   map.addSource("stations", { type: "geojson", data: EMPTY });
   map.addSource("pireps", { type: "geojson", data: EMPTY });
+  map.addSource("discussions", { type: "geojson", data: EMPTY });
   map.addLayer({
     id: "warnings-fill", type: "fill", source: "warnings",
     paint: {
@@ -41,6 +43,21 @@ function addLayers(map: maplibregl.Map) {
   map.addLayer({
     id: "warnings-line", type: "line", source: "warnings",
     paint: { "line-color": ["get", "color"], "line-width": ["case", ["get", "storm_based"], 2.2, 1.1] },
+  });
+  // SPC mesoscale discussions and WPC precipitation discussions: dashed,
+  // above the warnings they often precede.
+  map.addLayer({
+    id: "disc-fill", type: "fill", source: "discussions",
+    paint: { "fill-color": ["get", "color"], "fill-opacity": 0.08 },
+  });
+  map.addLayer({
+    id: "disc-line", type: "line", source: "discussions",
+    paint: { "line-color": ["get", "color"], "line-width": 2, "line-dasharray": [3, 2] },
+  });
+  map.addLayer({
+    id: "disc-label", type: "symbol", source: "discussions",
+    layout: { "text-field": ["get", "label"], "text-font": ["Noto Sans Bold"], "text-size": 12 },
+    paint: { "text-color": ["get", "color"], "text-halo-color": "#0b1016", "text-halo-width": 1.5 },
   });
   map.addLayer({
     id: "focus-line", type: "line", source: "focus",
@@ -91,7 +108,8 @@ export default function MapView() {
   const [err, setErr] = useState<string | null>(null);
   const [legend, setLegend] = useState<Legend>([]);
   const [counts, setCounts] = useState({ stations: 0, pireps: 0 });
-  const [layers, setLayers] = useState<Layers>({ warnings: true, stations: true, pireps: true });
+  const [layers, setLayers] = useState<Layers>({ warnings: true, discussions: true, stations: true, pireps: true });
+  const [nDisc, setNDisc] = useState(0);
   const [inspect, setInspect] = useState<Inspect | null>(null);
   const [sp, setSp] = useSearchParams();
 
@@ -126,6 +144,13 @@ export default function MapView() {
         m.set(p.name, e);
       }
       setLegend([...m.values()].sort((a, b) => b.n - a.n));
+    });
+  }), []);
+
+  const refreshDiscussions = useMemo(() => debounced(() => {
+    api.discussions().then((fc) => {
+      (mapRef.current?.getSource("discussions") as GeoJSONSource | undefined)?.setData(fc);
+      setNDisc(fc.features.length);
     });
   }), []);
 
@@ -190,6 +215,8 @@ export default function MapView() {
                          decoded: typeof p.decoded === "string" ? JSON.parse(p.decoded) : p.decoded } as PirepDecoded });
           }
           const at: [number, number] = [e.lngLat.lng, e.lngLat.lat];
+          const d = hit(["disc-fill"]);
+          if (d.length) return openRef.current({ kind: "product", id: d[0].properties.product_id as number, at });
           const w = hit(["warnings-fill"]);
           if (!w.length) return openRef.current({ kind: "zone", lon: at[0], lat: at[1] });
           const seen = new Map<number, MapGeoJSONFeature>();
@@ -200,7 +227,7 @@ export default function MapView() {
           }));
           openRef.current(items.length === 1 ? { kind: "product", id: items[0].id, at } : { kind: "products", items, at });
         });
-        for (const l of ["stations-dot", "pireps-dot", "warnings-fill"]) {
+        for (const l of ["stations-dot", "pireps-dot", "disc-fill", "warnings-fill"]) {
           map.on("mouseenter", l, () => (map.getCanvas().style.cursor = "pointer"));
           map.on("mouseleave", l, () => (map.getCanvas().style.cursor = ""));
         }
@@ -219,16 +246,19 @@ export default function MapView() {
   useEffect(() => {
     if (!ready) return;
     refreshWarnings();
+    refreshDiscussions();
     refreshObs();
     const t = setInterval(() => {
       refreshWarnings();
+      refreshDiscussions();
       refreshObs();
     }, 60_000);
     return () => clearInterval(t);
-  }, [ready, refreshWarnings, refreshObs]);
+  }, [ready, refreshWarnings, refreshDiscussions, refreshObs]);
   useLiveEvents((e) => {
     if (!ready || e.type !== "product") return;
     if (e.vtec) refreshWarnings();
+    if (e.nnn === "SWO" || e.nnn === "FFG") refreshDiscussions();
     if (e.category === "observation" || e.nnn === "TAF" || e.nnn === "UAB") refreshObs();
   });
 
@@ -313,10 +343,11 @@ export default function MapView() {
       {err && <div className="maperr">Basemap unavailable: {err}</div>}
       <div className="mapside">
         <div className="layers">
-          {(["warnings", "stations", "pireps"] as const).map((k) => (
+          {(["warnings", "discussions", "stations", "pireps"] as const).map((k) => (
             <label key={k}>
               <input type="checkbox" checked={layers[k]} onChange={(e) => setLayers({ ...layers, [k]: e.target.checked })} />
               {k === "warnings" ? `Warnings (${legend.reduce((a, l) => a + l.n, 0)})`
+                : k === "discussions" ? `Mesoscale discussions (${nDisc})`
                 : k === "stations" ? `METAR stations (${counts.stations} in view)` : `PIREPs (${counts.pireps})`}
             </label>
           ))}
