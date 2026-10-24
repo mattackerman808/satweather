@@ -35,7 +35,7 @@ export default function Inspector({ item, onClose, onOpen, onShowProduct, onZone
   return (
     <aside className="inspector">
       <div className="inspector-bar">
-        {item.kind === "product" && <Link to={`/text/${item.id}`}>Open in Text ↗</Link>}
+        {item.kind === "product" && <Link to={`/text/${item.id}`}>Open in Raw ↗</Link>}
         {at && (
           <button className="linkbtn" onClick={() => onOpen({ kind: "zone", lon: at[0], lat: at[1] })}>
             Forecast here

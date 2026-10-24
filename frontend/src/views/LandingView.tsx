@@ -53,7 +53,7 @@ const TABS: { to: string; name: string; body: string }[] = [
   { to: "/radar", name: "Radar & charts", body: "Weather service radar mosaics by region and forecast charts, looped." },
   { to: "/map", name: "Map", body: "Warnings, discussions, airport weather and pilot reports. Click anywhere for that spot's forecast." },
   { to: "/tropical", name: "Tropical & Meso", body: "Active hurricanes with the hurricane center's track and wind radii, outlooks, and where the mesoscale sectors are pointed." },
-  { to: "/text", name: "Text", body: "Every bulletin received, searchable." },
+  { to: "/text", name: "Raw", body: "Every bulletin as it was received, decoded where it can be, and searchable." },
 ];
 
 function since(s?: number): string {

@@ -19,7 +19,7 @@ const NAV = [
   { to: "/map", label: "Map" },
   { to: "/tropical", label: "Tropical & Meso" },
   { to: "/signal", label: "Signal" },
-  { to: "/text", label: "Text" },
+  { to: "/text", label: "Raw" },
 ];
 
 export default function App() {
