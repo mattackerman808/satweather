@@ -179,5 +179,5 @@ def test_station_declutter_by_zoom(db):
     usa = "-130,20,-60,55"
     assert ids(bbox=usa, zoom=3) == ["KLAX"]
     assert ids(bbox=usa, zoom=8) == ["K04V", "KLAX"]
-    # Across the antimeridian: 160°E .. 120°W.
-    assert ids(bbox="160,-50,-120,60", zoom=3) == ["KLAX", "NZAA"]
+    # Across the antimeridian: 160°E .. 110°W (KLAX is at 118.4°W).
+    assert ids(bbox="160,-50,-110,60", zoom=3) == ["KLAX", "NZAA"]
