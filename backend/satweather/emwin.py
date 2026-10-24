@@ -11,7 +11,8 @@ Filenames follow the WMO/EMWIN convention:
     │ │     │   └ WMO issue time DDhhmm
     │ │     └ originating office (CCCC)
     │ └ WMO heading TTAAii
-    └ A_ = text, Z_ = graphic
+    └ A_ or Z_ (Z_ is mostly graphics, but not only: the satellite
+      ephemeris is Z_...TXT), so text vs graphic is the extension
 
 International WMO products (Fiji, Australia, Argentina ...) carry no AWIPS
 line inside the text, which NWS parsers require on line 2; the id in the
@@ -67,7 +68,7 @@ def parse_name(name: str) -> EmwinName | None:
         return None
     return EmwinName(
         name=name,
-        is_text=m["kind"] == "A" and m["ext"].lower() == "txt",
+        is_text=m["ext"].lower() == "txt",
         wmo=m["wmo"],
         cccc=m["cccc"],
         ddhhmm=m["ddhhmm"],

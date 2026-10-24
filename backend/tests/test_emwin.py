@@ -18,6 +18,11 @@ def test_parse_graphic_name():
     assert not n.is_text and n.awips_long == "RADREFUS" and n.ext == "gif"
 
 
+def test_z_prefixed_text_is_text():
+    n = parse_name("Z_NOXX10KWBC241215_C_KWIN_20261024001544_082162-4-EPHTWOUS.TXT")
+    assert n.is_text and n.nnn == "EPH"
+
+
 def test_rejects_other_names():
     assert parse_name("20261023230050-pac24_latestBW.lrit.gif") is None
 
