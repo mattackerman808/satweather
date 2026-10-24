@@ -6,7 +6,7 @@ import time
 from fastapi import FastAPI
 from sqlalchemy import text
 
-from satweather.api import discussions, events, imagery, products, stations, warnings, zones
+from satweather.api import discussions, events, imagery, products, stations, tropical, warnings, zones
 from satweather.config import get_settings
 from satweather.db import get_engine
 
@@ -18,6 +18,7 @@ app.include_router(stations.router)
 app.include_router(imagery.router)
 app.include_router(zones.router)
 app.include_router(discussions.router)
+app.include_router(tropical.router)
 
 
 def _newest_mtime(root, max_entries: int = 5000) -> float | None:

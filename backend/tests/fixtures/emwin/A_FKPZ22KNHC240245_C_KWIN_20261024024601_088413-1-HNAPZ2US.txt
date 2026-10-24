@@ -1,0 +1,36 @@
+FKPZ22 KNHC 240245
+TCAPZ2
+ 
+HURRICANE VANCE ICAO ADVISORY NUMBER  11
+NWS NATIONAL HURRICANE CENTER MIAMI FL       EP222026
+0300 UTC SAT OCT 24 2026
+ 
+TC ADVISORY
+DTG:                      20261024/0300Z
+TCAC:                     KNHC
+TC:                       VANCE
+ADVISORY NR:              2026/011
+OBS PSN:                  24/0300Z N1200 W10236
+MOV:                      NNW 06KT
+INTST CHANGE:             INTSF
+C:                        0965HPA
+MAX WIND:                 095KT
+FCST PSN +3 HR:           24/0600Z N1216 W10239
+FCST MAX WIND +3 HR:      100KT
+FCST PSN +6 HR:           24/0900Z N1231 W10243
+FCST MAX WIND +6 HR:      100KT
+FCST PSN +9 HR:           24/1200Z N1248 W10248
+FCST MAX WIND +9 HR:      105KT
+FCST PSN +15 HR:          24/1800Z N1318 W10257
+FCST MAX WIND +15 HR:     105KT
+FCST PSN +21 HR:          25/0000Z N1348 W10306
+FCST MAX WIND +21 HR:     100KT
+FCST PSN +27 HR:          25/0600Z N1418 W10315
+FCST MAX WIND +27 HR:     095KT
+RMK:                      THE FORECAST POSITION INFORMATION IN
+                          THIS PRODUCT IS INTERPOLATED FROM
+                          OFFICIAL FORECAST DATA VALID AT 0000...
+                          0600...1200...AND 1800Z.
+NXT MSG:                  20261024/0900Z
+ 
+$$

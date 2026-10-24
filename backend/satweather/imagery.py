@@ -289,3 +289,31 @@ def store_image(conn: Connection, rel: str, im: ImageName, size: int, mtime: flo
          "overlay": im.overlay, "t": im.scan_time, "size": size, "mtime": mtime,
          "proj": json.dumps(projection) if projection else None},
     ).rowcount == 1
+
+
+def footprint(proj: dict, steps: int = 8) -> dict | None:
+    """Where a scan's image lies on Earth, from its product.cbor
+    projection (geostationary, GOES sweep): {"center": [lon, lat],
+    "ring": [[lon, lat], ...]}. None if part of it is off the disk."""
+    import math
+
+    from pyproj import Proj
+
+    if proj.get("type") != "geos":
+        return None
+    p = Proj(proj="geos", h=proj["altitude"], lon_0=proj["lon0"], sweep="x" if proj.get("sweep_x", True) else "y",
+             ellps="GRS80")
+    w, h = proj["width"], proj["height"]
+
+    def ll(col: float, row: float) -> list[float] | None:
+        lon, lat = p(proj["offset_x"] + col * proj["scalar_x"], proj["offset_y"] + row * proj["scalar_y"],
+                     inverse=True)
+        return [round(lon, 4), round(lat, 4)] if math.isfinite(lon) and abs(lon) <= 360 else None
+
+    edge = [(w * i / steps, 0) for i in range(steps)] + [(w, h * i / steps) for i in range(steps)] \
+        + [(w - w * i / steps, h) for i in range(steps)] + [(0, h - h * i / steps) for i in range(steps)]
+    ring = [ll(c, r) for c, r in edge]
+    center = ll(w / 2, h / 2)
+    if center is None or any(pt is None for pt in ring):
+        return None
+    return {"center": center, "ring": ring + [ring[0]]}

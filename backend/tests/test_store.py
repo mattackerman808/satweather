@@ -553,3 +553,42 @@ def test_places_search_and_brief_zone(db):
     assert labels(q="Oakland", near="-84,42")[0] == ("zone", "Oakland")
     assert labels(q="oak")[0] == ("station", "KOAK · Metro Oakland Intl")  # the FAA id, exactly
     assert labels(q="Daly")[0] == ("city", "Daly City, XX")
+
+
+def test_tropical_active_and_outlooks(db, tmp_path):
+    """TCM/TCP/TWO through ingest -> tc_advisory and storm ids -> the API,
+    with a meso sector footprint over the storm."""
+    import json as _json
+
+    from fastapi.testclient import TestClient
+
+    from satweather import ingest
+    from satweather.api.app import app
+
+    names = [*FIX.glob("*-HEFZ22US.txt"), *FIX.glob("*-HEPZ32US.txt"), *FIX.glob("*-HEDZ42US.txt"),
+             *FIX.glob("A_ABPZ20KNHC240525*")]
+    assert _ingest(names, tmp_path) == {"ok": 4}
+    proj = {"type": "geos", "altitude": 35786023.0, "lon0": -137.0, "sweep_x": True, "width": 2000, "height": 2000,
+            "offset_x": 3332000.0, "offset_y": 1902000.0, "scalar_x": 501.004322, "scalar_y": -501.004322}
+    with db.begin() as conn:
+        # The fixtures are from 2026-10-24; make them current.
+        conn.execute(text("UPDATE tc_advisory SET issued = now() - interval '1 hour'"))
+        conn.execute(text("UPDATE text_product SET received = now() - interval '1 hour'"))
+        conn.execute(text(
+            "INSERT INTO image_frame (path, source, sector, product, kind, scan_time, size, mtime, projection, status)"
+            " VALUES ('m1', 'GOES-18', 'Mesoscale 1', '13', 'band', now(), 1, now(), CAST(:p AS jsonb), 'ok')"),
+            {"p": _json.dumps(proj)})
+        assert conn.execute(text("SELECT count(*) FROM text_product WHERE storm_id = 'EP222026'")).scalar() == 3
+    c = TestClient(app)
+    d = c.get("/api/tropical/active").json()
+    (s,) = d["storms"]
+    assert (s["name"], s["kind"], s["number"], s["category"], s["wind_kt"], s["pressure_mb"]) == \
+        ("Vance", "Hurricane", "11", "2", 95, 965)
+    assert [(p["lat"], p["lon"]) for p in s["track"]] == [(11.7, -102.4), (12.0, -102.6)]  # previous, current
+    assert len(s["forecast"]) == 8 and s["forecast"][0]["category"] == "3"
+    assert [a["kt"] for a in s["radii_areas"]] == ["34", "50", "64"]
+    assert {p["nnn"] for p in s["products"]} == {"TCM", "TCP", "TCD"}
+    assert s["meso"] == ["Mesoscale 1"] and d["sectors"][0]["sector"] == "Mesoscale 1"
+    o = c.get("/api/tropical/outlooks").json()
+    assert [(x["basin"], [a["chance_7d"] for a in x["areas"]]) for x in o] == [("Eastern Pacific", [20])]
+    assert c.get("/api/tropical/storm/ep222026").json()["history"][0]["wind_kt"] == 95

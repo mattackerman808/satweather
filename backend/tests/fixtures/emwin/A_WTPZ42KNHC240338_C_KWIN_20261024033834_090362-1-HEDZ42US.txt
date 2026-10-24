@@ -1,0 +1,80 @@
+WTPZ42 KNHC 240338
+TCDEP2
+ 
+Hurricane Vance Discussion Number  11
+NWS National Hurricane Center Miami FL       EP222026
+900 PM CST Fri Oct 23 2026
+ 
+Correction: Updated to emphasize that Vance briefly reached major 
+hurricane intensity earlier this evening before weakening to 
+Category 2 strength.
+ 
+Satellite imagery indicates that Vance became better organized 
+earlier this evening, with cloud-top temperatures cooling and deep 
+convection expanding around a warming eye. However, the eye has 
+become less distinct during the past hour or two, with some warming 
+of the cloud tops in the eyewall, possibly due to moderate southerly 
+vertical wind shear. The subjective Dvorak intensity estimate from 
+TAFB was T5.5/102 kt, although recent objective intensity estimates 
+have trended downward toward 95 kt. Vance briefly reached major 
+hurricane intensity earlier this evening before the recent 
+deterioration in its satellite presentation. Given the recent 
+degradation in satellite presentation and the latest objective 
+estimates, the initial intensity is set at 95 kt.
+ 
+Vance is moving north-northwestward, or 345/6 kt. This general 
+motion is expected to continue during the next couple of days as a 
+broad mid- to upper-level trough evolves over the western portion of 
+the United States, weakening the subtropical ridge over Mexico. 
+Although the track guidance remains in relatively good agreement 
+through 24 to 36 h, forecast confidence decreases thereafter as the 
+trough shifts eastward and Vance enters a region of weaker steering 
+currents. Significant cross-track spread persists among the guidance 
+solutions, partly due to differences in how well Vance maintains its 
+vertical structure as increasing shear affects the cyclone. A 
+weaker, more vertically tilted system could be steered farther 
+westward, while a stronger, vertically coupled hurricane would be 
+more likely to continue northward toward the southwestern or 
+west-central coast of Mexico. Given these persistent differences, 
+the NHC track forecast remains largely unchanged from the previous, 
+lying close to the HCCA and GDMI aids.
+ 
+Vance may have reached its peak intensity earlier this evening after
+rapidly intensifying from 60 to 100 kt over the preceding 24 h.
+Although some additional strengthening is possible in the short
+term, recent satellite trends suggest that the hurricane may be
+beginning to feel the effects of a less favorable environment.
+Cooler sea surface temperatures associated with the wakes of recent
+tropical cyclones have reduced the ocean heat content along portions
+of Vance's forecast track. These cooler waters, combined with
+increasing vertical wind shear, should contribute to a weakening
+trend during the next day or two. However, the magnitude of
+weakening remains uncertain and will depend partly on how long Vance
+remains over the cooler waters. The aforementioned differences in
+the track guidance have also contributed to considerable spread
+among the intensity solutions, with the possibility of more
+substantial weakening than currently forecast. Vance could move
+beyond the cooler waters after 48 h, allowing for some
+restrengthening. Thereafter, increasing vertical wind shear,
+decreasing mid-level moisture, and possible land interaction should
+lead to another weakening trend late in the forecast period. The NHC
+intensity forecast remains similar to the previous prediction and
+lies near the upper end of the guidance envelope through much of the
+forecast period.
+ 
+ 
+FORECAST POSITIONS AND MAX WINDS
+ 
+INIT  24/0300Z 12.0N 102.6W   95 KT 110 MPH
+ 12H  24/1200Z 12.8N 102.8W  105 KT 120 MPH
+ 24H  25/0000Z 13.8N 103.1W  100 KT 115 MPH
+ 36H  25/1200Z 14.8N 103.4W   90 KT 105 MPH
+ 48H  26/0000Z 15.8N 103.8W   85 KT 100 MPH
+ 60H  26/1200Z 16.3N 104.0W   90 KT 105 MPH
+ 72H  27/0000Z 16.8N 104.2W   95 KT 110 MPH
+ 96H  28/0000Z 17.6N 104.3W   85 KT 100 MPH
+120H  29/0000Z 18.4N 104.4W   70 KT  80 MPH
+ 
+$$
+Forecaster Pierce/Gibbs
+ 

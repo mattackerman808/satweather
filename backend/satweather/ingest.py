@@ -125,8 +125,9 @@ def scan(dirs: list[Path], seen: set[str], settle_s: float = SETTLE_S) -> dict[s
 
 
 def redecode() -> dict[str, int]:
-    """Fill decoded METAR fields, TAFs and PIREPs for products stored
-    before those decoders existed. Idempotent: inserts ignore duplicates."""
+    """Fill decoded METAR fields, TAFs and PIREPs, and tropical advisory
+    numbers, for products stored before those decoders existed.
+    Idempotent: inserts ignore or update duplicates."""
     from satweather.reports import PIREP_NNN, TAF_NNN, extract, metar
     from satweather.store import store_reports
 
@@ -152,6 +153,14 @@ def redecode() -> dict[str, int]:
             with engine.begin() as conn:
                 store_reports(conn, pid, reps)
             counts["products"] += 1
+    # Tropical advisory packages: storm ids and TCM numbers.
+    from satweather.tropical import STORM_NNN, store_tropical
+
+    with engine.begin() as conn:
+        for pid, nnn, raw in conn.execute(text("SELECT id, nnn, raw FROM text_product WHERE nnn = ANY(:n)"),
+                                          {"n": sorted(STORM_NNN)}).all():
+            store_tropical(conn, pid, nnn, raw)
+            counts["tropical"] = counts.get("tropical", 0) + 1
     return counts
 
 
