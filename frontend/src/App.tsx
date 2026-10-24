@@ -18,8 +18,8 @@ const NAV = [
   { to: "/radar", label: "Radar & charts" },
   { to: "/map", label: "Map" },
   { to: "/tropical", label: "Tropical & Meso" },
-  { to: "/signal", label: "Signal" },
   { to: "/text", label: "Raw" },
+  { to: "/signal", label: "Signal" },
 ];
 
 export default function App() {
