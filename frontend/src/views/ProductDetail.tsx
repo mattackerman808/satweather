@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 import { api, fmtTime, type ProductDetail as PD } from "../api";
+import { ReportList } from "../wx/Wx";
 
 const ACTION: Record<string, string> = {
   NEW: "Issued", CON: "Continued", EXT: "Extended", EXA: "Extended (area)", EXB: "Extended (area+time)",
   UPG: "Upgraded", CAN: "Cancelled", EXP: "Expired", COR: "Corrected", ROU: "Routine",
 };
 
-export default function ProductDetail({ id }: { id: number }) {
+// `embedded`: shown inside the map's inspector, where links must not
+// navigate away from the map.
+export default function ProductDetail({ id, embedded = false, onShowOnMap }:
+  { id: number; embedded?: boolean; onShowOnMap?: () => void }) {
   const [p, setP] = useState<PD | null>(null);
   const [err, setErr] = useState<string | null>(null);
 
@@ -59,9 +63,13 @@ export default function ProductDetail({ id }: { id: number }) {
               ))}
               {s.places.length > 0 && (
                 <div className="places">
-                  {s.places.map((z) => (
-                    <Link key={z.ugc} to={`/text?ugc=${z.ugc}`} title={z.ugc}>{z.name}</Link>
-                  ))}
+                  {s.places.map((z) =>
+                    embedded ? (
+                      <span key={z.ugc} title={z.ugc}>{z.name}</span>
+                    ) : (
+                      <Link key={z.ugc} to={`/text?ugc=${z.ugc}`} title={z.ugc}>{z.name}</Link>
+                    ),
+                  )}
                 </div>
               )}
               {!s.places.length && s.ugcs.length > 0 && <div className="places dim">{s.ugcs.join(" ")}</div>}
@@ -73,12 +81,18 @@ export default function ProductDetail({ id }: { id: number }) {
                 {s.tags.tornado && <span>tornado {String(s.tags.tornado)}</span>}
                 {s.tags.emergency && <span className="urgent">EMERGENCY</span>}
                 {s.tags.pds && <span className="urgent">PDS</span>}
-                {s.polygon && <Link to={`/map?product=${p.id}`}>show on map</Link>}
+                {s.polygon && (embedded ? (
+                  <button className="linkbtn" onClick={onShowOnMap}>zoom to polygon</button>
+                ) : (
+                  <Link to={`/map?product=${p.id}`}>show on map</Link>
+                ))}
               </div>
             </section>
           ))}
 
-      {p.parse_error && <div className="parsenote">Shown as received: {p.parse_error}</div>}
+      {p.reports.length > 0 && <ReportList reports={p.reports} />}
+
+      {p.parse_error && !p.reports.length && <div className="parsenote">Shown as received: {p.parse_error}</div>}
 
       <div className="rawbar">
         <span>Full text</span>

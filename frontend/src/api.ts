@@ -52,6 +52,33 @@ export type ProductDetail = ProductSummary & {
   segments: Segment[];
   vtec: Vtec[];
   metar_count: number;
+  reports: Report[];
+};
+
+export type Group = { group: string; meaning: string };
+export type WxSummary = { ceiling?: string; visibility?: string; flight_category?: string; weather?: string[] };
+export type MetarDecoded = { type: string; station?: string; decoded: Group[]; summary: WxSummary;
+  remarks?: Group[]; not_decoded?: string[] };
+export type TafPeriod = { group: string; when: string; decoded: Group[]; summary: WxSummary };
+export type TafDecoded = { type: "TAF"; station?: string; header: Group[]; periods: TafPeriod[];
+  not_decoded?: string[]; note?: string;
+  at?: { time: string; prevailing: { group: string; when: string; summary: WxSummary } | null;
+         also_possible: { group: string; when: string; summary: WxSummary }[] } };
+export type PirepDecoded = { type: "PIREP"; station?: string; decoded: Group[]; note?: string; not_decoded?: string[] };
+
+export type Report = { kind: "METAR" | "TAF" | "PIREP"; station: string | null; time: string | null; raw: string;
+  flight_category: string | null; decoded: MetarDecoded | TafDecoded | PirepDecoded | null };
+
+export type StationMetar = { valid: string; kind: string; raw: string; flight_category: string | null;
+  decoded: MetarDecoded | null; temp_c: number | null; dewpoint_c: number | null; wind_dir: number | null;
+  wind_kt: number | null; gust_kt: number | null; vis_mi: number | null; altimeter_in: number | null;
+  product_id: number };
+export type StationDetail = {
+  station: { id: string; icao?: string; faa?: string; name?: string; state?: string; country?: string;
+             elev_m?: number; lon?: number; lat?: number };
+  metars: StationMetar[];
+  taf: null | { issued: string | null; valid_from: string | null; valid_to: string | null; raw: string;
+                product_id: number; current: boolean; decoded: TafDecoded };
 };
 
 export type ProductType = { nnn: string; name: string; category: string; n: number; last: string };
@@ -76,6 +103,9 @@ export const api = {
     get<Page>("/api/products", { ...f, limit, before: cursor?.before, before_id: cursor?.before_id }),
   product: (id: number) => get<ProductDetail>(`/api/products/${id}`),
   warnings: () => get<GeoJSON.FeatureCollection>("/api/warnings/active"),
+  stations: (hours = 3) => get<GeoJSON.FeatureCollection>("/api/stations/latest", { hours }),
+  station: (id: string) => get<StationDetail>(`/api/stations/${encodeURIComponent(id)}`),
+  pireps: (hours = 3) => get<GeoJSON.FeatureCollection>("/api/pireps/recent", { hours }),
 };
 
 // "23:54Z · 4:54 PM PDT"

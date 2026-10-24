@@ -138,6 +138,25 @@ def get_product(pid: int) -> dict:
         metars = conn.execute(
             text("SELECT count(*) FROM metar WHERE product_id = :id"), {"id": pid}
         ).scalar()
+        # Decoded reports inside a collective, for METAR/TAF/PIREP products.
+        reports = [dict(r) for r in conn.execute(
+            text(
+                """
+                SELECT 'METAR' AS kind, station, valid AS time, raw, flight_category, decoded
+                FROM metar WHERE product_id = :id
+                UNION ALL
+                SELECT 'TAF', station, issued, raw,
+                       decoded->'periods'->0->'summary'->>'flight_category', decoded
+                FROM taf WHERE product_id = :id
+                UNION ALL
+                SELECT 'PIREP', station, observed, raw, NULL, decoded
+                FROM pirep WHERE product_id = :id
+                ORDER BY station
+                LIMIT 300
+                """
+            ),
+            {"id": pid},
+        ).mappings()]
 
     from satweather.api.warnings import vtec_label
 
@@ -153,4 +172,5 @@ def get_product(pid: int) -> dict:
     ]
     out["vtec"] = [{**dict(v), **vtec_label(v["phenomena"], v["significance"])} for v in vtec]
     out["metar_count"] = metars
+    out["reports"] = reports
     return out

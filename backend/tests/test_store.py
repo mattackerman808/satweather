@@ -112,3 +112,39 @@ def test_warning_state_follows_vtec(db, tmp_path):
         conn.execute(text("UPDATE vtec_ugc_state SET action = 'CAN'"))
     warnings._cache = None
     assert TestClient(app).get("/api/warnings/active").json()["features"] == []
+
+
+def test_stations_tafs_and_pireps(db, tmp_path):
+    """METAR/TAF/PIREP products -> decoded rows -> station + PIREP APIs."""
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+
+    with db.begin() as conn:
+        conn.execute(text(
+            "INSERT INTO station (id, icao, faa, name, geom) VALUES"
+            " ('KBRL', 'KBRL', 'BRL', 'Burlington', ST_SetSRID(ST_MakePoint(-91.1, 40.8), 4326)),"
+            " ('KBFL', 'KBFL', 'BFL', 'Bakersfield', ST_SetSRID(ST_MakePoint(-119.05, 35.43), 4326))"))
+    _ingest([*FIX.glob("A_FTUS*TAF*"), *FIX.glob("*-UABA90*"), *FIX.glob("*-SAHOURLY*")], tmp_path)
+    with db.connect() as conn:
+        assert conn.execute(text("SELECT count(*) FROM taf")).scalar() > 10
+        assert conn.execute(text("SELECT count(*) FROM metar WHERE decoded IS NOT NULL")).scalar() > 0
+        bfl = conn.execute(text("SELECT hazards, geom IS NOT NULL FROM pirep WHERE station = 'BFL'")).one()
+    assert bfl == (["IC"], True)
+    c = TestClient(app)
+    s = c.get("/api/stations/KBRL").json()
+    assert s["taf"]["decoded"]["station"] == "KBRL"
+    assert s["taf"]["decoded"]["periods"]
+    d = c.get(f"/api/products/{c.get('/api/products', params={'nnn': 'TAF'}).json()['items'][0]['id']}").json()
+    assert {r["kind"] for r in d["reports"]} == {"TAF"} and len(d["reports"]) > 10
+
+
+def test_redecode_backfills(db, tmp_path):
+    from satweather import ingest
+
+    _ingest(list(FIX.glob("*-UABA90*")), tmp_path)
+    with db.begin() as conn:
+        conn.execute(text("DELETE FROM pirep"))
+    assert ingest.redecode()["products"] >= 1
+    with db.connect() as conn:
+        assert conn.execute(text("SELECT count(*) FROM pirep")).scalar() == 2

@@ -17,6 +17,7 @@ error and not retried, so one bad product cannot wedge the loop.
 from __future__ import annotations
 
 import argparse
+import json
 import logging
 import os
 import signal
@@ -117,14 +118,50 @@ def scan(dirs: list[Path], seen: set[str], settle_s: float = SETTLE_S) -> dict[s
     return counts
 
 
+def redecode() -> dict[str, int]:
+    """Fill decoded METAR fields, TAFs and PIREPs for products stored
+    before those decoders existed. Idempotent: inserts ignore duplicates."""
+    from satweather.reports import PIREP_NNN, TAF_NNN, extract, metar
+    from satweather.store import store_reports
+
+    counts = {"metar": 0, "products": 0}
+    engine = get_engine()
+    with engine.begin() as conn:
+        for mid, raw in conn.execute(text("SELECT id, raw FROM metar WHERE decoded IS NULL")).all():
+            try:
+                d, cat = metar(raw)
+            except Exception:
+                continue
+            conn.execute(text("UPDATE metar SET decoded = CAST(:d AS jsonb), flight_category = :c WHERE id = :i"),
+                         {"d": json.dumps(d), "c": cat, "i": mid})
+            counts["metar"] += 1
+    rows = engine.connect().execute(
+        text("SELECT id, nnn, raw, received FROM text_product WHERE nnn = ANY(:n) OR raw LIKE '% UA /OV%'"),
+        {"n": sorted(TAF_NNN | PIREP_NNN)},
+    ).all()
+    for pid, nnn, raw, received in rows:
+        reps = extract(nnn, raw, received)
+        if reps:
+            with engine.begin() as conn:
+                store_reports(conn, pid, reps)
+            counts["products"] += 1
+    return counts
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(prog="satweather-ingest")
     ap.add_argument("--once", action="store_true", help="one scan, then exit")
     ap.add_argument("--backfill", action="store_true", help="also walk EMWIN/archive/*/ (implies --once)")
+    ap.add_argument("--redecode", action="store_true",
+                    help="re-run the METAR/TAF/PIREP decoders over stored products, then exit")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
     signal.signal(signal.SIGTERM, _handle_stop)
     signal.signal(signal.SIGINT, _handle_stop)
+
+    if args.redecode:
+        log.info("redecode: %s", redecode())
+        return
 
     emwin = get_settings().data_root / "EMWIN"
     with get_engine().connect() as conn:

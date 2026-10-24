@@ -13,6 +13,7 @@ from sqlalchemy import Connection, text
 
 from satweather.emwin import EmwinName
 from satweather.parse import Parsed
+from satweather.reports import metar as decode_metar
 
 CHANNEL = "satweather"
 
@@ -159,12 +160,17 @@ def store_text(conn: Connection, *, name: str, size: int, mtime: float, en: Emwi
                 )
 
     for m in parsed.metars:
+        try:
+            decoded, cat = decode_metar(m.raw)
+        except Exception:
+            decoded, cat = None, None
         conn.execute(
             text(
                 """
                 INSERT INTO metar (product_id, station, valid, kind, raw, temp_c, dewpoint_c, wind_dir,
-                                   wind_kt, gust_kt, vis_mi, altimeter_in)
-                VALUES (:pid, :station, :valid, :kind, :raw, :t, :td, :wd, :ws, :wg, :vis, :alt)
+                                   wind_kt, gust_kt, vis_mi, altimeter_in, decoded, flight_category)
+                VALUES (:pid, :station, :valid, :kind, :raw, :t, :td, :wd, :ws, :wg, :vis, :alt,
+                        CAST(:dec AS jsonb), :cat)
                 ON CONFLICT (station, valid, kind) DO NOTHING
                 """
             ),
@@ -172,8 +178,11 @@ def store_text(conn: Connection, *, name: str, size: int, mtime: float, en: Emwi
                 "pid": pid, "station": m.station, "valid": m.valid.replace(tzinfo=UTC) if m.valid.tzinfo is None
                 else m.valid, "kind": m.kind, "raw": m.raw, "t": m.temp_c, "td": m.dewpoint_c,
                 "wd": m.wind_dir, "ws": m.wind_kt, "wg": m.gust_kt, "vis": m.vis_mi, "alt": m.altimeter_in,
+                "dec": json.dumps(decoded) if decoded else None, "cat": cat,
             },
         )
+
+    store_reports(conn, pid, parsed.reports)
 
     notify(conn, {
         "type": "product", "id": pid, "nnn": parsed.nnn, "awips": parsed.afos, "office": parsed.office,
@@ -181,3 +190,34 @@ def store_text(conn: Connection, *, name: str, size: int, mtime: float, en: Emwi
         "priority": en.priority, "vtec": any(s.vtec for s in parsed.segments),
     })
     return sid
+
+
+def store_reports(conn: Connection, pid: int, reports) -> None:
+    for r in reports:
+        if r.kind == "TAF" and r.station:
+            conn.execute(
+                text(
+                    """
+                    INSERT INTO taf (product_id, station, issued, valid_from, valid_to, raw, decoded)
+                    VALUES (:pid, :st, :iss, :vf, :vt, :raw, CAST(:dec AS jsonb))
+                    ON CONFLICT (station, issued, raw) DO NOTHING
+                    """
+                ),
+                {"pid": pid, "st": r.station, "iss": r.issued, "vf": r.valid_from, "vt": r.valid_to,
+                 "raw": r.raw, "dec": json.dumps(r.decoded)},
+            )
+        elif r.kind == "PIREP":
+            # Placed at the filing station (an FAA id such as BFL), so approx.
+            conn.execute(
+                text(
+                    """
+                    INSERT INTO pirep (product_id, station, observed, urgent, hazards, raw, decoded, geom)
+                    VALUES (:pid, :st, :obs, :urg, :hz, :raw, CAST(:dec AS jsonb),
+                            (SELECT geom FROM station WHERE faa = :st OR id = :st OR id = 'K' || :st
+                             ORDER BY (faa = :st) DESC LIMIT 1))
+                    ON CONFLICT (raw) DO NOTHING
+                    """
+                ),
+                {"pid": pid, "st": r.station, "obs": r.issued, "urg": r.urgent, "hz": r.hazards,
+                 "raw": r.raw, "dec": json.dumps(r.decoded)},
+            )
