@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router";
-import maplibregl, { type GeoJSONSource, type MapGeoJSONFeature } from "maplibre-gl";
+import * as maplibregl from "maplibre-gl";
+import type { GeoJSONSource, MapGeoJSONFeature } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { basemapStyle } from "../map/basemap";
 import { api, type PirepDecoded } from "../api";
@@ -177,7 +178,9 @@ export default function MapView() {
           if (pr.length) {
             const p = pr[0].properties;
             return openRef.current({ kind: "pirep", raw: p.raw, time: p.observed,
-              decoded: { type: "PIREP", station: p.station, decoded: JSON.parse(p.decoded) } as PirepDecoded });
+              // maplibre 6 keeps nested GeoJSON properties as objects (5 gave a JSON string).
+              decoded: { type: "PIREP", station: p.station,
+                         decoded: typeof p.decoded === "string" ? JSON.parse(p.decoded) : p.decoded } as PirepDecoded });
           }
           const w = hit(["warnings-fill"]);
           if (!w.length) return;

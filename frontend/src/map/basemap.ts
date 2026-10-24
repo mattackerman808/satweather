@@ -1,5 +1,13 @@
-import maplibregl, { type StyleSpecification, type LayerSpecification } from "maplibre-gl";
+// maplibre-gl 6 is ESM-only, with no default export.
+import * as maplibregl from "maplibre-gl";
+import type { LayerSpecification, StyleSpecification } from "maplibre-gl";
+// Bundled builds must say where maplibre's worker is: v6 loads it as its own
+// module, and import.meta.url does not find it inside Vite's bundle. Without
+// this the map draws its basemap but no GeoJSON layer ever loads.
+import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import { Protocol } from "pmtiles";
+
+maplibregl.setWorkerUrl(workerUrl);
 
 // Basemap: swiftcamp's Protomaps archives on R2, read by HTTP range requests
 // through the pmtiles protocol. No tile server. Archive names carry build
