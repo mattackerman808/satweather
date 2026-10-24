@@ -48,12 +48,13 @@ Every push to `main` builds `satweather_<yy.m.d.run>_all.deb` in CI (`.github/wo
 
 ## Architecture
 
-Four processes share one PostgreSQL/PostGIS database:
+Four processes (plus a timer) share one PostgreSQL/PostGIS database:
 
 1. **`satweather-ingest`** (`ingest.py`) polls `EMWIN/` (NFS has no cross-client inotify) and ingests files only once they have *settled* (non-empty, unmodified for `SETTLE_S`) — SatDump creates files empty before filling them. One transaction per file; a failing file is recorded with its error and never retried. The same loop catalogs satellite PNGs and LRIT charts under `IMAGES/` (`imagery.Scanner`), and each EMWIN graphic as it is ingested (radar mosaics `RADxxxxx`, NWS maps; `imagery.from_emwin`), into `image_frame` as `pending`. `image_frame.source` is the satellite or `NWS`; `--graphics-backfill DAYS` catalogs EMWIN graphics ingested earlier.
 2. **`satweather-imaging`** (`imaging.py`) claims pending `image_frame` rows newest-first with `FOR UPDATE SKIP LOCKED` (the row is the job; a crash rolls the claim back) and writes WebP display copies (≤2048 px) + thumbnails with pyvips into `media_root`, served by Apache at `/media`. Originals byte-identical to an earlier one of the same product become `dup` (LRIT charts are re-sent hourly); EMWIN originals are found in rtl's archive once moved (`imaging.locate`). Needs libvips from apt (salt); its unit is memory-capped.
 3. **FastAPI** (`api/app.py`, uvicorn on 127.0.0.1:8400). Apache serves the built frontend and proxies `/api`.
-4. **`satweather-refdata`** loads NWS zone/county shapefiles (discovered by date-coded name from weather.gov/gis, simplified on load) and the global station list from aviationweather.gov. UGC codes and station IDs only become map geometry via these tables.
+4. **`satweather-housekeep`** (`housekeeping.py`, oneshot every 10 min) is the only thing that moves or deletes on the share; rtl only writes (unas exports it all_squash, so every client's files are 977:988). It archives EMWIN files older than `emwin_archive_hours` to `EMWIN/archive/<UTC date of mtime>/` (only ones ingest has recorded), deletes originals older than `keep_originals_days` (0 = keep forever; only SatDump scan dirs, LRIT charts and archive days whose names parse), and drops `image_frame` rows + WebPs older than `keep_copies_days`. `--dry-run` reports only. Its unit is the only one with the share in `ReadWritePaths`.
+5. **`satweather-refdata`** loads NWS zone/county shapefiles (discovered by date-coded name from weather.gov/gis, simplified on load) and the global station list from aviationweather.gov. UGC codes and station IDs only become map geometry via these tables.
 
 Ingest pipeline: `emwin.py` (filename grammar → `EmwinName`; text normalization, latin-1, injected AWIPS line for international products) → `parse.py` (pyiem NWS parsers → `Parsed`) → `reports.py` (splits `=`-terminated METAR/TAF/PIREP collectives and decodes each with `wxdecode`) → `store.py` (inserts + `pg_notify('satweather', …)` inside the same transaction). `catalog.py` maps AWIPS NNN codes to human names and UI categories; unlisted types still ingest under "other".
 

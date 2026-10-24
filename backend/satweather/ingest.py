@@ -6,7 +6,7 @@ seen that has *settled*: non-empty and not modified for SETTLE_S. satdump
 creates files before it fills them, so a fresh 0-byte file is normal and
 must not be ingested yet.
 
-rtl's archiver moves files out of EMWIN/ after a few hours, which keeps
+satweather-housekeep moves files out of EMWIN/ after a few hours, which keeps
 the listing small. The same loop catalogs satellite images under IMAGES/
 (satweather.imagery) for satweather-imaging to convert. `--backfill` also walks EMWIN/archive/*/, for catching
 up after this service was down longer than that.
@@ -156,7 +156,7 @@ def redecode() -> dict[str, int]:
 
 def graphics_backfill(days: int) -> int:
     """Catalog EMWIN graphics ingested before image_frame existed, from
-    rtl's archive, so radar loops have history from the start."""
+    the EMWIN archive, so radar loops have history from the start."""
     from satweather.emwin import archived_path
 
     root = get_settings().data_root
@@ -181,7 +181,7 @@ def main() -> None:
     ap.add_argument("--once", action="store_true", help="one scan, then exit")
     ap.add_argument("--backfill", action="store_true", help="also walk EMWIN/archive/*/ (implies --once)")
     ap.add_argument("--graphics-backfill", type=int, metavar="DAYS",
-                    help="catalog EMWIN graphics from the last DAYS in rtl's archive for imaging, then exit")
+                    help="catalog EMWIN graphics from the last DAYS (live or archived) for imaging, then exit")
     ap.add_argument("--redecode", action="store_true",
                     help="re-run the METAR/TAF/PIREP decoders over stored products, then exit")
     args = ap.parse_args()

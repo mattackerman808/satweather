@@ -10,7 +10,7 @@ Copies go to <media_root>/sat/<source>/<sector>/<scan>/<product>.webp
 Apache never serves half a file. An original byte-identical to one
 already made for the same product is marked dup (LRIT charts are re-sent
 hourly unchanged) and gets no copies. EMWIN graphics are looked for in
-rtl's archive once moved there; an original the share has pruned is
+the EMWIN archive once moved there; an original the share has pruned is
 marked gone; any other failure is recorded and not retried.
 """
 
@@ -57,7 +57,7 @@ def media_rel(source: str, sector: str, scan_time, product: str, overlay: bool) 
 
 
 def locate(data_root: Path, rel: str, mtime) -> Path | None:
-    """The original, wherever it is now: EMWIN files move to rtl's archive
+    """The original, wherever it is now: EMWIN files move to the archive
     a few hours after they arrive."""
     src = data_root / rel
     if src.exists():

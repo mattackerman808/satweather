@@ -18,7 +18,7 @@ International WMO products (Fiji, Australia, Argentina ...) carry no AWIPS
 line inside the text, which NWS parsers require on line 2; the id in the
 filename stands in for it.
 
-rtl moves files older than a few hours from EMWIN/ into
+satweather-housekeep moves files older than a few hours from EMWIN/ into
 EMWIN/archive/<UTC date of mtime>/ so the live directory stays small; see
 archived_path().
 """
@@ -95,6 +95,6 @@ def normalize(raw: bytes, name: EmwinName) -> str:
 
 
 def archived_path(name: str, mtime: float) -> PurePosixPath:
-    """Where rtl's archiver moves a file: EMWIN/archive/<UTC date of mtime>/name."""
+    """Where satweather-housekeep archives a file: EMWIN/archive/<UTC date of mtime>/name."""
     day = datetime.fromtimestamp(mtime, UTC).strftime("%Y-%m-%d")
     return PurePosixPath("EMWIN", "archive", day, name)

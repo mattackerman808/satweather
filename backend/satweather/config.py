@@ -16,10 +16,18 @@ class Settings(BaseSettings):
 
     # postgresql+psycopg://satweather:<pw>@127.0.0.1/satweather
     database_url: str = "postgresql+psycopg:///satweather"
-    # Where satdump writes on rtl, seen here through the read-only NFS mount.
+    # Where satdump writes on rtl, seen here through the NFS mount.
     data_root: Path = Path("/mnt/satImages/goes-hrit")
     # Derived images (web-sized copies, thumbnails, map tiles). Local disk.
     media_root: Path = Path("/srv/satweather/media")
+    # Housekeeping (satweather-housekeep). satweather is the only thing that
+    # moves or deletes on the share; rtl only writes.
+    # EMWIN files older than this move to EMWIN/archive/<UTC date>/.
+    emwin_archive_hours: float = 3
+    # Originals on the share (IMAGES/, L2/, EMWIN/archive/); 0 keeps them forever.
+    keep_originals_days: int = 0
+    # Web copies in media_root and their image_frame rows.
+    keep_copies_days: int = 30
 
 
 @lru_cache

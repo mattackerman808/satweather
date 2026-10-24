@@ -127,6 +127,18 @@ def parse_path(rel: str) -> ImageName | None:
     return None
 
 
+def scan_dir_time(name: str) -> datetime | None:
+    """UTC start of the scan a SatDump directory holds, from its name."""
+    m = _SCAN_DIR.match(name)
+    return datetime(*(int(x) for x in m.groups()), tzinfo=UTC) if m else None
+
+
+def lrit_time(name: str) -> datetime | None:
+    """When an LRIT chart (IMAGES/NWS/) was received, from its name."""
+    m = _LRIT.match(name)
+    return datetime(*(int(x) for x in m.groups()[:6]), tzinfo=UTC) if m else None
+
+
 def from_emwin(awips: str, received: datetime) -> ImageName:
     """An EMWIN graphic (awips as in the filename, e.g. RADREFUS)."""
     return ImageName(NWS, "Radar" if awips.startswith("RAD") else "Charts", received, awips, "graphic", False)

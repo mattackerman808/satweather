@@ -7,6 +7,7 @@ is rebuilt from the migrations for every run.
 
 import os
 import shutil
+import time
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -285,3 +286,74 @@ def test_emwin_graphics_archive_and_dups(db, tmp_path, monkeypatch):
         st = dict(conn.execute(text("SELECT path, status FROM image_frame")).all())
     # Newest first: the 04:22 copy is made, the archived 03:22 one is its dup.
     assert st == {f"EMWIN/{names[1]}": "ok", f"EMWIN/{names[0]}": "dup"}
+
+
+def test_housekeeping(db, tmp_path):
+    """Archive only old, ingested EMWIN files; delete only old originals
+    whose names parse; drop old copies with their rows."""
+    from datetime import timedelta
+
+    from satweather import housekeeping as hk
+    from satweather.emwin import archived_path
+
+    emwin = tmp_path / "EMWIN"
+    emwin.mkdir()
+    old = time.time() - 5 * 3600
+    names = {"ingested": "A_PNUS71KWBC240322_C_KWIN_20261024032200_000001-2-RADPACSW.GIF",
+             "unseen": "A_PNUS71KWBC240323_C_KWIN_20261024032300_000002-2-RADPACNW.GIF",
+             "fresh": "A_PNUS71KWBC240324_C_KWIN_20261024032400_000003-2-RADREFUS.GIF"}
+    for k, n in names.items():
+        (emwin / n).write_bytes(b"x")
+        if k != "fresh":
+            os.utime(emwin / n, (old, old))
+    with db.begin() as conn:
+        for k in ("ingested", "fresh"):
+            conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status)"
+                              " VALUES (:n, 'emwin_image', 1, now(), 'ok')"), {"n": names[k]})
+    assert hk.archive_emwin(tmp_path, 3, dry=True) == 1 and (emwin / names["ingested"]).exists()
+    assert hk.archive_emwin(tmp_path, 3) == 1
+    assert (tmp_path / archived_path(names["ingested"], old)).exists()
+    assert sorted(p.name for p in emwin.iterdir() if p.is_file()) == sorted([names["unseen"], names["fresh"]])
+
+    now = datetime.now(UTC)
+    stamp = lambda t: f"{t:%Y-%m-%d_%H-%M-%S}"  # noqa: E731
+    fd = tmp_path / "IMAGES" / "GOES-18" / "Full Disk"
+    for t in (now - timedelta(days=20), now - timedelta(days=1)):
+        (fd / stamp(t)).mkdir(parents=True)
+        (fd / stamp(t) / "x.png").write_bytes(b"x")
+    (fd / "keep-me").mkdir()
+    (tmp_path / "L2" / "GOES-18" / "Full Disk" / stamp(now - timedelta(days=20))).mkdir(parents=True)
+    (tmp_path / "IMAGES" / "Himawari" / stamp(now - timedelta(days=20))).mkdir(parents=True)
+    nws = tmp_path / "IMAGES" / "NWS"
+    nws.mkdir()
+    for t in (now - timedelta(days=20), now):
+        (nws / f"{t:%Y%m%d%H%M%S}-pac24_latestBW.lrit.gif").write_bytes(b"x")
+    (nws / "notes.txt").write_bytes(b"x")
+    arch = emwin / "archive"
+    (arch / f"{now - timedelta(days=20):%Y-%m-%d}").mkdir()
+    (arch / "misc").mkdir()
+
+    assert hk.prune_originals(tmp_path, 0) == {"scans": 0, "charts": 0, "emwin_days": 0}  # keep forever
+    assert hk.prune_originals(tmp_path, 14, dry=True) == {"scans": 3, "charts": 1, "emwin_days": 1}
+    assert hk.prune_originals(tmp_path, 14) == {"scans": 3, "charts": 1, "emwin_days": 1}
+    assert sorted(p.name for p in fd.iterdir()) == sorted([stamp(now - timedelta(days=1)), "keep-me"])
+    assert sorted(p.name for p in nws.iterdir()) == sorted([f"{now:%Y%m%d%H%M%S}-pac24_latestBW.lrit.gif",
+                                                            "notes.txt"])
+    assert sorted(p.name for p in arch.iterdir()) == sorted(["misc", archived_path(names["ingested"], old).parent.name])
+
+    media = tmp_path / "media"
+    for i, age in enumerate((40, 1)):
+        rel = f"sat/goes-18/full-disk/{i}/x"
+        (media / rel).parent.mkdir(parents=True)
+        for suffix in (".webp", "_t.webp"):
+            (media / f"{rel}{suffix}").write_bytes(b"x")
+        with db.begin() as conn:
+            conn.execute(text(
+                "INSERT INTO image_frame (path, source, sector, product, kind, scan_time, size, mtime, status,"
+                " display, thumb) VALUES (:p, 'GOES-18', 'Full Disk', '13', 'band', now() - make_interval(days => :a),"
+                " 1, now(), 'ok', :d, :t)"), {"p": f"p{i}", "a": age, "d": f"{rel}.webp", "t": f"{rel}_t.webp"})
+    assert hk.prune_copies(media, 30, dry=True) == 1
+    assert hk.prune_copies(media, 30) == 1
+    assert not (media / "sat/goes-18/full-disk/0").exists() and (media / "sat/goes-18/full-disk/1/x.webp").exists()
+    with db.connect() as conn:
+        assert conn.execute(text("SELECT path FROM image_frame")).scalars().all() == ["p1"]
