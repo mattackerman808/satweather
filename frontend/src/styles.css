@@ -40,7 +40,9 @@ main { flex: 1; min-height: 0; position: relative; }
 .placeholder h1 { margin: 0 0 8px; font-size: 22px; }
 .placeholder p { color: var(--muted); }
 
-.mapwrap, .map { position: absolute; inset: 0; }
+/* The map div also gets MapLibre's .maplibregl-map { position: relative },
+   which would beat a single-class rule and collapse it to 0 px tall. */
+.mapwrap, .mapwrap .map { position: absolute; inset: 0; }
 .maperr {
   position: absolute; top: 12px; left: 12px; padding: 8px 12px;
   background: #2a1414; color: var(--bad); border-radius: 6px; font-size: 13px;
