@@ -1,0 +1,17 @@
+NOUS73 KBCQ 232344
+ADMCRH
+
+Alert Administrative Message
+National Weather Service Omaha/Valley NE
+646 PM CDT Fri Oct 23 2026
+
+To:      CRH GID TOP EAX DMX FSD LBF MBRFC
+
+From:    WFO OAX
+
+Subject: WFO OAX Running Full Service Backup For GID
+
+WFO OAX has assumed full service backup for GID due to a 
+communications outage.
+
+$$

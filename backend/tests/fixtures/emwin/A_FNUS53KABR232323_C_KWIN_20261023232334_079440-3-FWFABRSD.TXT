@@ -1,0 +1,2004 @@
+FNUS53 KABR 232323
+FWFABR
+
+Fire Weather Forecast For Central/NE South Dakota WC MN
+National Weather Service Aberdeen SD
+623 PM CDT Fri Oct 23 2026
+
+.DISCUSSION...
+
+Strong southerly winds gusting up to 30 to 40 miles per hour are in 
+place this afternoon, with the strongest gusts located over parts of 
+northeastern South Dakota. Gusts over that area are expected to 
+persist through the evening and into tonight. Localized strong gusts 
+upwards of 40 miles per hour may be possible due to downsloping 
+impacts on the eastern side of the Sisseton Hills. Due to the 
+combination of these winds and the abnormal heat, widespread High 
+Grassland Fire Danger is in effect today, with some areas of Very 
+High Grassland Fire Danger where winds are the strongest. 
+
+Overnight tonight, a cold front will move across the forecast area. 
+Behind the front, winds will turn northwesterly and increase over 
+central and north central South Dakota. Gusts as high as 50 miles 
+per hour will be possible behind the front, and a Wind Advisory is 
+in place for that area from late tonight through Saturday morning. 
+Since the strongest wind gusts are anticipated to occur during the 
+early morning and decrease through the day, they will not occur at 
+the same time as the lowest afternoon humidity. This limits much of 
+the forecast area to Moderate Grassland Fire Danger, although some 
+stray areas of High Grassland Fire Danger over central and north 
+central South Dakota will be possible. Humidity while the Wind 
+Advisory is in effect will bottom out at 40-50 percent.
+
+SDZ003-240900-
+Corson-
+Including the city of McIntosh
+523 PM MDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly clear (15-25 percent cloud) then 
+                    becoming mostly cloudy (50-60 percent cloud) 
+                    then becoming partly cloudy (40-50 percent 
+                    cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....37-42. 
+Max humidity........75-80 percent. 
+20-foot winds.......Windy. Southwest winds 15 to 25 mph increasing 
+                    to west 25 to 35 mph after midnight. Gusts up 
+                    to 40 mph increasing to 50 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Mostly sunny (20-30 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....50-55. 
+Min humidity........28-33 percent. 
+20-foot winds.......Windy. Northwest winds 20 to 30 mph. Gusts up 
+                    to 50 mph decreasing to 35 mph in the 
+                    afternoon. 
+Mixing height.......Around 3800 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest around 29 mph decreasing to around 19 
+                    mph in the afternoon. 
+Smoke dispersal.....Around 76000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (25-35 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....27-32. 
+Max humidity........69-74 percent. 
+20-foot winds.......Northwest winds around 5 mph shifting to the 
+                    north after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Sunny (15-25 percent cloud) then becoming 
+                    mostly cloudy (65-75 percent cloud). A slight 
+                    chance of rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....46-51. 
+Min humidity........37-42 percent. 
+20-foot winds.......East winds 5 to 15 mph. 
+Mixing height.......Around 3600 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 8 to 13 mph. 
+Smoke dispersal.....Around 35000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain and a slight chance of snow.
+Lows in the lower 30s. Highs in the mid 40s. East winds 5 to 15 mph.
+.TUESDAY...Mostly cloudy. A chance of rain and snow. Lows in the
+upper 20s. Highs around 50. Southeast winds 10 to 20 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Breezy. Lows in
+the mid 30s. Highs in the lower 50s. Southwest winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the upper 20s. Highs around 50.
+Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. Lows in the upper 20s. Highs in the upper
+40s. Northeast winds around 10 mph. 
+
+$$
+
+SDZ015-240900-
+Dewey-
+Including the city of Isabel
+523 PM MDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (20-30 percent cloud) then 
+                    becoming mostly cloudy (50-60 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....39-44. 
+Max humidity........71-76 percent. 
+20-foot winds.......Windy. Southwest winds 10 to 20 mph increasing 
+                    to west 25 to 35 mph after midnight. Gusts up 
+                    to 30 mph increasing to 50 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Mostly sunny (40-50 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....51-56. 
+Min humidity........29-34 percent. 
+20-foot winds.......Windy. Northwest winds 25 to 35 mph decreasing 
+                    to 15 to 25 mph in the afternoon. Gusts up to 
+                    50 mph decreasing to 35 mph in the afternoon. 
+Mixing height.......Around 3800 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 20 to 29 mph. 
+Smoke dispersal.....Around 75000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (35-45 percent cloud) then 
+                    becoming mostly cloudy (45-55 percent cloud) 
+                    then becoming partly cloudy (35-45 percent 
+                    cloud) then becoming mostly cloudy (55-65 
+                    percent cloud) then becoming partly cloudy 
+                    (35-45 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....30-35. 
+Max humidity........65-70 percent. 
+20-foot winds.......Northwest winds around 5 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly sunny (25-35 percent cloud) then 
+                    becoming mostly cloudy (75-85 percent cloud). A 
+                    chance of rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........43-48 percent. 
+20-foot winds.......East winds 5 to 15 mph. 
+Mixing height.......Around 3500 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 8 to 13 mph. 
+Smoke dispersal.....Around 35000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows in the lower 30s. Highs
+in the mid 40s. East winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain. Lows in the lower 30s.
+Highs around 50. Southeast winds 10 to 20 mph. 
+.WEDNESDAY...Partly cloudy. A slight chance of rain. Breezy. Lows in
+the mid 30s. Highs in the mid 50s. Southwest winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. Lows in the lower 30s. Highs around 50.
+Northeast winds 5 to 15 mph. 
+
+$$
+
+SDZ033-240900-
+Stanley-
+Including the city of Fort Pierre
+623 PM CDT Fri Oct 23 2026 /523 PM MDT Fri Oct 23 2026/
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (25-35 percent cloud) then 
+                    becoming mostly cloudy (60-70 percent cloud). A 
+                    chance of showers after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....42-47. 
+Max humidity........67-72 percent. 
+20-foot winds.......Windy. Southwest winds 10 to 20 mph increasing 
+                    to west 25 to 35 mph after midnight. Gusts up 
+                    to 30 mph increasing to 50 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Mostly cloudy (65-75 percent cloud) then 
+                    becoming mostly sunny (30-40 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....51-56. 
+Min humidity........32-37 percent. 
+20-foot winds.......Windy. Northwest winds 25 to 35 mph decreasing 
+                    to 15 to 25 mph in the afternoon. Gusts up to 
+                    50 mph decreasing to 35 mph in the afternoon. 
+Mixing height.......Around 3900 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest around 30 mph decreasing to around 20 
+                    mph in the afternoon. 
+Smoke dispersal.....Around 78000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (30-40 percent cloud) then 
+                    becoming mostly cloudy (60-70 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....34-39. 
+Max humidity........67-72 percent. 
+20-foot winds.......North winds around 10 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly sunny (45-55 percent cloud) then 
+                    becoming cloudy (85-95 percent cloud). A chance 
+                    of rain. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........56-61 percent. 
+20-foot winds.......East winds 5 to 15 mph. Gusts up to 25 mph. 
+Mixing height.......Around 2800 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 10 to 15 mph. 
+Smoke dispersal.....Around 32000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain likely. Lows in the mid 30s. Highs in the mid 40s.
+East winds 10 to 15 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain. Lows in the lower 30s.
+Highs in the lower 50s. East winds 10 to 20 mph. 
+.WEDNESDAY...Partly cloudy. Windy. Lows in the upper 30s. Highs in
+the upper 50s. Southwest winds 20 to 30 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. Northwest winds 10 to 20 mph. 
+.FRIDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. East winds 5 to 15 mph. 
+
+$$
+
+SDZ045-240900-
+Jones-
+Including the city of Murdo
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (20-30 percent cloud) then 
+                    becoming mostly cloudy (60-70 percent cloud). A 
+                    slight chance of showers in the evening. A 
+                    chance of showers after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....42-47. 
+Max humidity........66-71 percent. 
+20-foot winds.......Windy. Southwest winds 10 to 20 mph increasing 
+                    to northwest 25 to 35 mph after midnight. Gusts 
+                    up to 30 mph increasing to 50 mph after 
+                    midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Mostly cloudy (75-85 percent cloud) then 
+                    becoming mostly sunny (30-40 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....51-56. 
+Min humidity........35-40 percent. 
+20-foot winds.......Windy. Northwest winds 25 to 35 mph decreasing 
+                    to 15 to 25 mph in the afternoon. Gusts up to 
+                    50 mph decreasing to 35 mph in the afternoon. 
+Mixing height.......Around 3600 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest around 30 mph becoming north around 
+                    20 mph in the afternoon. 
+Smoke dispersal.....Around 75000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (20-30 percent cloud) then 
+                    becoming mostly cloudy (70-80 percent cloud). A 
+                    chance of rain after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....35-40. 
+Max humidity........70-75 percent. 
+20-foot winds.......North winds around 10 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (65-75 percent cloud) then 
+                    becoming partly sunny (55-65 percent cloud) 
+                    then becoming cloudy (85-95 percent cloud). A 
+                    chance of rain in the morning, then rain likely 
+                    in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........53-58 percent. 
+20-foot winds.......East winds 5 to 15 mph. Gusts up to 25 mph. 
+Mixing height.......Around 2600 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 10 to 15 mph. 
+Smoke dispersal.....Around 32000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain. Lows in the mid 30s. Highs in the mid 40s. Northeast
+winds 10 to 15 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain. Lows in the lower 30s.
+Highs in the mid 50s. East winds 10 to 20 mph. 
+.WEDNESDAY...Partly cloudy. Windy. Lows in the upper 30s. Highs in
+the upper 50s. Southwest winds 20 to 30 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs in the mid
+50s. Northwest winds 5 to 15 mph. 
+.FRIDAY...Partly cloudy. Lows in the mid 30s. Highs in the mid 50s.
+Southeast winds 5 to 15 mph. 
+
+$$
+
+SDZ048-240900-
+Lyman-
+Including the city of Kennebec
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (20-30 percent cloud) then 
+                    becoming mostly cloudy (55-65 percent cloud) 
+                    then becoming partly cloudy (45-55 percent 
+                    cloud) then becoming mostly cloudy (50-60 
+                    percent cloud). A chance of showers after 
+                    midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....44-49. 
+Max humidity........67-72 percent. 
+20-foot winds.......Windy. South winds 20 to 30 mph shifting to the 
+                    west after midnight. Gusts up to 40 mph 
+                    increasing to 50 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....52-57. 
+Min humidity........40-45 percent. 
+20-foot winds.......Windy. Northwest winds 20 to 30 mph. Gusts up 
+                    to 50 mph decreasing to 35 mph in the 
+                    afternoon. 
+Mixing height.......Around 3500 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 20 to 29 mph. 
+Smoke dispersal.....Around 71000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (30-40 percent cloud) then 
+                    becoming mostly cloudy (65-75 percent cloud). A 
+                    chance of rain after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....36-41. 
+Max humidity........72-77 percent. 
+20-foot winds.......North winds around 10 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Partly sunny (60-70 percent cloud) then 
+                    becoming cloudy (85-95 percent cloud). A chance 
+                    of rain in the morning, then rain in the 
+                    afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........56-61 percent. 
+20-foot winds.......Northeast winds 5 to 15 mph. Gusts up to 25 
+                    mph. 
+Mixing height.......Around 2400 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 9 to 14 mph. 
+Smoke dispersal.....Around 28000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain. Lows in the mid 30s. Highs in the mid 40s. Northeast
+winds 10 to 15 mph. 
+.TUESDAY...Mostly cloudy. A slight chance of rain. Lows in the mid
+30s. Highs in the mid 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Partly cloudy. Breezy. Lows in the upper 30s. Highs in
+the upper 50s. Southwest winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs in the mid
+50s. Northwest winds 5 to 15 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the mid
+30s. Highs in the mid 50s. Southeast winds 5 to 15 mph. 
+
+$$
+
+SDZ051-240900-
+Buffalo-
+Including the city of Fort Thompson
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (30-40 percent cloud) then 
+                    becoming mostly cloudy (50-60 percent cloud) 
+                    then becoming partly cloudy (40-50 percent 
+                    cloud) then becoming mostly cloudy (45-55 
+                    percent cloud). A chance of showers after 
+                    midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....46-51. 
+Max humidity........71-76 percent. 
+20-foot winds.......Windy. South winds 10 to 20 mph increasing to 
+                    southwest 20 to 30 mph after midnight. Gusts up 
+                    to 40 mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (60-70 percent cloud) then 
+                    becoming mostly cloudy (70-80 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....54-59. 
+Min humidity........40-45 percent. 
+20-foot winds.......Windy. Northwest winds 20 to 30 mph decreasing 
+                    to 10 to 20 mph in the afternoon. Gusts up to 
+                    45 mph decreasing to 30 mph in the afternoon. 
+Mixing height.......Around 3500 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 18 to 26 mph. 
+Smoke dispersal.....Around 62000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (45-55 percent cloud) then 
+                    becoming mostly cloudy (70-80 percent cloud). A 
+                    chance of rain after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....36-41. 
+Max humidity........65-70 percent. 
+20-foot winds.......North winds 5 to 10 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Partly sunny (50-60 percent cloud) then 
+                    becoming cloudy (85-95 percent cloud). A chance 
+                    of rain in the morning, then rain in the 
+                    afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........53-58 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. Gusts up to 20 mph 
+                    in the afternoon. 
+Mixing height.......Around 2500 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 10 to 15 mph. 
+Smoke dispersal.....Around 29000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain. Lows in the mid 30s. Highs in the mid 40s. Northeast
+winds 10 to 15 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain. Lows in the mid 30s.
+Highs in the lower 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Partly cloudy. A slight chance of rain. Lows in the
+upper 30s. Highs in the upper 50s. Southwest winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs in the mid
+50s. Northwest winds 5 to 10 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the mid
+30s. Highs in the lower 50s. Southeast winds 5 to 10 mph. 
+
+$$
+
+SDZ037-240900-
+Hand-
+Including the city of Miller
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (30-40 percent cloud) then 
+                    becoming mostly cloudy (55-65 percent cloud) 
+                    then becoming partly cloudy (40-50 percent 
+                    cloud) then becoming mostly cloudy (45-55 
+                    percent cloud). A chance of sprinkles after 
+                    midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....46-51. 
+Max humidity........67-72 percent. 
+20-foot winds.......Windy. South winds 20 to 30 mph shifting to the 
+                    southwest after midnight. Gusts up to 45 mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (65-75 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....53-58. 
+Min humidity........37-42 percent. 
+20-foot winds.......Windy. Northwest winds 20 to 30 mph decreasing 
+                    to 10 to 20 mph in the afternoon. Gusts up to 
+                    45 mph decreasing to 30 mph in the afternoon. 
+Mixing height.......Around 3300 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 19 to 26 mph. 
+Smoke dispersal.....Around 63000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (40-50 percent cloud) then 
+                    becoming mostly cloudy (65-75 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....34-39. 
+Max humidity........62-67 percent. 
+20-foot winds.......North winds 5 to 10 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Partly sunny (60-70 percent cloud) then 
+                    becoming cloudy (85-95 percent cloud). A chance 
+                    of rain. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........50-55 percent. 
+20-foot winds.......Northeast winds 5 to 15 mph. 
+Mixing height.......Around 2400 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 9 to 14 mph. 
+Smoke dispersal.....Around 26000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain likely. Lows in the mid 30s. Highs in the mid 40s.
+Northeast winds 10 to 20 mph. 
+.TUESDAY...Mostly cloudy with a chance of rain. Lows in the lower
+30s. Highs in the lower 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Partly cloudy. A slight chance of rain. Lows in the
+upper 30s. Highs in the upper 50s. Southwest winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the lower
+30s. Highs in the lower 50s. South winds 5 to 15 mph. 
+
+$$
+
+SDZ036-240900-
+Hyde-
+Including the city of Highmore
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (20-30 percent cloud) then 
+                    becoming mostly cloudy (50-60 percent cloud) 
+                    then becoming partly cloudy (40-50 percent 
+                    cloud) then becoming mostly cloudy (50-60 
+                    percent cloud). A chance of sprinkles after 
+                    midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....44-49. 
+Max humidity........69-74 percent. 
+20-foot winds.......Windy. South winds 20 to 30 mph shifting to the 
+                    west after midnight. Gusts up to 45 mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (60-70 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....51-56. 
+Min humidity........38-43 percent. 
+20-foot winds.......Windy. Northwest winds 20 to 30 mph. Gusts up 
+                    to 45 mph in the morning. 
+Mixing height.......Around 3300 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 19 to 28 mph. 
+Smoke dispersal.....Around 66000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (35-45 percent cloud) then 
+                    becoming mostly cloudy (65-75 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....33-38. 
+Max humidity........59-64 percent. 
+20-foot winds.......North winds 5 to 10 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (65-75 percent cloud) then 
+                    becoming partly sunny (60-70 percent cloud) 
+                    then becoming cloudy (85-95 percent cloud). A 
+                    chance of rain. 
+Chance of thunder...0 percent. 
+Max temperature.....44-49. 
+Min humidity........51-56 percent. 
+20-foot winds.......Northeast winds 5 to 15 mph. 
+Mixing height.......Around 2400 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 10 to 15 mph. 
+Smoke dispersal.....Around 25000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain likely. Lows in the lower 30s. Highs in the mid 40s.
+Northeast winds 10 to 20 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain. Lows in the lower 30s.
+Highs in the lower 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Partly cloudy. Breezy. Lows in the upper 30s. Highs in
+the mid 50s. Southwest winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the lower
+30s. Highs in the lower 50s. Southeast winds 5 to 15 mph. 
+
+$$
+
+SDZ035-240900-
+Hughes-
+Including the city of Pierre
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (25-35 percent cloud) then 
+                    becoming mostly cloudy (60-70 percent cloud) 
+                    then becoming partly cloudy (40-50 percent 
+                    cloud) then becoming mostly cloudy (50-60 
+                    percent cloud). A chance of sprinkles after 
+                    midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....43-48. 
+Max humidity........66-71 percent. 
+20-foot winds.......Windy. South winds 15 to 25 mph increasing to 
+                    west 25 to 35 mph after midnight. Gusts up to 
+                    35 mph increasing to 50 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....52-57. 
+Min humidity........35-40 percent. 
+20-foot winds.......Windy. Northwest winds 25 to 35 mph decreasing 
+                    to 15 to 25 mph in the afternoon. Gusts up to 
+                    50 mph decreasing to 35 mph in the afternoon. 
+Mixing height.......Around 3600 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 20 to 28 mph. 
+Smoke dispersal.....Around 71000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (30-40 percent cloud) then 
+                    becoming mostly cloudy (60-70 percent cloud). A 
+                    slight chance of rain after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....34-39. 
+Max humidity........64-69 percent. 
+20-foot winds.......North winds around 10 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (70-80 percent cloud). A chance 
+                    of rain. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........54-59 percent. 
+20-foot winds.......East winds 5 to 15 mph. 
+Mixing height.......Around 2600 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 9 to 14 mph. 
+Smoke dispersal.....Around 28000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain likely. Lows in the mid 30s. Highs in the mid 40s.
+Northeast winds 10 to 20 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain. Lows in the lower 30s.
+Highs in the lower 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Partly cloudy. Breezy. Lows in the upper 30s. Highs in
+the upper 50s. Southwest winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs in the lower
+50s. Northwest winds 5 to 15 mph. 
+.FRIDAY...Partly cloudy. A slight chance of rain. Lows in the mid
+30s. Highs in the lower 50s. East winds 5 to 15 mph. 
+
+$$
+
+SDZ034-240900-
+Sully-
+Including the city of Onida
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (25-35 percent cloud) then 
+                    becoming mostly cloudy (55-65 percent cloud) 
+                    then becoming partly cloudy (45-55 percent 
+                    cloud) then becoming mostly cloudy (55-65 
+                    percent cloud). A chance of sprinkles after 
+                    midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....41-46. 
+Max humidity........70-75 percent. 
+20-foot winds.......Windy. South winds 15 to 25 mph increasing to 
+                    west 25 to 35 mph after midnight. Gusts up to 
+                    35 mph increasing to 45 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Mostly cloudy (70-80 percent cloud) then 
+                    becoming mostly sunny (40-50 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....51-56. 
+Min humidity........33-38 percent. 
+20-foot winds.......Windy. Northwest winds 25 to 35 mph decreasing 
+                    to 15 to 25 mph in the afternoon. Gusts up to 
+                    50 mph decreasing to 35 mph in the afternoon. 
+Mixing height.......Around 3700 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 19 to 28 mph. 
+Smoke dispersal.....Around 72000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (30-40 percent cloud) then 
+                    becoming mostly cloudy (55-65 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....32-37. 
+Max humidity........63-68 percent. 
+20-foot winds.......North winds 5 to 10 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud) then 
+                    becoming cloudy (85-95 percent cloud). A slight 
+                    chance of rain in the morning, then a chance of 
+                    rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........51-56 percent. 
+20-foot winds.......East winds 5 to 15 mph. 
+Mixing height.......Around 2700 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 9 to 14 mph. 
+Smoke dispersal.....Around 28000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain likely. Lows in the lower 30s. Highs in the mid 40s.
+Northeast winds 10 to 15 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain. Lows in the lower 30s.
+Highs in the lower 50s. East winds 10 to 20 mph. 
+.WEDNESDAY...Partly cloudy. Breezy. Lows in the mid 30s. Highs in
+the upper 50s. Southwest winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. Northwest winds 10 to 20 mph. 
+.FRIDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. East winds 5 to 15 mph. 
+
+$$
+
+SDZ016-240900-
+Potter-
+Including the city of Gettysburg
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (25-35 percent cloud) then 
+                    becoming mostly cloudy (50-60 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....41-46. 
+Max humidity........71-76 percent. 
+20-foot winds.......Windy. South winds 15 to 25 mph shifting to the 
+                    west 20 to 30 mph after midnight. Gusts up to 
+                    35 mph increasing to 45 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (45-55 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....50-55. 
+Min humidity........34-39 percent. 
+20-foot winds.......Windy. Northwest winds 20 to 30 mph decreasing 
+                    to 10 to 20 mph in the afternoon. Gusts up to 
+                    45 mph decreasing to 30 mph in the afternoon. 
+Mixing height.......Around 3300 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 19 to 28 mph. 
+Smoke dispersal.....Around 70000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (35-45 percent cloud) then 
+                    becoming mostly cloudy (60-70 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....31-36. 
+Max humidity........60-65 percent. 
+20-foot winds.......North winds around 10 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud) then 
+                    becoming mostly sunny (30-40 percent cloud) 
+                    then becoming mostly cloudy (80-90 percent 
+                    cloud). A chance of rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........44-49 percent. 
+20-foot winds.......East winds 5 to 10 mph. Gusts up to 20 mph. 
+Mixing height.......Around 2900 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 9 to 14 mph. 
+Smoke dispersal.....Around 29000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows in the lower 30s. Highs
+in the mid 40s. Northeast winds 10 to 15 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain and snow. Lows around 30.
+Highs around 50. East winds 5 to 15 mph. 
+.WEDNESDAY...Partly cloudy. A slight chance of rain. Breezy. Lows in
+the mid 30s. Highs in the mid 50s. South winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. Lows in the lower 30s. Highs around 50.
+East winds 5 to 15 mph. 
+
+$$
+
+SDZ009-240900-
+Walworth-
+Including the city of Mobridge
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (20-30 percent cloud) then 
+                    becoming mostly cloudy (60-70 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....40-45. 
+Max humidity........71-76 percent. 
+20-foot winds.......Windy. South winds 15 to 25 mph shifting to the 
+                    west 20 to 30 mph after midnight. Gusts up to 
+                    45 mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Mostly sunny (40-50 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....50-55. 
+Min humidity........32-37 percent. 
+20-foot winds.......Windy. Northwest winds 20 to 30 mph. Gusts up 
+                    to 45 mph in the morning. 
+Mixing height.......Around 3500 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 20 to 29 mph. 
+Smoke dispersal.....Around 73000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (35-45 percent cloud) then 
+                    becoming mostly cloudy (50-60 percent cloud) 
+                    then becoming partly cloudy (45-55 percent 
+                    cloud) then becoming mostly cloudy (45-55 
+                    percent cloud) then becoming partly cloudy 
+                    (40-50 percent cloud) then becoming mostly 
+                    cloudy (55-65 percent cloud) then becoming 
+                    partly cloudy (35-45 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....28-33. 
+Max humidity........66-71 percent. 
+20-foot winds.......North winds around 10 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Partly sunny (45-55 percent cloud) then 
+                    becoming mostly sunny (25-35 percent cloud) 
+                    then becoming mostly cloudy (75-85 percent 
+                    cloud). A chance of rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....46-51. 
+Min humidity........38-43 percent. 
+20-foot winds.......East winds 5 to 10 mph. Gusts up to 20 mph in 
+                    the afternoon. 
+Mixing height.......Around 3200 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 8 to 13 mph. 
+Smoke dispersal.....Around 30000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows in the lower 30s. Highs
+in the mid 40s. East winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain and snow. Lows in the
+upper 20s. Highs around 50. East winds 5 to 15 mph. 
+.WEDNESDAY...Partly cloudy. A slight chance of rain. Breezy. Lows in
+the mid 30s. Highs in the mid 50s. South winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows around 30. Highs around 50.
+Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. Lows around 30. Highs in the upper 40s.
+East winds 5 to 15 mph. 
+
+$$
+
+SDZ004-240900-
+Campbell-
+Including the city of Herreid
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (25-35 percent cloud) then 
+                    becoming mostly cloudy (55-65 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....39-44. 
+Max humidity........74-79 percent. 
+20-foot winds.......Windy. South winds 15 to 25 mph shifting to the 
+                    west 20 to 30 mph after midnight. Gusts up to 
+                    45 mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Mostly sunny (35-45 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....50-55. 
+Min humidity........30-35 percent. 
+20-foot winds.......Windy. Northwest winds 20 to 30 mph. Gusts up 
+                    to 45 mph in the morning. 
+Mixing height.......Around 3700 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 20 to 28 mph. 
+Smoke dispersal.....Around 74000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (30-40 percent cloud) then 
+                    becoming mostly cloudy (50-60 percent cloud) 
+                    then becoming partly cloudy (25-35 percent 
+                    cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....26-31. 
+Max humidity........74-79 percent. 
+20-foot winds.......Northwest winds around 10 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly sunny (35-45 percent cloud) then 
+                    becoming mostly cloudy (75-85 percent cloud). A 
+                    slight chance of rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....47-52. 
+Min humidity........34-39 percent. 
+20-foot winds.......East winds 5 to 10 mph. 
+Mixing height.......Around 3600 ft AGL (AFTERNOON MAX). 
+Transport winds.....East 6 to 11 mph. 
+Smoke dispersal.....Around 30000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows around 30. Highs in the
+mid 40s. East winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain. Lows in the upper 20s.
+Highs around 50. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Breezy. Lows in
+the lower 30s. Highs in the lower 50s. South winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the upper 20s. Highs around 50.
+Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. Lows in the upper 20s. Highs in the upper
+40s. Northeast winds 5 to 15 mph. 
+
+$$
+
+SDZ005-240900-
+McPherson-
+Including the city of Eureka
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (25-35 percent cloud) then 
+                    becoming mostly cloudy (55-65 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....42-47. 
+Max humidity........70-75 percent. 
+20-foot winds.......Windy. South winds 20 to 30 mph shifting to the 
+                    west after midnight. Gusts up to 45 mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Mostly cloudy (65-75 percent cloud) then 
+                    becoming mostly sunny (35-45 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....50-55. 
+Min humidity........34-39 percent. 
+20-foot winds.......Windy. Northwest winds 25 to 35 mph decreasing 
+                    to 15 to 25 mph in the afternoon. Gusts up to 
+                    50 mph decreasing to 35 mph in the afternoon. 
+Mixing height.......Around 3300 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 20 to 29 mph. 
+Smoke dispersal.....Around 67000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (35-45 percent cloud) then 
+                    becoming mostly cloudy (55-65 percent cloud) 
+                    then becoming partly cloudy (30-40 percent 
+                    cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....30-35. 
+Max humidity........63-68 percent. 
+20-foot winds.......North winds 5 to 10 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Partly sunny (50-60 percent cloud) then 
+                    becoming sunny (15-25 percent cloud) then 
+                    becoming mostly cloudy (70-80 percent cloud). A 
+                    slight chance of rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........36-41 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. 
+Mixing height.......Around 3000 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 7 to 12 mph. 
+Smoke dispersal.....Around 27000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain and a slight chance of snow.
+Lows in the lower 30s. Highs in the lower 40s. Northeast winds 5 to
+15 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain and snow. Lows around 30.
+Highs in the upper 40s. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Breezy. Lows in
+the mid 30s. Highs in the lower 50s. South winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the upper
+40s. Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain and snow. Lows
+around 30. Highs in the upper 40s. Northeast winds 5 to 15 mph. 
+
+$$
+
+SDZ010-240900-
+Edmunds-
+Including the city of Ipswich
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (25-35 percent cloud) then 
+                    becoming mostly cloudy (55-65 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....43-48. 
+Max humidity........70-75 percent. 
+20-foot winds.......Windy. South winds 15 to 25 mph shifting to the 
+                    west 20 to 30 mph after midnight. Gusts up to 
+                    35 mph increasing to 45 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....50-55. 
+Min humidity........36-41 percent. 
+20-foot winds.......Windy. Northwest winds 20 to 30 mph. Gusts up 
+                    to 45 mph in the morning. 
+Mixing height.......Around 3400 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 20 to 28 mph. 
+Smoke dispersal.....Around 67000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (35-45 percent cloud) then 
+                    becoming mostly cloudy (50-60 percent cloud) 
+                    then becoming partly cloudy (45-55 percent 
+                    cloud) then becoming mostly cloudy (55-65 
+                    percent cloud) then becoming partly cloudy 
+                    (40-50 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....30-35. 
+Max humidity........61-66 percent. 
+20-foot winds.......North winds 5 to 10 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud) then 
+                    becoming mostly sunny (25-35 percent cloud) 
+                    then becoming mostly cloudy (75-85 percent 
+                    cloud). A slight chance of rain in the 
+                    afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........40-45 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. Gusts up to 20 mph 
+                    in the afternoon. 
+Mixing height.......Around 2900 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 7 to 12 mph. 
+Smoke dispersal.....Around 27000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows in the lower 30s. Highs
+in the lower 40s. Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy with a chance of rain and snow. Lows around
+30. Highs in the upper 40s. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Breezy. Lows in
+the mid 30s. Highs in the mid 50s. South winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the upper
+40s. Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain and snow. Lows
+around 30. Highs in the upper 40s. Northeast winds 5 to 15 mph. 
+
+$$
+
+SDZ017-240900-
+Faulk-
+Including the city of Faulkton
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Partly cloudy (25-35 percent cloud) then 
+                    becoming mostly cloudy (50-60 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....44-49. 
+Max humidity........69-74 percent. 
+20-foot winds.......Windy. South winds 15 to 25 mph shifting to the 
+                    west 20 to 30 mph after midnight. Gusts up to 
+                    45 mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (60-70 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....51-56. 
+Min humidity........37-42 percent. 
+20-foot winds.......Windy. Northwest winds 20 to 30 mph decreasing 
+                    to 10 to 20 mph in the afternoon. Gusts up to 
+                    45 mph decreasing to 30 mph in the afternoon. 
+Mixing height.......Around 3300 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 19 to 27 mph. 
+Smoke dispersal.....Around 66000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (30-40 percent cloud) then 
+                    becoming mostly cloudy (50-60 percent cloud) 
+                    then becoming partly cloudy (45-55 percent 
+                    cloud) then becoming mostly cloudy (65-75 
+                    percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....31-36. 
+Max humidity........61-66 percent. 
+20-foot winds.......North winds 5 to 10 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud) then 
+                    becoming cloudy (85-95 percent cloud). A chance 
+                    of rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........45-50 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. Gusts up to 20 mph 
+                    in the afternoon. 
+Mixing height.......Around 2700 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 8 to 13 mph. 
+Smoke dispersal.....Around 26000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows in the lower 30s. Highs
+in the mid 40s. Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy with a chance of rain. Lows in the lower
+30s. Highs in the upper 40s. East winds 5 to 15 mph. 
+.WEDNESDAY...Partly cloudy. A slight chance of rain. Lows in the mid
+30s. Highs in the mid 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the lower
+30s. Highs around 50. Northeast winds 5 to 15 mph. 
+
+$$
+
+SDZ018-240900-
+Spink-
+Including the city of Redfield
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (50-60 percent cloud) then 
+                    becoming partly cloudy (25-35 percent cloud) 
+                    then becoming mostly cloudy (50-60 percent 
+                    cloud). A chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....48-53. 
+Max humidity........68-73 percent. 
+20-foot winds.......Windy. South winds 25 to 35 mph decreasing to 
+                    15 to 25 mph after midnight. Gusts up to 50 mph 
+                    decreasing to 35 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (60-70 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....55-60. 
+Min humidity........35-40 percent. 
+20-foot winds.......Breezy. Northwest winds 15 to 25 mph. Gusts up 
+                    to 35 mph. 
+Mixing height.......Around 3600 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 18 to 24 mph. 
+Smoke dispersal.....Around 66000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Mostly cloudy (50-60 percent cloud) then 
+                    becoming partly cloudy (40-50 percent cloud) 
+                    then becoming mostly cloudy (65-75 percent 
+                    cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....33-38. 
+Max humidity........65-70 percent. 
+20-foot winds.......North winds 5 to 10 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (70-80 percent cloud). A slight 
+                    chance of rain in the morning, then a chance of 
+                    rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....47-52. 
+Min humidity........42-47 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. 
+Mixing height.......Around 2700 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 8 to 13 mph. 
+Smoke dispersal.....Around 26000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows in the mid 30s. Highs
+in the mid 40s. Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy with a chance of rain. Lows in the lower
+30s. Highs in the lower 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Lows in the
+upper 30s. Highs in the upper 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. Northwest winds 5 to 15 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the lower
+30s. Highs in the lower 50s. Southeast winds 5 to 10 mph. 
+
+$$
+
+SDZ006-240900-
+Brown-
+Including the city of Aberdeen
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (55-65 percent cloud) then 
+                    becoming partly cloudy (25-35 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....47-52. 
+Max humidity........67-72 percent. 
+20-foot winds.......Windy. South winds 25 to 35 mph becoming 
+                    southwest 15 to 25 mph after midnight. Gusts up 
+                    to 45 mph decreasing to 35 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....54-59. 
+Min humidity........34-39 percent. 
+20-foot winds.......Breezy. Northwest winds 15 to 25 mph. Gusts up 
+                    to 40 mph decreasing to 30 mph in the 
+                    afternoon. 
+Mixing height.......Around 3700 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 19 to 24 mph. 
+Smoke dispersal.....Around 67000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (45-55 percent cloud) then 
+                    becoming mostly cloudy (60-70 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....31-36. 
+Max humidity........65-70 percent. 
+20-foot winds.......North winds around 5 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (65-75 percent cloud) then 
+                    becoming partly sunny (60-70 percent cloud) 
+                    then becoming cloudy (85-95 percent cloud). A 
+                    slight chance of rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....47-52. 
+Min humidity........35-40 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. 
+Mixing height.......Around 2900 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 7 to 12 mph. 
+Smoke dispersal.....Around 28000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows in the lower 30s. Highs
+in the mid 40s. Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy with a chance of rain. Lows in the lower
+30s. Highs around 50. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Lows in the
+upper 30s. Highs in the mid 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the lower
+50s. Northwest winds 5 to 15 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the lower
+30s. Highs around 50. Northeast winds 5 to 10 mph. 
+
+$$
+
+SDZ007-240900-
+Marshall-
+Including the city of Britton
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (60-70 percent cloud) then 
+                    becoming partly cloudy (30-40 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....49-54. 
+Max humidity........71-76 percent. 
+20-foot winds.......Very windy. South winds 25 to 40 mph shifting 
+                    to the southwest 20 to 30 mph after midnight. 
+                    Gusts up to 55 mph decreasing to 45 mph after 
+                    midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud). A chance of 
+                    showers in the morning. 
+Chance of thunder...0 percent. 
+Max temperature.....54-59. 
+Min humidity........34-39 percent. 
+20-foot winds.......Breezy. Northwest winds 15 to 25 mph. Gusts up 
+                    to 35 mph. 
+Mixing height.......Around 3200 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 19 to 24 mph. 
+Smoke dispersal.....Around 62000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Mostly cloudy (50-60 percent cloud) then 
+                    becoming partly cloudy (40-50 percent cloud) 
+                    then becoming mostly cloudy (55-65 percent 
+                    cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....32-37. 
+Max humidity........60-65 percent. 
+20-foot winds.......North winds around 10 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (70-80 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....46-51. 
+Min humidity........34-39 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. 
+Mixing height.......Around 2900 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 8 to 13 mph. 
+Smoke dispersal.....Around 27000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows in the lower 30s. Highs
+in the lower 40s. Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy. A chance of rain. Lows in the lower 30s.
+Highs in the upper 40s. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Breezy. Lows in
+the upper 30s. Highs in the mid 50s. South winds 15 to 25 mph. 
+.THURSDAY...Partly cloudy. Lows in the lower 30s. Highs in the upper
+40s. Northwest winds 5 to 15 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the lower
+30s. Highs in the upper 40s. North winds 5 to 10 mph. 
+
+$$
+
+SDZ011-240900-
+Day-
+Including the city of Webster
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (60-70 percent cloud) then 
+                    becoming partly cloudy (25-35 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....50-55. 
+Max humidity........72-77 percent. 
+20-foot winds.......Windy. South winds 25 to 35 mph decreasing to 
+                    15 to 25 mph after midnight. Gusts up to 50 mph 
+                    decreasing to 40 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud). A chance of 
+                    showers in the morning. 
+Chance of thunder...0 percent. 
+Max temperature.....54-59. 
+Min humidity........41-46 percent. 
+20-foot winds.......Northwest winds 15 to 20 mph decreasing to 5 to 
+                    15 mph in the afternoon. Gusts up to 35 mph. 
+Mixing height.......Around 3000 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 18 to 23 mph. 
+Smoke dispersal.....Around 57000 or fair (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Mostly cloudy (50-60 percent cloud) then 
+                    becoming partly cloudy (45-55 percent cloud) 
+                    then becoming mostly cloudy (65-75 percent 
+                    cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....35-40. 
+Max humidity........57-62 percent. 
+20-foot winds.......North winds around 5 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (75-85 percent cloud). A slight 
+                    chance of rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........41-46 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. 
+Mixing height.......Around 2600 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 9 to 14 mph. 
+Smoke dispersal.....Around 26000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows in the mid 30s. Highs
+in the mid 40s. Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy with a chance of rain. Lows in the mid 30s.
+Highs around 50. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Lows in the
+upper 30s. Highs in the mid 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs around 50.
+West winds 5 to 15 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the mid
+30s. Highs in the upper 40s. South winds 5 to 10 mph. 
+
+$$
+
+SDZ019-240900-
+Clark-
+Including the city of Clark
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (55-65 percent cloud) then 
+                    becoming partly cloudy (25-35 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....51-56. 
+Max humidity........72-77 percent. 
+20-foot winds.......Windy. South winds 25 to 35 mph decreasing to 
+                    15 to 25 mph after midnight. Gusts up to 50 mph 
+                    decreasing to 35 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (60-70 percent cloud). A chance of 
+                    showers in the morning. 
+Chance of thunder...0 percent. 
+Max temperature.....56-61. 
+Min humidity........41-46 percent. 
+20-foot winds.......Breezy. Northwest winds 15 to 25 mph. Gusts up 
+                    to 35 mph. 
+Mixing height.......Around 3100 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 18 to 23 mph. 
+Smoke dispersal.....Around 54000 or fair (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Partly cloudy (45-55 percent cloud) then 
+                    becoming mostly cloudy (55-65 percent cloud) 
+                    then becoming partly cloudy (45-55 percent 
+                    cloud) then becoming mostly cloudy (65-75 
+                    percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....36-41. 
+Max humidity........60-65 percent. 
+20-foot winds.......North winds around 5 mph shifting to the 
+                    northeast after midnight. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Cloudy (85-95 percent cloud) then becoming 
+                    mostly cloudy (70-80 percent cloud). A slight 
+                    chance of rain in the morning, then a chance of 
+                    rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....46-51. 
+Min humidity........45-50 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. Gusts up to 20 mph 
+                    in the afternoon. 
+Mixing height.......Around 2600 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 10 to 15 mph. 
+Smoke dispersal.....Around 27000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain likely. Lows in the mid 30s. Highs in the mid 40s.
+Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy with rain likely. Lows in the mid 30s.
+Highs in the lower 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Lows in the
+upper 30s. Highs in the upper 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs in the lower
+50s. West winds 5 to 15 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the mid
+30s. Highs in the lower 50s. Southeast winds 5 to 10 mph. 
+
+$$
+
+SDZ022-240900-
+Hamlin-
+Including the city of Hayti
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (60-70 percent cloud) then 
+                    becoming partly cloudy (30-40 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....53-58. 
+Max humidity........74-79 percent. 
+20-foot winds.......Windy. South winds 20 to 30 mph decreasing to 
+                    10 to 20 mph after midnight. Gusts up to 45 mph 
+                    decreasing to 35 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud) then 
+                    becoming mostly cloudy (80-90 percent cloud). A 
+                    chance of showers in the morning. 
+Chance of thunder...0 percent. 
+Max temperature.....59-64. 
+Min humidity........45-50 percent. 
+20-foot winds.......Northwest winds 10 to 20 mph. Gusts up to 35 
+                    mph. 
+Mixing height.......Around 2900 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 16 to 21 mph. 
+Smoke dispersal.....Around 47000 or fair (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Mostly cloudy (50-60 percent cloud) then 
+                    becoming partly cloudy (40-50 percent cloud) 
+                    then becoming mostly cloudy (50-60 percent 
+                    cloud) then becoming partly cloudy (45-55 
+                    percent cloud) then becoming mostly cloudy 
+                    (70-80 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....36-41. 
+Max humidity........60-65 percent. 
+20-foot winds.......North winds around 5 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (75-85 percent cloud). A chance 
+                    of rain in the morning, then rain likely in the 
+                    afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....46-51. 
+Min humidity........51-56 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. Gusts up to 20 mph 
+                    in the afternoon. 
+Mixing height.......Around 2400 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 10 to 15 mph. 
+Smoke dispersal.....Around 26000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain likely. Lows in the mid 30s. Highs in the mid 40s.
+Northeast winds 10 to 15 mph. 
+.TUESDAY...Mostly cloudy with rain likely. Lows in the mid 30s.
+Highs in the lower 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Lows around 40.
+Highs in the upper 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs in the lower
+50s. West winds 5 to 15 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain and snow. Lows in
+the mid 30s. Highs in the lower 50s. South winds 5 to 10 mph. 
+
+$$
+
+SDZ020-240900-
+Codington-
+Including the city of Watertown
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (65-75 percent cloud) then 
+                    becoming partly cloudy (30-40 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....52-57. 
+Max humidity........75-80 percent. 
+20-foot winds.......Breezy. South winds 15 to 25 mph. Gusts up to 
+                    45 mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (60-70 percent cloud). A chance of 
+                    showers in the morning. 
+Chance of thunder...0 percent. 
+Max temperature.....57-62. 
+Min humidity........44-49 percent. 
+20-foot winds.......Northwest winds 10 to 20 mph. Gusts up to 35 
+                    mph. 
+Mixing height.......Around 3000 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 17 to 22 mph. 
+Smoke dispersal.....Around 49000 or fair (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Mostly cloudy (50-60 percent cloud) then 
+                    becoming partly cloudy (35-45 percent cloud) 
+                    then becoming mostly cloudy (60-70 percent 
+                    cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....36-41. 
+Max humidity........56-61 percent. 
+20-foot winds.......North winds around 5 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (80-90 percent cloud). A slight 
+                    chance of rain in the morning, then a chance of 
+                    rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........46-51 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. 
+Mixing height.......Around 2500 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 10 to 15 mph. 
+Smoke dispersal.....Around 27000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain likely. Lows in the mid 30s. Highs in the mid 40s.
+Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy with rain likely. Lows in the mid 30s.
+Highs in the lower 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Lows around 40.
+Highs in the mid 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs in the lower
+50s. West winds 5 to 15 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain and snow. Lows in
+the mid 30s. Highs in the lower 50s. South winds 5 to 10 mph. 
+
+$$
+
+SDZ023-240900-
+Deuel-
+Including the city of Clear Lake
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (70-80 percent cloud) then 
+                    becoming partly cloudy (30-40 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....54-59. 
+Max humidity........72-77 percent. 
+20-foot winds.......Windy. South winds 20 to 30 mph. Gusts up to 45 
+                    mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (60-70 percent cloud) then 
+                    becoming cloudy (85-95 percent cloud). A chance 
+                    of showers through the day. 
+Chance of thunder...0 percent. 
+Max temperature.....60-65. 
+Min humidity........45-50 percent. 
+20-foot winds.......West winds 15 to 20 mph shifting to the 
+                    northwest 5 to 15 mph in the afternoon. Gusts 
+                    up to 35 mph decreasing to 25 mph in the 
+                    afternoon. 
+Mixing height.......Around 2600 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 16 to 21 mph. 
+Smoke dispersal.....Around 41000 or fair (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Mostly cloudy (60-70 percent cloud) then 
+                    becoming partly cloudy (45-55 percent cloud) 
+                    then becoming mostly cloudy (70-80 percent 
+                    cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....37-42. 
+Max humidity........58-63 percent. 
+20-foot winds.......North winds 5 to 10 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (80-90 percent cloud). A chance 
+                    of rain. 
+Chance of thunder...0 percent. 
+Max temperature.....45-50. 
+Min humidity........50-55 percent. 
+20-foot winds.......Northeast winds 5 to 10 mph. Gusts up to 20 mph 
+                    in the afternoon. 
+Mixing height.......Around 2100 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 9 to 14 mph. 
+Smoke dispersal.....Around 22000 or poor (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Rain likely. Lows in the mid 30s. Highs in the mid 40s.
+Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy with rain likely. Lows in the mid 30s.
+Highs in the lower 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Lows in the
+lower 40s. Highs in the upper 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the upper 30s. Highs in the lower
+50s. West winds 5 to 15 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain and snow. Lows in
+the mid 30s. Highs in the lower 50s. Southwest winds 5 to 10 mph. 
+
+$$
+
+SDZ021-240900-
+Grant-
+Including the city of Milbank
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (60-70 percent cloud) then 
+                    becoming partly cloudy (25-35 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....53-58. 
+Max humidity........76-81 percent. 
+20-foot winds.......Windy. South winds 20 to 30 mph. Gusts up to 45 
+                    mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (60-70 percent cloud). A chance of 
+                    showers in the morning. 
+Chance of thunder...0 percent. 
+Max temperature.....60-65. 
+Min humidity........44-49 percent. 
+20-foot winds.......Northwest winds 10 to 20 mph. Gusts up to 35 
+                    mph. 
+Mixing height.......Around 3200 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 17 to 22 mph. 
+Smoke dispersal.....Around 54000 or fair (AVE 12-6 PM). 
+CWR.................10 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Mostly cloudy (55-65 percent cloud) then 
+                    becoming partly cloudy (30-40 percent cloud) 
+                    then becoming mostly cloudy (45-55 percent 
+                    cloud) then becoming partly cloudy (45-55 
+                    percent cloud) then becoming mostly cloudy 
+                    (60-70 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....37-42. 
+Max humidity........60-65 percent. 
+20-foot winds.......Northwest winds 5 to 10 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (75-85 percent cloud). A slight 
+                    chance of rain through the day. 
+Chance of thunder...0 percent. 
+Max temperature.....47-52. 
+Min humidity........46-51 percent. 
+20-foot winds.......North winds 5 to 10 mph. 
+Mixing height.......Around 2400 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northeast 8 to 13 mph. 
+Smoke dispersal.....Around 22000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with rain likely. Lows in the upper 30s. Highs in
+the mid 40s. Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy with rain likely. Lows in the mid 30s.
+Highs in the lower 50s. East winds 5 to 15 mph. 
+.WEDNESDAY...Mostly cloudy. A slight chance of rain. Lows around 40.
+Highs in the upper 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the upper 30s. Highs in the lower
+50s. West winds 5 to 15 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain and snow. Lows in
+the mid 30s. Highs in the lower 50s. Northwest winds 5 to 10 mph. 
+
+$$
+
+SDZ008-240900-
+Roberts-
+Including the city of Sisseton
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (60-70 percent cloud) then 
+                    becoming partly cloudy (25-35 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....52-57. 
+Max humidity........73-78 percent. 
+20-foot winds.......Windy. South winds 25 to 35 mph. Gusts up to 50 
+                    mph. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud). A chance of 
+                    showers in the morning. 
+Chance of thunder...0 percent. 
+Max temperature.....58-63. 
+Min humidity........37-42 percent. 
+20-foot winds.......Breezy. Northwest winds 15 to 25 mph. Gusts up 
+                    to 35 mph. 
+Mixing height.......Around 3400 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 18 to 23 mph. 
+Smoke dispersal.....Around 64000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Mostly cloudy (50-60 percent cloud) then 
+                    becoming partly cloudy (40-50 percent cloud) 
+                    then becoming mostly cloudy (60-70 percent 
+                    cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....34-39. 
+Max humidity........59-64 percent. 
+20-foot winds.......Northwest winds 5 to 10 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (70-80 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....47-52. 
+Min humidity........36-41 percent. 
+20-foot winds.......North winds 5 to 10 mph. 
+Mixing height.......Around 2700 ft AGL (AFTERNOON MAX). 
+Transport winds.....North 8 to 13 mph. 
+Smoke dispersal.....Around 26000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Mostly cloudy with a chance of rain. Lows in the mid 30s.
+Highs in the mid 40s. Northeast winds 5 to 15 mph. 
+.TUESDAY...Mostly cloudy with a chance of rain. Lows in the lower
+30s. Highs in the lower 50s. East winds 5 to 10 mph. 
+.WEDNESDAY...Mostly cloudy. A chance of rain. Lows in the upper 30s.
+Highs in the mid 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs in the lower
+50s. Northwest winds 10 to 20 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the lower
+30s. Highs around 50. Northwest winds 5 to 10 mph. 
+
+$$
+
+MNZ039-240900-
+Traverse-
+Including the city of Wheaton
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (70-80 percent cloud) then 
+                    becoming partly cloudy (30-40 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....54-59. 
+Max humidity........71-76 percent. 
+20-foot winds.......Windy. South winds 20 to 30 mph. Gusts up to 40 
+                    mph in the evening. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Partly sunny (55-65 percent cloud). A chance of 
+                    showers in the morning. 
+Chance of thunder...0 percent. 
+Max temperature.....61-66. 
+Min humidity........33-38 percent. 
+20-foot winds.......Northwest winds 10 to 20 mph. Gusts up to 30 
+                    mph. 
+Mixing height.......Around 3500 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 18 to 23 mph. 
+Smoke dispersal.....Around 67000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Mostly cloudy (50-60 percent cloud) then 
+                    becoming partly cloudy (30-40 percent cloud) 
+                    then becoming mostly cloudy (60-70 percent 
+                    cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....33-38. 
+Max humidity........61-66 percent. 
+20-foot winds.......Northwest winds around 5 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (70-80 percent cloud). 
+Chance of thunder...0 percent. 
+Max temperature.....49-54. 
+Min humidity........31-36 percent. 
+20-foot winds.......North winds around 5 mph. 
+Mixing height.......Around 2900 ft AGL (AFTERNOON MAX). 
+Transport winds.....North 8 to 13 mph. 
+Smoke dispersal.....Around 28000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Mostly cloudy with a chance of rain. Lows in the mid 30s.
+Highs in the upper 40s. Northeast winds around 10 mph. 
+.TUESDAY...Mostly cloudy with a chance of rain. Lows in the lower
+30s. Highs in the lower 50s. East winds 5 to 10 mph. 
+.WEDNESDAY...Mostly cloudy. A chance of rain. Lows in the upper 30s.
+Highs in the upper 50s. South winds 10 to 20 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs in the lower
+50s. Northwest winds 5 to 15 mph. 
+.FRIDAY...Partly cloudy. A slight chance of rain. Lows in the lower
+30s. Highs in the lower 50s. Northwest winds 5 to 10 mph. 
+
+$$
+
+MNZ046-240900-
+Big Stone-
+Including the city of Ortonville
+623 PM CDT Fri Oct 23 2026
+
+.TONIGHT...
+Sky/weather.........Mostly cloudy (70-80 percent cloud) then 
+                    becoming partly cloudy (30-40 percent cloud). A 
+                    chance of sprinkles after midnight. 
+Chance of thunder...0 percent. 
+Min temperature.....54-59. 
+Max humidity........77-82 percent. 
+20-foot winds.......Windy. Southeast winds 20 to 30 mph becoming 
+                    south 10 to 20 mph after midnight. 
+CWR.................0 percent. 
+
+.SATURDAY...
+Sky/weather.........Mostly sunny (45-55 percent cloud) then 
+                    becoming partly sunny (65-75 percent cloud). A 
+                    chance of showers in the morning. 
+Chance of thunder...0 percent. 
+Max temperature.....62-67. 
+Min humidity........39-44 percent. 
+20-foot winds.......Northwest winds 10 to 20 mph. Gusts up to 30 
+                    mph. 
+Mixing height.......Around 3400 ft AGL (AFTERNOON MAX). 
+Transport winds.....Northwest 17 to 22 mph. 
+Smoke dispersal.....Around 60000 or good (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+.SATURDAY NIGHT...
+Sky/weather.........Mostly cloudy (65-75 percent cloud) then 
+                    becoming partly cloudy (45-55 percent cloud) 
+                    then becoming mostly cloudy (50-60 percent 
+                    cloud) then becoming partly cloudy (45-55 
+                    percent cloud) then becoming mostly cloudy 
+                    (55-65 percent cloud) then becoming partly 
+                    cloudy (40-50 percent cloud) then becoming 
+                    mostly cloudy (60-70 percent cloud). 
+Chance of thunder...0 percent. 
+Min temperature.....35-40. 
+Max humidity........65-70 percent. 
+20-foot winds.......Northwest winds around 5 mph. 
+CWR.................0 percent. 
+
+.SUNDAY...
+Sky/weather.........Mostly cloudy (75-85 percent cloud). A slight 
+                    chance of rain in the afternoon. 
+Chance of thunder...0 percent. 
+Max temperature.....49-54. 
+Min humidity........38-43 percent. 
+20-foot winds.......North winds around 5 mph. 
+Mixing height.......Around 2600 ft AGL (AFTERNOON MAX). 
+Transport winds.....North 8 to 13 mph. 
+Smoke dispersal.....Around 26000 or poor (AVE 12-6 PM). 
+CWR.................0 percent. 
+
+
+.FORECAST DAYS 3 THROUGH 7...
+.MONDAY...Cloudy with a chance of rain. Lows in the mid 30s. Highs
+in the upper 40s. Northeast winds around 10 mph. 
+.TUESDAY...Mostly cloudy with a chance of rain. Lows in the mid 30s.
+Highs in the lower 50s. East winds 5 to 10 mph. 
+.WEDNESDAY...Mostly cloudy. A chance of rain. Lows in the upper 30s.
+Highs in the upper 50s. South winds 5 to 15 mph. 
+.THURSDAY...Partly cloudy. Lows in the mid 30s. Highs in the mid
+50s. Northwest winds 5 to 10 mph. 
+.FRIDAY...Mostly cloudy. A slight chance of rain. Lows in the mid
+30s. Highs in the lower 50s. Northwest winds 5 to 10 mph. 
+
+$$
+
+WEATHER.GOV/ABERDEEN

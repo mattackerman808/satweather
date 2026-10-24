@@ -1,0 +1,59 @@
+WGUS45 KPUB 240011
+FLWPUB
+
+BULLETIN - IMMEDIATE BROADCAST REQUESTED
+Flood Warning
+National Weather Service Pueblo CO
+611 PM MDT Fri Oct 23 2026
+
+COC021-240215-
+/O.EXT.KPUB.FA.W.0010.000000T0000Z-261024T0215Z/
+/00000.0.ER.000000T0000Z.000000T0000Z.000000T0000Z.OO/
+Conejos CO-
+611 PM MDT Fri Oct 23 2026
+
+...FLOOD WARNING NOW IN EFFECT UNTIL 815 PM MDT THIS EVENING...
+
+* WHAT...Flooding along the Conejos River and its tributaries will
+  continue in and around the communities of Conejos and Antonito due
+  to excessive rainfall over the previous couple days.
+
+* WHERE...Southeastern Conejos County in south central Colorado...
+
+* WHEN...Until 815 PM MDT.
+
+* IMPACTS...Flooding of the Conejos River, area creeks, streams, and
+  other low-lying and flood-prone locations is imminent or occurring.
+  Streams continue to rise due to excess runoff from earlier
+  rainfall.
+
+* ADDITIONAL DETAILS...
+  - At 603 PM MDT, Emergency management reported flooding in the
+    warned area. Stream gauges on the Conejos River and other
+    tributaries, including the San Antonio River, will remain high or
+    continue to rise.
+  - Some locations that will experience flooding include...
+    Manassa, Sanford, Antonito, Romeo, Conejos, Bountiful and Ortiz.
+  - Highway 17 between Antonito and Cumbres Pass remains closed due
+    to reported water and debris over the roadway.
+  - http://www.weather.gov/safety/flood
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+Turn around, don't drown when encountering flooded roads. Most flood
+deaths occur in vehicles.
+
+Be aware of your surroundings and do not drive on flooded roads.
+
+Stay away or be swept away. River banks and culverts can become
+unstable and unsafe.
+
+&&
+
+LAT...LON 3727 10573 3727 10581 3719 10587 3700 10588
+      3700 10606 3721 10612 3726 10597 3733 10585
+      3734 10575 3732 10575 3732 10574 3731 10574
+      3730 10573
+
+
+$$

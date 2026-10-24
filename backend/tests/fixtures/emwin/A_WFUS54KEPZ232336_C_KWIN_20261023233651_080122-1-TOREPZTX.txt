@@ -1,0 +1,50 @@
+WFUS54 KEPZ 232336
+TOREPZ
+NMC051-240000-
+/O.NEW.KEPZ.TO.W.0004.261023T2336Z-261024T0000Z/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Tornado Warning
+National Weather Service El Paso TX
+536 PM MDT Fri Oct 23 2026
+
+The National Weather Service in El Paso has issued a
+
+* Tornado Warning for...
+  East central Sierra County in south central New Mexico...
+
+* Until 600 PM MDT.
+
+* At 536 PM MDT, a severe thunderstorm capable of producing a tornado
+  was located near Spaceport America, moving northeast at 25 mph.
+
+  HAZARD...Tornado and ping pong ball size hail.
+
+  SOURCE...Radar indicated rotation.
+
+  IMPACT...Flying debris will be dangerous to those caught without 
+           shelter. Mobile homes will be damaged or destroyed. 
+           Damage to roofs, windows, and vehicles will occur.  Tree 
+           damage is likely.
+
+* This dangerous storm will be near...
+  Cutter and Spaceport America around 540 PM MDT.
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+TAKE COVER NOW! Move to a basement or an interior room on the lowest
+floor of a sturdy building. Avoid windows. If you are outdoors, in a
+mobile home, or in a vehicle, move to the closest substantial shelter
+and protect yourself from flying debris.
+
+&&
+
+LAT...LON 3287 10705 3300 10712 3325 10680 3294 10666
+TIME...MOT...LOC 2336Z 237DEG 24KT 3299 10701 
+
+TORNADO...RADAR INDICATED
+MAX HAIL SIZE...1.50 IN
+
+$$
+
+ZA

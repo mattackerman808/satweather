@@ -1,0 +1,93 @@
+SXUS52 KTAE 232310
+OSOTAE
+North Florida/South Alabama/Southwest Georgia Weather Roundup
+National Weather Service Tallahassee Florida
+700 PM EDT FRI OCT 23 2026
+
+Note: "fair" indicates few or no clouds below 12,000 feet with no
+significant weather and/or obstructions to visibility.
+
+...North Florida...
+  
+CITY           SKY/WX    TMP DP  RH WIND       PRES   REMARKS
+TALL INTL ARPT CLEAR     74  43  32 NE8       30.13R                  
+FSU LOVE BLDG    N/A     72  46  40 NE3         N/A                   
+APALACHICOLA   CLEAR     70  55  59 E5        30.12R                  
+PERRY          CLEAR     70  45  40 MISG      30.14R                  
+CROSS CITY     CLEAR     70  52  52 NE6       30.11R                  
+JACKSONVILLE   CLEAR     65  50  58 NE8       30.16R                  
+$$
+
+...Florida Panhandle...
+  
+CITY           SKY/WX    TMP DP  RH WIND       PRES   REMARKS
+MARIANNA       CLEAR     70  44  39 NE6       30.14R                  
+BONIFAY        CLEAR     68  46  45 N3        30.16R                  
+PANAMA CITY NW CLEAR     71  43  36 N6        30.12R                  
+TYNDALL AFB    CLEAR     73  46  38 NE7       30.11R                  
+TYND DRONE APT NOT AVBL                                               
+DE FUNIAK SPR  CLEAR     72  43  35 NE3       30.16R                  
+EGLIN AFB      CLEAR     77  37  24 NE5       30.12R                  
+DESTIN         CLEAR     74  48  39 NE5       30.13R                  
+HURLBURT       CLEAR     76  47  35 N8        30.11R                  
+CRESTVIEW      CLEAR     68  50  52 CALM      30.17R                  
+PENSACOLA      CLEAR     73  51  46 CALM      30.13R                  
+$$
+
+...South Alabama...
+  
+CITY           SKY/WX    TMP DP  RH WIND       PRES   REMARKS
+DOTHAN         CLEAR     70  41  34 NE5       30.19R                  
+OZARK CAIRNS   CLEAR     71  41  34 NE5       30.14                   
+FT RUCKER HELI CLEAR     69  46  43 CALM      30.14R                  
+RUCKER HELI 3  CLEAR     71  44  37 NE3       30.15R                  
+RUCKER HELI 2  CLEAR     74  41  29 NE6       30.14R                  
+FLORALA APT    CLEAR     67  44  43 NE3       30.17R                  
+ANDALUSIA      CLEAR     69  47  45 CALM      30.16R                  
+TROY           CLEAR     68  51  54 CALM      30.18R                  
+EUFALA         CLEAR     63  49  60 CALM      30.18R                  
+MOBILE         CLEAR     74  48  39 N3        30.13S                  
+$$
+
+...Southwest and South Central Georgia...
+  
+CITY           SKY/WX    TMP DP  RH WIND       PRES   REMARKS
+THOMASVILLE    CLEAR     66  36  32 NE3       30.17R                  
+BAINBRIDGE     CLEAR     69  42  37 E9        30.16R                  
+MOODY AFB      CLEAR     67  33  28 E6        30.15R                  
+VALDOSTA       CLEAR     67  31  26 NE5       30.12R                  
+MOULTRIE       CLEAR     68  36  30 NE5       30.17R                  
+BLAKELY        CLEAR     68  46  45 CALM      30.17R                  
+ALBANY         CLEAR     70  37  30 NE3       30.19R                  
+TIFTON         CLEAR     66  38  36 CALM      30.18R                  
+FITZGERALD       N/A     68  40  35 NE5       30.19R                  
+CORDELE        NOT AVBL                                               
+AMERICUS       CLEAR     67  38  35 NE5       30.16R                  
+HOMERVILLE     CLEAR     65  42  43 CALM      30.17R                  
+$$
+
+...Buoy Observations...
+  
+STATION/POSITION TIME  TEMP    WIND        PRES    VSBY  WAVE
+                       AIR SEA DIR/SP/G                  HT/PER
+                 (UTC) (F)     (DEG/KT/KT) (MB)    (MI)  (FT/S)
+47 S SANTA ROSA  NOT AVBL
+47 S INDIAN PASS 2135   74 81   70/ 12/ 17 1018.7
+APALACHICOLA     2240   74 81   40/ 16/ 21 1018.6R
+PANAMA CITY      2250   75      60/ 12/ 14 1019.4R         2/ 4
+MOBILE BUOY      NOT AVBL
+ORANGE BCH AL    2250   77 78  100/ 10/ 12 1020.1
+$$
+
+...Coastal Observations... 
+  
+STATION/POSITION TIME  TEMP    WIND        PRES    VSBY  WAVE
+                       AIR SEA DIR/SP/G                  HT/PER
+                 (UTC) (F)     (DEG/KT/KT) (MB)    (MI)  (FT/S)
+Panama City Bch  2230   77 77   30/  5/ 10 1020.4R
+Panama City      2230      73   60/  6/ 10   N/A
+Apalachicola     2230   72 72  100/  5/  6 1019.8R
+Apalach East Bay 2200   73     120/  6     1020.0
+Keaton Beach     2250   71      50/  4/  6 1020.0R
+$$
+  

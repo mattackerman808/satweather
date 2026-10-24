@@ -1,0 +1,2371 @@
+FOUS51 KAKQ 240003
+AFMAKQ
+
+FOUS51 KAKQ 240001
+AFMAKQ
+
+Area Forecast Matrices
+National Weather Service Wakefield VA
+801 PM EDT Fri Oct 23 2026
+
+VAZ064-240800-
+Caroline-
+Including the cities of Corbin, Burruss Corner, Cedar Fork, 
+and Dawn
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      37          64    37 39 41          66          36
+Temp                45 42 39 40 54 61 60 51 46 44 42 42 56 63 62 51 45 42 39 40
+Dewpt               43 42 39 38 47 42 43 45 45 44 42 42 49 46 46 48 45 42 39 40
+RH                  93100100 92 77 49 53 80 96100100100 77 54 56 89100100100100
+Wind dir             E NE  N  N NE  E  E  E NE  N  N  N NE NE  E  E  N  N NW NW
+Wind spd             2  2  2  3  6  5  5  2  1  1  2  3  5  4  4  1  0  0  1  1
+Clouds              FW CL FW FW FW SC SC FW FW FW FW SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          69      46    69      48    66      49    70      51    72
+Temp          65 55   47 47 68 57   49 49 64 57   51 50 68 60   54 52 70 61
+Dewpt         44 49   46 47 52 52   49 49 53 53   51 50 57 57   53 52 57 56
+PWind dir        NW      NW    NE      NE     E       E     S      SW     W
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC SC
+PoP 12hr          0       0     0       0     0       0     0       0     0
+
+$$
+NCZ017-240800-
+Western Currituck-
+Including the city of Knotts Island
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                47 53 59    63 65 66    48 52 58    64 66 68    44 50 56
+Temp                55 53 53 54 60 64 63 58 56 55 54 54 61 65 64 57 54 53 51 51
+Dewpt               49 47 47 47 51 49 50 52 53 53 53 53 54 52 51 52 52 52 51 51
+RH                  80 80 80 77 72 58 62 80 90 93 96 96 78 63 63 83 93 96100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd            11 11 10 11 14 13 13 10 10 10 11 12 16 16 16 10  8  6  8  9
+Wind gust           27 25 25 24 25 26 26 24 23 23 24 26 28 29 28 25 23 21 21 21
+Clouds              SC FW SC SC SC SC SC B1 SC SC SC SC SC FW FW FW FW FW FW FW
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          64      50    67      56    67      59    69      59    71
+Temp          63 56   51 52 66 60   57 58 65 62   59 60 68 64   60 59 69 64
+Dewpt         47 50   49 50 55 56   55 56 57 59   58 59 61 61   60 59 60 60
+PWind dir        NE       N     N      NE    NE      NE    NE      NE    NE
+Wind char        GN      LT    GN      LT    GN      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5    10      10     5
+
+$$
+VAZ061-240800-
+Cumberland-
+Including the cities of Angola, Guinea Mills, Hawk, 
+Raines Tavern, Reeds, and Stoddert
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      36          64          38          66          36
+Temp                45 41 38 39 53 61 60 50 45 43 41 41 55 63 62 50 44 42 39 40
+Dewpt               43 41 38 37 47 42 42 46 44 43 41 41 48 45 45 49 44 42 39 40
+RH                  93100100 92 80 49 51 86 96100100100 77 52 54 96100100100100
+Wind dir            NE NE  N  N NE NE NE NE NE  N  N  N NE NE NE NE  N  N NW  W
+Wind spd             2  2  2  3  5  5  5  2  1  1  2  3  5  4  4  1  0  0  0  0
+Clouds              FW FW FW FW FW SC SC SC FW FW FW SC SC FW CL FW CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      43    71      46    66      48    70      49    73
+Temp          66 56   44 44 69 59   48 47 65 58   50 49 68 60   52 50 71 62
+Dewpt         44 49   44 44 54 53   48 47 54 54   50 49 58 57   52 50 58 56
+PWind dir        NW      NW    NE      NE    NE       E     S       W     W
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW B1 B1 B1   B1 B1 B1 SC   FW SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       5     0
+
+$$
+NCZ016-240800-
+Camden-
+Including the cities of Horseshoe, Lilly, and Sharon
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                46 50 58          66    47 51 57    66 68 69    43 47 55
+Temp                53 51 51 52 60 64 64 58 55 54 52 53 61 66 65 57 53 51 49 49
+Dewpt               49 47 46 47 51 48 49 52 52 53 52 52 54 51 50 52 52 51 49 49
+RH                  86 86 83 83 72 56 58 80 90 96100 96 78 58 58 83 96100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             8  8  8  8 13 12 12  8  8  8  9 10 13 14 13  8  5  5  5  6
+Wind gust           25 25 24 23 25 26 26 24 23 23 24 25 28 28 27 24 21 19 19 20
+Clouds              SC FW SC SC SC SC SC SC SC SC SC SC SC FW FW CL FW FW FW FW
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          67      48    70      55    68      57    71      58    73
+Temp          65 56   49 49 68 60   55 56 67 62   58 58 69 64   59 59 71 64
+Dewpt         45 49   48 48 54 56   55 55 57 58   57 58 61 61   59 58 60 60
+PWind dir        NE       N     N      NE    NE      NE    NE      NE    NE
+Wind char        GN      LT    LT      LT    GN      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5    10      10     5
+
+$$
+VAZ062-240800-
+Goochland-
+Including the city of Goochland
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      36    63 64 66    36 38 40          67    35 36 38
+Temp                45 41 38 39 54 61 60 50 45 43 41 41 56 64 63 51 45 42 39 40
+Dewpt               43 41 38 37 47 42 42 46 44 43 41 41 49 45 45 49 45 42 39 40
+RH                  93100100 92 77 49 51 86 96100100100 77 50 52 93100100100100
+Wind dir            NE NE  N  N NE NE  E NE  E NE  N  N NE NE NE NE  N  N NW  W
+Wind spd             3  2  3  3  6  5  5  3  1  1  2  3  5  4  4  1  0  0  0  1
+Clouds              FW CL CL FW FW SC SC SC FW FW FW SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      44    71      47    66      48    70      50    73
+Temp          66 56   45 45 69 59   48 48 65 58   51 49 68 60   53 51 71 62
+Dewpt         44 49   45 45 54 53   48 48 54 54   51 49 57 57   53 51 58 56
+PWind dir        NW      NW    NE      NE     E       E     S      SW    SW
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW B1 B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       5     0
+
+$$
+VAZ060-240800-
+Prince Edward-
+Including the city of Farmville
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      37          64          39          66    35 36 38
+Temp                46 41 39 40 54 61 60 50 46 44 42 42 56 63 62 51 45 42 39 40
+Dewpt               44 41 39 38 46 42 42 46 45 43 42 42 48 45 45 49 45 42 39 40
+RH                  93100100 92 74 49 51 86 96 96100100 74 52 54 93100100100100
+Wind dir            NE NE  N  N NE NE NE NE NE NE  N  N NE NE NE NE NE  N NW NW
+Wind spd             3  2  3  4  6  6  6  3  2  2  3  4  5  5  4  2  0  0  1  1
+Clouds              FW FW FW FW FW SC SC SC FW SC FW SC SC FW FW FW CL CL CL FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      42    71      46    67      48    71      49    73
+Temp          66 56   44 44 69 59   48 47 65 57   51 49 68 60   52 50 71 62
+Dewpt         43 48   44 43 51 53   48 47 52 54   51 49 56 56   52 50 56 56
+PWind dir         N      NW    NE      NE    NE      NE    SE       W     W
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   FW SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       5     0
+
+$$
+VAZ531-240800-
+Portsmouth-
+Including the cities of Churchland, Cradock, 
+and Downtown Portsmouth
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                51 52 54          65          52          66    47 49 50
+Temp                56 54 53 54 60 63 63 58 55 54 53 54 61 64 64 57 54 52 51 51
+Dewpt               48 46 46 46 49 47 47 51 51 52 52 52 53 50 49 51 51 51 50 50
+RH                  74 74 77 74 67 56 56 77 86 93 96 93 75 60 58 80 90 96 96 96
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             9  8  8  9 12 12 12  9  8  8  9  9 13 13 12  8  4  4  5  6
+Wind gust           19                                                         
+Clouds              FW FW SC SC B1 B1 B1 SC SC SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          66      52    68      57    67      59    70      59    72
+Temp          64 58   52 53 66 61   57 58 65 63   59 60 68 65   60 59 69 66
+Dewpt         45 48   48 50 53 55   54 55 55 57   57 58 60 60   59 58 59 59
+PWind dir        NE      NW     N      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    GN      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5    10       5     5
+
+$$
+NCZ015-240800-
+Pasquotank-
+Including the city of Elizabeth City
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                47 50 57          67    48 51 56    67 68 70    44 48 53
+Temp                53 51 51 52 60 65 64 59 56 54 53 53 62 67 66 57 53 52 50 50
+Dewpt               50 47 47 47 52 49 49 52 52 53 53 53 55 52 50 52 52 51 50 50
+RH                  89 86 86 83 75 56 58 78 86 96100100 78 59 56 83 96 96100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N  N
+Wind spd             8  8  8  9 13 13 12  8  8  8  9 10 14 14 14  9  5  5  6  8
+Wind gust           23 23 20 19 24 24 24 20 20 20 23 23 26 26 25 21 18 17 17 18
+Clouds              FW FW SC SC SC SC SC SC SC SC SC SC SC SC FW CL FW FW FW FW
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          68      46    71      54    69      57    72      57    73
+Temp          66 56   48 48 69 59   54 55 67 62   58 58 70 64   59 58 71 64
+Dewpt         45 50   47 47 55 56   54 55 58 59   57 58 62 62   59 58 61 60
+PWind dir        NE       N     N      NE    NE      NE    NE      NE    NE
+Wind char        GN      LT    LT      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5    10      10     5
+
+$$
+VAZ530-240800-
+Norfolk-
+Including the cities of Downtown Norfolk, Ghent, 
+Norfolk International Arpt, Norfolk NAS, Norview, Ocean View, 
+and Wards Corner
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                53 54 56          64    52 54 57          65    49 51 54
+Temp                57 55 54 55 60 63 62 59 57 56 55 56 61 64 63 58 55 54 53 53
+Dewpt               48 46 46 46 50 47 48 50 51 52 52 53 53 50 49 51 51 51 51 51
+RH                  72 72 74 72 69 56 60 72 80 86 90 90 75 60 60 77 86 90 93 93
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd            11 10 10 11 13 13 13 10  9 10 10 11 14 13 13  9  5  5  6  8
+Wind gust           23                                                         
+Clouds              FW FW SC SC SC B1 SC SC SC SC SC SC FW FW CL CL FW CL FW FW
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          64      53    66      57    66      59    69      59    70
+Temp          63 58   54 54 64 61   58 58 64 62   60 60 67 64   60 60 68 65
+Dewpt         46 48   49 51 54 55   54 55 56 57   57 59 60 60   59 59 59 59
+PWind dir        NE      NW     N      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    GN      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5    10       5     5
+
+$$
+NCZ014-240800-
+Gates-
+Including the city of Corapeake
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                43 45 48          68    45 47 49          70    41 43 45
+Temp                51 48 47 48 59 65 65 57 53 51 49 50 61 67 66 56 50 48 46 46
+Dewpt               48 47 45 45 50 47 47 50 51 51 49 50 53 50 48 51 50 48 46 46
+RH                  89 96 93 89 72 52 52 77 93100100100 75 54 52 83100100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             4  4  4  4 10 10  9  4  4  4  4  5 11 11 11  4  2  2  3  3
+Clouds              FW FW FW FW SC B1 B1 SC SC SC SC SC FW SC FW CL CL CL FW CL
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      44    72      52    70      55    73      55    75
+Temp          67 56   46 46 71 60   53 53 69 62   56 56 71 64   57 56 73 65
+Dewpt         43 47   45 46 52 54   53 53 55 56   56 56 59 60   57 56 59 58
+PWind dir        NE      NW     N      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL CL CL FW   FW SC B1 B1   B1 B1 B1 B1   SC FW SC FW
+PoP 12hr          0       0     0       0     0       5    10       5     5
+
+$$
+NCZ013-240800-
+Hertford-
+Including the city of Ahoskie
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                41 45 49    66 68 69    44 46 50          70    39 41 44
+Temp                50 47 46 48 59 65 65 56 52 50 48 49 61 67 66 55 49 47 44 44
+Dewpt               48 46 44 44 49 46 47 49 50 50 48 49 53 50 48 50 49 47 44 44
+RH                  93 96 93 86 69 50 52 77 93100100100 75 54 52 83100100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             4  4  4  4 11 10 10  5  4  4  5  5 11 10 11  4  2  2  3  3
+Clouds              FW FW FW FW SC SC B1 SC SC SC SC SC FW SC FW CL CL CL FW CL
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      42    73      50    71      53    73      54    75
+Temp          67 56   44 44 72 60   51 51 69 61   54 54 71 63   56 55 73 64
+Dewpt         43 47   44 44 50 52   51 51 54 56   54 54 58 59   56 54 57 58
+PWind dir         N      NW     N      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL CL CL CL   FW SC B1 B1   B1 B1 SC B1   SC FW SC FW
+PoP 12hr          0       0     0       0     0       5    10       5     5
+
+$$
+VAZ098-240800-
+Virginia Beach-
+Including the cities of Back Bay, Bayside, Cape Henry, Dam Neck, 
+Gallups Corner, Kempsville, and London Bridge
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                50 53 57    62 64 65    49 52 58    63 65 67    46 50 54
+Temp                56 55 54 54 60 63 62 58 55 55 53 54 60 63 63 57 54 52 51 51
+Dewpt               48 46 46 46 50 48 49 52 52 52 52 53 54 51 50 52 51 51 51 51
+RH                  74 72 74 74 69 58 62 80 90 90 96 96 81 65 62 83 90 96100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd            12 11 11 12 14 13 13 11 10 10 12 12 16 16 14 10  6  6  8  9
+Wind gust           26 23 21             21 20 21 23 24          20 17       19
+Clouds              FW FW SC SC SC SC SC SC B1 SC SC SC FW FW CL CL FW FW FW FW
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          63      52    66      57    66      59    68      58    69
+Temp          62 57   53 54 64 60   57 58 64 61   59 60 66 63   60 59 67 64
+Dewpt         46 49   49 51 55 56   55 55 57 58   58 59 61 61   59 59 61 60
+PWind dir         N       N     N      NE    NE      NE    NE      NE    NE
+Wind char        GN      LT    GN      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5      10     5
+
+$$
+VAZ099-240800-
+Accomack-
+Including the cities of Chincoteague, Wallops Island, and Melfa
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                41 46 50    61 62 64    43 47 50    61 64 66    40 44 51
+Temp                49 48 47 48 56 60 60 54 51 50 48 49 57 62 61 53 49 48 46 46
+Dewpt               44 43 43 43 47 46 46 48 48 48 48 48 49 48 47 48 47 47 45 44
+RH                  83 83 86 83 72 60 60 80 89 93100 96 75 60 60 83 93 96 96 93
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             9  8  9  9 12 12 11  8  6  6  8  9 11 10 10  6  4  3  4  5
+Wind gust           21                                                         
+Clouds              FW FW SC SC SC SC SC SC SC SC SC FW FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          64      50    66      52    64      55    67      56    68
+Temp          62 56   52 51 64 57   53 54 62 58   56 56 65 61   57 57 66 61
+Dewpt         47 48   49 50 53 52   51 51 53 53   54 55 57 58   57 56 57 56
+PWind dir        NW      NW    NE      NE    NE      NE     E       E    NE
+Wind char        LT      LT    GN      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC SC
+PoP 12hr          0       0     0       0     0       5     5      10     5
+
+$$
+NCZ012-240800-
+Northampton-
+Including the city of Margarettsville
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                40 42 45          67    43 44 46          69    38 39 41
+Temp                49 46 44 45 57 64 64 55 50 48 46 47 60 66 65 53 47 45 42 43
+Dewpt               48 46 44 43 49 46 46 49 48 48 46 47 52 49 48 50 47 45 42 43
+RH                  96100100 93 75 52 52 80 93100100100 75 54 54 89100100100100
+Wind dir            NE NE  N  N NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             4  4  4  5 10 10 10  5  3  4  5  6 11 10 10  4  1  1  2  3
+Clouds              FW FW FW FW SC SC SC SC SC SC B1 SC FW SC FW CL CL CL CL FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      41    72      48    69      51    72      52    74
+Temp          66 55   44 43 70 59   49 49 68 59   53 52 70 62   54 53 73 63
+Dewpt         43 47   44 43 51 52   49 49 53 55   53 52 58 59   54 53 57 58
+PWind dir         N      NW    NE      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW CL FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+MDZ022-240800-
+Wicomico-
+Including the city of Salisbury
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                37 39 43          64    38 40 42    64 66 67    36 38 45
+Temp                44 42 40 42 54 61 60 51 47 45 43 43 56 63 62 51 46 43 41 41
+Dewpt               41 39 39 39 46 43 43 46 45 44 43 43 48 45 44 46 45 43 41 41
+RH                  89 89 96 89 74 51 53 83 93 96100100 74 52 52 83 96100100100
+Wind dir            NE NE NE NE NE  E  E NE NE NE NE NE NE NE NE  E NE NE  N NW
+Wind spd             3  3  3  4  8  8  8  3  3  3  3  4  6  5  5  2  0  0  1  2
+Clouds              CL FW SC SC SC SC SC FW FW FW CL CL CL CL CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y  Y                                          
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          67      47    67      48    65      51    69      53    70
+Temp          64 54   48 48 66 56   50 49 64 57   52 52 66 60   56 54 68 61
+Dewpt         46 48   48 48 52 51   50 49 51 52   52 52 56 57   56 54 56 55
+PWind dir        NW      NW    NE      NE     E      NE    SE       S     W
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   SC SC B1 B1   B1 B1 SC B1   SC SC SC SC
+PoP 12hr          0       0     0       0     0       0     5       5     5
+
+$$
+MDZ021-240800-
+Dorchester-
+Including the city of Cambridge
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                36 40 48    61 63 64    37 41 47    63 66 67    36 40 49
+Temp                46 44 41 43 55 61 60 52 47 45 43 44 56 63 62 52 47 45 43 43
+Dewpt               41 40 39 40 44 42 42 45 45 45 43 44 46 44 45 46 46 44 43 43
+RH                  83 86 92 89 66 49 51 77 93100100100 69 50 54 80 96 96100100
+Wind dir            NE NE NE NE NE  E  E  E NE NE NE NE NE NE  N  E  E  E NW NW
+Wind spd             5  4  5  5  8  6  8  4  3  3  4  4  6  4  4  3  1  1  1  2
+Wind gust           19                                                         
+Clouds              CL FW FW FW FW SC SC FW CL CL CL CL CL CL CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y  Y                                          
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          66      50    67      49    65      51    68      54    69
+Temp          63 56   52 51 66 57   50 50 64 57   52 53 66 61   56 55 67 61
+Dewpt         47 49   50 49 50 50   49 48 49 51   52 52 55 57   56 54 55 55
+PWind dir        NW      NW    NE      NE     E       E    SE       S     W
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC SC B1   B1 B1 SC SC   SC SC SC SC
+PoP 12hr          0       0     0       0     0       0     5       5     5
+
+$$
+VAZ097-240800-
+Chesapeake-
+Including the cities of Mount Pleasant, Bowers Hill, 
+Chesapeake Airport, Deep Creek, Fentress, Great Bridge, 
+and Greenbrier
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                44 48 53    64 66 67    46 49 53    66 67 69    43 45 49
+Temp                53 51 49 50 59 64 63 57 53 52 50 51 60 65 64 56 51 49 47 47
+Dewpt               48 46 45 45 50 47 47 51 51 51 50 50 53 50 48 51 51 49 47 47
+RH                  83 83 86 83 72 54 56 80 93 96100 96 78 58 56 83100100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             6  5  5  6 11 11 10  6  5  5  6  8 12 12 12  5  3  3  4  5
+Clouds              FW FW SC SC SC B1 B1 SC B1 SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          67      48    69      54    68      57    71      57    73
+Temp          64 56   49 50 67 60   55 56 66 62   58 58 69 64   59 58 70 65
+Dewpt         44 48   47 49 54 55   54 54 56 57   56 58 60 60   58 57 60 59
+PWind dir        NE      NW     N      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5    10       5     5
+
+$$
+MDZ024-240800-
+Inland Worcester-
+Including the city of Snow Hill
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                40 42 47    61 62 64    40 42 46    61 64 66    37 39 44
+Temp                46 45 43 44 55 60 59 51 48 46 44 45 55 62 61 51 46 44 42 42
+Dewpt               42 41 41 41 46 44 44 47 47 46 44 45 49 46 45 47 46 44 42 42
+RH                  86 86 93 89 72 55 57 86 96100100100 80 56 56 86100100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N  N
+Wind spd             5  5  5  5 10 10  9  4  4  4  4  5  8  8  8  3  1  1  2  3
+Wind gust           16                                                         
+Clouds              FW SC SC SC SC SC SC FW FW FW FW FW FW CL CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          66      47    66      50    63      53    67      54    69
+Temp          63 54   48 49 64 56   52 51 62 57   54 54 65 61   57 55 68 61
+Dewpt         46 49   48 48 54 53   51 50 53 53   53 54 58 58   57 55 58 56
+PWind dir        NW      NW    NE      NE     E      NE     E       S    NW
+Wind char        LT      LT    GN      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   SC SC B1 B1   B1 B1 B1 B1   SC SC SC SC
+PoP 12hr          0       0     0       0     0       5     5      10     5
+
+$$
+MDZ023-240800-
+Somerset-
+Including the cities of Crisfield and Princess Anne
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                39 42 50          64    40 43 49    63 66 67    38 41 51
+Temp                47 45 43 45 56 61 61 52 48 47 45 45 57 63 62 53 48 46 44 44
+Dewpt               42 42 41 41 46 44 44 47 47 46 45 45 48 46 46 47 47 45 44 43
+RH                  83 89 93 86 69 53 53 83 96 96100100 72 54 56 80 96 96100 96
+Wind dir            NE NE NE NE NE  E  E NE NE NE NE NE NE NE NE  E NE NE  N  N
+Wind spd             6  6  6  8  9  9  9  6  5  5  6  6  8  5  5  4  2  2  3  3
+Wind gust           20                                                         
+Clouds              CL FW FW SC SC SC SC FW FW FW FW FW FW CL CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y  Y                                          
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          66      50    67      50    65      53    68      55    69
+Temp          63 56   52 50 66 58   52 51 63 58   54 54 65 61   57 56 67 62
+Dewpt         48 49   50 49 52 52   51 50 52 53   53 53 57 58   57 55 57 56
+PWind dir        NW      NW    NE      NE     E      NE     E       S    NW
+Wind char        LT      LT    GN      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC SC
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ092-240800-
+Southampton-
+Including the city of Franklin
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                39 41 44          66    42 43 46          69    38 39 41
+Temp                48 46 43 44 56 63 63 54 50 48 46 46 59 66 65 53 47 45 42 43
+Dewpt               47 45 43 42 49 46 46 49 48 48 46 46 51 49 47 50 47 45 42 42
+RH                  96 96100 93 77 54 54 83 93100100100 75 54 52 89100100100 96
+Wind dir            NE  N  N  N NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             3  3  4  4 10 10  9  4  3  3  4  5 10 10 10  3  0  0  2  2
+Clouds              FW FW FW FW SC B1 B1 SC SC SC B1 SC FW SC FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      41    72      48    69      51    72      52    74
+Temp          67 55   43 43 71 58   49 50 68 59   52 52 70 62   54 53 73 63
+Dewpt         43 46   43 43 50 51   49 49 52 54   52 52 57 58   54 53 56 57
+PWind dir         N      NW    NE      NE    NE      NE    NE       E    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL CL CL FW   FW SC B1 B1   B1 B1 B1 B1   SC FW SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ090-240800-
+James City-
+Including the city of Williamsburg
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                41 44 50          65    43 46 51          68    39 42 45
+Temp                49 47 45 47 57 63 62 55 51 49 48 48 59 65 64 54 49 47 45 45
+Dewpt               47 45 44 44 49 45 46 49 49 49 48 48 52 49 47 50 48 46 45 44
+RH                  93 93 96 89 75 52 56 80 93100100100 78 56 54 86 96 96100 96
+Wind dir            NE NE NE NE  E  E NE NE NE NE NE NE NE NE  E  E NE NE  N  N
+Wind spd             4  3  4  4  9  9  8  3  3  3  4  4  9  8  8  2  1  1  1  2
+Wind gust              13                                                      
+Clouds              FW FW FW FW SC B1 B1 SC SC SC B1 SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y                                                         
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          69      46    71      51    68      53    71      54    73
+Temp          66 56   46 47 69 58   52 52 66 59   54 54 69 62   56 55 71 63
+Dewpt         44 49   46 47 54 53   52 51 55 56   54 54 59 59   56 54 59 58
+PWind dir         N      NW    NE      NE    NE      NE     E      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC SC B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ528-240800-
+Isle of Wight-
+Including the cities of Carrsville, Lees Mill, Benns Church, 
+Bethel Church, Carrollton, Lawson, and Longview
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                42 46 53          65    44 47 52    66 68 69    40 43 47
+Temp                51 49 48 49 58 63 63 56 52 51 49 50 60 65 64 54 50 48 46 46
+Dewpt               48 46 45 45 49 47 47 50 50 50 49 50 52 49 48 51 49 47 46 46
+RH                  89 89 89 86 72 56 56 80 93 96100100 75 56 56 90 96 96100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             5  4  5  5 11 11 10  5  4  4  5  6 11 11 11  4  1  1  3  3
+Wind gust           18 14                                                      
+Clouds              FW FW FW FW SC B1 B1 SC SC SC B1 SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y                                                         
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          68      45    71      52    68      54    71      54    73
+Temp          65 55   46 47 69 59   53 53 66 60   55 55 69 62   56 55 71 63
+Dewpt         44 47   45 47 53 54   52 53 55 56   55 55 59 59   56 55 58 58
+PWind dir         N      NW    NE      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL CL FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ529-240800-
+Suffolk-
+Including the cities of Chuckatuck, Cleopus, Crittenden, Deanes, 
+Downtown Suffolk, Driver, and Elwood
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                43 46 53    64 66 67    45 48 52    66 68 70    41 43 49
+Temp                52 50 47 49 58 64 63 56 53 51 50 50 60 66 65 55 50 48 46 46
+Dewpt               48 46 45 45 49 47 47 50 51 51 50 50 53 50 48 51 50 48 46 46
+RH                  86 86 93 86 72 54 56 80 93100100100 78 56 54 86100100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             4  4  4  5 11 11 10  4  4  4  5  5 11 11 11  4  1  2  3  3
+Wind gust           17                               16                        
+Clouds              FW FW FW SC SC B1 B1 SC SC SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          68      45    71      52    69      55    72      55    73
+Temp          65 56   47 47 69 60   53 54 67 61   56 56 70 64   57 56 72 64
+Dewpt         44 47   45 47 53 54   53 53 55 56   55 56 59 60   57 56 59 58
+PWind dir        NE      NW     N      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL CL FW FW   FW SC B1 B1   B1 B1 B1 B1   SC FW SC FW
+PoP 12hr          0       0     0       0     0       5    10       5     5
+
+$$
+VAZ524-240800-
+Newport News-
+Including the cities of Beaconsdale, Denbigh, Fort Eustis, 
+Hilton Village, Lee Hall, Menchville, and Newport News
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                49 51 54    64 64 67    49 50 52    66 67 69    44 46 49
+Temp                53 52 51 53 59 63 62 57 54 53 52 52 60 65 64 55 52 50 48 48
+Dewpt               47 46 45 45 49 46 47 49 50 51 51 51 52 49 48 50 51 49 48 48
+RH                  80 80 80 74 69 54 58 75 86 93 96 96 75 56 56 83 96 96100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             9  8  8  8 12 12 11  8  8  8  8  9 12 11 11  5  4  3  4  5
+Wind gust           20                                                         
+Clouds              FW FW FW FW SC B1 SC SC SC SC SC SC FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y                                                         
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          68      49    69      55    67      56    70      56    72
+Temp          65 58   50 50 67 60   56 56 65 61   57 57 68 64   58 57 70 64
+Dewpt         45 48   48 49 53 54   54 54 55 56   56 57 60 59   58 56 58 58
+PWind dir         N      NW    NE      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ525-240800-
+Hampton/Poquoson-
+Including the cities of Buckroe Beach, Fort Monroe, Fox Hill, 
+Grand View, Hallwood, Hampton, and Langley AFB
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                51 53 56    61 63 64    50 52 56    63 65 66    46 49 52
+Temp                55 54 53 54 59 62 62 57 55 54 53 53 60 63 63 56 53 52 51 51
+Dewpt               47 46 45 46 49 47 48 50 51 51 52 52 52 50 49 50 50 50 50 50
+RH                  74 74 74 74 69 58 60 77 86 90 96 96 75 62 60 80 89 93 96 96
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd            12 11 11 11 13 13 13 10 10 10 10 11 13 13 12  8  5  4  5  6
+Clouds              FW FW FW SC SC B1 SC SC SC SC SC SC FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          65      52    66      56    65      58    69      57    70
+Temp          63 58   52 53 64 60   57 57 64 60   58 59 66 63   59 58 67 64
+Dewpt         47 48   49 50 54 54   53 54 55 56   56 58 59 59   58 57 58 58
+PWind dir        NE      NW     N      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    GN      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ522-240800-
+Eastern Essex-
+Including the city of Dunnsville
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                37 39 42          64          41          67          38
+Temp                46 45 41 42 54 61 61 52 47 45 43 44 57 64 63 51 46 43 41 41
+Dewpt               44 44 41 40 47 44 44 47 46 45 43 44 50 47 46 48 46 43 41 41
+RH                  93 96100 93 77 53 53 83 96100100100 77 54 54 89100100100100
+Wind dir             E NE NE NE  E  E  E NE NE NE NE NE NE  E  E  E  E  N NW NW
+Wind spd             4  4  4  4  9  8  8  3  3  3  4  4  8  6  5  2  1  1  2  2
+Clouds              CL FW FW FW SC SC SC SC FW FW SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          69      46    69      49    66      51    70      52    72
+Temp          66 55   46 48 68 57   51 51 65 58   52 53 68 60   55 54 70 62
+Dewpt         45 49   46 48 53 52   51 51 53 54   52 53 58 58   55 54 57 57
+PWind dir        NW      NW     N      NE     E       E     E      SW     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC SC
+PoP 12hr          0       0     0       0     0       0     5       5     5
+
+$$
+VAZ523-240800-
+York-
+Including the cities of Grafton and Tabb
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                44 49 52          64    46 49 52    64 66 68    42 45 48
+Temp                52 51 49 51 58 62 62 56 53 52 51 51 59 64 63 55 51 49 47 47
+Dewpt               47 46 45 45 49 46 47 50 50 51 50 51 52 49 48 51 50 49 47 47
+RH                  83 83 86 80 72 56 58 80 89 96 96100 78 58 58 86 96100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             8  6  6  6 11 11 10  6  5  5  6  8 11 10 10  4  2  2  3  4
+Wind gust           21 18 18 17             16 16 17                           
+Clouds              FW FW FW FW SC B1 B1 SC SC SC SC SC FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          67      48    69      54    66      55    70      55    72
+Temp          65 57   49 50 67 59   54 55 65 60   56 56 67 63   57 56 70 63
+Dewpt         45 49   48 49 55 54   53 53 56 57   56 56 60 60   57 56 59 59
+PWind dir         N      NW    NE      NE    NE      NE     E      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ520-240800-
+Eastern King and Queen-
+Including the city of King And Queen Court House
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                37 40 43          64    40 41 45    66 67 69    36 38 41
+Temp                46 45 42 43 55 61 61 52 48 46 44 44 57 64 63 52 46 43 41 41
+Dewpt               44 44 42 41 48 45 44 48 47 46 44 44 50 47 46 49 46 43 41 41
+RH                  93 96100 93 77 56 53 86 96100100100 77 54 54 89100100100100
+Wind dir            NE NE NE NE  E  E  E NE NE NE NE NE NE NE  E  E  N  N  N NW
+Wind spd             3  2  3  3  8  6  6  2  2  2  3  3  6  6  6  1  0  0  0  1
+Clouds              CL FW FW FW SC SC SC SC FW SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          69      45    70      49    67      51    71      52    73
+Temp          66 55   46 47 68 57   50 51 65 57   53 53 68 61   55 54 71 62
+Dewpt         45 48   46 47 53 52   50 51 54 55   53 53 58 58   55 53 58 57
+PWind dir         N      NW     N      NE     E       E     E       E     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ521-240800-
+Western Essex-
+Including the city of Tappahannock
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                37 38 40          64          41          67          37
+Temp                45 44 40 41 54 61 61 52 47 45 43 44 57 64 63 51 45 43 40 41
+Dewpt               44 42 40 39 47 43 43 46 45 45 43 44 49 46 46 48 45 43 40 41
+RH                  96 93100 92 77 51 51 80 93100100100 75 52 54 89100100100100
+Wind dir             E NE NE  N  E  E  E NE NE NE  N  N NE  E  E  E  E NW NW NW
+Wind spd             3  3  3  3  8  6  6  2  2  2  3  3  5  5  5  1  0  0  2  1
+Clouds              CL CL FW FW FW SC SC SC FW FW FW FW FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          69      46    69      49    67      50    70      52    72
+Temp          65 55   47 48 68 57   50 50 65 57   52 52 68 60   54 53 70 62
+Dewpt         45 49   46 48 52 51   50 50 52 53   52 52 57 57   54 53 56 56
+PWind dir        NW      NW    NE      NE     E       E    SE      SW     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC SC
+PoP 12hr          0       0     0       0     0       0     0       5     0
+
+$$
+VAZ048-240800-
+Fluvanna-
+Including the cities of Bybee, Central Plains, Cunningham, 
+Lake Monticello, Nahor, Palmyra, and Troy
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                35 36 38          64          37          66          36
+Temp                44 40 37 39 53 61 60 50 44 42 40 40 55 63 62 50 44 42 39 40
+Dewpt               42 40 37 36 46 41 41 44 43 41 40 40 47 44 45 48 44 42 39 40
+RH                  93100100 89 77 48 49 80 96 96100100 74 50 54 93100100100100
+Wind dir            NE  N  N  N NE  E  E NE NE  N  N  N NE NE  E NE  N  N NW  W
+Wind spd             2  2  3  3  5  4  4  2  1  1  2  3  4  3  3  1  0  0  0  0
+Clouds              FW FW FW FW FW FW FW FW FW FW FW SC FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      43    71      45    66      48    70      48    73
+Temp          66 56   44 44 69 58   48 46 65 57   50 49 68 60   51 49 71 62
+Dewpt         43 48   44 44 53 52   47 46 53 53   50 48 57 56   51 49 56 55
+PWind dir        NW      NW    NE      NE     E       E     S       W    SW
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW B1 B1 B2   B1 B1 B1 SC   FW SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       5     0
+
+$$
+VAZ089-240800-
+Surry-
+Including the cities of Barham, Gwaltney Corner, Bacons Castle, 
+Chippokes State Park, Hog Island Game Reserve, Poolesville, 
+and Booth Fork
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                40 44 52          66    42 46 51          69    39 41 47
+Temp                49 47 45 46 57 63 63 55 51 49 48 48 60 66 65 54 49 47 44 44
+Dewpt               47 46 44 44 49 46 46 49 49 49 48 48 52 48 47 50 48 46 44 44
+RH                  93 96 96 93 75 54 54 80 93100100100 75 52 52 86 96 96100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  E NE NE  N  N
+Wind spd             4  4  4  4 10 10  9  4  3  3  4  4  9  9  9  3  1  1  1  2
+Wind gust           14                                                         
+Clouds              FW FW FW FW SC B1 B1 SC SC SC B1 SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y                                                         
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      44    72      50    68      52    72      53    74
+Temp          67 55   45 46 70 58   51 51 67 59   53 53 70 62   55 54 72 63
+Dewpt         43 47   45 46 52 52   51 51 54 55   53 53 58 59   55 54 57 57
+PWind dir         N      NW    NE      NE    NE      NE     E      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL CL CL FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+MDZ025-240800-
+Maryland Beaches-
+Including the city of Ocean City
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                43 46 49          60    43 45 49    59 61 62    39 44 50
+Temp                53 51 48 48 55 59 58 52 49 48 47 47 55 59 58 52 49 47 46 46
+Dewpt               43 43 42 43 47 45 46 47 48 47 47 47 48 46 46 47 47 46 46 46
+RH                  69 74 80 83 74 60 64 83 96 96100100 77 62 64 83 93 96100100
+Wind dir            NE  E NE NE NE NE NE NE  E NE NE NE NE NE NE NE NE  N  N  N
+Wind spd            12 11 11 11 12 12 11  9  8  8  9  9 11 10  9  5  3  3  5  5
+Clouds              FW SC SC SC SC SC SC FW FW FW FW FW FW CL CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          63      52    62      55    62      57    65      57    66
+Temp          61 58   53 53 61 58   56 56 60 59   58 58 63 62   60 58 65 62
+Dewpt         47 50   50 52 54 53   52 52 54 54   55 56 58 59   58 57 58 58
+PWind dir        NW      NW    NE      NE     E       E     E       S    NE
+Wind char        LT      LT    GN      GN    GN      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   SC SC B1 B1   B1 B1 B1 B1   SC SC SC SC
+PoP 12hr          0       0     0       0     0       5     5      10     5
+
+$$
+VAZ087-240800-
+Greensville-
+Including the city of Emporia
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                38 40 42          66    41 42 44          69    36 38 39
+Temp                48 45 42 43 56 63 63 54 49 47 45 45 59 66 65 53 47 44 41 42
+Dewpt               46 45 42 41 49 46 45 48 47 47 45 45 51 49 48 50 47 44 41 42
+RH                  93100100 93 77 54 52 80 93100100100 75 54 54 89100100100100
+Wind dir            NE NE  N  N NE NE NE NE NE NE  N  N NE NE NE NE NE NE  N  N
+Wind spd             3  3  4  5  9  9  9  4  3  3  4  5  9  8  9  4  1  0  2  2
+Clouds              FW FW FW FW SC B1 B1 SC SC SC B1 SC FW SC FW CL CL CL CL FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      41    73      47    69      50    72      51    75
+Temp          66 54   44 43 71 58   49 48 67 59   52 51 70 61   54 52 73 62
+Dewpt         43 47   43 43 51 52   48 48 53 54   52 51 57 58   53 52 57 57
+PWind dir         N      NW     N      NE    NE      NE    NE       N    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW CL FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ088-240800-
+Sussex-
+Including the city of Wakefield
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                38 40 42          66    41 42 44          69    36 38 40
+Temp                47 45 42 43 56 63 63 53 49 47 45 45 59 66 65 53 47 44 41 42
+Dewpt               46 44 42 40 48 45 45 47 47 47 45 45 51 48 47 49 46 44 41 42
+RH                  96 96100 89 74 52 52 80 93100100100 75 52 52 86 96100100100
+Wind dir            NE NE  N  N NE NE NE NE NE NE  N  N NE NE NE NE  N  N  N  N
+Wind spd             3  3  3  4  9  9  8  3  2  3  3  4  8  8  8  3  0  0  1  1
+Clouds              FW FW FW FW SC B1 B1 SC SC SC B1 SC FW SC FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      42    72      48    69      50    72      51    74
+Temp          66 55   43 44 71 58   49 49 68 59   52 52 70 61   54 53 73 63
+Dewpt         43 45   43 44 50 51   49 49 52 53   52 51 56 57   53 52 56 56
+PWind dir         N      NW     N      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL CL CL FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ085-240800-
+Middlesex-
+Including the cities of Grafton, Harmony Village, Church View, 
+Cooper, Healys, Jamaica, and Nesting
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                40 44 51          64    41 44 52    63 66 67    37 41 50
+Temp                49 47 45 46 56 61 61 53 49 48 46 47 57 63 62 53 48 46 43 44
+Dewpt               46 45 44 44 48 46 45 49 49 48 46 47 51 48 47 50 47 45 43 44
+RH                  89 93 96 93 74 58 56 86100100100100 80 58 58 89 96 96100100
+Wind dir            NE NE NE NE  E  E  E NE NE NE NE NE NE NE NE  E NE NE  N  N
+Wind spd             5  4  5  5 10  9  8  4  4  4  4  5  9  8  6  2  1  1  2  2
+Wind gust           19 16 16 16                   14 16                        
+Clouds              FW FW FW FW SC SC SC SC FW SC SC SC FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          68      48    68      52    66      54    69      54    71
+Temp          65 56   48 50 66 58   53 53 64 59   55 55 67 61   56 55 69 62
+Dewpt         46 50   47 49 54 54   52 52 55 56   54 55 59 59   56 55 59 58
+PWind dir         N      NW     N      NE     E       E     E       S    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC SC B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ086-240800-
+Mathews-
+Including the cities of Bavon, New Point, New Point Comfort, 
+and Peary
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                46 49 53          62    47 50 53    62 64 65    43 47 51
+Temp                53 52 50 51 57 61 60 56 53 52 51 52 58 62 61 55 52 50 49 49
+Dewpt               47 46 46 46 50 47 48 50 51 51 51 51 52 49 49 51 51 50 49 49
+RH                  80 80 86 83 77 60 64 80 93 96100 96 80 62 65 86 96100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  E NE NE  N  N
+Wind spd             9  8  8  9 12 11 11  8  6  6  8  8 12 10 10  5  3  2  3  4
+Wind gust           21                                                         
+Clouds              FW FW FW SC SC SC SC SC SC SC SC SC FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          64      51    66      55    64      57    67      57    68
+Temp          63 57   52 53 64 59   56 56 62 59   57 58 65 62   59 58 66 63
+Dewpt         47 51   50 52 56 56   54 55 57 57   56 58 61 61   58 57 60 59
+PWind dir         N      NW     N      NE    NE      NE     E      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 SC SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ083-240800-
+New Kent-
+Including the cities of Bottoms Bridge, Browns Corner, 
+Mountcastle, New Kent Airport, Orapax Farms, Quinton, 
+and Talleysville
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                38 39 43          65    40 42 44          69          38
+Temp                47 44 41 42 56 62 62 53 48 46 44 45 58 66 65 53 47 44 41 42
+Dewpt               45 43 41 40 48 45 44 48 46 46 44 45 50 47 47 49 46 44 41 42
+RH                  93 96100 93 74 54 52 83 93100100100 75 50 52 86 96100100100
+Wind dir            NE NE  N  N NE  E  E NE NE NE NE NE NE NE  E  E NE  N  N  N
+Wind spd             2  2  3  3  8  8  6  2  2  2  3  3  8  6  6  2  0  0  0  0
+Clouds              FW FW FW FW SC B1 B1 SC SC SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      44    71      48    68      51    71      52    73
+Temp          66 55   45 46 69 58   50 50 66 58   52 52 69 61   54 53 71 62
+Dewpt         44 48   45 46 53 52   50 50 54 54   52 52 58 58   54 53 57 56
+PWind dir         N      NW     N      NE    NE       E     E      SE     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ084-240800-
+Gloucester-
+Including the cities of Achilles, Glass, Gloucester Point, 
+Maryus, Naxera, Ordinary, and Severn
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                42 45 52          64    43 47 52    64 66 67    39 43 49
+Temp                50 48 46 47 57 62 61 55 51 50 49 49 58 64 63 54 49 47 45 46
+Dewpt               46 46 45 45 49 46 47 50 49 50 49 49 52 48 47 51 49 47 45 46
+RH                  86 93 96 93 75 56 60 83 93100100100 80 56 56 90100100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  E NE NE  N  N
+Wind spd             5  4  5  5 10  9  9  4  4  4  5  5 10  9  8  3  1  1  2  2
+Wind gust           20 18 17 17          14 14 14 16 17                        
+Clouds              FW FW FW FW SC B1 B1 SC SC SC SC SC FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          67      47    68      53    66      55    69      55    71
+Temp          65 56   48 49 66 58   53 54 64 59   55 56 67 62   57 56 69 62
+Dewpt         45 50   47 49 55 55   53 53 56 57   55 56 60 60   57 56 59 59
+PWind dir         N      NW     N      NE    NE      NE     E      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC SC B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ081-240800-
+Prince George (including Hopewell and Petersburg)-
+Including the cities of Petersburg and Hopewell
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                38 40 43          66    40 42 44          69    36 38 42
+Temp                47 44 42 43 56 63 63 53 49 47 45 45 59 66 65 53 47 44 41 42
+Dewpt               46 43 42 41 48 45 44 48 47 46 45 45 51 48 47 49 47 44 41 42
+RH                  96 96100 93 74 52 50 83 93 96100100 75 52 52 86100100100100
+Wind dir            NE NE  N  N NE NE  E NE NE NE  N  N NE NE  E  E  N  N  N  N
+Wind spd             3  3  3  4  8  8  8  3  2  2  3  4  6  6  8  2  0  0  0  1
+Clouds              FW FW FW FW SC B1 B1 SC SC SC B1 SC FW SC FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      43    72      48    68      50    72      52    74
+Temp          66 55   44 45 70 58   49 49 67 58   52 51 70 61   54 53 72 62
+Dewpt         44 47   44 45 52 52   49 49 53 54   52 51 57 58   54 52 57 57
+PWind dir         N      NW     N      NE    NE       E     E       E    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW CL FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ082-240800-
+Charles City-
+Including the cities of Barnetts, Wayside, and Roxbury
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                39 41 44          66    42 43 46          69    38 40 42
+Temp                47 45 42 44 56 63 63 54 49 47 45 46 59 66 65 53 48 45 43 43
+Dewpt               45 44 42 41 49 45 45 48 47 47 45 46 51 48 47 49 47 45 43 43
+RH                  93 96100 89 77 52 52 80 93100100100 75 52 52 86 96100100100
+Wind dir            NE NE NE  N NE  E  E NE NE NE NE NE NE NE  E  E NE NE  N  N
+Wind spd             3  3  3  3  8  8  8  3  2  2  3  3  8  6  6  2  0  0  0  0
+Clouds              FW FW FW FW SC B1 B1 SC SC SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      44    72      49    68      51    72      52    74
+Temp          67 55   45 46 70 58   50 50 67 58   52 52 70 61   54 53 72 62
+Dewpt         44 48   45 46 53 52   50 50 54 55   52 52 58 58   54 53 57 57
+PWind dir         N      NW     N      NE    NE       E     E       E    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW CL FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ080-240800-
+Dinwiddie-
+Including the city of Reams
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      38          66          40          69          36
+Temp                47 44 40 41 55 63 62 52 47 45 43 43 58 66 65 52 45 42 40 40
+Dewpt               44 43 40 39 48 44 44 47 46 45 43 43 50 47 46 49 45 42 40 40
+RH                  89 96100 92 77 50 52 83 96100100100 75 50 50 89100100100100
+Wind dir            NE NE  N  N NE NE NE NE NE NE  N  N NE NE NE  E  N  N  N  N
+Wind spd             3  3  3  4  8  8  6  3  2  2  3  4  6  5  6  3  0  0  1  1
+Clouds              FW CL FW FW SC B1 SC SC SC SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      42    72      48    68      50    72      51    74
+Temp          66 55   44 44 70 58   49 49 67 58   52 51 70 61   54 52 72 62
+Dewpt         43 47   44 44 52 52   49 49 53 54   51 51 57 57   53 52 57 56
+PWind dir         N      NW     N      NE    NE       E     E      NW    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW CL FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     0       5     5
+
+$$
+VAZ519-240800-
+Western King and Queen-
+Including the cities of Beazley, Biscoe, Henley Fork, 
+Indian Neck, Newtown, Owenton, and Saint Stephens Church
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      37          65          40          68          36
+Temp                45 43 40 40 54 62 61 52 47 45 43 43 57 65 64 51 45 42 39 40
+Dewpt               44 42 40 38 47 43 43 46 45 44 43 43 49 46 46 48 45 42 39 40
+RH                  96 96100 92 77 50 51 80 93 96100100 75 50 52 89100100100100
+Wind dir             E NE  N  N NE  E  E NE NE NE  N  N NE  E  E  E  N  N NW NW
+Wind spd             2  2  3  3  8  6  6  2  1  2  3  3  5  5  5  1  0  0  1  1
+Clouds              CL CL FW FW SC SC SC FW FW FW FW SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      45    70      48    67      50    71      52    73
+Temp          66 55   45 47 69 57   49 50 66 57   51 51 69 61   54 53 71 62
+Dewpt         45 48   45 47 52 51   49 49 52 53   51 51 56 57   54 53 56 56
+PWind dir        NW      NW    NE      NE     E       E    SE      SW     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC SC
+PoP 12hr          0       0     0       0     0       0     5       5     5
+
+$$
+VAZ517-240800-
+Western King William-
+Including the city of Aylett
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      37          65          40          68          37
+Temp                45 43 40 40 54 62 61 52 47 45 43 43 57 65 64 52 46 43 40 41
+Dewpt               44 43 40 38 47 43 43 46 45 44 43 43 49 47 46 48 45 43 40 41
+RH                  96100100 92 77 50 51 80 93 96100100 75 52 52 86 96100100100
+Wind dir            NE NE  N  N NE  E  E NE NE NE  N  N NE NE  E  E  N  N NW NW
+Wind spd             3  2  3  4  8  6  5  2  1  2  3  3  6  5  5  2  0  0  1  1
+Clouds              FW CL FW FW SC SC SC FW FW FW FW SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      45    71      48    67      50    71      51    73
+Temp          66 56   45 47 69 58   49 49 66 58   51 51 69 61   54 52 71 62
+Dewpt         44 48   45 47 52 52   49 49 52 53   51 51 57 57   54 52 56 56
+PWind dir        NW      NW     N      NE    NE       E    SE       S     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC SC
+PoP 12hr          0       0     0       0     0       0     0       0     5
+
+$$
+VAZ518-240800-
+Eastern King William-
+Including the cities of King William and West Point
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                37 39 40          65          41          68          38
+Temp                46 44 41 42 55 62 62 52 48 46 44 44 58 65 64 52 46 44 41 42
+Dewpt               44 43 41 40 47 44 44 47 46 45 44 44 50 47 46 48 45 44 41 41
+RH                  93 96100 93 74 52 52 83 93 96100100 75 52 52 86 96100100 96
+Wind dir            NE NE  N  N  E  E  E NE NE NE NE NE NE  E  E  E  N  N  N NW
+Wind spd             2  2  2  3  8  8  6  2  1  2  2  3  6  5  6  1  0  0  0  0
+Clouds              CL FW FW FW SC B1 B1 SC FW SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      45    71      48    68      50    71      52    74
+Temp          66 55   45 47 69 57   50 50 66 57   52 52 69 61   54 53 72 62
+Dewpt         44 48   45 47 53 51   50 50 53 54   52 52 57 58   54 53 57 56
+PWind dir         N      NW     N      NE    NE       E     E       E     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       0     5       5     5
+
+$$
+VAZ515-240800-
+Western Henrico (Including the City of Richmond)-
+Including the city of Richmond
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                37 40 42    64 65 67    39 42 44    67 68 70    37 39 42
+Temp                47 44 41 43 56 62 62 53 48 46 44 45 58 65 64 53 47 45 42 43
+Dewpt               44 43 41 40 48 43 43 47 46 45 44 44 50 46 46 50 47 45 42 42
+RH                  89 96100 89 74 50 50 80 93 96100 96 75 50 52 89100100100 96
+Wind dir            NE NE  N  N NE NE  E NE NE NE  N  N NE NE NE  E  N  N NW NW
+Wind spd             3  3  4  4  8  8  6  3  2  2  3  4  6  6  6  3  0  0  1  1
+Clouds              FW CL FW FW FW SC SC SC SC FW FW SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      45    71      48    67      50    71      52    73
+Temp          67 57   46 47 69 60   50 49 66 59   52 51 69 61   54 53 71 63
+Dewpt         44 50   46 47 54 54   50 49 54 55   52 51 58 59   54 52 58 57
+PWind dir        NW      NW    NE      NE    NE       E    SE      SW    NW
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       0     0
+
+$$
+VAZ516-240800-
+Eastern Henrico-
+Including the city of Sandston
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                39 41 42          66          43          69          40
+Temp                47 44 42 44 56 63 63 54 49 47 45 46 59 66 65 53 48 45 43 43
+Dewpt               45 44 42 41 48 44 44 47 46 45 45 46 50 47 46 49 47 45 42 42
+RH                  93100100 89 74 50 50 77 89 93100100 72 50 50 86 96100 96 96
+Wind dir            NE NE  N  N NE  E  E NE NE NE  N  N NE NE  E  E  N  N NW NW
+Wind spd             3  3  4  4  9  9  8  3  2  2  3  4  8  6  6  3  0  0  1  1
+Clouds              FW CL FW FW SC B1 SC SC SC SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      45    72      48    68      50    72      52    74
+Temp          67 57   46 47 69 59   49 49 66 58   52 51 69 61   54 53 71 63
+Dewpt         44 48   45 46 53 52   49 49 53 54   52 51 58 58   54 53 57 57
+PWind dir        NW      NW     N      NE    NE       E     E      SE     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW CL FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       0     5       0     5
+
+$$
+VAZ513-240800-
+Western Chesterfield-
+Including the cities of Bon Air and Midlothian
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                37 38 41          65    39 40 42          68    36 38 40
+Temp                47 43 40 41 55 62 62 52 47 45 43 43 57 65 64 52 46 44 41 42
+Dewpt               44 43 40 39 48 43 43 47 46 45 43 43 50 46 46 49 46 44 41 42
+RH                  89100100 92 77 50 50 83 96100100100 77 50 52 89100100100100
+Wind dir            NE NE  N  N NE NE  E NE NE NE  N  N NE NE NE  E  E  N NW NW
+Wind spd             3  3  4  4  8  6  6  4  2  2  4  4  6  5  5  2  0  0  1  1
+Clouds              FW CL FW FW SC SC SC SC SC SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      44    71      48    68      50    71      51    73
+Temp          66 56   45 46 69 59   49 49 66 59   52 51 69 61   54 52 71 63
+Dewpt         44 49   45 46 54 53   49 49 54 55   52 50 58 58   54 52 58 57
+PWind dir        NW      NW    NE      NE    NE       E     E      SW     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       0     5
+
+$$
+VAZ514-240800-
+Eastern Chesterfield (Including Col. Heights)-
+Including the cities of Chesterfield, Chester, 
+and Colonial Heights
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                37 40 42          66    40 42 43          69    37 38 40
+Temp                47 44 42 43 56 63 63 53 48 46 44 45 58 66 65 53 47 44 41 42
+Dewpt               45 43 41 41 48 44 44 47 46 46 44 45 50 47 46 49 47 44 41 42
+RH                  93 96 96 93 74 50 50 80 93100100100 75 50 50 86100100100100
+Wind dir            NE NE  N  N NE NE  E NE NE NE  N  N NE NE  E  E  N  N NW NW
+Wind spd             3  3  4  4  9  8  8  4  2  2  4  4  6  6  6  3  0  0  1  1
+Clouds              FW CL FW FW SC B1 SC SC SC SC SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      44    72      48    68      50    72      52    74
+Temp          66 56   45 46 70 59   49 49 66 58   52 51 69 62   54 53 72 63
+Dewpt         44 48   45 46 53 52   49 49 54 54   52 51 58 58   54 52 57 57
+PWind dir         N      NW     N      NE    NE       E     E      SW    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW CL FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       0     5       0     5
+
+$$
+VAZ511-240800-
+Western Hanover-
+Including the city of Ashland
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                36 37 39          64    37 39 41          67    36 37 39
+Temp                45 41 39 40 54 61 60 51 46 44 42 42 56 64 63 51 45 43 40 41
+Dewpt               43 41 39 38 47 42 43 46 45 43 42 42 49 46 46 49 45 43 40 41
+RH                  93100100 92 77 49 53 83 96 96100100 77 52 54 93100100100100
+Wind dir             E NE  N  N NE NE  E NE NE  N  N  N NE NE NE  E  N  N NW NW
+Wind spd             3  2  3  3  6  6  5  3  1  1  3  3  5  4  5  2  0  0  1  1
+Clouds              FW CL FW FW FW SC SC SC FW FW FW SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          69      45    70      47    66      49    70      51    72
+Temp          65 56   46 47 68 58   49 48 65 58   51 50 68 60   54 52 71 62
+Dewpt         44 49   46 47 54 53   49 48 54 54   51 50 57 57   53 52 57 56
+PWind dir        NW      NW    NE      NE     E       E    SE      SW     W
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       0     0
+
+$$
+NCZ032-240800-
+Perquimans-
+Including the cities of Jacocks and Woodville
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                48 50 56          68    49 52 56    67 69 71    44 47 52
+Temp                52 50 50 52 61 66 65 59 56 55 54 54 63 68 67 57 53 51 49 49
+Dewpt               50 48 47 47 52 49 49 52 53 53 53 53 55 52 50 52 52 50 49 49
+RH                  93 93 89 83 72 54 56 78 90 93 96 96 75 57 54 83 96 96100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N  N
+Wind spd             8  6  8  8 13 13 12  8  8  8  9  9 14 14 14  9  5  5  6  6
+Wind gust           21 20 19 18    24 24 19 19 20 21 21 25 26 25 20 17 17 17 17
+Clouds              FW FW FW FW SC SC SC SC SC SC SC SC FW SC FW CL CL CL FW FW
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          69      45    72      54    70      57    72      57    74
+Temp          67 56   47 47 70 60   54 55 68 62   57 58 70 64   58 58 72 65
+Dewpt         44 50   47 47 55 56   54 54 58 59   57 57 63 62   58 57 62 61
+PWind dir        NE       N     N      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW CL CL   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5    10      10     5
+
+$$
+VAZ512-240800-
+Eastern Hanover-
+Including the city of Mechanicsville
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                37 38 40          66    40 41 43          68    36 38 39
+Temp                46 44 40 41 55 63 62 53 48 46 44 44 58 65 64 52 46 44 41 42
+Dewpt               44 43 40 39 48 43 43 47 45 44 44 44 50 46 46 49 46 43 41 41
+RH                  93 96100 92 77 48 50 80 89 93100100 75 50 52 89100 96100 96
+Wind dir            NE NE  N  N NE  E  E NE NE  N  N  N NE NE  E  E  N  N NW NW
+Wind spd             3  3  3  4  8  8  8  3  2  2  3  4  6  6  6  2  0  0  1  1
+Clouds              FW CL FW FW SC B1 SC SC FW FW SC SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      45    71      48    68      50    71      52    73
+Temp          66 56   46 47 69 58   49 49 66 58   52 51 69 61   54 53 72 63
+Dewpt         44 48   45 47 53 52   49 49 53 54   51 51 57 58   54 53 57 56
+PWind dir        NW      NW     N      NE    NE       E    SE       S     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       0     5       0     5
+
+$$
+NCZ031-240800-
+Chowan-
+Including the cities of Cape Colony, Edenton, Hancock, Macedonia, 
+Mavaton, Saint Johns, and Valhalla
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                47 50 53          68    49 52 54    68 70 71    44 46 49
+Temp                52 50 50 52 61 66 66 59 56 55 54 54 63 68 67 57 52 50 48 48
+Dewpt               51 48 46 47 52 49 50 52 52 53 53 53 55 51 50 52 52 50 48 48
+RH                  96 93 86 83 72 54 56 78 86 93 96 96 75 54 54 83100100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             8  6  6  6 12 12 12  8  6  6  8  9 13 13 13  8  5  5  5  6
+Wind gust           18                            18       24    18            
+Clouds              FW FW FW FW SC SC SC SC SC SC SC SC FW SC FW CL CL CL FW CL
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      45    72      53    70      56    73      57    74
+Temp          67 57   48 47 71 60   54 54 69 62   57 57 71 64   59 58 72 65
+Dewpt         44 51   47 47 56 56   54 54 59 59   57 57 63 62   59 57 62 61
+PWind dir        NE       N    NE      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL CL CL CL   FW SC B1 B1   B1 B1 B1 B1   SC FW SC FW
+PoP 12hr          0       0     0       0     0       5    10      10     5
+
+$$
+NCZ030-240800-
+Bertie-
+Including the cities of Quitsna, Edenhouse, Merry Hill, Midway, 
+and Windsor
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                45 47 54          69    46 49 54    69 71 72    40 43 49
+Temp                52 49 48 50 61 66 66 58 55 53 51 52 62 68 67 56 51 48 46 46
+Dewpt               50 47 46 45 51 48 48 51 51 51 51 52 54 50 49 52 51 48 46 46
+RH                  93 93 93 83 70 52 52 77 86 93100100 75 52 52 86100100100100
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd             5  5  5  5 11 11 10  5  4  5  5  6 11 11 11  5  3  3  4  4
+Wind gust           16                   16       16             16            
+Clouds              FW FW FW FW SC SC SC SC SC FW SC SC FW SC FW CL CL CL FW CL
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      43    73      51    71      54    73      55    75
+Temp          67 57   46 45 72 60   52 52 70 61   56 55 72 64   57 56 74 65
+Dewpt         43 49   45 44 53 54   52 52 56 58   55 55 61 61   57 56 60 60
+PWind dir        NE       N    NE      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL CL CL CL   FW SC B1 B1   B1 B1 SC B1   SC FW SC FW
+PoP 12hr          0       0     0       0     0       5    10       5     5
+
+$$
+VAZ510-240800-
+Eastern Louisa-
+Including the city of Mineral
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                34 36 37          64          37          66          36
+Temp                45 40 37 39 53 61 60 50 44 42 40 40 55 63 62 50 44 42 39 40
+Dewpt               42 40 37 36 46 41 42 45 44 42 40 40 48 45 45 48 44 42 39 40
+RH                  89100100 89 77 48 51 83100100100100 77 52 54 93100100100100
+Wind dir            NE NE  N  N NE  E  E  E  E  N  N  N NE NE  E NE  N  N NW  W
+Wind spd             2  2  2  3  5  4  5  2  1  1  2  3  4  3  3  1  0  0  0  1
+Clouds              FW CL CL FW FW SC SC SC FW FW FW SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      45    70      47    66      48    70      50    72
+Temp          66 56   46 46 68 58   48 48 64 57   50 49 68 60   52 51 70 62
+Dewpt         43 48   45 46 52 52   48 47 53 53   50 49 56 56   52 50 56 55
+PWind dir        NW      NW    NE      NE     E       E     S       W    SW
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW B1 B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       5     0
+
+$$
+VAZ078-240800-
+Lancaster-
+Including the cities of Alfonso, Beanes Corner, Brook Vale, 
+Kilmarnock, Lancaster, Lively, and Regina
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                41 44 51          64    42 44 52    63 66 67    38 41 51
+Temp                48 47 45 46 56 62 61 53 50 48 46 47 57 63 62 53 48 46 44 44
+Dewpt               45 44 43 44 48 45 45 48 48 48 46 47 51 47 47 49 47 45 44 44
+RH                  89 89 93 93 74 54 56 83 93100100100 80 56 58 86 96 96100100
+Wind dir            NE NE NE NE NE  E  E NE NE NE NE NE NE NE NE  E NE NE  N  N
+Wind spd             5  5  5  5 10  9  8  4  4  4  5  5  9  8  6  3  1  1  2  3
+Wind gust           20 16 16 16                      16                        
+Clouds              CL FW FW SC SC SC SC SC FW SC SC SC FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          68      47    68      52    66      53    69      54    71
+Temp          65 55   48 49 66 58   52 53 64 58   54 55 67 61   56 55 69 62
+Dewpt         46 50   47 49 54 54   52 52 55 55   54 54 60 59   56 54 59 58
+PWind dir        NW      NW     N      NE     E       E     E      SW    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC SC B1   B1 B1 SC SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ079-240800-
+Brunswick-
+Including the city of Lawrenceville
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                38 40 42          66    40 42 44          69    36 38 39
+Temp                48 45 42 43 56 63 63 53 49 47 45 45 59 66 65 53 46 44 41 42
+Dewpt               46 45 42 40 48 45 44 47 47 47 45 45 50 48 47 50 46 44 41 42
+RH                  93100100 89 74 52 50 80 93100100100 72 52 52 89100100100100
+Wind dir            NE NE NE  N NE NE NE NE NE NE  N  N NE NE NE NE NE  N  N  N
+Wind spd             3  3  4  4  8  8  8  4  3  3  4  4  8  6  6  3  0  0  1  2
+Clouds              FW FW FW FW SC B1 SC SC SC SC SC SC FW SC FW CL CL CL CL FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      42    73      48    69      51    72      52    75
+Temp          66 56   45 44 71 60   50 49 67 59   52 52 70 62   54 53 73 64
+Dewpt         43 47   45 44 51 52   50 49 53 54   52 51 57 57   54 52 57 57
+PWind dir         N      NW     N      NE    NE      NE    NE      NW    NE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW CL FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     0       5     5
+
+$$
+VAZ076-240800-
+Richmond-
+Including the cities of Naylors Beach, Downing, Emmerton, Ethel, 
+Farnham, Haynesville, and Kennard
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                39 41 43          64    41 42 44          66    36 38 40
+Temp                46 45 43 44 55 61 61 52 48 46 44 45 57 63 62 51 46 43 41 41
+Dewpt               44 43 42 42 47 44 44 47 46 46 44 45 50 46 46 48 46 43 41 41
+RH                  93 93 96 93 74 53 53 83 93100100100 77 54 56 89100100100100
+Wind dir            NE NE NE NE  E  E  E  E  E NE NE NE NE NE NE  E  E NW NW NW
+Wind spd             4  4  4  4  9  8  6  3  3  3  4  4  8  6  5  2  1  1  2  2
+Clouds              CL FW FW FW SC SC SC SC FW FW FW FW FW FW CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          69      46    69      50    66      52    70      53    72
+Temp          65 55   47 49 67 58   51 51 65 58   53 53 68 60   55 54 70 61
+Dewpt         46 49   47 48 53 52   51 51 54 54   53 53 58 58   55 54 58 57
+PWind dir        NW      NW     N      NE     E       E     E      SW     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC SC
+PoP 12hr          0       0     0       0     0       0     5       5     5
+
+$$
+VAZ077-240800-
+Northumberland-
+Including the city of Lewisetta
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                43 46 52          63    43 46 51    63 65 66    38 43 49
+Temp                50 48 47 48 56 61 61 54 51 50 48 48 58 63 62 53 49 47 46 46
+Dewpt               44 43 43 44 48 45 45 48 48 48 48 48 50 47 47 49 48 46 45 46
+RH                  80 83 86 86 74 56 56 80 89 93100100 75 56 58 86 96 96 96100
+Wind dir            NE NE NE NE NE NE  E  E  E NE NE NE NE NE NE  E  E NE  N  N
+Wind spd             8  6  6  8 10  8  8  5  5  5  6  6  9  6  5  3  2  1  2  3
+Wind gust           19                                                         
+Clouds              CL FW FW FW SC SC SC FW FW FW FW FW FW CL CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y  Y                                          
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          67      50    66      53    65      54    68      55    70
+Temp          64 56   50 52 65 58   53 54 63 59   55 55 66 62   57 56 68 62
+Dewpt         47 50   48 50 54 54   52 52 55 55   54 55 59 59   56 55 59 58
+PWind dir        NW      NW     N      NE     E       E     E      SW     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC SC B1   B1 B1 SC SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5       5     5
+
+$$
+VAZ075-240800-
+Westmoreland-
+Including the cities of Sandy Point, Westmoreland, 
+Colonial Beach, Leedstown, Oak Grove, Potomac Beach, 
+and Potomac Mills
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                40 43 50    62 63 65    41 44 48    64 66 67    37 40 45
+Temp                49 47 44 46 56 61 60 53 49 47 46 46 57 63 62 52 47 45 43 43
+Dewpt               44 43 43 43 47 43 43 47 47 47 46 46 49 46 46 48 47 45 43 43
+RH                  83 86 96 89 72 51 53 80 93100100100 75 54 56 86100100100100
+Wind dir             E NE NE NE  E  E  E NE  E NE NE NE NE  E  E  E  E NW NW NW
+Wind spd             5  4  5  5  9  8  5  3  3  3  4  4  6  4  4  2  1  0  2  2
+Wind gust           16                                                         
+Clouds              CL CL FW FW FW SC SC SC FW FW FW FW FW CL CL CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y  Y                                          
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          68      49    68      52    65      53    69      54    71
+Temp          65 57   50 51 66 58   53 53 64 59   54 54 67 61   56 55 69 62
+Dewpt         46 50   48 50 53 52   52 52 54 54   53 54 58 58   56 55 58 57
+PWind dir        NW      NW    NE      NE     E       E     E      SW     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC SC
+PoP 12hr          0       0     0       0     0       0     5       5     5
+
+$$
+VAZ509-240800-
+Western Louisa-
+Including the city of Louisa
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                34 35 38          63          36          66          36
+Temp                43 39 37 38 53 60 59 49 44 41 39 40 54 63 62 50 44 42 39 40
+Dewpt               41 39 37 36 45 41 41 44 42 41 39 40 46 44 45 47 44 42 39 40
+RH                  93100100 92 74 49 51 83 93100100100 74 50 54 89100100100100
+Wind dir            NE  N  N  N NE  E  E NE NE  N  N  N NE  E  E NE  N  N NW  W
+Wind spd             2  1  2  3  5  4  4  2  1  1  2  2  4  3  2  0  0  0  0  0
+Clouds              CL CL CL FW FW FW FW FW FW FW FW SC FW FW FW CL CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      44    70      45    66      48    70      48    72
+Temp          66 56   45 45 68 58   47 46 64 57   50 49 68 60   51 49 71 61
+Dewpt         42 48   44 45 52 51   47 46 52 52   50 48 55 55   51 49 55 54
+PWind dir        NW      NW    NE      NE     E       E     S       W    SW
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW B1 B1 B2   B1 B1 B1 SC   FW SC SC FW
+PoP 12hr          0       0     0       0     0       5     0       5     0
+
+$$
+VAZ069-240800-
+Powhatan-
+Including the cities of Fine Creek Mills, Flat Rock, 
+Goodwins Store, Subletts, Worshams, Clayville, and Genito
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      37          64    37 38 40          67    35 36 38
+Temp                46 41 39 40 54 61 60 50 45 43 41 41 56 64 63 51 45 42 39 40
+Dewpt               43 41 39 37 48 43 43 46 45 43 41 41 49 46 46 49 45 42 39 40
+RH                  89100100 89 80 51 53 86100100100100 77 52 54 93100100100100
+Wind dir            NE NE  N  N NE NE  E  E  E NE  N  N NE NE NE NE  E  N NW NW
+Wind spd             3  2  3  3  6  5  5  3  2  2  3  3  5  4  4  2  0  0  1  1
+Clouds              FW CL FW FW FW SC SC SC SC FW FW B1 SC FW FW FW CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      43    71      47    67      49    70      50    73
+Temp          66 56   45 45 68 59   48 48 65 58   51 50 68 60   53 51 71 62
+Dewpt         44 49   45 45 55 53   48 48 55 54   51 49 58 58   53 51 59 57
+PWind dir        NW      NW    NE      NE    NE       E    SE       W     W
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW B1 B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       5     0
+
+$$
+VAZ100-240800-
+Northampton-
+Including the cities of Exmore, Cape Charles, Cheapside, 
+Fishermans Island, Kiptopeke, Kiptopeke State Park, 
+and Plantation
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                47 48 51          62    48 49 52          63    44 46 50
+Temp                50 50 49 50 57 60 60 55 53 52 50 51 57 61 61 54 51 49 48 48
+Dewpt               45 45 45 45 49 47 48 49 50 50 50 50 52 50 49 49 49 49 48 47
+RH                  83 83 86 83 75 62 64 80 89 93100 96 83 67 65 83 93100100 96
+Wind dir            NE NE NE NE  E NE NE NE NE NE NE NE NE NE NE NE NE NE  N  N
+Wind spd            10  9  9 10 13 13 12  9  8  8  9 10 13 12 12  8  5  4  4  5
+Wind gust           23                                                         
+Clouds              FW FW SC SC SC SC SC SC SC SC SC SC FW FW CL CL FW FW FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Coast Flood          Y  Y  Y  Y  Y                                             
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          62      53    64      53    64      55    66      56    66
+Temp          60 56   53 54 62 56   54 54 63 57   55 56 64 60   57 57 65 60
+Dewpt         48 48   50 51 55 53   52 52 55 54   55 56 60 58   57 57 59 57
+PWind dir         N      NW     N      NE    NE      NE    NE      NE    NE
+Wind char        LT      LT    GN      LT    GN      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5      10     5
+
+$$
+VAZ067-240800-
+Nottoway-
+Including the city of Crewe
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      38          65    38 39 41    66 68 69          37
+Temp                46 42 39 41 55 62 61 51 46 44 42 42 57 65 64 52 46 43 40 41
+Dewpt               44 42 39 38 47 43 43 47 46 44 42 42 49 46 46 50 46 43 40 41
+RH                  93100100 89 74 50 51 86100100100100 75 50 52 93100100100100
+Wind dir            NE NE  N  N NE NE NE NE NE NE  N  N NE NE NE NE  N  N NW NW
+Wind spd             3  2  3  3  6  6  6  3  2  2  3  3  6  5  5  2  0  0  1  1
+Clouds              FW CL FW FW SC SC SC SC SC SC FW SC FW FW FW FW CL CL CL FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      43    72      47    68      49    71      51    74
+Temp          66 56   45 45 70 59   49 48 66 58   51 50 69 61   53 52 72 63
+Dewpt         43 48   44 44 52 53   49 48 53 54   51 50 57 57   53 52 57 57
+PWind dir         N      NW    NE      NE    NE       E     E      NW    NW
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   FW SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       5     0
+
+$$
+NCZ102-240800-
+Eastern Currituck-
+Including the city of Corolla
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                53 57 58          64    53 56 58          64    51 54 56
+Temp                59 58 57 58 61 63 63 60 58 58 57 57 61 63 63 59 57 56 55 55
+Dewpt               50 49 48 49 52 51 52 53 54 55 55 55 55 53 53 53 54 54 54 54
+RH                  72 72 72 72 72 65 67 78 86 90 93 93 81 70 70 80 90 93 96 96
+Wind dir            NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE NE  N
+Wind spd            17 17 17 17 17 17 17 16 17 17 18 18 19 18 19 16 14 13 14 14
+Wind gust           27                                     28                  
+Clouds              SC SC SC SC SC SC SC B1 SC SC SC SC SC FW FW FW FW FW FW FW
+PoP 12hr                      0           0           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          62      58    64      61    66      63    67      62    67
+Temp          61 59   58 58 63 61   61 62 64 63   63 63 65 65   63 63 65 65
+Dewpt         49 51   52 53 57 58   58 57 59 60   61 61 62 63   62 61 62 62
+PWind dir         N       N     N      NE    NE      NE    NE      NE    NE
+Wind char        GN      LT    GN      GN    GN      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 B1   SC SC SC FW
+PoP 12hr          0       0     0       0     0       5     5      10     5
+
+$$
+VAZ068-240800-
+Amelia-
+Including the cities of Earls, Mannboro, Scotts Fork, 
+Amelia Courthouse, Chula, Denaro, and Jetersville
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      37    63 65 66    37 39 40    66 67 69          37
+Temp                46 41 39 40 54 62 61 51 46 44 42 42 56 64 63 51 45 43 40 41
+Dewpt               44 41 39 37 48 43 43 47 45 44 42 42 49 46 46 49 45 43 40 41
+RH                  93100100 89 80 50 51 86 96100100100 77 52 54 93100100100100
+Wind dir            NE NE  N  N NE NE NE NE NE NE  N  N NE NE NE NE  N  N NW NW
+Wind spd             3  2  3  3  6  6  5  3  2  2  3  3  5  4  4  2  0  0  1  1
+Clouds              FW CL FW FW SC SC SC SC SC SC FW SC SC FW FW FW CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      43    71      47    67      49    71      50    73
+Temp          66 56   45 45 69 59   49 48 65 58   51 50 68 60   53 51 71 62
+Dewpt         44 49   45 45 54 53   48 48 54 55   51 50 58 58   53 51 58 57
+PWind dir        NW      NW    NE      NE    NE       E    SE       W    NW
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   FW SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       5     0
+
+$$
+VAZ065-240800-
+Mecklenburg-
+Including the city of South Hill
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                39 40 43          66    40 42 44          69    37 38 41
+Temp                49 45 42 43 56 63 63 53 49 47 45 45 59 66 65 53 47 44 41 42
+Dewpt               46 44 42 41 47 43 43 47 47 46 45 45 49 46 47 50 47 44 41 42
+RH                  89 96100 93 72 48 48 80 93 96100100 69 48 52 89100100100100
+Wind dir            NE NE NE  N NE NE NE NE NE NE NE  N NE NE NE NE NE NE  N  N
+Wind spd             3  3  3  4  8  8  8  4  3  3  4  4  8  6  6  2  0  0  0  1
+Clouds              FW CL FW FW FW SC SC SC SC FW SC SC FW FW FW FW CL CL FW FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          71      42    73      47    69      50    72      51    75
+Temp          67 57   45 44 71 60   50 48 67 59   52 51 70 62   53 52 73 64
+Dewpt         42 48   45 43 50 52   49 48 52 54   52 50 56 57   53 51 56 56
+PWind dir         N      NW    NE      NE    NE      NE    NE      NW     N
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    CL CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   FW SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       0     0
+
+$$
+VAZ066-240800-
+Lunenburg-
+Including the cities of Fort Mitchell, Kells Corner, 
+Arvins Store, Loves Mill, Lunenburg, Nutbush, and Rehoboth
+801 PM EDT Fri Oct 23 2026
+
+Date           10/23/26      Sat 10/24/26            Sun 10/25/26            Mon
+EDT 3hrly     17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      39          66    39 41 42    66 68 69          38
+Temp                47 43 40 42 55 63 62 53 48 46 44 44 58 65 64 52 46 44 41 42
+Dewpt               45 43 40 39 47 43 43 46 46 45 44 44 49 46 46 50 46 44 41 42
+RH                  93100100 89 74 48 50 77 93 96100100 72 50 52 93100100100100
+Wind dir            NE NE NE  N NE NE NE NE NE NE NE  N NE NE NE NE  E  N  N  N
+Wind spd             3  3  3  4  8  6  6  3  2  2  3  4  6  5  5  2  0  0  0  1
+Clouds              FW FW FW FW FW SC SC SC SC SC FW SC FW FW FW FW CL CL CL FW
+PoP 12hr                      0           0           0           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+EDT 6hrly     14 20   02 08 14 20   02 08 14 20   02 08 14 20   02 08 14 20
+UTC 6hrly     18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18 00
+
+Max/Min          70      43    73      47    68      50    72      51    74
+Temp          66 56   45 45 70 60   49 48 66 59   52 51 69 61   54 52 72 63
+Dewpt         43 48   44 44 51 52   49 48 52 54   52 51 56 57   53 52 56 56
+PWind dir         N      NW    NE      NE    NE      NE     E      NW    NW
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    FW CL   CL FW FW FW   FW SC B1 B1   B1 B1 B1 SC   FW SC SC FW
+PoP 12hr          0       0     0       0     0       0     0       0     0
+
+$$
+

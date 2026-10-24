@@ -1,0 +1,25 @@
+FAFJ40 NFFN 232335
+FIJI AREA FORECAST VALID FROM OCTOBER 240000 TO 241200 UTC 2026.     
+                                                                     
+                                                                     
+                                                         
+    
+SITUATION: A FRESH TO STRONG EAST TO SOUTHEAST WIND FLOW PREVAILS
+OVER THE FIJI GROUP. 
+
+WINDS [SPEED IN KNOTS]
+FL200 28020M16
+FL180 24015M01
+FL140 26005P05
+FL100 11010
+FL070 10015
+FL050 10015
+FL020 VRB05
+
+SIGWX: ISOL SHRA. 
+       RISK OF GUSTY WINDS AT THE SFC. 
+
+VIS: 40KM, 10KM-15KM IN -SHRA, 5000M-10KM IN SHRA.
+    
+CLOUD: FEW-SCT CU 015-030, TOPS 100-180, BKN IN SIGWX.
+       SCT-BKN SC 030-050.          

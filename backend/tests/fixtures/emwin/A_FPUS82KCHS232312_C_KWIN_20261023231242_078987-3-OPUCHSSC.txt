@@ -1,0 +1,74 @@
+FPUS82 KCHS 232312
+OPUCHS
+
+TEST...KCHS/KSAV Gateway Observations...TEST
+National Weather Service Charleston SC
+700 PM EDT FRI OCT 23 2026
+
+NOTE: "fair" indicates few or no clouds below 12,000 feet with no
+significant weather and/or obstructions to visibility.
+
+SCZ150-WAZ558-NCZ071-TXZ119-213-PAZ071-DCZ001-FLZ074-172-MI076-
+NYZ176-178-MAZ016-IL014-TNZ027-NJZ106-GAZ044-MD014-240000-
+
+...Gateway Observations for Charleston International...
+  
+CITY           SKY/WX    TMP DP  RH WIND       PRES   REMARKS
+Chas Airport   CLEAR     64  40  41 NE3       30.21R                  
+Seattle        MOSUNNY   58  37  45 VRB6      30.32F                  
+Charlotte      CLEAR     62  42  47 N8        30.28R                  
+Dallas DFW     MOCLDY    81  47  30 SE9       30.07S                  
+Dallas Love    MOCLDY    82  45  27 SE10      30.08S                  
+Philladelphia  PTCLDY    56  35  45 E6        30.40R                  
+Wash National  PTCLDY    57  39  51 E3        30.38R                  
+Baltimore      PTCLDY    53  40  61 CALM      30.38R                  
+Miami          MOCLDY    79  65  62 NE8       29.95R                  
+Detroit        PTCLDY    59  48  67 SE6       30.37R                  
+Newark         PTCLDY    53  27  36 NE7       30.39R                  
+Laguardia      PTCLDY    58  27  30 N6        30.39R                  
+J F K          PTCLDY    56  29  35 N5        30.40R                  
+Boston Logan   PTCLDY    50  35  56 SE6       30.40                   
+Ft. Lauderdale MOCLDY    73  66  78 N12       29.97R                  
+Chicago O'Hare PTCLDY    64  46  52 E8        30.29R                  
+Chicago Midway PTCLDY    65  46  50 E9        30.29S                  
+Houston Bush   PTCLDY    83  45  26 SE8       30.07S                  
+Houston Hobby  PTCLDY    82  45  27 SE7       30.07S                  
+Nashville      CLEAR     72  29  20 E3        30.23R                  
+Atlanta        CLEAR     67  41  38 E7        30.23R                  
+London Heathrw   N/A     45  37  76 W16       29.86R                  
+
+$$
+ 
+GAZ044-118-TXZ119-213-NCZ071-DCZ001-MDZ014-506-PAZ021-071-NJZ106-
+NYZ176-178-MAZ106-OHZ011-021-055-MIZ076-KYZ091-ILZ014-INZ047-
+MNZ060-ONZ431-240000-
+
+...Gateway Observations for Savannah International...
+  
+CITY           SKY/WX    TMP DP  RH WIND       PRES   REMARKS
+Savannah Arpt  CLEAR     65  36  34 NE8       30.20R                  
+Atlanta        CLEAR     67  41  38 E7        30.23R                  
+Charlotte      CLEAR     62  42  47 N8        30.28R                  
+Dallas DFW     MOCLDY    81  47  30 SE9       30.07S                  
+Houston Bush   PTCLDY    83  45  26 SE8       30.07S                  
+Wash National  PTCLDY    57  39  51 E3        30.38R                  
+Wash Dulles    PTCLDY    55  40  56 E6        30.37R                  
+Baltimore      PTCLDY    53  40  61 CALM      30.38R                  
+Philadelphia   PTCLDY    56  35  45 E6        30.40R                  
+Newark         PTCLDY    53  27  36 NE7       30.39R                  
+Laguardia      PTCLDY    58  27  30 N6        30.39R                  
+J F K          PTCLDY    56  29  35 N5        30.40R                  
+Boston         PTCLDY    50  35  56 SE6       30.40                   
+Pittsburg      PTCLDY    58  40  51 E5        30.34R                  
+Akron          PTCLDY    59  43  55 E5        30.34R                  
+Cleveland      CLEAR     57  47  69 NE9       30.34R                  
+Cincinnati     CLEAR     64  43  46 E10       30.29S                  
+Columbus       CLEAR     61  45  55 E5        30.32R                  
+Detroit        PTCLDY    59  48  67 SE6       30.37R                  
+Chicago O'Hare PTCLDY    64  46  52 E8        30.29R                  
+Minneapolis    CLOUDY    70  47  43 S12       30.12S                  
+Indianapolis   CLEAR     64  44  48 E7        30.30R                  
+Toronto Canada PTCLDY    48  36  61 E6        30.43R                  
+
+$$
+  

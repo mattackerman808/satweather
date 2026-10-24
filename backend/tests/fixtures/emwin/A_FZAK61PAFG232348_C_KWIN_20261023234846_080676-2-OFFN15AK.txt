@@ -1,0 +1,92 @@
+FZAK61 PAFG 232348
+OFFN15
+
+Navtex Marine Forecast
+National Weather Service Fairbanks AK
+348 PM AKDT Fri Oct 23 2026
+
+...Please refer to the Coastal Waters Forecast (CWF) available
+through NOAA Weather Radio and other means for detailed coastline
+forecasts...
+
+Cape Thompson to Cape Beaufort out to 15 NM-
+
+...GALE WARNING IN EFFECT THROUGH SATURDAY AFTERNOON...
+
+.TONIGHT...S winds 40 kt. Seas 13 ft. Snow and rain. 
+.SAT...S winds 35 kt. Seas 10 ft. Rain. 
+.SAT NIGHT...S winds 30 kt. Seas 10 ft. Rain. 
+.SUN...S winds 30 kt. Seas 9 ft. Rain. 
+
+Cape Beaufort to Point Franklin out to 15 NM-
+
+...GALE WARNING IN EFFECT FROM THIS EVENING THROUGH SATURDAY
+MORNING...
+
+.TONIGHT...SE winds 35 kt. Seas 6 ft. Snow. 
+.SAT...S winds 35 kt. Seas 7 ft. 
+.SAT NIGHT...S winds 20 kt. Seas 7 ft. 
+.SUN...S winds 20 kt. Seas 5 ft. 
+
+Point Franklin to Cape Halkett out to 15 NM-
+
+.TONIGHT...SE winds 30 kt. Seas 6 ft. Blowing snow. Light
+freezing spray. 
+.SAT...S winds 30 kt. Seas 6 ft. Blowing snow. 
+.SAT NIGHT...S winds 20 kt. Seas 4 ft. 
+.SUN...S winds 20 kt. Seas 4 ft. 
+
+Cape Halkett to Flaxman Island out to 15 NM-
+
+.TONIGHT...S winds 20 kt. Seas 4 ft. Light freezing spray. 
+.SAT...S winds 25 kt. Seas 5 ft. Blowing snow. 
+.SAT NIGHT...S winds 20 kt. Seas 4 ft. 
+.SUN...S winds 15 kt. Seas 3 ft. 
+
+Flaxman Island to Demarcation Point out to 15 NM-
+
+.TONIGHT...SE winds 15 kt. Seas 3 ft. Light freezing spray. 
+.SAT...SE winds 15 kt. Seas 2 ft. 
+.SAT NIGHT...S winds 10 kt. Seas 2 ft. 
+.SUN...S winds 10 kt. Seas 1 foot. 
+
+Cape Thompson to Cape Beaufort from 15 to 85 NM-
+
+...GALE WARNING IN EFFECT THROUGH SATURDAY AFTERNOON...
+
+.TONIGHT...S winds 40 kt. Seas 15 ft. Snow and rain. 
+.SAT...S winds 35 kt. Seas 12 ft. Rain. 
+.SAT NIGHT...S winds 30 kt. Seas 12 ft. Rain. 
+.SUN...S winds 25 kt. Seas 10 ft. 
+
+Cape Beaufort to Point Franklin from 15 to 85 NM-
+
+...GALE WARNING IN EFFECT LATE TONIGHT...
+
+.TONIGHT...SE winds 35 kt. Seas 10 ft. Snow and rain. 
+.SAT...S winds 30 kt. Seas 12 ft. 
+.SAT NIGHT...S winds 25 kt. Seas 11 ft. 
+.SUN...S winds 25 kt. Seas 8 ft. 
+
+Point Franklin to Cape Halkett from 15 to 75 NM-
+
+.TONIGHT...SE winds 25 kt. Blowing snow. Snow. 
+.SAT...S winds 25 kt. Blowing snow. 
+.SAT NIGHT...S winds 20 kt. 
+.SUN...S winds 20 kt. 
+
+Cape Halkett to Flaxman Island from 15 to 80 NM-
+
+.TONIGHT...SE winds 25 kt. Seas 4 ft. 
+.SAT...S winds 25 kt. Seas 5 ft. Blowing snow. 
+.SAT NIGHT...S winds 15 kt. Seas 3 ft. 
+.SUN...S winds 15 kt. Seas 3 ft. 
+
+Flaxman Island to Demarcation Point from 15 to 75 NM-
+
+.TONIGHT...SE winds 15 kt. Seas 3 ft. Light freezing spray. 
+.SAT...S winds 15 kt. Seas 3 ft. Light freezing spray. 
+.SAT NIGHT...S winds 10 kt. Seas 2 ft. 
+.SUN...S winds 10 kt. Seas 2 ft.
+
+$$

@@ -1,0 +1,82 @@
+CDUS43 KDDC 232332
+CLIP28
+
+CLIMATE REPORT 
+NATIONAL WEATHER SERVICE DODGE CITY, KANSAS
+632 PM CDT FRI OCT 23 2026
+
+...................................
+
+...THE MEDICINE LODGE KS CLIMATE SUMMARY FOR OCTOBER 23 2026...
+VALID TODAY AS OF 0525 PM LOCAL TIME.
+
+CLIMATE NORMAL PERIOD 1991 TO 2020
+CLIMATE RECORD PERIOD 1893 TO 2026
+
+
+WEATHER ITEM   OBSERVED TIME   RECORD YEAR NORMAL DEPARTURE LAST      
+                VALUE   (LST)  VALUE       VALUE  FROM      YEAR     
+                                                  NORMAL           
+...................................................................
+TEMPERATURE (F)                                                          
+ TODAY                                                               
+  MAXIMUM         82    217 PM  93    1939  69     13       75       
+  MINIMUM         55    712 AM  21    1938  42     13       52       
+  AVERAGE         69                        55     14       64     
+
+PRECIPITATION (IN)                                                    
+  TODAY            0.00          1.15 1943   0.06  -0.06     0.00     
+  MONTH TO DATE    3.59                      1.98   1.61     0.06     
+  SINCE SEP 1      6.94                      4.59   2.35     4.38     
+  SINCE JAN 1     20.34                     25.10  -4.76    26.07     
+
+DEGREE DAYS                                                           
+ HEATING                                                              
+  TODAY            0                        10    -10        1        
+  MONTH TO DATE   62                       149    -87       25        
+  SINCE SEP 1     62                       180   -118       28        
+  SINCE JUL 1     62                       180   -118       28        
+
+ COOLING                                                              
+  TODAY            4                         0      4        0        
+  MONTH TO DATE   88                        40     48      164        
+  SINCE SEP 1    569                       274    295      447        
+  SINCE JAN 1   2802                      1818    984     2179        
+...................................................................
+
+
+WIND (MPH)                                                            
+  HIGHEST WIND SPEED    23   HIGHEST WIND DIRECTION     S (170)       
+  HIGHEST GUST SPEED    31   HIGHEST GUST DIRECTION     S (180)       
+  AVERAGE WIND SPEED     9.0                                        
+
+
+RELATIVE HUMIDITY (PERCENT)
+ HIGHEST    77           600 AM                                      
+ LOWEST     34           200 PM                                      
+ AVERAGE    56                                                        
+
+..........................................................
+
+
+THE MEDICINE LODGE KS CLIMATE NORMALS FOR TOMORROW
+                         NORMAL    RECORD    YEAR                     
+ MAXIMUM TEMPERATURE (F)   68        95      1939                      
+                                             2024                     
+ MINIMUM TEMPERATURE (F)   42        23      1938                      
+
+
+SUNRISE AND SUNSET                                                    
+OCTOBER 23 2026.......SUNRISE   750 AM CDT   SUNSET   647 PM CDT     
+OCTOBER 24 2026.......SUNRISE   751 AM CDT   SUNSET   645 PM CDT     
+
+
+-  INDICATES NEGATIVE NUMBERS.
+R  INDICATES RECORD WAS SET OR TIED.
+MM INDICATES DATA IS MISSING.
+T  INDICATES TRACE AMOUNT.
+
+
+
+
+$$

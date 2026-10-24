@@ -1,0 +1,51 @@
+WUUS54 KEPZ 232309
+SVREPZ
+NMC013-232345-
+/O.NEW.KEPZ.SV.W.0187.261023T2309Z-261023T2345Z/
+
+BULLETIN - IMMEDIATE BROADCAST REQUESTED
+Severe Thunderstorm Warning
+National Weather Service El Paso TX
+509 PM MDT Fri Oct 23 2026
+
+The National Weather Service in El Paso has issued a
+
+* Severe Thunderstorm Warning for...
+  Northwestern Dona Ana County in south central New Mexico...
+
+* Until 545 PM MDT.
+
+* At 509 PM MDT, a severe thunderstorm was located near Salem, moving
+  north at 35 mph.
+
+  HAZARD...60 mph wind gusts and quarter size hail.
+
+  SOURCE...Radar indicated.
+
+  IMPACT...Hail damage to vehicles is expected. Expect wind damage 
+           to roofs, siding, and trees.
+
+* Locations impacted include...
+  Hatch, Rincon, Salem, Garfield, and Uvas Valley.
+
+This includes Interstate 25 in New Mexico between mile markers 35 and
+49.
+ 
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+For your protection move to an interior room on the lowest floor of a
+building.
+
+&&
+
+LAT...LON 3253 10715 3256 10729 3277 10729 3277 10698
+TIME...MOT...LOC 2309Z 198DEG 30KT 3266 10722 
+
+HAIL THREAT...RADAR INDICATED
+MAX HAIL SIZE...1.00 IN
+WIND THREAT...RADAR INDICATED
+MAX WIND GUST...60 MPH
+
+$$
+
+ZA

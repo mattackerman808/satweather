@@ -1,0 +1,482 @@
+FZCA52 TJSJ 240008
+SRFSJU
+
+Surf Zone Forecast for Puerto Rico and the U.S. Virgin Islands
+National Weather Service San Juan PR
+808 PM AST Fri Oct 23 2026
+
+PRZ001-240830-
+San Juan and Vicinity PR-
+Including the beaches of Carolina, San Juan and Toa Baja
+808 PM AST Fri Oct 23 2026
+
+...HIGH RIP CURRENT RISK IN EFFECT THROUGH LATE SATURDAY NIGHT...
+
+.SATURDAY...
+Rip Current Risk*...........High. 
+Surf Height.................Around 6 feet. 
+Weather.....................Mostly sunny. Scattered showers. 
+Winds.......................Southeast winds 10 to 15 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 5 feet. 
+Weather.....................Sunny until 12 PM, then mostly cloudy. 
+                            Numerous showers with isolated 
+                            thunderstorms. 
+Winds.......................Southeast winds 10 to 15 mph. 
+
+.MONDAY...Surf height around 6 feet. Mostly sunny. Scattered
+showers. Southeast winds around 10 mph. 
+.TUESDAY...Surf height around 6 feet. Mostly sunny. Isolated
+showers. Southeast winds around 10 mph. 
+.WEDNESDAY...Surf height around 5 feet. Mostly sunny. Isolated
+showers. Southeast winds around 5 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+PRZ002-240830-
+Northeast PR-
+Including the beaches of Rio Grande, Luquillo, Fajardo and Humacao
+808 PM AST Fri Oct 23 2026
+
+...HIGH RIP CURRENT RISK IN EFFECT THROUGH LATE SATURDAY NIGHT...
+
+.SATURDAY...
+Rip Current Risk*...........High. 
+Surf Height.................Around 6 feet. 
+Weather.....................Partly sunny. Numerous showers with 
+                            isolated thunderstorms. 
+Winds.......................Southeast winds around 10 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 5 feet. 
+Weather.....................Mostly sunny until 12 PM, then mostly 
+                            cloudy. Scattered showers with isolated 
+                            thunderstorms. 
+Winds.......................Southeast winds around 10 mph. 
+
+.MONDAY...Surf height around 6 feet. Partly sunny. Scattered
+showers. Southeast winds around 10 mph. 
+.TUESDAY...Surf height around 6 feet. Mostly sunny. Scattered
+showers. Southeast winds around 10 mph. 
+.WEDNESDAY...Surf height around 5 feet. Mostly sunny. Isolated
+showers. East winds around 5 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+PRZ005-240830-
+North Central PR-
+Including the beaches of Arecibo, Manati, Vega Baja, 
+Vega Alta and Dorado
+808 PM AST Fri Oct 23 2026
+
+...HIGH RIP CURRENT RISK IN EFFECT THROUGH LATE SATURDAY NIGHT...
+
+.SATURDAY...
+Rip Current Risk*...........High. 
+Surf Height.................Around 6 feet. 
+Weather.....................Sunny until 3 PM, then mostly cloudy. 
+                            Numerous showers with isolated 
+                            thunderstorms. 
+Winds.......................Southeast winds 5 to 10 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 5 feet. 
+Weather.....................Sunny until 12 PM, then cloudy. 
+                            Numerous showers with isolated 
+                            thunderstorms. 
+Winds.......................Southeast winds 5 to 10 mph. 
+
+.MONDAY...Surf height around 6 feet. Partly sunny. Scattered showers
+with isolated thunderstorms. Southeast winds around 10 mph. 
+.TUESDAY...Surf height around 6 feet. Mostly sunny. Scattered
+showers. East winds around 5 mph. 
+.WEDNESDAY...Surf height around 5 feet. Mostly sunny. Isolated
+showers. East winds around 5 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+PRZ008-240830-
+Northwest PR-
+Including the beaches of Aguadilla, Camuy, Isabela and Quebradillas
+808 PM AST Fri Oct 23 2026
+
+...HIGH RIP CURRENT RISK IN EFFECT THROUGH LATE SATURDAY NIGHT...
+
+.SATURDAY...
+Rip Current Risk*...........High. 
+Surf Height.................Around 6 feet. 
+Weather.....................Sunny until 3 PM, then mostly cloudy. 
+                            Showers with isolated thunderstorms. 
+Winds.......................East winds around 5 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 5 feet. 
+Weather.....................Sunny until 12 PM, then cloudy. 
+                            Numerous showers with isolated 
+                            thunderstorms. 
+Winds.......................Southeast winds around 5 mph. 
+
+.MONDAY...Surf height around 6 feet. Partly sunny. Numerous showers
+with isolated thunderstorms. Southeast winds around 5 mph. 
+.TUESDAY...Surf height around 7 feet. Mostly sunny. Scattered
+showers with isolated thunderstorms. East winds around 5 mph. 
+.WEDNESDAY...Surf height around 5 feet. Mostly sunny. Isolated
+showers. East winds around 5 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+PRZ010-240830-
+Mayaguez and Vicinity PR-
+Including the beaches of Aguada, Anasco and Rincon
+808 PM AST Fri Oct 23 2026
+
+...HIGH RIP CURRENT RISK IN EFFECT THROUGH SATURDAY AFTERNOON...
+
+.SATURDAY...
+Rip Current Risk*...........High. 
+Surf Height.................Around 6 feet. 
+Weather.....................Sunny until 3 PM, then partly sunny. 
+                            Numerous showers with isolated 
+                            thunderstorms. 
+Winds.......................Southeast winds around 10 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 5 feet. 
+Weather.....................Mostly sunny until 12 PM, then mostly 
+                            cloudy. Scattered showers with isolated 
+                            thunderstorms. 
+Winds.......................Southeast winds around 10 mph. 
+
+.MONDAY...Surf height around 5 feet. Partly sunny. Numerous showers
+with isolated thunderstorms. Southeast winds around 10 mph. 
+.TUESDAY...Surf height around 7 feet. Mostly sunny. Scattered
+showers with isolated thunderstorms. Southeast winds around 10 mph. 
+.WEDNESDAY...Surf height around 5 feet. Mostly sunny. Scattered
+showers. East winds around 5 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+PRZ011-240830-
+Southwest PR-
+Including the beaches of Cabo Rojo, Guanica and Lajas
+808 PM AST Fri Oct 23 2026
+
+.SATURDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 4 feet. 
+Weather.....................Sunny. Isolated showers. 
+Winds.......................Southeast winds around 15 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 4 feet. 
+Weather.....................Mostly sunny. Scattered showers. 
+Winds.......................Southeast winds around 15 mph. 
+
+.MONDAY...Surf height around 4 feet. Partly sunny. Scattered
+showers. Southeast winds around 15 mph. 
+.TUESDAY...Surf height around 3 feet. Mostly sunny. Scattered
+showers. Southeast winds around 15 mph. 
+.WEDNESDAY...Surf height around 3 feet. Mostly sunny. Scattered
+showers. Southeast winds around 10 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+PRZ007-240830-
+Ponce and Vicinity PR-
+Including the beaches of Guayanilla and Ponce
+808 PM AST Fri Oct 23 2026
+
+.SATURDAY...
+Rip Current Risk*...........Low. 
+Surf Height.................Around 3 feet. 
+Weather.....................Mostly sunny. Scattered showers. 
+Winds.......................Southeast winds around 10 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Low. 
+Surf Height.................Around 3 feet. 
+Weather.....................Mostly sunny. Scattered showers with 
+                            isolated thunderstorms. 
+Winds.......................Southeast winds around 10 mph. 
+
+.MONDAY...Surf height around 3 feet. Partly sunny. Scattered
+showers. Southeast winds around 10 mph. 
+.TUESDAY...Surf height around 3 feet. Mostly sunny. Scattered
+showers. Southeast winds around 10 mph. 
+.WEDNESDAY...Surf height around 2 feet. Mostly sunny. Scattered
+showers. East winds around 5 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+PRZ003-240830-
+Southeast PR-
+Including the beaches of Arroyo, Guayama, Maunabo, 
+Patillas and Yabucoa
+808 PM AST Fri Oct 23 2026
+
+.SATURDAY...
+Rip Current Risk*...........Low. 
+Surf Height.................Around 3 feet. 
+Weather.....................Mostly sunny until 12 PM, then mostly 
+                            cloudy. Numerous showers with isolated 
+                            thunderstorms. 
+Winds.......................Southeast winds around 10 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 4 feet. 
+Weather.....................Partly sunny. Scattered showers. 
+Winds.......................Southeast winds around 10 mph. 
+
+.MONDAY...Surf height around 3 feet. Partly sunny. Scattered
+showers. Southeast winds around 10 mph. 
+.TUESDAY...Surf height around 3 feet. Mostly sunny. Scattered
+showers. Southeast winds around 10 mph. 
+.WEDNESDAY...Surf height around 3 feet. Mostly sunny. Isolated
+showers. East winds around 5 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+PRZ012-240830-
+Culebra PR-
+808 PM AST Fri Oct 23 2026
+
+...HIGH RIP CURRENTRISK IN EFFECT THROUGH LATE SATURDAY NIGHT...
+
+.SATURDAY...
+Rip Current Risk*...........High. 
+Surf Height.................Around 6 feet. 
+Weather.....................Mostly sunny. Scattered showers. 
+Winds.......................Southeast winds 15 to 20 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 5 feet. 
+Weather.....................Partly sunny. Scattered showers. 
+Winds.......................Southeast winds around 20 mph. 
+
+.MONDAY...Surf height around 6 feet. Partly sunny. Scattered
+showers. Southeast winds around 20 mph. 
+.TUESDAY...Surf height around 7 feet. Mostly sunny. Scattered
+showers. Southeast winds around 15 mph. 
+.WEDNESDAY...Surf height around 5 feet. Mostly sunny. Isolated
+showers. East winds around 10 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+PRZ013-240830-
+Vieques PR-
+808 PM AST Fri Oct 23 2026
+
+.SATURDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 4 feet. 
+Weather.....................Mostly sunny. Scattered showers. 
+Winds.......................Southeast winds around 15 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 4 feet. 
+Weather.....................Mostly sunny. Scattered showers. 
+Winds.......................Southeast winds around 15 mph. 
+
+.MONDAY...Surf height around 4 feet. Partly sunny. Scattered
+showers. Southeast winds around 15 mph. 
+.TUESDAY...Surf height around 5 feet. Mostly sunny. Scattered
+showers. Southeast winds around 10 mph. 
+.WEDNESDAY...Surf height around 4 feet. Mostly sunny. Isolated
+showers. East winds around 10 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+VIZ001-240830-
+St Thomas, St John and adjacent islands VI-
+808 PM AST Fri Oct 23 2026
+
+...HIGH RIP CURRENT RISK IN EFFECT THROUGH SATURDAY AFTERNOON...
+
+.SATURDAY...
+Rip Current Risk*...........High. 
+Surf Height.................Around 6 feet. 
+Weather.....................Mostly sunny. Scattered showers. 
+Winds.......................Southeast winds 15 to 20 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 5 feet. 
+Weather.....................Mostly sunny. Scattered showers. 
+Winds.......................Southeast winds around 20 mph. 
+
+.MONDAY...Surf height around 5 feet. Mostly sunny. Scattered
+showers. Southeast winds around 20 mph. 
+.TUESDAY...Surf height around 6 feet. Mostly sunny. Scattered
+showers. Southeast winds around 15 mph. 
+.WEDNESDAY...Surf height around 5 feet. Mostly sunny. Isolated
+showers. East winds around 10 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+$$
+
+VIZ002-240830-
+St Croix VI-
+808 PM AST Fri Oct 23 2026
+
+.SATURDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 5 feet. 
+Weather.....................Mostly sunny. Scattered showers. 
+Winds.......................Southeast winds around 15 mph. 
+
+.SUNDAY...
+Rip Current Risk*...........Moderate. 
+Surf Height.................Around 4 feet. 
+Weather.....................Mostly sunny. Isolated showers. 
+Winds.......................Southeast winds 15 to 20 mph. 
+
+.MONDAY...Surf height around 4 feet. Mostly sunny. Scattered
+showers. Southeast winds around 15 mph. 
+.TUESDAY...Surf height around 4 feet. Mostly sunny. Scattered
+showers. Southeast winds around 10 mph. 
+.WEDNESDAY...Surf height around 4 feet. Mostly sunny. Isolated
+showers. East winds around 10 mph.
+
+&&
+
+Rip Current Risk Category
+* Low Risk - The risk for rip currents is low, however,
+life-threatening rip currents often occur in the vicinity of groins,
+jetties, reefs, and piers.
+* Moderate Risk - Life-threatening rip currents are possible in the
+surf zone.
+* High Risk - Life-threatening rip currents are likely in the surf
+zone.
+
+
+$$

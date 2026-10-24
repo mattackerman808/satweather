@@ -1,0 +1,26 @@
+FZUS72 KMFL 232321
+MWSMFL
+
+Marine Weather Statement
+National Weather Service Miami FL
+721 PM EDT Fri Oct 23 2026
+
+AMZ650-232331-
+/O.EXP.KMFL.MA.W.0327.000000T0000Z-261023T2330Z/
+721 PM EDT Fri Oct 23 2026
+
+...THE SPECIAL MARINE WARNING WILL EXPIRE AT 730 PM EDT...
+
+The affected areas were... 
+Coastal waters from Jupiter Inlet to Riviera Beach FL out 10 NM...
+
+The thunderstorm has weakened and no longer poses a significant
+threat to boaters.
+
+LAT...LON 2697 7987 2677 7992 2678 8008 2685 8011
+      2697 8013
+TIME...MOT...LOC 2321Z 186DEG 5KT 2691 7999 
+
+$$
+
+Baxter

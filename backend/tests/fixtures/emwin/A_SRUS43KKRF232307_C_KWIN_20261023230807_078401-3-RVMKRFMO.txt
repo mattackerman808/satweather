@@ -1,0 +1,56 @@
+SRUS43 KKRF 232307
+RVMKRF
+
+NWS MISSOURI BASIN RIVER FORECAST CENTER PLEASANT HILL MO
+Fri Oct 23 23:06:54 UTC 2026
+
+: SOPLAT - USACE - Hourly Data from USACE CWMS API                             
+:   Base URL: https://cwms-data.usace.army.mil/cwms-data                       
+
+.AR BCDC2 20261023 Z DH220000/HPIRV 5544.6                          :USACE BECR
+
+.AR CFDC2 20261023 Z DH220000/HPIRV 5431.8                          :USACE CHFI
+
+.AR EGDC2 20261023 Z DH220000/QTIRZ 0.014/HPIRZ 5545.8              :USACE CHCR
+
+
+
+:*******************************************************************************
+:                     Agency/SHEF Parameter Cross Reference                      
+:
+:         Agency Parameter            SHEF Parameter  
+:-----------------------------------------------------
+:-EmergencySpillway.Flow.Inst.1Hour.0.Best-NWO        QS        
+:-Powerhouse.Flow.Inst.1Hour.0.Best-MRBWM        QG        
+:-Spillway.Flow.Inst.1Hour.0.Best-MRBWM        QS        
+:-Surface.Temp-Water.Inst.1Hour.0.Rev-NWO-Evap        TW        
+:-Tailwater.Elev.Inst.1Hour.0.Best-MRBWM        HT        
+:-Tailwater.Elev.Inst.1Hour.0.Best-NWK        HT        
+:-Tailwater.Flow.Inst.1Hour.0.Raw-CODWR        QR        
+:-Tailwater.Stage.Inst.1Hour.0.Best-NWO        HG        
+:   .Elev.Inst.1Hour.0.Best-MRBWM           HP        
+:    .Elev.Inst.1Hour.0.Best-NWK            HP        
+:    .Elev.Inst.1Hour.0.Best-NWO            HP        
+:  .Flow-In.Ave.1Hour.1Day.Raw-A2W          QI        
+:.Flow-In.Ave.1Hour.6Hours.Best-NWO         QI        
+:  .Flow-In.Inst.1Hour.0.Best-NWK           QI        
+:  .Flow-In.Inst.1Hour.0.Best-NWO           QI        
+: .Flow-Out.Inst.1Hour.0.Best-MRBWM         QT        
+:  .Flow-Out.Inst.1Hour.0.Best-NWK          QT        
+:  .Flow-Out.Inst.1Hour.0.Best-NWO          QT        
+:.Flow-Spill.Inst.1Hour.0.Best-MRBWM        QS        
+:   .Flow.Inst.1Hour.0.Best-NWDM            QR        
+:  .Precip.Inst.1Hour.0.Best-MRBWM          PP        
+:  .Precip.Inst.1Hour.0.Best-NWDM           PP        
+:   .Precip.Inst.1Hour.0.Best-NWK           PP        
+:   .Precip.Inst.1Hour.0.Best-NWO           PP        
+:   .Stage.Inst.1Hour.0.Best-NWDM           HG        
+: .Temp-Air.Inst.1Hour.0.Best-MRBWM         TA        
+:.Temp-Water.Inst.1Hour.0.Best-MRBWM        TW        
+
+
+:END OF MESSAGE
+
+$$
+
+

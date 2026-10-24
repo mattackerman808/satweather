@@ -1,0 +1,988 @@
+FOAK59 PAFG 240001
+PFMAFG
+
+Point Forecast Matrices
+National Weather Service Fairbanks AK
+400 PM AKDT Fri Oct 23 2026
+
+AKZ801-241200-
+Point Hope-Western Arctic Coast AK
+68.35N 166.81W Elev. 13 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      31          40          37          39          34
+Temp             32 33 33 35 38 39 39 39 39 39 38 38 38 38 38 39 38 37 36 36 35
+Dewpt            29 31 33 35 37 37 37 38 37 37 37 37 37 36 36 37 35 35 34 35 35
+RH               88 92100100 96 92 92 96 92 92 96 96 96 92 92 92 89 92 92 96100
+Wind dir         SE SE SE  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S SE NE
+Wind spd         46 44 42 39 33 33 35 36 34 32 32 32 32 29 29 28 27 23 20 20  3
+Wind gust        62 59 57 51 43 43 47 48 48 43 43 44 42                      21
+Clouds           OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV
+PoP 12hr                    100          90          90          90          90
+QPF 12hr                   0.25        0.09        0.08        0.05        0.07
+Snow 12hr                     2       00-00       00-00                        
+Rain                 D  S  D  L  D  D  D  D  D  D  D  D  D  L  L  L  L  L  D  D
+Snow              D  D  D  S                                               S  S
+Obvis            BS                                                            
+Blizzard          W  W  W  W  W                                                
+High Surf         Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y         
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          38      32    38      33    38      32    36      31    36
+Temp          36 36 34   33 36 36 34   35 35 35 34   34 34 35 33   33 34 35
+Dewpt         34 33 33   32 33 33 32   32 31 31 30   30 30 31 30   30 32 32
+PWind dir         N       N     S      SE    SE       E     E       E    NE
+Wind char        GN      BZ    WY      BZ    WY      WY    WY      WY    WY
+Avg clouds    OV OV OV   OV OV OV OV   OV OV OV OV   OV OV OV OV   OV OV B2
+PoP 12hr         80      60    50      40    60      50    40      40    50
+Rain           D  S  C    L  C  S  S    C  L  C  C    C  C  C  C    C  C  C
+Snow           S     C    L             C  L  S  C    C  C  C  C    C  C  S
+
+$$
+AKZ802-241200-
+Wainwright-Northwest Arctic Coast AK
+70.63N 159.85W Elev. 88 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      26          37          33          36          30
+Temp             28 28 28 30 34 35 34 35 35 35 35 35 34 34 35 36 35 34 34 33 32
+Dewpt            22 23 24 25 28 29 29 30 31 31 31 30 30 30 31 31 31 31 30 29 30
+RH               78 81 85 81 78 78 82 82 85 85 85 82 85 85 85 82 85 89 85 85 92
+Wind dir         SE SE SE SE SE  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S
+Wind spd         18 21 21 21 21 19 18 17 17 17 16 14 13 14 14 14 14 14 13 13 11
+Wind gust           34 35 35 35 32 28 27 27 27 26          25                  
+Clouds           OV OV OV OV B2 B1 SC SC SC B2 B1 B1 B1 B1 B2 B2 B2 B2 B2 B1 B2
+PoP 12hr                     80           0           0           5          10
+QPF 12hr                   0.06           0           0           0           0
+Snow 12hr                     1       00-00       00-00                        
+Snow              S  L  D  C                                                  S
+Obvis               BS BS BS                                                   
+High Surf         Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          35      28    35      27    33      25    32      23    30
+Temp          32 33 32   29 32 32 31   30 31 30 29   28 31 29 28   26 26 27
+Dewpt         31 31 30   27 30 29 27   26 27 26 27   25 27 26 25   23 23 24
+PWind dir         S      SW     W      SW    SE       E     S      NE     E
+Wind char        GN      GN    GN      GN    GN      BZ    BZ      GN    GN
+Avg clouds    B2 OV OV   OV OV OV OV   OV OV OV OV   B2 OV OV OV   OV OV OV
+PoP 12hr         30      30    50      20    40      50    40      20    20
+Rain              S  S          C  S                                       
+Snow           C  S  S    C  C  C  S    S  S  C  C    C  C  C  S    S  S  S
+
+$$
+AKZ803-241200-
+Utqiagvik-Northern Arctic Coast AK
+71.29N 156.79W Elev. 43 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      23          36          32          35          30
+Temp             27 25 24 26 31 33 33 34 35 34 34 34 33 33 33 35 35 34 33 32 31
+Dewpt            22 20 19 22 26 28 28 30 30 30 30 30 30 29 29 31 31 31 30 29 29
+RH               81 81 81 85 81 82 82 85 82 85 85 85 89 85 85 85 85 89 89 88 92
+Wind dir         SE SE SE SE SE  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S
+Wind spd         16 19 20 23 23 24 23 21 20 19 19 18 17 17 18 18 18 17 16 16 13
+Wind gust              33 35 39 39 34 33    29 29    27                        
+Clouds           OV OV OV OV OV B1 SC SC SC SC B1 SC SC B1 B1 B2 B1 B2 B2 B1 B2
+PoP 12hr                     80          20           5           0           5
+QPF 12hr                   0.04           0           0           0           0
+Snow 12hr                     1       00-00       00-00                        
+Snow                    L  D  S                                                
+Obvis                  BS BS BS BS BS                                          
+High Surf         Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          34      27    34      25    32      24    30      22    29
+Temp          30 33 31   28 30 32 29   28 27 29 28   27 26 29 27   25 24 26
+Dewpt         29 31 29   26 28 29 25   25 23 25 24   23 23 25 23   22 21 23
+PWind dir         S      SW     W       W     S      SE     E      NE    NE
+Wind char        GN      BZ    BZ      BZ    GN      BZ    BZ      BZ    GN
+Avg clouds    B2 B2 OV   OV OV OV OV   OV OV B2 OV   OV OV OV OV   OV OV OV
+PoP 12hr         10      20    50      20    30      50    40      30    20
+Rain                 S          C                                          
+Snow                 S    S  C  C  S          C  C    C  C  C  S    C  S  S
+
+$$
+AKZ804-241200-
+Deadhorse-Central Beaufort Sea Coast AK
+70.21N 148.51W Elev. 56 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      20          37          30          36          29
+Temp             24 21 22 23 31 34 34 36 35 33 33 33 32 31 31 35 35 34 33 31 30
+Dewpt            18 16 16 16 24 27 27 28 29 27 27 28 27 27 26 30 30 29 28 27 26
+RH               77 81 77 74 75 75 75 72 78 78 78 82 81 85 81 82 82 82 82 85 85
+Wind dir         SE SE SE SE  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S
+Wind spd          8 12 11 12 16 18 19 17 14 13 14 12 12 12 12 13 14 14 14 13 13
+Wind gust                       28 29                                          
+Clouds           B1 B2 B2 OV OV OV SC SC SC SC SC FW FW FW FW SC SC B1 B1 SC B1
+PoP 12hr                      0           5           5           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          36      29    36      25    33      24    31      21    29
+Temp          31 34 32   30 31 34 31   29 27 30 28   27 27 29 25   25 25 27
+Dewpt         26 30 30   27 29 31 28   26 24 27 25   24 24 26 22   21 22 23
+PWind dir         S      SW    SW      SW     S      SE    SW      SW     S
+Wind char        BZ      BZ    BZ      BZ    GN      GN    GN      GN    GN
+Avg clouds    B1 B2 B1   B2 B2 OV OV   B2 B2 B2 B2   B2 B2 OV B2   OV B2 B2
+PoP 12hr          5      10    40      20    10      20    30      10    10
+Rain                            C  S                                       
+Snow                         C  C  S    S        S    S  C  S              
+
+$$
+AKZ805-241200-
+Kaktovik-Eastern Beaufort Sea Coast AK
+70.13N 143.62W Elev. 6 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      20          38          31          36          30
+Temp             26 21 22 20 21 28 34 36 35 32 32 34 33 32 31 35 34 33 34 33 31
+Dewpt            18 14 13 13 14 20 25 28 27 26 26 27 27 27 27 30 28 27 27 27 25
+RH               71 74 68 74 74 71 69 72 72 78 78 75 78 81 85 82 78 78 75 78 78
+Wind dir         SE SE SE SE SE  S  S  S  S SE  S  S  S  S  S  S  S  S  S SW  S
+Wind spd          9 12 12 11 10 10 11  8  8  9  9  6  6  6  6  8  8  6  9  9 10
+Clouds           B1 B1 B2 B1 B2 B2 B2 B1 B2 B1 B1 B1 B1 SC SC SC SC B1 B1 B1 B1
+PoP 12hr                      0           0          20           0           0
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Rain                                            S                              
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          36      31    37      27    33      25    32      22    29
+Temp          30 34 34   31 31 33 32   29 30 29 27   27 27 29 26   23 25 25
+Dewpt         24 27 28   28 28 30 28   26 27 25 24   24 25 25 22   20 22 22
+PWind dir         S      SW    SW       W    SW      SE     S      SW    SW
+Wind char        GN      GN    BZ      WY    GN      GN    BZ      GN    GN
+Avg clouds    B1 B2 B2   B1 B2 OV OV   B2 B2 B2 B2   B2 B2 B2 B2   B2 B2 B2
+PoP 12hr          0      20    60      40    20      20    40      30    20
+Rain                      S  C  L  C                                       
+Snow                      S  C  L  C    S  S     S    S  C  C  C          S
+
+$$
+AKZ809-241200-
+Anaktuvuk Pass-Central Brooks Range AK
+68.14N 151.74W Elev. 2110 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      18          30          27          31          27
+Temp             17 19 21 21 23 24 25 28 28 28 29 28 28 28 28 31 30 29 29 28 28
+Dewpt            12 13 12 12 18 19 20 23 23 24 25 24 24 24 25 26 25 24 25 25 25
+RH               80 77 68 68 81 81 81 81 81 85 85 85 85 85 88 81 81 81 85 88 88
+Wind dir          S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S
+Wind spd         20 20 19 23 25 23 23 21 23 21 20 19 19 17 16 17 18 17 18 19 21
+Wind gust           31 32 35 40 36 34 33 33 33 33 32 31 27             31 33 35
+Clouds           OV OV B2 B2 OV OV OV OV OV OV B2 B2 B2 OV OV B2 OV OV B2 OV OV
+PoP 12hr                     80          90          90          80          80
+QPF 12hr                   0.01        0.08        0.05        0.05        0.07
+Snow 12hr                     T           1           1                        
+Snow                    C  D  D  D  D  D  D  D  D  D  D  D  D  D  D  D  L  D  D
+Obvis                     BS BS BS BS BS BS BS BS                            BS
+Winter Weath                  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          33      28    36      28    33      25    29      21    28
+Temp          29 31 31   29 32 33 31   30 29 31 29   27 26 26 24   23 24 25
+Dewpt         25 27 28   26 28 29 28   27 26 26 25   23 22 20 20   19 19 19
+PWind dir         S       S     S       S     S       S     S       S     S
+Wind char        BZ      BZ    BZ      BZ    BZ      BZ    GN      GN    GN
+Avg clouds    OV B2 OV   OV OV OV OV   OV OV OV B2   B2 OV B2 B2   B2 B1 B2
+PoP 12hr         90      50    50      30    20      40    30      20    30
+Snow           D  L  C    C  C  C  C    S     S  C    C  C  S  S    S  S  C
+
+$$
+AKZ811-241200-
+Arctic Village-South Slopes Of The Eastern Brooks Range AK
+68.13N 145.54W Elev. 2087 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                       3          21          17          25          21
+Temp              7  4  5  7 11 11 12 20 19 19 19 19 18 18 19 25 24 23 22 23 22
+Dewpt             3  1  2  3  7  7  8 14 15 15 16 16 16 16 17 22 21 21 20 21 21
+RH               83 87 87 83 83 83 84 77 84 84 88 88 92 92 92 88 88 92 92 92 96
+Wind dir          N  W NE NE NE  N SW SW SW SW SW  E  E  S  S  S SW SW SW  S  S
+Wind spd          0  1  2  4  2  0  1  1  1  2  2  2  1  1  1  1  2  3  5  8  8
+Clouds           B2 B2 B2 B2 B2 OV B2 B2 OV B2 B2 OV OV OV OV OV OV OV OV OV OV
+PoP 12hr                      0          40          80          80          80
+QPF 12hr                      0           0        0.02        0.02        0.02
+Snow 12hr                 00-00       00-00           T                        
+Snow                             C  C  C  C  C  L  D  D  D  L  L  D  D  C  C  D
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          30      22    30      21    27      19    26      16    24
+Temp          23 28 26   23 23 28 25   24 21 24 23   21 19 23 19   18 17 21
+Dewpt         21 26 23   21 21 25 22   21 19 21 20   18 16 19 16   14 13 16
+PWind dir         S      SW    SW       W     W      NW     W       W     N
+Wind char        GN      GN    GN      GN    LT      LT    LT      LT    LT
+Avg clouds    OV OV OV   OV OV OV B2   B2 B2 B2 B2   B2 B2 B2 B1   B1 B1 B1
+PoP 12hr        100      40    40       5    10      20    20      20    30
+Snow           D  D  C    C  C  C                     S  S  S       S  S  C
+
+$$
+AKZ814-241200-
+Noatak-Noatak Valley AK
+67.57N 162.96W Elev. 98 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      27          38          35          38          34
+Temp             28 27 29 32 36 36 36 37 38 37 37 36 36 35 35 37 37 36 35 35 35
+Dewpt            23 24 28 31 35 35 35 35 36 35 35 35 35 35 35 36 36 35 34 35 34
+RH               81 88 96 96 96 96 96 92 92 92 92 96 96100100 96 96 96 96100 96
+Wind dir         SE SE SE SE  S  S SE SE SE SE SE SE  S  S  S  S  S  S SE SE SE
+Wind spd         26 27 26 24 19 18 18 20 21 21 20 19 17 16 16 14 14 14 16 16 12
+Wind gust        42 44 43 41 35 33 32 34 35 35 34 34 34 31 28 27 25 25    28 25
+Clouds           OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV
+PoP 12hr                    100          90         100         100         100
+QPF 12hr                   0.47        0.06        0.14        0.15        0.17
+Snow 12hr                     5       00-00       00-00                        
+Rain                       D  D  L  D  L  D  D  D  D  D  D  D  D  D  D  D  S  D
+Snow              D  D  D  D  D        S  S  D  S  S  D  D  D  D  D  S  D  D  D
+Obvis            BS BS BS                                                      
+Winter Storm      W  W  W  W  W  W  W  W  W  W  W  W  W  W  W  W               
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          38      33    39      33    37      30    35      28    34
+Temp          35 37 35   34 35 37 35   34 33 35 33   31 30 33 29   29 29 33
+Dewpt         35 36 34   33 34 36 34   34 32 33 30   29 28 29 27   27 28 30
+PWind dir         S       S     S      SE    SE       S    SE       E     E
+Wind char        GN      GN    GN      GN    GN      BZ    GN      GN    GN
+Avg clouds    OV OV OV   OV OV B2 OV   OV OV OV OV   B2 B2 B2 B2   B1 B2 B2
+PoP 12hr        100      90    70      70    80      70    50      50    60
+Rain           D  D  L    D  L  C  L    L  D  L  L    C     C  C          L
+Snow           D  D  S    D  S  S  S    S  S  L  L    C  C  C  C    C  L  L
+
+$$
+AKZ817-241200-
+Kotzebue-Baldwin Peninsula AK
+66.90N 162.60W Elev. 16 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      29          38          35          38          34
+Temp             28 30 32 33 36 36 36 36 37 37 36 36 36 36 36 37 37 37 36 35 35
+Dewpt            25 28 31 32 34 34 34 35 35 35 35 35 35 35 34 35 35 35 35 35 35
+RH               88 92 96 96 92 92 92 96 92 92 96 96 96 96 92 92 92 92 96100100
+Wind dir         SE SE SE  S  S SE SE SE SE SE SE SE  S  S  S  S  S SE SE SE  S
+Wind spd         39 36 35 32 28 27 28 28 28 28 28 26 26 25 25 24 24 24 26 27 23
+Wind gust        50 49 48 42          39 40 40 39                              
+Clouds           OV OV OV OV B1 B2 B2 B2 OV B2 OV OV OV B2 B2 B2 B2 B2 OV OV OV
+PoP 12hr                    100          20          30          50         100
+QPF 12hr                   0.29           0           0        0.04        0.16
+Snow 12hr                     4       00-00       00-00                        
+Rain                    S  S  S     S     S  S  S  C  C  C  C  C  C  L  D  D  L
+Snow              D  D  L  S                                            S     L
+Obvis            BS                                                            
+Blizzard          W  W  W  W                                                   
+High Surf         Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          38      35    39      34    38      32    36      30    35
+Temp          36 37 36   35 36 38 36   35 34 35 34   32 32 34 33   32 32 34
+Dewpt         35 36 35   34 35 36 35   34 33 33 32   30 29 31 30   29 31 31
+PWind dir         S       S     S      SE    SE      SE    SE       E     E
+Wind char        BZ      BZ    WY      BZ    WY      WY    WY      WY    BZ
+Avg clouds    OV B2 OV   OV OV OV OV   OV OV OV OV   OV B2 B2 B1   B1 B2 B2
+PoP 12hr         70      80    50      60    60      50    30      50    60
+Rain           L  C  L    D  C  C  C    L  L  C  C    C  C  C  C    C  L  C
+Snow           L                           S     S    C  C  C  C    C  L  S
+
+$$
+AKZ818-241200-
+Buckland-Northern Seward Peninsula AK
+65.98N 161.12W Elev. 26 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      33          42          37          41          36
+Temp             33 34 36 36 38 38 38 40 41 40 39 38 38 37 38 41 41 39 38 38 38
+Dewpt            26 31 34 35 36 36 36 38 38 37 36 37 37 36 36 38 38 36 36 37 36
+RH               75 89 92 96 92 92 92 92 89 89 89 96 96 96 92 89 89 89 92 96 92
+Wind dir         SE SE SE  S  S SE SE SE  S SE SE SE SE  S  S  S  S SE SE SE  S
+Wind spd         29 29 27 24 20 20 20 21 23 20 18 16 17 19 20 20 20 20 20 19 18
+Wind gust        44 47 46 42 36 34 33 35 37 35 32 29 29 31 33 33 33 34 35 34 32
+Clouds           OV OV OV B2 B1 B2 B2 B1 B1 B1 B2 B2 B2 B2 B2 B2 B2 OV OV OV B2
+PoP 12hr                    100          30          40          30          90
+QPF 12hr                   0.40           0        0.01        0.01        0.10
+Snow 12hr                     2       00-00       00-00                        
+Rain                 D  D  C  C  C  S  S  S  C  C  C  C  C  C  C  C  C  D  D  C
+Snow              D  D  D  S                                                   
+Obvis            BS                                                            
+Blizzard          W  W  W  W                                                   
+High Surf         Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          44      38    45      36    43      33    41      32    41
+Temp          39 42 40   39 40 43 40   38 37 41 37   35 34 39 35   34 34 39
+Dewpt         37 39 38   37 38 40 37   37 35 37 33   32 31 34 32   32 32 34
+PWind dir         S       S     S       S    SE       S     S      SE     E
+Wind char        BZ      BZ    WY      BZ    BZ      BZ    GN      BZ    GN
+Avg clouds    B2 B2 OV   OV OV OV OV   OV OV OV OV   OV OV OV B2   B2 B2 OV
+PoP 12hr         40      70    50      40    50      40    30      50    50
+Rain           C  C  L    L  C  C  C    C  C  C  C    C  C  C  C    C  C  C
+Snow                                          S  S    C  C  C  C    C  C  C
+
+$$
+AKZ819-241200-
+Ambler-Upper Kobuk Valleys AK
+67.09N 157.85W Elev. 289 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      27          38          35          39          35
+Temp             28 29 29 29 32 33 33 35 37 36 36 35 35 35 35 38 37 37 36 36 36
+Dewpt            22 22 25 27 29 31 31 33 34 33 33 33 34 34 33 36 35 34 34 35 35
+RH               78 75 85 92 88 92 92 92 89 89 89 92 96 96 92 92 92 89 92 96 96
+Wind dir         SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE  S SE SE SE SE
+Wind spd         14 17 18 19 18 14 13 11 11 10 10 11 11 12 11 10 10 10 10 12 13
+Wind gust        28 33 40 39 29 25    21    20 21 23                20 21 28 25
+Clouds           OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV
+PoP 12hr                    100          80          80          80         100
+QPF 12hr                   0.39        0.27        0.12        0.17        0.21
+Snow 12hr                     5           2       00-00                        
+Rain                          S  S  L  D  S  C  L  L  D  D  D  D  D  D  S  S  S
+Snow                 D  D  D  D  D  L  D  D  C  S  S  S  D  D     D  D  D  D  D
+Winter Storm            W  W  W  W  W  W  W  W  W  W  W  W  W  W               
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          40      36    40      35    38      31    36      29    36
+Temp          37 38 37   36 37 39 37   36 35 37 35   32 31 34 32   30 30 34
+Dewpt         35 37 36   35 36 38 36   34 33 34 32   30 28 30 28   27 28 30
+PWind dir         S       S     S      SE    SE      SE    SE       E     E
+Wind char        GN      GN    GN      GN    GN      GN    GN      GN    GN
+Avg clouds    OV OV OV   OV OV OV OV   OV OV OV B2   B2 OV B2 B2   B1 B2 B2
+PoP 12hr        100      90    80      60    60      60    50      50    70
+Rain           S  D  D    D  D  L  L    L  L  L  L    C  C  C  C          L
+Snow           D  D  D    D  S          S  L  L  L    C  C  C  C    C  L  L
+
+$$
+AKZ822-241200-
+NOME-Southern Seward Peninsula Coast AK
+64.50N 165.41W Elev. 23 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      37          42          38          42          38
+Temp             37 37 39 39 40 39 38 40 41 41 40 40 39 39 38 41 41 40 40 40 40
+Dewpt            35 36 38 38 38 38 37 39 39 39 39 39 38 37 36 38 38 38 39 39 38
+RH               92 96 96 96 92 96 96 96 92 92 96 96 96 92 92 89 89 92 96 96 92
+Wind dir         SE  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S SW
+Wind spd         39 36 27 24 24 26 27 28 28 27 24 24 24 21 21 21 24 26 26 25 23
+Wind gust        56 54 42 35 35 39 41 42 43 40 37 36 35 33 33 33 37 40 39 39 35
+Clouds           OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV
+PoP 12hr                    100          90         100         100         100
+QPF 12hr                   0.76        0.17        0.21        0.16        0.52
+Snow 12hr                     1       00-00       00-00                        
+Rain              S  D  D  D  D  D  D  D  D  D  D  D  D  D  D  D  D  D  D  D  D
+Snow              D  S                                                         
+Blizzard          W  W  W                                                      
+Coast Flood       Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y               
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          43      39    44      38    42      35    41      35    41
+Temp          39 42 41   40 40 43 40   40 38 40 37   36 35 40 37   37 37 40
+Dewpt         38 40 40   38 39 41 39   38 37 37 34   33 32 36 35   35 36 36
+PWind dir        SW       S    SW       S    SE       S     S       E     E
+Wind char        BZ      WY    WY      BZ    BZ      BZ    BZ      BZ    BZ
+Avg clouds    OV OV OV   OV OV OV OV   OV OV OV B2   B2 B1 B2 OV   OV OV OV
+PoP 12hr         90      90    70      70    70      50    50      70    80
+Rain           D  D  D    L  L  L  L    L  L  C  C    C  C  C  L    L  D  L
+Snow                                             S    C  C  C  L    L  S  S
+
+$$
+AKZ824-241200-
+Unalakleet-Eastern Norton Sound and Nulato Hills AK
+63.87N 160.79W Elev. 20 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      35          41          36          40          37
+Temp             35 36 37 37 38 38 37 39 40 39 39 38 38 37 37 40 39 39 39 39 39
+Dewpt            30 33 34 34 35 35 34 36 37 36 36 35 36 35 34 37 36 36 36 36 37
+RH               82 89 89 89 89 89 89 89 89 89 89 89 92 92 89 89 89 89 89 89 92
+Wind dir         SE SE  S  S  S SE SE  S SE SE SE  S  S  S  S  S  S  S  S  S SW
+Wind spd         32 33 32 29 26 20 19 19 17 17 17 17 18 18 18 19 19 20 24 26 26
+Wind gust        44 48 48 42 36 31 29       27 27 27                33 37 39 39
+Clouds           OV OV OV OV B2 B1 SC SC SC B1 B1 B1 B2 B2 B2 B2 OV B2 OV OV OV
+PoP 12hr                    100          20          10          30         100
+QPF 12hr                   0.36           0           0           0        0.17
+Snow 12hr                     T       00-00       00-00                        
+Rain              D  D  D  C  S  S                    S  S  C  C  C  D  D  D  L
+Snow              D  D                                                         
+Blizzard          W                                                            
+High Surf         Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y               
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          44      40    44      36    42      34    41      34    40
+Temp          40 42 42   40 40 43 40   38 36 39 38   36 34 39 38   36 36 39
+Dewpt         38 40 40   37 37 39 37   35 33 36 34   32 31 35 34   32 32 34
+PWind dir        SW       S     S       S    SE       S     S      SE    SE
+Wind char        WY      WY    WY      BZ    BZ      BZ    GN      BZ    BZ
+Avg clouds    OV OV OV   OV OV OV OV   B2 B2 B2 OV   OV B2 B2 B2   OV OV OV
+PoP 12hr         80      70    40      30    40      40    30      50    40
+Rain           L  D  L    C  C  C  C    C  C  C  C    C  S  C  C    C  C  C
+Snow                                                  C  S  C  C    C  C  C
+
+$$
+AKZ826-241200-
+St Marys-Lower Yukon River AK
+62.03N 163.29W Elev. 312 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      35          41          35          42          40
+Temp             34 36 37 37 38 37 37 39 40 40 39 38 37 36 36 40 40 40 40 41 41
+Dewpt            34 35 36 37 38 37 37 39 40 39 38 38 37 36 35 39 39 39 40 41 40
+RH              100 96 96100100100100100100 96 96100100100 96 96 96 96100100 96
+Wind dir         SE  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S SW SW
+Wind spd         33 33 27 20 18 18 19 20 20 20 19 18 17 17 17 19 23 25 27 27 25
+Wind gust        50 50 40 31 28 28 29 33 33 32 32 29 27    27 32 36 39 41 39 35
+Clouds           OV OV OV OV B2 OV OV OV OV OV OV B2 OV B2 B2 OV OV OV OV B2 OV
+PoP 12hr                    100          40          70          60         100
+QPF 12hr                   0.44        0.01        0.05        0.02        0.36
+Snow 12hr                     T       00-00       00-00                        
+Rain              D  D  L  C  C  S  S  C  C  L  L  C  C  C  C  L  D  D  D  L  L
+Snow              D  S                                                         
+High Wind         W  W  W  W                                                   
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          45      41    44      38    42      35    41      36    40
+Temp          41 44 43   41 41 43 40   40 38 40 37   36 35 39 37   37 37 39
+Dewpt         40 43 40   40 40 40 38   39 37 37 34   34 34 37 36   36 37 36
+PWind dir         S       S     S       S    SE       S    SE      SE    SE
+Wind char        WY      WY    WY      BZ    BZ      BZ    BZ      BZ    BZ
+Avg clouds    OV OV OV   OV OV OV OV   B2 B2 OV OV   B2 B1 B2 OV   OV OV OV
+PoP 12hr         80      50    30      40    60      50    50      70    50
+Rain           L  D  C    C  C  S  C    C  L  L  C    C  C  C  L    L  C  C
+Snow                                                  C  C  C             S
+
+$$
+AKZ827-241200-
+Gambell-St Lawrence Island AK
+63.78N 171.74W Elev. 26 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      40          43          39          42          39
+Temp             42 42 41 41 41 41 41 42 42 41 40 40 39 39 39 41 41 41 41 40 40
+Dewpt            40 40 39 39 39 39 39 39 39 38 38 37 36 35 35 38 38 39 39 38 37
+RH               93 93 92 92 92 92 92 89 89 89 92 89 89 85 85 89 89 92 92 92 89
+Wind dir          S  S  S  S  S  S  S  S  S  S  S SW SW  S  S  S SE SE SW  W SW
+Wind spd         19 18 21 25 27 26 26 26 27 27 26 25 26 24 20 19 19 21 23 26 27
+Wind gust           28 34 40 41 40 37 37 39 39 37 35    34 31       33 35 36 39
+Clouds           B2 B2 B2 OV OV OV OV OV OV OV B2 B2 OV B2 B2 OV OV OV B2 B2 B2
+PoP 12hr                     90          90          80          80         100
+QPF 12hr                   0.03        0.06        0.02        0.03        0.14
+Snow 12hr                 00-00       00-00       00-00                        
+Rain              L  C  L  D  D  D  D  D  D  L  L  L  C  C  C  D  D  D  L  L  S
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          43      39    43      39    42      37    41      38    40
+Temp          40 41 41   40 40 41 41   40 40 40 39   38 38 40 40   39 39 39
+Dewpt         37 38 39   36 37 38 38   37 36 35 34   35 35 37 37   36 36 36
+PWind dir         S       S     S      SE    SE      SW    SE       E    NE
+Wind char        WY      WY    WY      BZ    WY      WY    WY      WY    WY
+Avg clouds    B2 OV OV   OV OV OV OV   OV OV B2 B1   B1 OV OV OV   OV OV OV
+PoP 12hr         80      70    50      70    60      40    50      80    70
+Rain           C  D  L    C  C  C  L    L  L  C  C    C  C  C  D    L  L  L
+Snow                                                     C             S  S
+
+$$
+AKZ829-241200-
+Galena-Middle Yukon Valley AK
+64.73N 156.93W Elev. 151 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      32          39          36          39          36
+Temp             30 32 33 35 37 38 37 38 38 38 38 38 38 37 37 38 38 37 37 38 38
+Dewpt            22 23 28 32 35 35 35 35 36 36 35 35 36 35 35 37 36 35 35 36 35
+RH               72 69 82 89 92 89 92 89 92 92 89 89 92 92 92 96 92 92 92 92 89
+Wind dir         SE SE SE SE  S  S  S SE SE SE SE SE SE SE  S  S  S  S SE  S  S
+Wind spd         16 18 20 20 17 16 16 14 13 12 11 11 10 10 10 11 11 12 14 18 16
+Wind gust        27 31 33 33 28 26 26 25                                  31 29
+Clouds           OV OV OV OV OV OV OV OV B2 B1 B1 B1 B1 B2 B2 B2 B2 B2 OV OV OV
+PoP 12hr                    100         100          60          20         100
+QPF 12hr                   0.29        0.11        0.01           0        0.15
+Snow 12hr                     1       00-00       00-00                        
+Rain                 S  D  D  D  D  D  D  L  C     S  S  S  S  S  C  C  D  D  D
+Snow                 D  D  S  S                                                
+Wind              Y  Y  Y  Y  Y  Y  Y  Y                                       
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          43      40    43      34    40      33    38      33    38
+Temp          39 41 41   40 41 41 38   36 35 38 36   35 33 37 34   35 34 37
+Dewpt         37 39 39   37 37 38 35   34 33 35 33   32 31 33 31   32 32 33
+PWind dir         S       S     S       S    SE       S     S      SE    SE
+Wind char        BZ      BZ    BZ      GN    GN      GN    GN      GN    GN
+Avg clouds    OV B2 OV   OV OV OV OV   OV B2 B2 B2   OV OV B2 B2   B2 B2 OV
+PoP 12hr         80      60    20      20    30      50    30      50    50
+Rain           D  L  L    C  S     S    S  S  C  C    C  S  C  C    C  C  C
+Snow                                          S       C  S  C  C    C  C  C
+
+$$
+AKZ830-241200-
+Anvik-Lower Yukon and Innoko Valleys AK
+62.66N 160.21W Elev. 325 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      36          41          36          41          40
+Temp             35 36 37 37 38 38 37 39 40 39 38 38 38 37 37 40 39 40 40 41 41
+Dewpt            31 34 35 35 37 36 36 38 38 36 36 36 37 37 36 39 38 38 38 40 40
+RH               85 92 92 92 96 92 96 96 92 89 92 92 96100 96 96 96 92 92 96 96
+Wind dir         SE SE  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S SW
+Wind spd         20 21 21 18 14 14 12 10 10 10 10 10 10 11 11 11 12 14 16 17 16
+Wind gust        35 37 37 34 29 28 26 20       20 23 23 23 23 21 24 27 31 33 32
+Clouds           OV OV OV OV OV OV B2 OV B2 B2 B2 B2 B2 OV OV B2 OV OV OV OV OV
+PoP 12hr                    100          90          30          40         100
+QPF 12hr                   0.61        0.03           0           0        0.34
+Snow 12hr                     T       00-00       00-00                        
+Rain              D  D  D  D  D  L  L  C        C  C  C  C  C  C  L  D  D  D  L
+Snow              D  D  D  S                                                   
+Wind              Y  Y  Y  Y  Y  Y  Y  Y                                       
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          45      41    44      36    41      35    41      37    41
+Temp          41 43 44   41 41 43 40   38 36 40 39   36 35 39 39   38 37 40
+Dewpt         40 42 41   39 39 40 37   36 34 36 35   34 34 36 36   36 35 36
+PWind dir        SW       S     S       S    SE       S     S      SE    SE
+Wind char        GN      BZ    GN      GN    LT      GN    GN      GN    GN
+Avg clouds    OV OV OV   OV OV OV OV   B2 B2 OV OV   OV B2 B2 B2   OV OV OV
+PoP 12hr         80      50    30      20    50      50    50      70    60
+Rain           L  D  C    C  C  S       S  C  C  C    C  C  C  L    L  L  C
+Snow                                          S          C  C          S  S
+
+$$
+AKZ831-241200-
+Bettles-Upper Koyukuk Valley AK
+66.92N 151.52W Elev. 643 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      16          30          29          34          32
+Temp             20 18 16 16 18 22 23 26 29 30 30 30 30 30 30 33 33 34 33 33 33
+Dewpt            20 17 13 11 17 21 23 26 29 30 28 29 30 30 30 33 33 33 32 32 33
+RH              100 96 88 80 96 96100100100100 92 96100100100100100 96 96 96100
+Wind dir         NE NE NE  N NE SE SE SE SE SE SE SE SE SE SE SE  S  S  S SE SE
+Wind spd          4  4  2  3  2  4  4  4  4  4  2  3  3  3  4  5  6  9  6  6 10
+Wind gust                                                                    20
+Clouds           B2 B2 B2 OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV OV
+PoP 12hr                     60         100         100          80          90
+QPF 12hr                   0.01        0.21        0.24        0.13        0.11
+Snow 12hr                     T           3           3                        
+Snow                    S  L  D  D  D  D  D  D  D  D  L  L  D  D  D  D  D  D  D
+Winter Weath                        Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y  Y
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          37      35    38      31    34      27    32      25    30
+Temp          34 36 37   36 37 37 36   34 32 33 32   30 27 30 27   26 25 29
+Dewpt         33 36 36   36 37 37 35   34 32 32 31   29 27 28 25   25 24 27
+PWind dir         S       S    SW      SW    SE      SE     S      SE    NE
+Wind char        GN      GN    GN      GN    LT      LT    LT      LT    LT
+Avg clouds    OV OV OV   OV OV OV OV   OV OV OV OV   OV OV B2 OV   OV B2 B2
+PoP 12hr        100      80    80      40    40      50    50      40    60
+Rain                 D    D  D  L  C    C  C  C  C                         
+Snow           D  D  D    D  D  S       C  C  C  C    C  C  C  C    C  C  L
+
+$$
+AKZ833-241200-
+Fort Yukon-Yukon Flats AK
+66.56N 145.27W Elev. 430 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                       9          19          14          27          23
+Temp             16 13 11 11 12 11 13 18 19 17 17 17 16 17 20 26 26 24 24 25 25
+Dewpt            13 12 10  9 10  9 11 15 15 15 15 15 15 15 18 24 24 23 23 24 24
+RH               88 96 96 91 91 91 91 88 84 92 92 92 96 92 92 92 92 96 96 96 96
+Wind dir         NE NE NE NE NE  N  N NE  E  N  N  N  N  N  N  N  N  N  N  S  S
+Wind spd          2  2  2  1  1  0  0  1  1  0  0  0  0  0  0  0  0  0  0  1  2
+Clouds           B1 B1 B1 B1 B1 B2 B2 B2 B2 B2 B2 B2 OV OV OV OV OV OV B2 B2 OV
+PoP 12hr                      0           0          20          60          40
+QPF 12hr                      0           0           0        0.01           0
+Snow 12hr                 00-00       00-00       00-00                        
+Snow                                            S  S     S  C  L  C           C
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          37      32    39      29    34      25    34      24    31
+Temp          29 36 35   33 35 38 34   31 29 32 29   28 27 32 28   26 26 30
+Dewpt         28 34 33   31 32 35 31   30 28 30 27   26 26 28 26   24 24 26
+PWind dir         S      SW    SW      SW    SW       E     W       W    NE
+Wind char        LT      GN    GN      LT    LT      LT    LT      LT    LT
+Avg clouds    OV OV OV   OV OV OV B2   B2 B2 B2 B1   B2 B2 B2 B2   B1 B2 B2
+PoP 12hr         70      50    20       5     5      20    10      20    20
+Rain              C  C    C  S                   S                         
+Snow           L  C  C    C  S                   S             S       S  S
+
+$$
+AKZ836-241200-
+Tok-Upper Tanana Valley AK
+63.34N 142.98W Elev. 1627 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      10          26          17          29          15
+Temp             22 16 13 13 13 14 17 24 26 22 21 21 20 20 22 28 28 24 21 20 17
+Dewpt            17 13 11 10 10 10 12 17 19 16 17 17 16 16 18 23 23 20 19 18 16
+RH               81 88 91 87 87 84 80 74 74 77 84 84 84 84 84 81 81 84 92 92 96
+Wind dir         SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE SE
+Wind spd          4  4  4  4  5  5  5  5  4  4  4  3  4  4  4  4  3  2  1  1  1
+Wind gust                    16                                                
+Clouds           B1 B1 SC SC B1 B1 B1 B1 B1 B1 B2 B2 B2 B2 OV B2 B2 B2 B1 SC B2
+PoP 12hr                      0           0           5          10           5
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          33      20    33      16    31      16    31      17    31
+Temp          22 32 25   21 23 32 22   19 19 29 21   19 21 30 22   20 22 29
+Dewpt         20 27 23   20 22 28 21   18 17 24 18   16 18 22 19   16 19 22
+PWind dir        SE      SE    SE      SE    SE      SE    SE      SE    SE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    LT
+Avg clouds    B2 B2 B1   B1 B1 B2 B1   B1 B1 B2 B2   B2 B2 B2 B2   B2 B2 B2
+PoP 12hr          5       5     5       0     0       5     5       5    10
+
+$$
+AKZ837-241200-
+Delta Junction-Delta Junction AK
+64.04N 145.73W Elev. 1306 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      20          33          29          35          26
+Temp             24 23 22 22 23 24 25 30 31 32 32 32 31 31 31 34 33 32 30 29 28
+Dewpt            19 18 16 15 16 17 19 24 25 25 25 25 27 27 27 30 29 28 27 26 24
+RH               81 81 77 74 74 74 78 78 78 75 75 75 85 85 85 85 85 85 88 88 85
+Wind dir          E  E  E  E  E  E  E  E  E  E  E  E  E SE SE SE SE SE SE SE SE
+Wind spd         12 14 16 14 12 12 12 11 11 11 11 10  9 10  9  6  3  3  3  3  5
+Wind gust        24 27 28 27 25       21                                       
+Clouds           B1 SC SC B1 B1 B2 B2 B2 B2 OV OV OV OV B2 B2 B2 B2 B2 B1 B1 B2
+PoP 12hr                      0           0           5          20          10
+QPF 12hr                      0           0           0           0           0
+Snow 12hr                 00-00       00-00       00-00                        
+Snow                                                           S               
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          34      28    35      24    34      25    33      26    33
+Temp          28 32 33   29 29 33 29   27 25 31 29   28 27 31 29   28 28 31
+Dewpt         25 29 28   26 26 30 25   22 21 26 23   21 22 25 23   21 23 25
+PWind dir        SE      SE    SE      SE     E      SE    SE      SE    SE
+Wind char        LT      LT    LT      LT    LT      LT    LT      LT    GN
+Avg clouds    B2 B2 B2   B2 B2 B2 B2   B1 SC B1 B1   B1 B2 OV B2   B2 B1 B1
+PoP 12hr         10      30    20      10     0      10    20       5    20
+Rain                 C    C                                                
+Snow                 C    C  S                              S             S
+
+$$
+AKZ844-241200-
+Fairbanks-Fairbanks Metro Area AK
+64.82N 147.86W Elev. 453 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      23          34          29          35          29
+Temp             25 24 24 24 24 26 26 32 34 33 32 31 30 30 31 34 34 33 33 32 30
+Dewpt            17 17 16 17 18 19 19 23 24 25 26 26 28 28 28 32 31 31 31 30 28
+RH               71 74 71 74 77 74 74 69 66 72 78 81 92 92 88 92 89 92 92 92 92
+Wind dir         NE NE NE NE NE NE NE NE  E  E  E  E  E  E  E  N  N SE SE  E SE
+Wind spd          6  8  6  6  5  5  5  5  6  6  5  5  4  3  2  0  0  3  3  3  4
+Clouds           B1 B1 B1 B1 B1 B2 B2 B2 B2 B2 B2 OV OV OV OV OV OV OV B2 B2 OV
+PoP 12hr                      0           0           5          60          40
+QPF 12hr                      0           0           0        0.05        0.03
+Snow 12hr                 00-00       00-00       00-00                        
+Rain                                                              C            
+Snow                                                        C  L  C  S     S  L
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          38      34    40      27    35      27    35      27    34
+Temp          31 37 38   35 35 38 34   30 28 34 31   29 28 33 31   29 28 34
+Dewpt         29 34 35   33 32 34 30   28 25 28 26   25 25 27 26   25 25 26
+PWind dir         S      SW    SW       S     E      NE     E       E    NE
+Wind char        LT      GN    GN      LT    LT      LT    LT      LT    LT
+Avg clouds    OV OV OV   OV OV OV B2   B2 B1 B1 B2   B2 OV B2 B2   OV B2 B1
+PoP 12hr         80      90    50      10    10      20    20      10    30
+Rain              S  D    L  C  C                                         C
+Snow           D  L  S    S                           S  S             C  C
+
+$$
+AKZ846-241200-
+Tanana-Central Interior AK
+65.17N 152.08W Elev. 220 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      25          34          31          38          33
+Temp             26 26 25 25 26 26 28 31 33 32 32 32 32 32 32 37 37 35 34 33 33
+Dewpt            20 17 17 16 23 24 24 28 29 29 29 29 31 31 31 36 36 34 33 32 32
+RH               78 68 71 68 88 92 85 88 85 88 88 88 96 96 96 96 96 96 96 96 96
+Wind dir          E  E  E  E  E  E  E  E  E  E  E  E SE SE SE SE SE  S SE SE SE
+Wind spd          6  8  8  8  6  8  8  8  6  6  6  6  6  6  5  5  4  4  5  6 11
+Wind gust           18 19 20 17 18       17 17                            18 29
+Clouds           OV OV B2 B2 B2 OV OV OV OV OV OV OV OV OV OV OV OV B2 B2 OV OV
+PoP 12hr                     20          80          90          60          90
+QPF 12hr                      0        0.07        0.13        0.12        0.08
+Snow 12hr                 00-00           T           1                        
+Rain                                      D  L              C  C  C  C  C  D  S
+Snow                       S  C  L  L  D  D  D  L  L  L  C  C  C  C  C  C  D  D
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          41      36    41      32    37      30    36      30    36
+Temp          36 39 38   37 38 39 35   33 32 35 33   31 31 34 31   30 31 34
+Dewpt         34 38 37   36 37 38 33   32 31 33 29   29 29 31 28   28 28 31
+PWind dir         S      SW    SW       S     E      SE     S       E     E
+Wind char        GN      GN    GN      LT    LT      LT    LT      LT    LT
+Avg clouds    OV OV OV   OV OV OV OV   B2 B2 B2 B2   OV OV OV B2   B2 B2 B2
+PoP 12hr        100      80    50      20    20      50    50      50    60
+Rain           S  L  D    L  C  C  S          S  C    C     C  C          L
+Snow           D  L                           S  C    C  C  C  C    C  C  L
+
+$$
+AKZ847-241200-
+Healy-Northern Denali Borough AK
+63.86N 148.97W Elev. 1299 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      26          35          33          37          32
+Temp             26 27 28 29 32 32 32 34 34 35 35 36 35 35 34 36 36 35 34 34 34
+Dewpt            17 17 19 19 23 23 23 24 25 25 27 26 28 27 27 29 29 29 28 27 28
+RH               68 65 68 66 69 69 69 66 69 66 72 67 75 72 75 75 75 78 78 75 78
+Wind dir         SE SE SE SE SE  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S
+Wind spd         13 13 16 14 13 12 14 13 12 11 11 11 10  8  6  5  2  2  3  5  9
+Wind gust        39 40 46 44 40 37 40 40 36 34 36 34 32 27 21 18          18 31
+Clouds           B1 B1 B2 B1 B2 B2 B1 B1 B1 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2 B2
+PoP 12hr                      5          20          20          50          50
+QPF 12hr                      0           0           0        0.03        0.03
+Snow 12hr                 00-00       00-00       00-00                        
+Rain                                                              S            
+Snow                                   S  S  S  S  S  S  S  S  C  C  S     S  C
+Wind                 Y  Y  Y  Y  Y  Y  Y  Y  Y  Y                              
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          37      33    37      29    36      28    35      30    36
+Temp          35 36 36   34 33 36 33   31 29 34 32   30 28 34 32   32 31 34
+Dewpt         28 29 31   28 27 30 26   22 20 24 23   21 21 23 24   23 23 24
+PWind dir         S       S     S       S    SE      SE     S      SE    SE
+Wind char        GN      LT    LT      LT    GN      GN    LT      GN    GN
+Avg clouds    B2 B2 OV   OV B2 B2 B1   SC SC B1 B1   B1 OV OV B2   B1 B1 B1
+PoP 12hr         70      70    30      10     0      10    20      10    30
+Rain                 L    C  C                                             
+Snow           L  L  L    C  C                           S             C  C
+
+$$
+AKZ852-241200-
+McGrath-Upper Kuskokwim Valley AK
+62.95N 155.61W Elev. 338 ft
+400 PM AKDT Fri Oct 23 2026
+
+Date          Fri 10/23/26      Sat 10/24/26            Sun 10/25/26         Mon
+AKDT3hrly     13 16 19 22 01 04 07 10 13 16 19 22 01 04 07 10 13 16 19 22 01 04
+UTC 3hrly     21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12
+
+Min/Max                      28          37          36          38          36
+Temp             28 30 31 32 34 34 35 36 36 37 37 37 37 37 37 38 38 37 37 37 37
+Dewpt            23 23 26 27 34 34 35 36 36 36 37 37 37 37 36 38 37 36 35 36 36
+RH               81 75 81 81100100100100100 96100100100100 96100 96 96 92 96 96
+Wind dir          E SE SE SE SE SE SE SE  S  S  S  S  S  S  S  S  S  S  S  S  S
+Wind spd          3  4  4  6  6  5  5  5  5  5  5  5  6  6  6  8  8  9 11 13 13
+Wind gust                 18 19 17                   17 18 19 19 20 24 31 35 39
+Clouds           B2 OV OV OV OV OV OV OV OV B2 OV OV B2 OV OV OV B2 OV OV OV OV
+PoP 12hr                     70         100          90          50          90
+QPF 12hr                   0.05        0.24        0.14        0.01        0.16
+Snow 12hr                     T       00-00       00-00                        
+Rain                       L  D  D  D  D  D  L  C  C  C  C  S        C  L  D  D
+Snow                    C  L     S  S                       S                  
+
+
+Date           10/26/26  Tue 10/27/26  Wed 10/28/26  Thu 10/29/26  Fri 10/30/26
+AKDT6hrly     10 16 22   04 10 16 22   04 10 16 22   04 10 16 22   04 10 16
+UTC 6hrly     18 00 06   12 18 00 06   12 18 00 06   12 18 00 06   12 18 00
+
+Max/Min          42      38    41      33    39      33    38      33    38
+Temp          39 40 42   39 38 40 37   34 34 37 35   34 34 36 35   34 34 36
+Dewpt         38 40 41   37 36 38 36   33 31 34 33   32 32 33 33   32 32 33
+PWind dir         S       S     S       S     S       S     S      SE    SE
+Wind char        GN      GN    GN      LT    LT      LT    LT      LT    LT
+Avg clouds    OV OV OV   OV OV OV B2   B2 B2 B2 B2   OV OV B2 B2   B2 B2 OV
+PoP 12hr        100      50    20       5    30      50    40      60    60
+Rain           D  D  C    C  S             S  C  C    C  C  C  C    L  L  L
+Snow                                       S  S       S  C  C  C    L  L  S
+
+$$

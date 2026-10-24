@@ -1,0 +1,28 @@
+ACPN50 PHFO 232300
+TWOCP 
+
+Tropical Weather Outlook
+NWS Central Pacific Hurricane Center Honolulu HI
+Issued by NWS National Hurricane Center Miami FL
+200 PM HST Fri Oct 23 2026
+
+For the central North Pacific...between 140W and 180W:
+
+Active Systems:
+The National Hurricane Center is issuing advisories on Hurricane
+Vance, located several hundred miles south-southwest of Acapulco,
+Mexico.
+
+Western Central Pacific:
+An area of low pressure is forecast to form near the International
+Date Line, several hundred miles west of Johnston Atoll late this
+weekend or early next week. Environmental conditions could support
+some slow development thereafter while the system moves generally
+eastward to east-northeastward.
+* Formation chance through 48 hours...low...near 0 percent.
+* Formation chance through 7 days...low...20 percent.
+
+$$
+Forecaster Gibbs
+NNNN
+

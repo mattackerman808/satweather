@@ -2,6 +2,8 @@ import { lazy, Suspense } from "react";
 import { NavLink, Route, Routes } from "react-router";
 import Placeholder from "./views/Placeholder";
 import StatusBadge from "./StatusBadge";
+import LiveView from "./views/LiveView";
+import TextView from "./views/TextView";
 
 // MapLibre is most of the bundle; only the map pages should pay for it.
 const MapView = lazy(() => import("./views/MapView"));
@@ -30,10 +32,11 @@ export default function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<Placeholder title="Live" note="Newest imagery, radar and warnings land here (phase 3)." />} />
+          <Route path="/" element={<LiveView />} />
           <Route path="/satellite" element={<Placeholder title="Satellite" note="Full Disk, Meso 1/2 and L2 viewer with loops (phase 3)." />} />
           <Route path="/map" element={<Suspense fallback={null}><MapView /></Suspense>} />
-          <Route path="/text" element={<Placeholder title="Text" note="Decoded EMWIN products and search (phase 2)." />} />
+          <Route path="/text" element={<TextView />} />
+          <Route path="/text/:id" element={<TextView />} />
           <Route path="/tropical" element={<Placeholder title="Tropical & Mesoscale" note="NHC advisories, SPC discussions, Meso sectors (phase 5)." />} />
         </Routes>
       </main>
