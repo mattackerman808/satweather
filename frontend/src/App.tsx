@@ -1,6 +1,5 @@
 import { lazy, Suspense } from "react";
 import { NavLink, Route, Routes } from "react-router";
-import Placeholder from "./views/Placeholder";
 import StatusBadge from "./StatusBadge";
 import LiveView from "./views/LiveView";
 import TextView from "./views/TextView";
@@ -9,6 +8,7 @@ import TextView from "./views/TextView";
 // use them should pay for them.
 const MapView = lazy(() => import("./views/MapView"));
 const LoopView = lazy(() => import("./views/LoopView"));
+const TropicalView = lazy(() => import("./views/TropicalView"));
 
 const NAV = [
   { to: "/", label: "Live" },
@@ -42,7 +42,7 @@ export default function App() {
           <Route path="/map" element={<Suspense fallback={null}><MapView /></Suspense>} />
           <Route path="/text" element={<TextView />} />
           <Route path="/text/:id" element={<TextView />} />
-          <Route path="/tropical" element={<Placeholder title="Tropical & Mesoscale" note="NHC advisories, SPC discussions, Meso sectors (phase 5)." />} />
+          <Route path="/tropical" element={<Suspense fallback={null}><TropicalView /></Suspense>} />
         </Routes>
       </main>
     </div>

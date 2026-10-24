@@ -1,0 +1,80 @@
+FOPZ12 KNHC 240245
+PWSEP2
+                                                                    
+HURRICANE VANCE WIND SPEED PROBABILITIES NUMBER  11                 
+NWS NATIONAL HURRICANE CENTER MIAMI FL       EP222026               
+0300 UTC SAT OCT 24 2026                                            
+                                                                    
+AT 0300Z THE CENTER OF HURRICANE VANCE WAS LOCATED NEAR LATITUDE    
+12.0 NORTH...LONGITUDE 102.6 WEST WITH MAXIMUM SUSTAINED WINDS NEAR 
+95 KTS...110 MPH...175 KM/H.                                        
+                                                                    
+Z INDICATES COORDINATED UNIVERSAL TIME (GREENWICH)                  
+   PACIFIC  DAYLIGHT TIME (PDT)...SUBTRACT 7 HOURS FROM Z TIME      
+   HAWAIIAN STANDARD TIME (HST)...SUBTRACT 10 HOURS FROM Z TIME     
+                                                                    
+WIND SPEED PROBABILITY TABLE FOR SPECIFIC LOCATIONS                 
+                                                                    
+CHANCES OF SUSTAINED (1-MINUTE AVERAGE) WIND SPEEDS OF AT LEAST     
+   ...34 KT (39 MPH... 63 KM/H)...                                  
+   ...50 KT (58 MPH... 93 KM/H)...                                  
+   ...64 KT (74 MPH...119 KM/H)...                                  
+FOR LOCATIONS AND TIME PERIODS DURING THE NEXT 5 DAYS               
+                                                                    
+PROBABILITIES FOR LOCATIONS ARE GIVEN AS OP(CP) WHERE               
+    OP  IS THE PROBABILITY OF THE EVENT BEGINNING DURING            
+        AN INDIVIDUAL TIME PERIOD (ONSET PROBABILITY)               
+   (CP) IS THE PROBABILITY OF THE EVENT OCCURRING BETWEEN           
+        00Z SAT AND THE FORECAST HOUR (CUMULATIVE PROBABILITY)      
+                                                                    
+PROBABILITIES ARE GIVEN IN PERCENT                                  
+X INDICATES PROBABILITIES LESS THAN 1 PERCENT                       
+PROBABILITIES FOR 34 KT AND 50 KT ARE SHOWN AT A GIVEN LOCATION WHEN
+THE 5-DAY CUMULATIVE PROBABILITY IS AT LEAST 3 PERCENT.             
+PROBABILITIES FOR 34...50...64 KT SHOWN WHEN THE 5-DAY              
+64-KT CUMULATIVE PROBABILITY IS AT LEAST 1 PERCENT.                 
+                                                                    
+                                                                    
+  - - - - WIND SPEED PROBABILITIES FOR SELECTED LOCATIONS - - - -   
+                                                                    
+               FROM    FROM    FROM    FROM    FROM    FROM    FROM 
+  TIME       00Z SAT 12Z SAT 00Z SUN 12Z SUN 00Z MON 00Z TUE 00Z WED
+PERIODS         TO      TO      TO      TO      TO      TO      TO  
+             12Z SAT 00Z SUN 12Z SUN 00Z MON 00Z TUE 00Z WED 00Z THU
+                                                                    
+FORECAST HOUR    (12)   (24)    (36)    (48)    (72)    (96)   (120)
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+LOCATION       KT                                                   
+                                                                    
+ISLAS MARIAS   34  X   X( X)   X( X)   X( X)   X( X)   2( 2)   4( 6)
+ 
+SAN BLAS       34  X   X( X)   X( X)   X( X)   1( 1)   2( 3)   4( 7)
+ 
+P VALLARTA     34  X   X( X)   X( X)   X( X)   1( 1)   1( 2)   3( 5)
+ 
+15N 105W       34  X   7( 7)  20(27)   6(33)   6(39)   2(41)   X(41)
+15N 105W       50  X   X( X)   2( 2)   4( 6)   2( 8)   1( 9)   X( 9)
+15N 105W       64  X   X( X)   1( 1)   1( 2)   1( 3)   1( 4)   X( 4)
+ 
+BARRA NAVIDAD  34  X   X( X)   X( X)   X( X)   8( 8)  13(21)   6(27)
+BARRA NAVIDAD  50  X   X( X)   X( X)   X( X)   1( 1)   4( 5)   2( 7)
+BARRA NAVIDAD  64  X   X( X)   X( X)   X( X)   X( X)   1( 1)   1( 2)
+ 
+MANZANILLO     34  X   X( X)   X( X)   4( 4)30(34)  19(53)   6(59)
+MANZANILLO     50  X   X( X)   X( X)   X( X)   7( 7)  11(18)   4(22)
+MANZANILLO     64  X   X( X)   X( X)   X( X)   3( 3)   5( 8)   1( 9)
+ 
+L CARDENAS     34  X   X( X)   2( 2)  13(15)  19(34)   7(41)   2(43)
+L CARDENAS     50  X   X( X)   X( X)   1( 1)   2( 3)   2( 5)   2( 7)
+L CARDENAS     64  X   X( X)   X( X)   X( X)   1( 1)   1( 2)   X( 2)
+ 
+ZIHUATANEJO    34  X   X( X)   2( 2)   9(11)  10(21)   4(25)   1(26)
+ZIHUATANEJO    50  X   X( X)   X( X)   X( X)   1( 1)   1( 2)   1( 3)
+ 
+15N 100W       34  X   X( X)   2( 2)   X( 2)   1( 3)   1( 4)   X( 4)
+ 
+ACAPULCO       34  X   X( X)   X( X)   1( 1)   1( 2)   1( 3)   1( 4)
+ 
+$$                                                                  
+FORECASTER PIERCE/GIBBS                                             
+      

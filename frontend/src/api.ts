@@ -93,6 +93,22 @@ export type Frame = { id: number; scan_time: string; display: string; thumb: str
 export type LoopQuery = { source: string; sector: string; product: string; overlay: boolean; hours: number };
 
 export type Place = { kind: "station" | "zone" | "city"; label: string; detail: string; lon: number; lat: number };
+export type TcPoint = { valid: string; lat: number | null; lon: number | null; wind_kt: number | null;
+  gust_kt?: number | null; category?: string; outlook?: boolean; status?: string | null; kind?: string };
+export type Storm = {
+  storm_id: string; basin: string; name: string; kind: string; number: string; issued: string; final: boolean;
+  valid: string; lat: number; lon: number; move_dir: number | null; move_kt: number | null;
+  pressure_mb: number | null; wind_kt: number | null; gust_kt: number | null; category: string;
+  radii: Record<string, number[]>; radii_areas: { kt: string; ring: number[][] }[];
+  track: TcPoint[]; forecast: TcPoint[];
+  products: { id: number; nnn: string; awips: string; title: string; issued: string | null; received: string }[];
+  meso: string[];
+};
+export type Sector = { source: string; sector: string; scan_time: string; center: number[]; ring: number[][] };
+export type Outlook = { basin: string; product_id: number; awips: string; received: string; none_expected: boolean;
+  active: string | null;
+  areas: { title: string; text: string; chance_48h: number | null; chance_7d: number | null; level_7d: string | null }[] };
+
 export type ZoneInfo = { kind: string; ugc: string; name: string; state: string | null; cwa: string | null };
 export type ZoneHazard = { office: string; phenomena: string; significance: string; etn: number; action: string;
   begins: string | null; ends: string | null; product_id: number; issued: string; storm_based: boolean;
@@ -136,6 +152,8 @@ export const api = {
   zoneBrief: (lon: number, lat: number) => get<ZoneAt>("/api/zones/at", { lon, lat, brief: "1" }),
   places: (q: string, near?: [number, number]) =>
     get<Place[]>("/api/places", { q, near: near?.map((x) => x.toFixed(3)).join(",") }),
+  tropical: () => get<{ storms: Storm[]; sectors: Sector[] }>("/api/tropical/active"),
+  outlooks: () => get<Outlook[]>("/api/tropical/outlooks"),
   imageCatalog: () => get<Catalog>("/api/imagery/catalog"),
   frames: (q: LoopQuery, limit?: number) =>
     get<{ frames: Frame[] }>("/api/imagery/frames", { ...q, overlay: String(q.overlay), limit })

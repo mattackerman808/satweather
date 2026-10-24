@@ -14,6 +14,7 @@ from sqlalchemy import Connection, text
 from satweather.emwin import EmwinName
 from satweather.parse import Parsed
 from satweather.reports import metar as decode_metar
+from satweather.tropical import store_tropical
 
 CHANNEL = "satweather"
 
@@ -85,6 +86,8 @@ def store_text(conn: Connection, *, name: str, size: int, mtime: float, en: Emwi
     ).scalar_one_or_none()
     if pid is None:  # already stored (re-ingest of the same file)
         return sid
+
+    store_tropical(conn, pid, parsed.nnn, raw)
 
     when = issued or en.received
     for seg in parsed.segments:

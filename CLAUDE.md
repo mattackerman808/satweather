@@ -62,6 +62,8 @@ Imagery layout on the share: `IMAGES/<GOES-18|GOES-19>/<Full Disk|Mesoscale 1|Me
 
 PIREPs are stored at their filing station (`approx`), then `pireps.place_pending` (run from the ingest loop) moves each to its `/OV` position: radial/distance, offset (`15 SW FAT`), over-a-point, route midpoint (stays approx) or lat/lon. Identifiers resolve through Tachbase's anonymous `lookup_waypoints` (`tachbase_api_url`), cached in `waypoint` for a NASR cycle (misses for a day), with our station table for small airports with no ICAO id; radials are magnetic, so WMM declination (pygeomag) is added. Unreachable Tachbase → retried up to `MAX_TRIES`. `reports.py` counts TB/IC as a hazard only with an intensity (not `NEG`/`SMTH`).
 
+Tropical (`tropical.py`, `api/tropical.py`): advisory-package products (TCM/TCP/TCD/PWS/TCA…) get `text_product.storm_id` from the ATCF id in their header; each TCM is parsed into `tc_advisory` (center, motion, pressure, winds, 34/50/64 kt quadrant radii, previous position, forecast/outlook points) exactly as written — no cone, which isn't in the text. TWOs are parsed per basin at request time. Meso sector footprints come from inverting each frame's stored geos projection (`imagery.footprint`, pyproj), which is how a storm knows which meso sector is on it. `--redecode` re-parses stored TCMs.
+
 Live updates: `store.py` notifies → `api/events.py` LISTENs on a dedicated psycopg connection per client and streams SSE (`/api/events`) → `frontend/src/events.ts` keeps one shared `EventSource` for all subscribers.
 
 Key invariants:
