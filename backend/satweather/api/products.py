@@ -115,7 +115,7 @@ def get_product(pid: int) -> dict:
         segs = conn.execute(
             text(
                 """
-                SELECT s.id, s.seq, s.ugcs, s.ugc_expire, s.headlines, s.motion, s.tags,
+                SELECT s.id, s.seq, s.ugcs, s.ugc_expire, s.headlines, s.motion, s.tags, s.body,
                        ST_AsGeoJSON(s.polygon, 4) AS polygon,
                        COALESCE((SELECT json_agg(json_build_object(
                            'ugc', z.ugc, 'name', z.name, 'kind', z.kind) ORDER BY z.ugc)
