@@ -1,0 +1,54 @@
+WGUS84 KEPZ 240017
+FLSEPZ
+
+Flood Advisory
+National Weather Service El Paso Tx/Santa Teresa NM
+617 PM MDT Fri Oct 23 2026
+
+NMC035-240315-
+/O.NEW.KEPZ.FA.Y.0410.261024T0017Z-261024T0315Z/
+/00000.N.ER.000000T0000Z.000000T0000Z.000000T0000Z.OO/
+Otero NM-
+617 PM MDT Fri Oct 23 2026
+
+...FLOOD ADVISORY IN EFFECT UNTIL 915 PM MDT THIS EVENING...
+
+* WHAT...Flooding caused by excessive rainfall is expected.
+
+* WHERE...Southwestern Otero County in south central New Mexico...
+
+* WHEN...Until 915 PM MDT.
+
+* IMPACTS...Minor flooding in low-lying and poor drainage areas.
+  Ponding of water in urban or other areas is occurring or is
+  imminent.
+
+* ADDITIONAL DETAILS...
+  - At 617 PM MDT, Doppler radar indicated heavy rain due to
+    thunderstorms. Minor flooding is ongoing or expected to begin
+    shortly in the advisory area. Up to 1 inch of rain has fallen.
+  - Additional rainfall of up to 1 inch is expected over the area.
+    This additional rain will result in minor flooding.
+  - Some locations that will experience flooding include...
+    White Sands National Park, Orogrande, Alamogordo, Holloman Air
+    Force Base and Boles Acres.
+  - http://www.weather.gov/safety/flood
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+Turn around, don't drown when encountering flooded roads. Most flood
+deaths occur in vehicles.
+
+Please report observed flooding to local emergency services or law
+enforcement and request they pass this information to the National
+Weather Service when you can do so safely.
+
+&&
+
+LAT...LON 3296 10591 3295 10637 3229 10637 3225 10604
+      3264 10590
+
+
+$$
+
+ZA

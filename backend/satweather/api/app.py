@@ -6,10 +6,14 @@ import time
 from fastapi import FastAPI
 from sqlalchemy import text
 
+from satweather.api import events, products, warnings
 from satweather.config import get_settings
 from satweather.db import get_engine
 
 app = FastAPI(title="satweather", docs_url="/api/docs", openapi_url="/api/openapi.json")
+app.include_router(products.router)
+app.include_router(warnings.router)
+app.include_router(events.router)
 
 
 def _newest_mtime(root, max_entries: int = 5000) -> float | None:
@@ -46,6 +50,19 @@ def health() -> dict:
                 "ok": True,
                 "postgis": conn.execute(text("SELECT postgis_lib_version()")).scalar(),
             }
+            # Seconds since the ingest worker last stored anything. None
+            # before the first file (or before migration 0002).
+            lag = conn.execute(
+                text(
+                    "SELECT extract(epoch FROM now() - max(ingested_at))::int FROM source_file"
+                    " WHERE ingested_at > now() - interval '1 day'"
+                    if conn.execute(text("SELECT to_regclass('source_file')")).scalar()
+                    else "SELECT NULL"
+                )
+            ).scalar()
+            out["ingest"] = {"ok": lag is not None and lag < 600, "last_age_s": lag}
+            if not out["ingest"]["ok"]:
+                out["status"] = "degraded"
     except Exception as exc:  # report, don't raise: health must answer
         out["db"] = {"ok": False, "error": type(exc).__name__}
         out["status"] = "degraded"

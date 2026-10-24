@@ -1,0 +1,52 @@
+WGUS75 KABQ 232336
+FFSABQ
+
+Flash Flood Statement
+National Weather Service Albuquerque NM
+536 PM MDT Fri Oct 23 2026
+
+NMC043-240100-
+/O.CON.KABQ.FF.W.0226.000000T0000Z-261024T0100Z/
+/00000.0.ER.000000T0000Z.000000T0000Z.000000T0000Z.OO/
+Sandoval NM-
+536 PM MDT Fri Oct 23 2026
+
+...FLASH FLOOD WARNING REMAINS IN EFFECT UNTIL 7 PM MDT THIS EVENING
+FOR CENTRAL SANDOVAL COUNTY...
+
+At 536 PM MDT, Doppler radar indicated the heavy rain has ended
+across the warned area. Up to 0.75 inches fell in just 30 minutes
+along State Road 4 and Highway 290 near Jemez Springs. Flash flooding
+is ongoing or expected to begin shortly.
+
+HAZARD...Flash flooding caused by thunderstorms.
+
+SOURCE...Radar indicated.
+
+IMPACT...Flash flooding of small creeks and streams, urban areas,
+         highways, streets and underpasses as well as other poor
+         drainage and low-lying areas.
+
+Some locations that will experience flash flooding include...
+  Jemez Springs, Jemez State Monument, Jemez Pueblo and Canon.
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+Turn around, don't drown when encountering flooded roads. Most flood
+deaths occur in vehicles.
+
+Do not drive your vehicle into areas where water covers the roadway.
+The water depth may be too great to allow your car to cross safely.
+
+&&
+
+LAT...LON 3563 10674 3561 10672 3564 10671 3568 10672
+      3580 10666 3581 10660 3584 10658 3586 10662
+      3586 10664 3580 10670 3574 10673 3577 10678
+      3577 10679 3567 10676 3565 10674
+
+FLASH FLOOD...RADAR INDICATED
+
+$$
+
+Guyer

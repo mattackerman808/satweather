@@ -1,0 +1,82 @@
+FPUS62 KJAX 232306
+SFTJAX
+FLZ021-023>024-030>031-033-035-038-120-122-124>125-132>133-136>138-140-220-225-232-236>237-240-322-325-340-422-425-522-GAZ132>136-149-151>154-162>163-165>166-250-264-350-364-240900-
+
+Tabular State Forecast for Northeast Florida and Southeast Georgia
+National Weather Service Jacksonville FL
+706 PM EDT Fri Oct 23 2026
+
+ROWS INCLUDE...
+   Daily predominant daytime weather 6AM-6PM
+   Forecast temperatures...early morning low/daytime high
+         Probability of precipitation nighttime 6PM-6AM/daytime 6AM-6PM
+          - indicates temperatures below zero
+         MM indicates missing data
+
+
+   FCST     FCST     FCST     FCST     FCST     FCST     FCST     
+   Sat      Sun      Mon      Tue      Wed      Thu      Fri      
+   Oct 24   Oct 25   Oct 26   Oct 27   Oct 28   Oct 29   Oct 30   
+
+
+...Northeast Florida...
+   Gainesville
+   Ptcldy   Ptcldy   Ptcldy   Sunny    Ptcldy   Ptcldy   Ptcldy   
+   56/77    66/78    66/78    60/79    59/79    61/79    60/80    
+    00/10    40/10    10/10    00/00    00/10    10/20    20/20   
+
+   Jacksonville
+   Ptcldy   Ptcldy   Ptcldy   Ptcldy   Ptcldy   Ptcldy   Ptcldy   
+   59/73    65/73    65/73    60/74    60/75    61/75    59/76    
+    00/30    40/20    20/10    00/00    00/10    20/30    30/20   
+
+   Jacksonville Beach
+   Shwrs    Shwrs    Windy    Windy    Ptcldy   Ptcldy   Ptcldy   
+   70/75    71/75    71/73    71/73    71/73    71/73    69/73    
+    10/80    80/60    60/30    20/10    10/20    20/30    30/30   
+
+   Lake City
+   Sunny    Ptcldy   Ptcldy   Sunny    Ptcldy   Ptcldy   Ptcldy   
+   52/77    61/77    60/78    55/79    55/78    58/78    57/80    
+    00/00    00/00    10/10    00/00    00/10    10/10    10/10   
+
+   Ocala
+   Ptcldy   Ptcldy   Ptcldy   Sunny    Ptcldy   Ptcldy   Ptcldy   
+   57/78    67/79    66/80    62/80    60/80    62/80    61/81    
+    00/10    30/10    10/10    00/10    10/10    10/10    10/20   
+
+   Palatka
+   Shwrs    Ptcldy   Ptcldy   Sunny    Ptcldy   Ptcldy   Ptcldy   
+   61/76    69/77    69/76    64/77    63/78    64/78    63/79    
+    10/70    60/30    30/30    30/10    10/20    20/20    20/30   
+
+   St. Augustine
+   Shwrs    Shwrs    Windy    Sunny    Ptcldy   Ptcldy   Ptcldy   
+   67/74    71/75    70/74    68/75    68/75    67/74    66/74    
+    20/90    80/70    70/40    40/10    10/20    20/30    30/30   
+
+
+...Southeast Georgia...
+   Alma
+   Sunny    Sunny    Sunny    Sunny    Ptcldy   Ptcldy   Ptcldy   
+   49/75    54/75    54/76    48/77    49/77    55/77    55/78    
+    00/00    00/00    00/00    00/00    00/10    10/10    00/00   
+
+   Douglas
+   Sunny    Sunny    Sunny    Sunny    Ptcldy   Ptcldy   Ptcldy   
+   50/75    55/75    54/76    49/77    49/76    54/77    54/79    
+    00/00    00/00    00/00    00/00    00/00    10/10    00/00   
+
+   St. Simons Island
+   Ptcldy   Ptcldy   Ptcldy   Sunny    Ptcldy   Ptcldy   Ptcldy   
+   59/72    62/72    62/71    58/71    60/72    61/72    60/73    
+    00/10    20/10    20/00    00/00    00/10    20/20    20/10   
+
+   Waycross
+   Sunny    Ptcldy   Sunny    Sunny    Ptcldy   Ptcldy   Ptcldy   
+   48/77    55/76    54/77    49/78    50/77    55/78    55/79    
+    00/00    00/00    00/00    00/00    00/10    10/10    10/10   
+
+
+$$
+

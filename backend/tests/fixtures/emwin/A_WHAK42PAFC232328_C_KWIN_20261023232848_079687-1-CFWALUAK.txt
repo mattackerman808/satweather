@@ -1,0 +1,81 @@
+WHAK42 PAFC 232328
+CFWALU
+
+Coastal Hazard Message
+National Weather Service Anchorage AK
+328 PM AKDT Fri Oct 23 2026
+
+AKZ755-240900-
+/O.CON.PAFC.CF.Y.0003.000000T0000Z-261024T0900Z/
+Kuskokwim Delta Coast and Nunivak Island-
+328 PM AKDT Fri Oct 23 2026
+
+...COASTAL FLOOD ADVISORY REMAINS IN EFFECT UNTIL 1 AM AKDT
+SATURDAY...
+
+* WHAT...Coastal flooding, with water levels of 2.0 to 3.0 feet 
+  above the normal highest tide line, and 35 to 50 mph winds 
+  with gusts up to 75 mph. 
+
+* WHERE...Kuskokwim Delta Coast, including Kipnuk, Kwigillingok 
+  and Kongiganak. 
+
+* WHEN...Now through 1 AM Saturday, particularly around high 
+  tides near 10 PM tonight. 
+
+* IMPACTS...Coastal flooding of low lying areas and erosion are 
+  possible. 
+
+* ADDITIONAL DETAILS...The most likely scenario is for water
+  levels to be 2.0 to 3.0 ft above the normal high tide line.
+  While very unlikely, the worst case scenario for Kipnuk is for 
+  water levels to be 3.5 to 4.0 feet above the normal high tide 
+  line, while the worst case for Kwigillingok is 4.0 to 5.0 feet 
+  above the normal high tide line. The peak will be around 10 PM 
+  tonight, coincided with high tide.
+  
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+Precautions should be taken to protect property.
+
+&&
+
+$$
+
+AKZ764-240900-
+/O.CON.PAFC.SU.Y.0008.000000T0000Z-261024T1500Z/
+Northern Bristol Bay Coast-
+328 PM AKDT Fri Oct 23 2026
+
+...HIGH SURF ADVISORY REMAINS IN EFFECT UNTIL 7 AM AKDT
+SATURDAY...
+
+* WHAT...Water levels most likely around 1.0 to 2.0 feet above 
+  the normal highest tide line, with highest water levels 
+  expected near Togiak. 
+
+* WHERE...Northern Bristol Bay Coast.
+
+* WHEN...Now through 7AM Saturday
+
+* IMPACTS...Nuisance flooding of low lying areas. Coastal 
+  erosion is possible. 
+
+* ADDITIONAL DETAILS...A Bering front brings a prolonged period of
+  strong southerly winds towards the coast. These winds will
+  result in elevated water levels and high surf. This period of
+  winds will coincide with a high tidal cycle this evening and 
+  push water levels 1.0 to 2.0 feet above the normal highest tide 
+  line. Water levels are expected to quickly drop off Saturday 
+  morning as winds decrease, alleviating coastal concerns. 
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+Precautions should be taken to protect property.
+
+&&
+
+JAR
+
+$$

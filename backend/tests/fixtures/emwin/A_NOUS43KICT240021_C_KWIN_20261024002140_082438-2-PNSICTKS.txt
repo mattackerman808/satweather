@@ -1,0 +1,62 @@
+NOUS43 KICT 240021
+PNSICT
+KSZ032-033-047>053-067>072-082-083-091>096-098>100-240900-
+
+Public Information Statement
+National Weather Service Wichita KS
+710 PM CDT Fri Oct 23 2026
+
+Values represent 18 hour highs, 18 hour lows and precipitation over
+the last 24 hours.
+
+:
+:Kansas
+:Temperature and precipitation stations
+:................................................................
+:       Station              Max / Min  / 24 hr   / Snow  /  Snow
+:        Name                Temp/ Temp / Pcpn    / Fall  /  Depth
+:................................................................
+:Kansas
+:
+CNU  : Chanute             :  77 /  50 /  0.00 /       /     
+CFV  : Coffeyville         :  79 /  48 /  0.00 /       /     
+CNK  : Concordia Airport   :  82 /  60 /  0.00 /       /     
+DDC  : DODGE CITY          :  81 /  55 /  0.00 /       /     
+EHA  : ELKHART AIRPORT AMO :  81 /  55 /  0.00 /       /     
+EMP  : Emporia Airport     :  78 /  51 /  0.00 /       /     
+GCK  : GARDEN CITY         :  81 /  55 /  0.00 /       /     
+GLD  : Goodland            :  82 /  56 /  0.00 /       /     
+GBD  : Great Bend          :  80 /  58 /  0.00 /       /     
+HYS  : HAYS AIRPORT - AWOS :  82 /  56 /  0.00 /       /     
+HUT  : Hutchinson          :  79 /  54 /  0.00 /       /     
+K88  : Iola Airport        :  77 /  52 /  0.00 /       /     
+OJC  : Johnson County Exec :  78 /  52 /  0.00 /       /     
+LBL  : LIBERAL AIRPORT - A :  83 /  50 /  0.00 /       /     
+LWC  : Lawrence Airport    :  80 /  48 /  0.00 /       /     
+LYO  : Lyons Airport       :  80 /  53 /  0.00 /       /     
+P28  : MEDICINE LODGE      :  82 /  55 /  0.00 /       /     
+MHK  : Manhattan Airport   :  80 /  52 /  0.00 /       /     
+IXD  : New Cent AirCenter  :  78 /  51 /  0.00 /       /     
+EWK  : Newton              :  79 /  52 /  0.00 /       /     
+PTT  : PRATT INDUSTRIAL AI :  81 /  54 /  0.00 /       /     
+PPF  : Parsons             :  80 /  47 /  0.00 /       /     
+RSL  : Russell             :  81 /  58 /  0.00 /       /     
+SLN  : Salina              :  80 /  58 /  0.00 /       /     
+TOP  : Topeka Billard Arpt :  80 /  50 /  0.00 /       /     
+FOE  : Topeka Forbes Field :  80 /  48 /  0.00 /       /     
+ICT  : Wichita Eisenhower  :  78 /  53 /  0.00 /  0.0  /    0
+AAO  : Wichita Jabara      :   M /   M /  0.00 /       /     
+WLD  : Winfield            :  80 /  56 /  0.00 /       /     
+
+:   State Temperature Extremes
+:
+:   83 degrees at LIBERAL AIRPORT - AWOS
+:   47 degrees at Parsons
+:
+.END 
+
+These data are preliminary and have not undergone final quality 
+control by the National Centers for Environmental Information. These 
+data are subject to revision=. Final and certified data can be 
+accessed at www.ncei.noaa.gov.
+$$

@@ -1,0 +1,54 @@
+WGUS54 KEPZ 232356
+FFWEPZ
+TXC141-240300-
+/O.NEW.KEPZ.FF.W.0225.261023T2356Z-261024T0300Z/
+/00000.0.ER.000000T0000Z.000000T0000Z.000000T0000Z.OO/
+
+BULLETIN - EAS ACTIVATION REQUESTED
+Flash Flood Warning
+National Weather Service El Paso Tx/Santa Teresa NM
+556 PM MDT Fri Oct 23 2026
+
+The National Weather Service in El Paso Tx/Santa Teresa has issued a
+
+* Flash Flood Warning for...
+  Central El Paso County in western Texas...
+
+* Until 900 PM MDT.
+
+* At 556 PM MDT, Doppler radar indicated thunderstorms producing
+  heavy rain across the warned area. Up to 1 inch of rain has fallen.
+  Additional rainfall amounts up to 0.5 inches are possible in the
+  warned area. Flash flooding is ongoing or expected to begin
+  shortly.
+
+  HAZARD...Flash flooding caused by thunderstorms.
+
+  SOURCE...Radar indicated.
+
+  IMPACT...Flash flooding of small creeks and streams, urban areas,
+           highways, streets and underpasses as well as other poor
+           drainage and low-lying areas.
+
+* Some locations that will experience flash flooding include...
+  East El Paso, Central El Paso, Far East El Paso, Mission Valley,
+  Horizon City, Socorro and Sparks.
+
+PRECAUTIONARY/PREPAREDNESS ACTIONS...
+
+Turn around, don't drown when encountering flooded roads. Most flood
+deaths occur in vehicles.
+
+Be aware of your surroundings and do not drive on flooded roads.
+
+&&
+
+LAT...LON 3176 10644 3178 10643 3180 10630 3174 10619
+      3166 10620 3163 10631 3166 10633 3170 10635
+      3171 10637 3173 10638 3175 10642 3175 10643
+
+FLASH FLOOD...RADAR INDICATED
+
+$$
+
+ZA

@@ -1,0 +1,218 @@
+FLUS42 KMHX 240001
+HWOMHX
+
+Hazardous Weather Outlook
+National Weather Service Newport/Morehead City NC
+801 PM EDT Fri Oct 23 2026
+
+NCZ029-044>047-079>081-090>092-193-198-250015-
+Martin-Pitt-Washington-Tyrrell-Mainland Dare-Greene-Beaufort-
+Mainland Hyde-Duplin-Lenoir-Jones-Northern Craven-Inland Onslow-
+801 PM EDT Fri Oct 23 2026
+
+This Hazardous Weather Outlook is for eastern North Carolina.
+
+.DAY ONE...Tonight.
+
+No hazardous weather is expected at this time.
+
+.DAYS TWO THROUGH SEVEN...Saturday through Thursday.
+
+No hazardous weather is expected at this time.
+
+.SPOTTER INFORMATION STATEMENT...
+
+Spotter activation is not expected at this time.
+
+$$
+
+NCZ094-194-250015-
+Pamlico-Southern Craven-
+801 PM EDT Fri Oct 23 2026
+
+...COASTAL FLOOD ADVISORY IN EFFECT FROM 5 AM SATURDAY TO 11 AM EDT
+MONDAY...
+
+This Hazardous Weather Outlook is for eastern North Carolina.
+
+.DAY ONE...Tonight.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+
+.DAYS TWO THROUGH SEVEN...Saturday through Thursday.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+
+.SPOTTER INFORMATION STATEMENT...
+
+Spotter activation is not expected at this time.
+
+$$
+
+NCZ205-250015-
+Hatteras Island-
+801 PM EDT Fri Oct 23 2026
+
+...COASTAL FLOOD ADVISORY IN EFFECT UNTIL 11 AM EDT MONDAY...
+...BEACH HAZARDS STATEMENT IN EFFECT FROM 8 AM EDT SATURDAY THROUGH
+SATURDAY EVENING...
+
+This Hazardous Weather Outlook is for eastern North Carolina.
+
+.DAY ONE...Tonight.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+
+.DAYS TWO THROUGH SEVEN...Saturday through Thursday.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+   Beach Hazards Statement.
+
+.SPOTTER INFORMATION STATEMENT...
+
+Spotter activation is not expected at this time.
+
+$$
+
+NCZ203-250015-
+Northern Outer Banks-
+801 PM EDT Fri Oct 23 2026
+
+...COASTAL FLOOD ADVISORY IN EFFECT FROM 5 AM SATURDAY TO 11 AM EDT
+MONDAY...
+...BEACH HAZARDS STATEMENT IN EFFECT FROM 8 AM EDT SATURDAY THROUGH
+SATURDAY EVENING...
+
+This Hazardous Weather Outlook is for eastern North Carolina.
+
+.DAY ONE...Tonight.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+
+.DAYS TWO THROUGH SEVEN...Saturday through Thursday.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+   Beach Hazards Statement.
+
+.SPOTTER INFORMATION STATEMENT...
+
+Spotter activation is not expected at this time.
+
+$$
+
+NCZ204-250015-
+Ocracoke Island-
+801 PM EDT Fri Oct 23 2026
+
+...COASTAL FLOOD ADVISORY IN EFFECT FROM 5 AM SATURDAY TO 11 AM EDT
+MONDAY...
+...BEACH HAZARDS STATEMENT IN EFFECT FROM 8 AM EDT SATURDAY THROUGH
+SATURDAY EVENING...
+
+This Hazardous Weather Outlook is for eastern North Carolina.
+
+.DAY ONE...Tonight.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+
+.DAYS TWO THROUGH SEVEN...Saturday through Thursday.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+   Beach Hazards Statement.
+
+.SPOTTER INFORMATION STATEMENT...
+
+Spotter activation is not expected at this time.
+
+$$
+
+NCZ196-250015-
+East Carteret-
+801 PM EDT Fri Oct 23 2026
+
+...COASTAL FLOOD ADVISORY IN EFFECT FROM 5 AM SATURDAY TO 11 AM EDT
+MONDAY...
+...BEACH HAZARDS STATEMENT IN EFFECT FROM 8 AM EDT SATURDAY THROUGH
+SATURDAY EVENING NORTH OF CAPE LOOKOUT...
+...MODERATE RIP CURRENT RISK IN EFFECT FROM 8 AM EDT SATURDAY
+THROUGH SATURDAY EVENING SOUTH OF CAPE LOOKOUT...
+
+This Hazardous Weather Outlook is for eastern North Carolina.
+
+.DAY ONE...Tonight.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+
+.DAYS TWO THROUGH SEVEN...Saturday through Thursday.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+   Moderate Rip Current Risk.
+   Beach Hazards Statement.
+
+.SPOTTER INFORMATION STATEMENT...
+
+Spotter activation is not expected at this time.
+
+$$
+
+NCZ195-199-250015-
+West Carteret-Coastal Onslow-
+801 PM EDT Fri Oct 23 2026
+
+...COASTAL FLOOD ADVISORY IN EFFECT FROM 5 AM SATURDAY TO 11 AM EDT
+MONDAY...
+...MODERATE RIP CURRENT RISK IN EFFECT FROM 8 AM EDT SATURDAY
+THROUGH SATURDAY EVENING...
+
+This Hazardous Weather Outlook is for eastern North Carolina.
+
+.DAY ONE...Tonight.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+
+.DAYS TWO THROUGH SEVEN...Saturday through Thursday.
+
+Please listen to NOAA Weather Radio or go to weather.gov on the
+Internet for more information about the following hazards.
+
+   Coastal Flood Advisory.
+   Moderate Rip Current Risk.
+
+.SPOTTER INFORMATION STATEMENT...
+
+Spotter activation is not expected at this time.
+
+$$

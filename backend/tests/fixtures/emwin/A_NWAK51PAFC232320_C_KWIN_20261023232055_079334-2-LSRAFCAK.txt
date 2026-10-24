@@ -1,0 +1,21 @@
+NWAK51 PAFC 232320
+LSRAFC
+
+Preliminary Local Storm Report
+National Weather Service Anchorage AK
+320 PM AKDT Fri Oct 23 2026
+
+..TIME...   ...EVENT...      ...CITY LOCATION...     ...LAT.LON...
+..DATE...   ....MAG....      ..COUNTY LOCATION..ST.. ...SOURCE....
+            ..REMARKS..
+
+0234 PM     Non-Tstm Wnd Gst 1 SE Cold Bay           55.22N 162.73W
+10/23/2026  M75 MPH          Aleutians East     AK   ASOS/AWOS
+
+
+&&
+
+$$
+AM
+
+

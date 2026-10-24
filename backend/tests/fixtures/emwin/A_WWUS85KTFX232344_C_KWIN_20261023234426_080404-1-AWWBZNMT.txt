@@ -1,0 +1,26 @@
+WWUS85 KTFX 232344
+AWWBZN
+MTZ326-240245-
+
+Airport Weather Warning
+National Weather Service Great Falls MT
+544 PM MDT Fri Oct 23 2026
+
+...AIRPORT WEATHER WARNING...
+
+The National Weather Service in Great Falls has issued an Airport
+Weather Warning for...
+
+Bozeman Yellowstone International Airport /BZN/
+
+The following weather hazards are expected:
+
+Snow with visibility of 1/2 mile or less.
+Fog with visibility of 1/2 mile or less.
+
+Until 845 PM MDT.
+
+LAT...LON 4576 11117 4579 11117 4579 11113 4576 11113
+$$
+
+IG

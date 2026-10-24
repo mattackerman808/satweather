@@ -1,0 +1,77 @@
+FNUS75 KLKN 232337
+FWSLKN
+
+Spot Forecast for Kirch WMA RX...Nevada Division of Forestry
+National Weather Service Elko NV
+437 PM PDT Fri Oct 23 2026
+
+Forecast is based on ignition time of 1700 PDT on October 23. 
+If conditions become unrepresentative, contact the National Weather
+Service.
+
+Please contact National Weather Service Elko if you have questions
+or concerns with this forecast.
+
+.DISCUSSION...Vicinity showers end late this afternoon or early
+evening with dry conditions through the weekend. The afternoon
+minimum RHs will be trending lower over the next few days, at
+around 50% this afternoon, 40% Saturday and to around 35% both 
+Sunday and Monday. Overnight RH recoveries are expected to remain 
+very high this weekend and into next week, generally ranging from
+80-90%. Winds remain Northerly today and Saturday, becoming
+Southerly Sunday and Monday. 
+
+.REST OF TODAY...
+
+Sky/weather.........Mostly cloudy. 
+Max temperature.....Around 56. 
+Min humidity........48 percent. 
+Wind (20 ft)........ 
+ Slope/valley.......Northwest winds 5 to 10 mph gusting to 15 mph. 
+CWR.................0 percent. 
+Chance of pcpn......10 percent. 
+Chance of thunder...1 percent. 
+Rainfall amount.....0.00 inches. 
+Snowfall amount.....0.0 inches. 
+Mixing height.......3300 ft AGL. 
+Transport winds.....North around 13 mph. 
+
+.TONIGHT...
+
+Sky/weather.........Mostly cloudy becoming partly cloudy. 
+Min temperature.....Around 34. 
+Max humidity........91 percent. 
+Wind (20 ft)........ 
+ Slope/valley.......North winds 5 to 15 mph gusting to 20 mph. 
+CWR.................0 percent. 
+Chance of pcpn......0 percent. 
+Chance of thunder...0 percent. 
+Rainfall amount.....0.00 inches. 
+Snowfall amount.....0.0 inches. 
+Mixing height.......500 ft AGL. 
+Transport winds.....North around 15 mph. 
+
+.SATURDAY...
+
+Sky/weather.........Partly cloudy in the morning becoming mostly
+                    sunny. 
+Max temperature.....Around 60. 
+Min humidity........41 percent. 
+Wind (20 ft)........ Slope/valley.......North winds 5 to 10 mph 
+                    gusting to 15 mph. 
+CWR.................0 percent. 
+Chance of pcpn......0 percent. 
+Chance of thunder...0 percent. 
+Rainfall amount.....0.00 inches. 
+Snowfall amount.....0.0 inches. 
+Mixing height.......5200 ft AGL. 
+Transport winds.....North around 15 mph. 
+
+$$
+Forecaster...Rood
+Requested by...Joseph Livreri
+Type of request...PRESCRIBED
+.TAG 2624079.4/LKN
+.DELDT 10/23/26
+.FormatterVersion 2.0.0
+.EMAIL jlivreri@forestry.nv.gov

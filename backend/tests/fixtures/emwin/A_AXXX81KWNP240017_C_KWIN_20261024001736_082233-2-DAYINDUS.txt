@@ -1,0 +1,53 @@
+AXXX81 KWNP 240017
+DAYIND
+
+:Product: Daily Space Weather Indices dayind.txt
+:Issued: 2026 Oct 24 0016 UT
+# Prepared by the US Dept. of Commerce, NOAA, Space Weather Prediction Center
+# Product description and SWPC contact on the Web
+# https://www.spaceweather.gov
+#
+#                       Daily Space Weather Indices
+#
+#
+:Solar_Indices: 2026 Oct 23
+# SWO Sunspot  Penticton Radio   90-day Radio   GOES X-ray   Stanford Solar
+#   Number       Flux 10.7cm     Flux 10.7cm     Bkgd Flux       Mean Field
+    51              101              115          5.32e-07          -999
+#
+:Solar_Region_Data: 2026 Oct 23
+#                                                 --------- Flares ---------
+# Sunspot Area       New         Spotted           X-ray          Optical
+# 10E-6 Hemis.     Regions        Region           C  M  X       S  1  2  3  4
+    189               0              2             8  0  0       8  0  0  0  0
+#
+:Solar_Radio_Flux: 2026 Oct 23
+#      Learmonth  San Vito   Sag Hill  Penticton  Penticton  Palehua  Penticton
+#        0400       1000       1700       1700       2000       2300       2300
+  245     -1         12         14         -1         -1         20         -1
+  410     -1         29         27         -1         -1         29         -1
+  610     -1         51         47         -1         -1         25         -1
+ 1415     64         69         -1         -1         -1         59         -1
+ 2695     92        106         -1         -1         -1         93         -1
+ 2800     -1         -1         -1        100        101         -1        100
+ 4995    164        138         -1         -1         -1        132         -1
+ 8800    268        236         -1         -1         -1        241         -1
+15400    553        549         -1         -1         -1         -1         -1
+#
+:Particle_Data: 2026 Oct 23
+#    GOES Proton Fluence          GOES Electron Fluence     GOES      Neutron
+# ---- Protons/cm2-day-sr ----   - Electrons/cm2-day-sr -  Location    Monitor
+#  ->1 MeV   >10 MeV  >100 MeV     >0.8 MeV     >2 MeV       West    % of bkgd
+  1.51e+05  2.20e+04 -1.00e+00    -1.00e+00   9.40e+07      104.70      -999.9
+#
+:Geomagnetic_Indices: 2026 Oct 23
+#      Middle Latitude                       Middle Latitude
+# ----- Fredericksburg -----           --------- Boulder ---------
+# A        K-indices                   A        K-indices
+#     03-06-09-12-15-18-21-24              03-06-09-12-15-18-21-24
+  7    1  1  1  2  3  2  3  1         11    2  1  2  3  3  3  3  2 
+#        High Latitude                                  Estimated
+# --------- College ---------      -------------------- Planetary --------------------
+# A       K-indices                A                    K-indices
+#     03-06-09-12-15-18-21-24            03  - 06  - 09  - 12  - 15  - 18  - 21  - 24
+ 21    2  1  4  5  5  3  3  2     11    1.67  1.67  1.67  2.33  2.67  2.67  4.33  1.67 
