@@ -514,3 +514,42 @@ def test_pirep_placement(db, monkeypatch):
     assert rows["SAN"][0] is True  # a route: midway, still approx
     assert cached == (5, 4)  # FIM, PRB (as KPRB), SAN, JLI known; QQQQQ remembered as a miss
     assert pireps.place_pending(db) == {} and len(calls) == 1  # all placed, nothing asked again
+
+
+def test_places_search_and_brief_zone(db):
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+
+    sq = lambda x, y: f"ST_Multi(ST_GeomFromText('POLYGON(({x} {y},{x+1} {y},{x+1} {y+1},{x} {y+1},{x} {y}))', 4326))"  # noqa: E731
+    with db.begin() as conn:
+        for ugc, name, x, y in (("CAZ508", "SF Bay Shoreline", -123, 37), ("MIZ069", "Oakland", -84, 42)):
+            conn.execute(text(f"INSERT INTO ugc_zone (kind, ugc, name, state, cwa, geom, centroid, source)"
+                              f" VALUES ('public', :u, :n, 'XX', 'X', {sq(x, y)}, ST_Centroid({sq(x, y)}), 't')"),
+                         {"u": ugc, "n": name})
+        conn.execute(text(
+            "INSERT INTO station (id, icao, faa, name, state, country, geom) VALUES"
+            " ('KOAK', 'KOAK', 'OAK', 'Metro Oakland Intl', 'CA', 'US', ST_SetSRID(ST_MakePoint(-122.2, 37.7), 4326)),"
+            " ('46214', NULL, NULL, 'Oakland Buoy', 'CA', 'US', ST_SetSRID(ST_MakePoint(-123.5, 37.9), 4326))"))
+        conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES ('z', 'emwin_text', 1, now(), 'ok')"))
+        conn.execute(text(
+            "INSERT INTO text_product (source_file_id, wmo, cccc, awips, nnn, office, received, priority, title, category, raw)"
+            " SELECT id, 'FPUS56', 'KMTR', 'ZFPMTR', 'ZFP', 'MTR', now(), 3, 'ZFP', 'forecast', 'r' FROM source_file"))
+        conn.execute(text(
+            "INSERT INTO product_segment (product_id, seq, ugcs, headlines, body) SELECT id, 1, '{CAZ508}', '{}',"
+            " E'CAZ508-241900-\\nSF Bay Shoreline-\\nIncluding the cities of San Francisco, Oakland,\\nand Daly City\\n"
+            "902 PM PDT Fri Oct 23 2026\\n\\n.TONIGHT...Clear.\\n' FROM text_product"))
+    c = TestClient(app)
+    b = c.get("/api/zones/at", params={"lon": -122.5, "lat": 37.5, "brief": 1}).json()
+    assert b["zone"]["ugc"] == "CAZ508" and b["zone"]["geometry"] and b["forecast"] is None and b["products"] == []
+
+    def labels(**q):
+        return [(r["kind"], r["label"]) for r in c.get("/api/places", params=q).json()]
+
+    near_sf = labels(q="Oakland", near="-122.3,37.8")
+    # The city (a prefix match) before the airport whose name only contains it.
+    assert near_sf[:2] == [("city", "Oakland, XX"), ("station", "KOAK · Metro Oakland Intl")]
+    assert ("zone", "Oakland") in near_sf and not any("Buoy" in label for _, label in near_sf)
+    assert labels(q="Oakland", near="-84,42")[0] == ("zone", "Oakland")
+    assert labels(q="oak")[0] == ("station", "KOAK · Metro Oakland Intl")  # the FAA id, exactly
+    assert labels(q="Daly")[0] == ("city", "Daly City, XX")

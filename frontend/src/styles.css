@@ -123,6 +123,24 @@ button { font: inherit; color: inherit; }
 /* ── Map ── */
 .mapside { position: absolute; left: 12px; top: 12px; display: flex; flex-direction: column; gap: 8px;
   max-height: calc(100% - 60px); width: 240px; }
+.maptip { position: absolute; z-index: 3; pointer-events: none; background: rgba(13, 19, 27, 0.94);
+  border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; font-size: 12.5px; color: var(--muted);
+  white-space: nowrap; }
+.maptip b { color: var(--text); font-weight: 600; }
+.placesearch { position: relative; width: 300px; }
+.psrow { display: flex; gap: 6px; }
+.psrow .search { flex: 1; background: rgba(13, 19, 27, 0.94); }
+.locate { width: 36px; flex: none; background: rgba(13, 19, 27, 0.94); border: 1px solid var(--line); border-radius: 6px;
+  cursor: pointer; font-size: 17px; }
+.psresults { position: absolute; top: 40px; left: 0; right: 0; z-index: 4; background: var(--panel); border: 1px solid var(--line);
+  border-radius: 8px; overflow: hidden; box-shadow: 0 8px 24px rgba(0, 0, 0, .4); }
+.psitem { display: grid; grid-template-columns: 18px 1fr; column-gap: 6px; width: 100%; text-align: left; background: none;
+  border: 0; padding: 6px 10px; cursor: pointer; font-size: 13px; }
+.psitem .dim { grid-column: 2; font-size: 11.5px; }
+.psitem.on { background: #1a2a3a; }
+.psicon { color: var(--muted); text-align: center; }
+.psempty, .psmsg { padding: 8px 10px; font-size: 12.5px; color: var(--muted); }
+.psmsg { padding: 4px 2px; }
 .layers, .legend { background: rgba(13, 19, 27, 0.92); border: 1px solid var(--line); border-radius: 8px;
   padding: 8px 10px; font-size: 12.5px; }
 .layers label { display: flex; align-items: center; gap: 6px; padding: 2px 0; cursor: pointer; }

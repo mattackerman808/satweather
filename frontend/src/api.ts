@@ -92,6 +92,7 @@ export type Frame = { id: number; scan_time: string; display: string; thumb: str
   orig: string | null };
 export type LoopQuery = { source: string; sector: string; product: string; overlay: boolean; hours: number };
 
+export type Place = { kind: "station" | "zone" | "city"; label: string; detail: string; lon: number; lat: number };
 export type ZoneInfo = { kind: string; ugc: string; name: string; state: string | null; cwa: string | null };
 export type ZoneHazard = { office: string; phenomena: string; significance: string; etn: number; action: string;
   begins: string | null; ends: string | null; product_id: number; issued: string; storm_based: boolean;
@@ -132,6 +133,9 @@ export const api = {
   station: (id: string) => get<StationDetail>(`/api/stations/${encodeURIComponent(id)}`),
   pireps: (hours = 3) => get<GeoJSON.FeatureCollection>("/api/pireps/recent", { hours }),
   zoneAt: (lon: number, lat: number) => get<ZoneAt>("/api/zones/at", { lon, lat }),
+  zoneBrief: (lon: number, lat: number) => get<ZoneAt>("/api/zones/at", { lon, lat, brief: "1" }),
+  places: (q: string, near?: [number, number]) =>
+    get<Place[]>("/api/places", { q, near: near?.map((x) => x.toFixed(3)).join(",") }),
   imageCatalog: () => get<Catalog>("/api/imagery/catalog"),
   frames: (q: LoopQuery, limit?: number) =>
     get<{ frames: Frame[] }>("/api/imagery/frames", { ...q, overlay: String(q.overlay), limit })

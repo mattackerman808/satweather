@@ -7,6 +7,7 @@ import { basemapStyle } from "../map/basemap";
 import { api, type PirepDecoded } from "../api";
 import { useLiveEvents } from "../events";
 import Inspector, { type Inspect } from "../map/Inspector";
+import PlaceSearch from "../map/PlaceSearch";
 import { CAT_COLOR } from "../wx/Wx";
 
 // GOES-18 sits at 137.0°W: open over the western US and the eastern
@@ -27,9 +28,28 @@ const catColor = ["match", ["get", "flight_category"],
   "VFR", CAT_COLOR.VFR, "MVFR", CAT_COLOR.MVFR, "IFR", CAT_COLOR.IFR, "LIFR", CAT_COLOR.LIFR, CAT_COLOR.UNK,
 ] as unknown as maplibregl.ExpressionSpecification;
 
+// Point in a GeoJSON (multi)polygon: inside an outer ring, outside its holes.
+function inside([x, y]: [number, number], g: GeoJSON.Geometry): boolean {
+  const polys = g.type === "Polygon" ? [g.coordinates] : g.type === "MultiPolygon" ? g.coordinates : [];
+  const inRing = (ring: GeoJSON.Position[]) => {
+    let c = false;
+    for (let a = 0, b = ring.length - 1; a < ring.length; b = a++) {
+      const [xa, ya] = ring[a], [xb, yb] = ring[b];
+      if ((ya > y) !== (yb > y) && x < ((xb - xa) * (y - ya)) / (yb - ya) + xa) c = !c;
+    }
+    return c;
+  };
+  return polys.some(([outer, ...holes]) => inRing(outer) && !holes.some(inRing));
+}
+
+// Layers that open something of their own when clicked; elsewhere a click
+// opens the zone forecast, and hovering previews which zone.
+const FEATURE_LAYERS = ["stations-dot", "pireps-dot", "disc-fill", "warnings-fill"];
+
 function addLayers(map: maplibregl.Map) {
   map.addSource("warnings", { type: "geojson", data: EMPTY });
   map.addSource("focus", { type: "geojson", data: EMPTY });
+  map.addSource("hover", { type: "geojson", data: EMPTY });
   map.addSource("stations", { type: "geojson", data: EMPTY });
   map.addSource("pireps", { type: "geojson", data: EMPTY });
   map.addSource("discussions", { type: "geojson", data: EMPTY });
@@ -58,6 +78,10 @@ function addLayers(map: maplibregl.Map) {
     id: "disc-label", type: "symbol", source: "discussions",
     layout: { "text-field": ["get", "label"], "text-font": ["Noto Sans Bold"], "text-size": 12 },
     paint: { "text-color": ["get", "color"], "text-halo-color": "#0b1016", "text-halo-width": 1.5 },
+  });
+  map.addLayer({
+    id: "hover-line", type: "line", source: "hover",
+    paint: { "line-color": "#ffffff", "line-width": 1.5, "line-opacity": 0.55 },
   });
   map.addLayer({
     id: "focus-line", type: "line", source: "focus",
@@ -110,6 +134,10 @@ export default function MapView() {
   const [counts, setCounts] = useState({ stations: 0, pireps: 0 });
   const [layers, setLayers] = useState<Layers>({ warnings: true, discussions: true, stations: true, pireps: true });
   const [nDisc, setNDisc] = useState(0);
+  // Hover preview: the zone under a resting cursor. The tooltip follows the
+  // mouse through its ref (no re-render per mousemove); only its text is state.
+  const [hoverZone, setHoverZone] = useState<string | null>(null);
+  const tipRef = useRef<HTMLDivElement>(null);
   const [inspect, setInspect] = useState<Inspect | null>(null);
   const [sp, setSp] = useSearchParams();
 
@@ -196,6 +224,40 @@ export default function MapView() {
           addLayers(map);
           setReady(true);
         });
+        let hoverTimer: number | undefined;
+        let hoverSeq = 0;
+        let hoverGeom: GeoJSON.Geometry | null = null;
+        const hideHover = () => {
+          clearTimeout(hoverTimer);
+          hoverSeq++;
+          hoverGeom = null;
+          (map.getSource("hover") as GeoJSONSource | undefined)?.setData(EMPTY);
+          setHoverZone(null);
+        };
+        map.on("mousemove", (e) => {
+          if (tipRef.current) {
+            tipRef.current.style.left = `${e.point.x + 14}px`;
+            tipRef.current.style.top = `${e.point.y + 14}px`;
+          }
+          const layers = FEATURE_LAYERS.filter((l) => map.getLayer(l));
+          if (map.queryRenderedFeatures(e.point, { layers }).length) return hideHover();
+          const ll: [number, number] = [e.lngLat.lng, e.lngLat.lat];
+          if (hoverGeom && inside(ll, hoverGeom)) return;
+          clearTimeout(hoverTimer);
+          hoverTimer = window.setTimeout(() => {
+            const n = ++hoverSeq;
+            api.zoneBrief(ll[0], ll[1]).then((z) => {
+              if (n !== hoverSeq) return;
+              hoverGeom = z.zone?.geometry ?? null;
+              (map.getSource("hover") as GeoJSONSource | undefined)?.setData(
+                hoverGeom ? { type: "Feature", geometry: hoverGeom, properties: {} } : EMPTY);
+              setHoverZone(z.zone?.name ?? null);
+              map.getCanvas().style.cursor = z.zone ? "pointer" : "";
+            }).catch(() => {});
+          }, 250);
+        });
+        map.on("mouseout", hideHover);
+        map.on("dragstart", hideHover);
         // Stations are fetched for the view: the set changes with zoom.
         map.on("moveend", () => refreshObsRef.current());
         // One click handler, most specific layer first: a station or a
@@ -341,7 +403,14 @@ export default function MapView() {
     <div className="mapwrap">
       <div ref={el} className="map" />
       {err && <div className="maperr">Basemap unavailable: {err}</div>}
+      <div ref={tipRef} className="maptip" style={{ display: hoverZone ? "block" : "none" }}>
+        <b>{hoverZone}</b> · click for forecast
+      </div>
       <div className="mapside">
+        <PlaceSearch
+          near={() => { const c = mapRef.current?.getCenter(); return c ? [c.lng, c.lat] : undefined; }}
+          onPick={(lon, lat) => { flyToZone.current = true; open({ kind: "zone", lon, lat }); }}
+        />
         <div className="layers">
           {(["warnings", "discussions", "stations", "pireps"] as const).map((k) => (
             <label key={k}>
