@@ -4,9 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A LAN-only weather viewer (https://satweather.808.org) for everything GOES-18 HRIT delivers to the dish on **rtl**: EMWIN text products (parsed, decoded, searchable), warnings on a map, METAR/TAF/PIREP decoding, and (planned) satellite imagery, radar, tropical/meso. Satellite and Tropical pages are still placeholders (phases 3 and 5).
+A weather viewer (https://satweather.808.org) for everything GOES-18 HRIT delivers to the dish on **rtl**: EMWIN text products (parsed, decoded, searchable), warnings, zone forecasts and discussions on a map, METAR/TAF/PIREP decoding, satellite and radar loops, tropical/meso, and the receiver's signal stats.
 
-The only input is the read-only NFS share that SatDump on rtl writes to (`SATWEATHER_DATA_ROOT`, default `/mnt/satImages/goes-hrit`). Host setup (venv, systemd units, database, Apache, TLS, `/etc/satweather/satweather.env`) lives in the separate salt repo (`salt/satweather`); this repo only builds a Debian package.
+The site is public through a Cloudflare tunnel (salt `cloudflared` on satweather); LAN clients resolve the same name to the host directly. Everything is public except the originals at `/orig`, which Apache allows only from the LAN (tunnel requests arrive from localhost and get a 403). Frontend code that uses `/orig` must degrade without it: `LoopView`'s deep zoom falls back to the display copy.
+
+The only input is the NFS share that SatDump on rtl writes to (`SATWEATHER_DATA_ROOT`, default `/mnt/satImages/goes-hrit`), mounted read-write here because satweather's housekeeping does all moves and deletes on it. Host setup (venv, systemd units, database, Apache, TLS, the tunnel, `/etc/satweather/satweather.env`) lives in the separate salt repo (`salt/satweather`); this repo only builds a Debian package.
 
 ## Commands
 
