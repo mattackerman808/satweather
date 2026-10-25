@@ -409,6 +409,47 @@ def test_zone_at_point(db):
     assert sea["zone"] is None and sea["forecast"] is None
 
 
+
+def test_offices(db):
+    """Office areas (union of public zones) named from their newest AFD."""
+    from fastapi.testclient import TestClient
+
+    from satweather.api import offices
+    from satweather.api.app import app
+
+    def sq(x0, x1):
+        return f"ST_Multi(ST_GeomFromText('POLYGON(({x0} 37,{x1} 37,{x1} 38,{x0} 38,{x0} 37))', 4326))"
+
+    with db.begin() as conn:
+        for ugc, cwa, g in (("CAZ508", "MTR", sq(-123, -122)), ("CAZ509", "MTR", sq(-122, -121)),
+                            ("ORZ021", "MFR", sq(-124, -123))):
+            conn.execute(text(f"INSERT INTO ugc_zone (kind, ugc, name, state, cwa, geom, centroid, source)"
+                              f" VALUES ('public', :u, 'z', 'CA', :c, {g}, ST_Centroid({g}), 't')"), {"u": ugc, "c": cwa})
+        conn.execute(text(f"INSERT INTO ugc_zone (kind, ugc, name, state, cwa, geom, centroid, source)"
+                          f" VALUES ('county', 'CAC001', 'c', 'CA', 'STO', {sq(-121, -120)}, ST_Centroid({sq(-121, -120)}), 't')"))
+        ids = []
+        for i, age in enumerate((120, 30)):
+            conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES (:n, 'emwin_text', 1, now(), 'ok')"),
+                         {"n": f"afd{i}"})
+            ids.append(conn.execute(text(
+                "INSERT INTO text_product (source_file_id, wmo, cccc, awips, nnn, office, issued, received, priority, title,"
+                " category, raw) SELECT id, 'FXUS66', 'KMTR', 'AFDMTR', 'AFD', 'KMTR', now() - make_interval(mins => :age),"
+                " now() - make_interval(mins => :age), 2, 'Area Forecast Discussion', 'discussion',"
+                " :raw FROM source_file WHERE name = :n RETURNING id"),
+                {"age": age, "n": f"afd{i}",
+                 "raw": f"FXUS66 KMTR 250708\nAFDMTR\n\nArea Forecast Discussion\n"
+                        f"National Weather Service {'Monterey' if i == 0 else 'San Francisco'} CA\n"}).scalar())
+    offices._cache = None
+    c = TestClient(app)
+    fc = c.get("/api/offices").json()
+    by = {f["properties"]["office"]: f for f in fc["features"]}
+    assert sorted(by) == ["MFR", "MTR"]  # public zones only: STO has just a county
+    assert by["MTR"]["properties"]["name"] == "San Francisco CA"  # the newer AFD
+    assert by["MFR"]["properties"]["name"] is None
+    assert by["MTR"]["geometry"]["type"] == "MultiPolygon"
+    items = c.get("/api/offices/afd").json()["items"]
+    assert [(i["office"], i["product_id"]) for i in items] == [("MTR", ids[1])]
+
 def _mcd(t, number: int, hours: int) -> str:
     """An SPC mesoscale discussion as EMWIN carries it, issued at t and
     valid for `hours`."""
