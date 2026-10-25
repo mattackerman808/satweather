@@ -450,6 +450,48 @@ def test_offices(db):
     items = c.get("/api/offices/afd").json()["items"]
     assert [(i["office"], i["product_id"]) for i in items] == [("MTR", ids[1])]
 
+
+def test_statements_active(db):
+    """SPS polygons in effect, and the newest AWW per airport unless cancelled."""
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+
+    box = "POLYGON((-104 32,-103.9 32,-103.9 32.1,-104 32,-104 32))"
+    rows = [
+        # name, nnn, awips, age (min), segments [(ugcs, expire in min, headline, body, polygon)]
+        ("s1", "SPS", "SPSMAF", 10, [(["NMZ027"], 20, "A STRONG THUNDERSTORM WILL IMPACT EDDY COUNTY", "storm", box)]),
+        ("s2", "SPS", "SPSMAF", 90, [(["NMZ028"], -30, "OLD STORM", "old", box)]),
+        ("s3", "SPS", "SPSLWX", 5, [(["MDZ001"], 60, "PATCHY FOG", "fog", None)]),
+        ("a1", "AWW", "AWWBZN", 60, [(["MTZ326"], 60, "AIRPORT WEATHER WARNING", "Fog with visibility of 1/2 mile or less.", box),
+                                      ([], None, "", "", None)]),
+        ("a2", "AWW", "AWWBZN", 5, [(["MTZ326"], 60, "AIRPORT WEATHER WARNING", "The Airport Weather Warning has been cancelled.", box)]),
+        ("a3", "AWW", "AWWIWA", 15, [(["AZZ544"], 45, "AIRPORT WEATHER WARNING", "Thunderstorms within 5 miles.", box)]),
+    ]
+    ids = {}
+    with db.begin() as conn:
+        for name, nnn, awips, age, segs in rows:
+            conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES (:n, 'emwin_text', 1, now(), 'ok')"),
+                         {"n": name})
+            ids[name] = conn.execute(text(
+                "INSERT INTO text_product (source_file_id, wmo, cccc, awips, nnn, office, issued, received, priority, title,"
+                " category, raw) SELECT id, 'WWUS84', 'KMAF', :awips, :nnn, 'KMAF', now() - make_interval(mins => :age),"
+                " now() - make_interval(mins => :age), 3, 't', 'statement', 'r' FROM source_file WHERE name = :n RETURNING id"),
+                {"awips": awips, "nnn": nnn, "age": age, "n": name}).scalar()
+            for seq, (ugcs, exp, headline, body, poly) in enumerate(segs, 1):
+                conn.execute(text(
+                    "INSERT INTO product_segment (product_id, seq, ugcs, ugc_expire, headlines, body, polygon) VALUES"
+                    " (:p, :seq, :u, CASE WHEN CAST(:exp AS int) IS NULL THEN NULL ELSE now() + make_interval(mins => :exp) END,"
+                    " :h, :b, ST_GeomFromText(:poly, 4326))"),
+                    {"p": ids[name], "seq": seq, "u": ugcs, "exp": exp, "h": [headline] if headline else [], "b": body, "poly": poly})
+    fc = TestClient(app).get("/api/statements/active").json()
+    got = {f["properties"]["key"]: f["properties"] for f in fc["features"]}
+    # s2 expired, s3 has no polygon, BZN's newest AWW cancels the older one.
+    assert sorted(got) == sorted([f"SPS.{ids['s1']}.1", "AWW.IWA"])
+    assert got[f"SPS.{ids['s1']}.1"]["headline"] == "A STRONG THUNDERSTORM WILL IMPACT EDDY COUNTY"
+    assert got["AWW.IWA"]["airport"] == "IWA" and got["AWW.IWA"]["kind"] == "AWW"
+    assert got["AWW.IWA"]["body"] == "Thunderstorms within 5 miles."
+
 def _mcd(t, number: int, hours: int) -> str:
     """An SPC mesoscale discussion as EMWIN carries it, issued at t and
     valid for `hours`."""

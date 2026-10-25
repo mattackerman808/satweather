@@ -6,7 +6,7 @@ import time
 from fastapi import FastAPI
 from sqlalchemy import text
 
-from satweather.api import discussions, events, imagery, offices, products, signal, stations, tropical, warnings, zones
+from satweather.api import discussions, events, imagery, offices, products, signal, statements, stations, tropical, warnings, zones
 from satweather.config import get_settings
 from satweather.db import get_engine
 
@@ -20,6 +20,7 @@ app.include_router(zones.router)
 app.include_router(discussions.router)
 app.include_router(tropical.router)
 app.include_router(offices.router)
+app.include_router(statements.router)
 app.include_router(signal.router)
 
 
