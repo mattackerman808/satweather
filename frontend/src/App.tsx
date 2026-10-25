@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import { Link, NavLink, Route, Routes, useLocation } from "react-router";
+import { Link, Navigate, NavLink, Route, Routes, useLocation } from "react-router";
+import { embedded, home } from "./embed";
 import StatusBadge from "./StatusBadge";
 import LandingView from "./views/LandingView";
 import LiveView from "./views/LiveView";
@@ -32,7 +33,7 @@ export default function App() {
   return (
     <div className="app">
       <header className="topbar">
-        <Link className="brand" to="/">satweather</Link>
+        <Link className="brand" to={home}>satweather</Link>
         <button className="menubtn" onClick={() => setMenu((m) => !m)} aria-expanded={menu}>
           {here?.label ?? "Menu"} <span aria-hidden>{menu ? "▴" : "▾"}</span>
         </button>
@@ -48,7 +49,7 @@ export default function App() {
       </header>
       <main>
         <Routes>
-          <Route path="/" element={<LandingView />} />
+          <Route path="/" element={embedded ? <Navigate to="/live" replace /> : <LandingView />} />
           <Route path="/live" element={<LiveView />} />
           {/* key: a fresh instance per group, not one reused across the two routes */}
           <Route path="/satellite" element={<Suspense fallback={null}><LoopView key="satellite" group="satellite" /></Suspense>} />
