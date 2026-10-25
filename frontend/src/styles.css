@@ -15,7 +15,11 @@
 html, body, #root { height: 100%; margin: 0; }
 body { background: var(--bg); color: var(--text); }
 
-.app { display: flex; flex-direction: column; height: 100%; }
+/* dvh: a phone's browser bars come and go; the layout follows them. */
+.app { display: flex; flex-direction: column; height: 100%; height: 100dvh; }
+
+/* Controls that only the narrower layouts use (see the media rules below). */
+.menubtn, .navscrim, .listbar, .backbar, .drawerclose, .layerbtn, .sheetbtn, .satpick, .tropbar { display: none; }
 
 .topbar {
   display: flex; align-items: center; gap: 24px;
@@ -128,6 +132,8 @@ button { font: inherit; color: inherit; }
   border: 1px solid var(--line); border-radius: 6px; padding: 4px 8px; font-size: 12.5px; color: var(--muted);
   white-space: nowrap; }
 .maptip b { color: var(--text); font-weight: 600; }
+.maptop { display: flex; gap: 6px; }
+.mapopts { display: contents; }
 .placesearch { position: relative; width: 300px; }
 .psrow { display: flex; gap: 6px; }
 .psrow .search { flex: 1; background: rgba(13, 19, 27, 0.94); }
@@ -240,9 +246,20 @@ button { font: inherit; color: inherit; }
 .lrow .when { color: var(--muted); font-size: 12px; white-space: nowrap; }
 .morelink { display: block; margin-top: 8px; color: var(--accent); font-size: 13px; }
 
+/* Narrower than a desktop: the Raw filters become a drawer over the list,
+   opened from a bar that also holds the search box. */
 @media (max-width: 900px) {
-  .textview { grid-template-columns: 1fr; grid-auto-rows: auto; overflow-y: auto; }
-  .filters, .plist { border-right: 0; max-height: 40vh; }
+  .textview { grid-template-columns: minmax(280px, 340px) 1fr; grid-template-rows: minmax(0, 1fr); }
+  .filters { display: none; position: absolute; top: 0; bottom: 0; left: 0; width: min(340px, 100%); z-index: 3;
+    background: var(--panel); box-shadow: 8px 0 24px rgba(0, 0, 0, .45); }
+  .filters.open { display: flex; }
+  .filters > form { display: none; }
+  .drawerclose { display: block; align-self: flex-end; padding: 4px 2px; font-size: 15px; }
+  .listbar { display: flex; gap: 6px; padding: 8px; position: sticky; top: 0; z-index: 2; background: var(--bg);
+    border-bottom: 1px solid var(--line); }
+  .listbar form { flex: 1; min-width: 0; }
+  .listbar .clear { white-space: nowrap; }
+  .freshpill { top: 60px; }
   .livecols { grid-template-columns: 1fr; }
 }
 
@@ -273,11 +290,7 @@ button { font: inherit; color: inherit; }
 .sattime { font-variant-numeric: tabular-nums; white-space: nowrap; }
 .satopt { display: flex; align-items: center; gap: 4px; cursor: pointer; }
 .fullres { font-size: 12px; color: var(--accent); border: 1px solid #2c5b86; border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
-@media (max-width: 760px) {
-  .satview { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
-  .satside { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--line);
-    max-height: 40vh; }
-}
+
 
 /* Tropical */
 .tropside { position: absolute; left: 12px; top: 12px; bottom: 12px; width: 340px; display: flex; flex-direction: column;
@@ -309,7 +322,7 @@ button { font: inherit; color: inherit; }
 .outlook a { color: var(--text); text-decoration: none; }
 .olarea { display: block; font-size: 12.5px; color: var(--text); text-decoration: none; padding: 2px 0; }
 .stormpanel .pick { margin-bottom: 4px; text-decoration: none; color: var(--text); }
-@media (max-width: 760px) { .tropside { width: auto; right: 12px; bottom: auto; max-height: 45vh; } }
+
 
 /* Signal */
 .signal { position: absolute; inset: 0; overflow-y: auto; padding: 16px clamp(16px, 3vw, 32px) 48px; }
@@ -336,7 +349,8 @@ button { font: inherit; color: inherit; }
 .sigchart { min-width: 0; margin: 0; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
 .sigchart figcaption { font-size: 13.5px; margin-bottom: 6px; }
 .sigchart .plot { position: relative; }
-.sigchart svg { display: block; touch-action: none; }
+/* Vertical swipes scroll the page; taps and sideways drags read the chart. */
+.sigchart svg { display: block; touch-action: pan-y; }
 .sigchart .grid { stroke: #222d3a; stroke-width: 1; }
 .sigchart .cross { stroke: #5c6876; stroke-width: 1; }
 .sigchart .tick { fill: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
@@ -358,3 +372,73 @@ button { font: inherit; color: inherit; }
 .sigtable td { padding: 3px 10px 3px 0; border-top: 1px solid var(--line); }
 @media (max-width: 1000px) { .tiles-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero-fig { grid-column: span 2; }
   .charts { grid-template-columns: minmax(0, 1fr); } }
+
+/* ── Phone (narrow.ts has the same width) ── */
+@media (max-width: 760px) {
+  /* iOS zooms into any field with text under 16 px. */
+  input, select { font-size: 16px; }
+
+  /* The tabs fold into a menu under the current page's name. */
+  .topbar { gap: 10px; padding: 0 12px; position: relative; }
+  .menubtn { display: inline-flex; align-items: center; gap: 6px; margin-right: auto; padding: 6px 10px;
+    background: #172230; border: 1px solid var(--line); border-radius: 6px; font-weight: 600; cursor: pointer; }
+  .topbar nav { display: none; }
+  .topbar nav.open { display: flex; flex-direction: column; gap: 2px; position: absolute; top: 48px; left: 0; right: 0;
+    z-index: 20; padding: 6px 8px 10px; background: var(--panel); border-bottom: 1px solid var(--line);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, .45); }
+  .topbar nav.open a { padding: 12px; font-size: 16px; }
+  .topbar nav a.active { box-shadow: inset 3px 0 0 var(--accent); }
+  .navscrim { display: block; position: fixed; inset: 48px 0 0; z-index: 19; background: rgba(0, 0, 0, .45); }
+
+  /* Raw: the list and the product take turns. The product is drawn over
+     the list, which keeps its scroll position underneath. */
+  .textview { grid-template-columns: 1fr; }
+  .filters { width: 100%; }
+  .plist { border-right: 0; }
+  .pdetail { position: absolute; inset: 0; z-index: 2; background: var(--bg); visibility: hidden; }
+  .textview.has-detail .pdetail { visibility: visible; }
+  .backbar { display: block; position: sticky; top: 0; z-index: 1; width: 100%; padding: 12px 14px; text-align: left;
+    font-size: 15px; background: var(--panel); border-bottom: 1px solid var(--line); }
+  .prow { padding: 10px 12px; }
+  .product { padding: 12px 14px 40px; }
+  .raw { font-size: 11.5px; padding: 10px; }
+
+  /* Live */
+  .lrow { padding: 7px 6px; }
+  .feed .lrow .office { display: none; }
+
+  /* Maps: search across the top, layers behind a button, controls below. */
+  .mapside { left: 8px; right: 8px; top: 8px; width: auto; max-height: calc(100% - 16px); z-index: 3; }
+  .placesearch { flex: 1; min-width: 0; width: auto; }
+  .layerbtn { display: block; flex: none; width: 40px; background: rgba(13, 19, 27, 0.94); border: 1px solid var(--line);
+    border-radius: 6px; font-size: 17px; cursor: pointer; }
+  .layerbtn.on { background: #1a2a3a; border-color: #2c5b86; }
+  .mapopts { display: none; }
+  .mapopts.open { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+  .mapwrap .maplibregl-ctrl-top-right { top: 48px; }
+  .tropside { left: 8px; right: 8px; top: 8px; bottom: auto; width: auto; max-height: 60%; z-index: 3; }
+  .tropside:not(.open) > section { display: none; }
+  .tropbar { display: flex; justify-content: space-between; gap: 8px; width: 100%; padding: 10px 12px; text-align: left;
+    position: sticky; top: 0; z-index: 1; background: rgba(13, 19, 27, 0.96); border: 1px solid var(--line);
+    border-radius: 8px; cursor: pointer; font-size: 14px; }
+
+  /* The map panel is a bottom sheet over 55% of the map (fitPadding in
+     narrow.ts keeps targets above it), expandable to the whole map. */
+  .inspector { top: auto; width: 100%; height: 55%; border-left: 0; border-top: 1px solid var(--line);
+    border-radius: 12px 12px 0 0; box-shadow: 0 -8px 24px rgba(0, 0, 0, .45); }
+  .inspector.full { height: 100%; border-radius: 0; z-index: 4; }
+  .inspector-bar { min-height: 44px; padding: 6px 10px; }
+  .sheetbtn { display: block; padding: 2px 10px; background: #172230; border: 1px solid var(--line); border-radius: 6px;
+    color: var(--text); font-size: 15px; cursor: pointer; }
+  .inspector-bar .close { font-size: 28px; padding: 0 4px; }
+
+  /* Loops: pickers above the image, the scrubber a full-width row. */
+  .satview { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); }
+  .satside { display: none; }
+  .satpick { display: flex; gap: 6px; padding: 8px; background: var(--panel); border-bottom: 1px solid var(--line); }
+  .satpick select { flex: 1; min-width: 0; padding: 7px 6px; background: #0d141b; color: var(--text);
+    border: 1px solid var(--line); border-radius: 6px; }
+  .satbar { gap: 8px; padding: 8px; }
+  .scrub { order: -1; flex-basis: 100%; }
+  .ctl { min-width: 40px; height: 36px; }
+}

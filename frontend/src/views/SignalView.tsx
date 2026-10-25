@@ -57,6 +57,10 @@ function niceTicks(lo: number, hi: number, n = 4): number[] {
   return out;
 }
 
+// A finger lifting fires pointerleave too; a tapped value stays up until
+// the next tap rather than vanishing with the finger.
+const leave = (set: (v: null) => void) => (e: React.PointerEvent) => e.pointerType === "mouse" && set(null);
+
 type Pt = { t: number; y: number | null; lo?: number | null; hi?: number | null };
 
 // A single-series time line with an optional min-max band and a crosshair.
@@ -65,6 +69,7 @@ function LineChart({ points, hours, t0, t1, unit, digits, title, note }: {
 }) {
   const [ref, w] = useWidth<HTMLDivElement>();
   const [hover, setHover] = useState<Pt | null>(null);
+  const unhover = leave(setHover);
   const h = 180, m = { l: 48, r: 12, t: 10, b: 26 };
   const vals = points.flatMap((p) => [p.y, p.lo, p.hi]).filter((v): v is number => v != null);
   const lo = vals.length ? Math.min(...vals) : 0, hi = vals.length ? Math.max(...vals) : 1;
@@ -93,7 +98,7 @@ function LineChart({ points, hours, t0, t1, unit, digits, title, note }: {
     <figure className="sigchart">
       <figcaption><b>{title}</b> <span className="dim">{note}</span></figcaption>
       <div ref={ref} className="plot">
-        <svg width={w} height={h} onPointerMove={onMove} onPointerLeave={() => setHover(null)} role="img"
+        <svg width={w} height={h} onPointerMove={onMove} onPointerDown={onMove} onPointerLeave={unhover} role="img"
           aria-label={`${title}, ${vals.length ? `from ${lo.toFixed(digits)} to ${hi.toFixed(digits)} ${unit}` : "no data"}`}>
           {yt.map((v) => (
             <g key={v}>
@@ -142,6 +147,7 @@ function SyncStrip({ buckets, hours, t0, t1, bucketS }: {
 }) {
   const [ref, w] = useWidth<HTMLDivElement>();
   const [hover, setHover] = useState<SignalBucket | null>(null);
+  const unhover = leave(setHover);
   const m = { l: 48, r: 12 }, h = 22;
   const x = (t: number) => m.l + ((t - t0) / (t1 - t0)) * (w - m.l - m.r);
   const bw = Math.max(1, x(t0 + bucketS * 1000) - x(t0));
@@ -149,7 +155,7 @@ function SyncStrip({ buckets, hours, t0, t1, bucketS }: {
     <figure className="sigchart">
       <figcaption><b>Frame sync</b> <span className="dim">share of samples with the deframer locked</span></figcaption>
       <div ref={ref} className="plot">
-        <svg width={w} height={h + 22} onPointerLeave={() => setHover(null)} role="img"
+        <svg width={w} height={h + 22} onPointerLeave={unhover} role="img"
           aria-label="Frame sync over time; see the legend and the data table">
           {buckets.map((b) => {
             const t = Date.parse(b.t);
@@ -182,6 +188,7 @@ function SyncStrip({ buckets, hours, t0, t1, bucketS }: {
 function Throughput({ rows, hours }: { rows: SignalData["throughput"]; hours: number }) {
   const [ref, w] = useWidth<HTMLDivElement>();
   const [hover, setHover] = useState<SignalData["throughput"][number] | null>(null);
+  const unhover = leave(setHover);
   const h = 180, m = { l: 48, r: 12, t: 10, b: 26 };
   const shown = rows.slice(-Math.min(rows.length, hours > 48 ? 168 : hours));
   const max = Math.max(1, ...shown.map((r) => r.text + r.graphics + r.images));
@@ -198,7 +205,7 @@ function Throughput({ rows, hours }: { rows: SignalData["throughput"]; hours: nu
         {SERIES.map((s) => <span key={s.key}><i style={{ background: s.color }} />{s.label}</span>)}
       </div>
       <div ref={ref} className="plot">
-        <svg width={w} height={h} onPointerLeave={() => setHover(null)} role="img"
+        <svg width={w} height={h} onPointerLeave={unhover} role="img"
           aria-label="Files received per hour by kind; see the data table">
           {yt.map((v) => (
             <g key={v}>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router";
 import { ago, api, type Filters, type Page, type ProductSummary, type ProductType } from "../api";
 import { useLiveEvents } from "../events";
@@ -50,6 +50,9 @@ export default function TextView() {
   const [loading, setLoading] = useState(false);
   const [fresh, setFresh] = useState(0);
   const [q, setQ] = useState(f.q ?? "");
+  const [showFilters, setShowFilters] = useState(false);
+  const detail = useRef<HTMLElement>(null);
+  useEffect(() => { detail.current?.scrollTo(0, 0); }, [id]);
   const key = JSON.stringify(f);
 
   useEffect(() => {
@@ -96,18 +99,28 @@ export default function TextView() {
   const toggle = (list: string[] | undefined, v: string) =>
     list?.includes(v) ? list.filter((x) => x !== v) : [...(list ?? []), v];
 
+  const nFilters = (f.category?.length ?? 0) + (f.nnn?.length ?? 0) + (f.office ? 1 : 0) + (f.ugc ? 1 : 0);
+  const search = (
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        setF({ ...f, q: q || undefined });
+      }}
+    >
+      <input className="search" type="search" placeholder="Search text… (e.g. hail, KTBW, “red flag”)" value={q}
+        onChange={(e) => setQ(e.target.value)} />
+    </form>
+  );
+
+  // Narrower than a desktop the filters are a drawer over the list (with
+  // the search box also above the list); on a phone the list and the
+  // product take turns, the product drawn over the list so the list keeps
+  // its scroll position.
   return (
-    <div className="textview">
-      <aside className="filters">
-        <form
-          onSubmit={(e) => {
-            e.preventDefault();
-            setF({ ...f, q: q || undefined });
-          }}
-        >
-          <input className="search" placeholder="Search text… (e.g. hail, KTBW, “red flag”)" value={q}
-            onChange={(e) => setQ(e.target.value)} />
-        </form>
+    <div className={`textview${id ? " has-detail" : ""}`}>
+      <aside className={`filters${showFilters ? " open" : ""}`}>
+        <button className="linkbtn drawerclose" onClick={() => setShowFilters(false)}>Done</button>
+        {search}
         {(f.q || f.category?.length || f.nnn?.length || f.office || f.ugc) && (
           <button className="clear" onClick={() => { setQ(""); setF({}); }}>Clear filters</button>
         )}
@@ -133,6 +146,12 @@ export default function TextView() {
       </aside>
 
       <section className="plist">
+        <div className="listbar">
+          {search}
+          <button className="clear" onClick={() => setShowFilters(true)}>
+            Filters{nFilters > 0 && ` (${nFilters})`}
+          </button>
+        </div>
         {fresh > 0 && (
           <button className="freshpill" onClick={() => load()}>{fresh} new — refresh</button>
         )}
@@ -159,7 +178,10 @@ export default function TextView() {
         )}
       </section>
 
-      <section className="pdetail">
+      <section className="pdetail" ref={detail}>
+        <button className="linkbtn backbar" onClick={() => nav({ pathname: "/text", search: location.search })}>
+          ← Products
+        </button>
         {id ? <ProductDetail id={Number(id)} /> : <p className="empty">Pick a product.</p>}
       </section>
     </div>
