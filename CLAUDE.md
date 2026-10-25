@@ -67,6 +67,8 @@ PIREPs are stored at their filing station (`approx`), then `pireps.place_pending
 
 Tropical (`tropical.py`, `api/tropical.py`): advisory-package products (TCM/TCP/TCD/PWS/TCA…) get `text_product.storm_id` from the ATCF id in their header; each TCM is parsed into `tc_advisory` (center, motion, pressure, winds, 34/50/64 kt quadrant radii, previous position, forecast/outlook points) exactly as written — no cone, which isn't in the text. TWOs are parsed per basin at request time. Meso sector footprints come from inverting each frame's stored geos projection (`imagery.footprint`, pyproj), which is how a storm knows which meso sector is on it. `--redecode` re-parses stored TCMs.
 
+Offices (`api/offices.py`): `/api/offices` is each NWS forecast office's area (union of its public zones, simplified, cached 6 h) named from its newest AFD, and `/api/offices/afd` each office's newest AFD id. Tachbase's `fetch_satweather` cron reads them (with `/api/warnings/active`, `/api/products/{id}` and `/api/health`) to show an airport's AFD and pilot-relevant warnings; keep their shapes stable or change both sides. Data only flows out: nothing from Tachbase feeds satweather's weather.
+
 Live updates: `store.py` notifies → `api/events.py` LISTENs on a dedicated psycopg connection per client and streams SSE (`/api/events`) → `frontend/src/events.ts` keeps one shared `EventSource` for all subscribers.
 
 Key invariants:
