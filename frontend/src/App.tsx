@@ -1,5 +1,5 @@
-import { lazy, Suspense } from "react";
-import { Link, NavLink, Route, Routes } from "react-router";
+import { lazy, Suspense, useEffect, useState } from "react";
+import { Link, NavLink, Route, Routes, useLocation } from "react-router";
 import StatusBadge from "./StatusBadge";
 import LandingView from "./views/LandingView";
 import LiveView from "./views/LiveView";
@@ -23,13 +23,23 @@ const NAV = [
 ];
 
 export default function App() {
+  // On a phone the tabs fold into a menu under the current page's name.
+  const [menu, setMenu] = useState(false);
+  const { pathname } = useLocation();
+  useEffect(() => setMenu(false), [pathname]);
+  const here = NAV.find((n) => pathname.startsWith(n.to));
+
   return (
     <div className="app">
       <header className="topbar">
         <Link className="brand" to="/">satweather</Link>
-        <nav>
+        <button className="menubtn" onClick={() => setMenu((m) => !m)} aria-expanded={menu}>
+          {here?.label ?? "Menu"} <span aria-hidden>{menu ? "▴" : "▾"}</span>
+        </button>
+        {menu && <div className="navscrim" onClick={() => setMenu(false)} />}
+        <nav className={menu ? "open" : ""}>
           {NAV.map((n) => (
-            <NavLink key={n.to} to={n.to}>
+            <NavLink key={n.to} to={n.to} onClick={() => setMenu(false)}>
               {n.label}
             </NavLink>
           ))}

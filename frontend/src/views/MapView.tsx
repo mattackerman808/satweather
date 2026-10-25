@@ -8,6 +8,7 @@ import { api, type PirepDecoded } from "../api";
 import { useLiveEvents } from "../events";
 import Inspector, { type Inspect } from "../map/Inspector";
 import PlaceSearch from "../map/PlaceSearch";
+import { canHover, clearOfSheet, fitPadding } from "../narrow";
 import { CAT_COLOR } from "../wx/Wx";
 
 // GOES-18 sits at 137.0°W: open over the western US and the eastern
@@ -139,11 +140,14 @@ export default function MapView() {
   const [hoverZone, setHoverZone] = useState<string | null>(null);
   const tipRef = useRef<HTMLDivElement>(null);
   const [inspect, setInspect] = useState<Inspect | null>(null);
+  // Phone only: the layer switches and legend fold behind a button.
+  const [showLayers, setShowLayers] = useState(false);
   const [sp, setSp] = useSearchParams();
 
   const openRef = useRef<(i: Inspect | null) => void>(() => {});
   const open = useCallback((i: Inspect | null) => {
     setInspect(i);
+    if (i) setShowLayers(false);
     // Keep the URL shareable: ?product=… / ?station=… / ?at=lon,lat reopen the panel.
     const p = new URLSearchParams();
     if (i?.kind === "product") p.set("product", String(i.id));
@@ -227,6 +231,7 @@ export default function MapView() {
         let hoverTimer: number | undefined;
         let hoverSeq = 0;
         let hoverGeom: GeoJSON.Geometry | null = null;
+        const hover = canHover();
         const hideHover = () => {
           clearTimeout(hoverTimer);
           hoverSeq++;
@@ -235,6 +240,7 @@ export default function MapView() {
           setHoverZone(null);
         };
         map.on("mousemove", (e) => {
+          if (!hover) return;
           if (tipRef.current) {
             tipRef.current.style.left = `${e.point.x + 14}px`;
             tipRef.current.style.top = `${e.point.y + 14}px`;
@@ -263,7 +269,7 @@ export default function MapView() {
         // One click handler, most specific layer first: a station or a
         // PIREP sits on top of the warning polygon it is inside. Anywhere
         // else opens the zone forecast for that spot.
-        map.on("click", (e) => {
+        const pick = (e: maplibregl.MapMouseEvent) => {
           const hit = (ids: string[]) =>
             map.queryRenderedFeatures(e.point, { layers: ids.filter((l) => map.getLayer(l)) });
           const st = hit(["stations-dot"]);
@@ -288,6 +294,10 @@ export default function MapView() {
             color: f.properties.color as string, office: f.properties.office as string,
           }));
           openRef.current(items.length === 1 ? { kind: "product", id: items[0].id, at } : { kind: "products", items, at });
+        };
+        map.on("click", (e) => {
+          pick(e);
+          clearOfSheet(map, e.point);
         });
         for (const l of ["stations-dot", "pireps-dot", "disc-fill", "warnings-fill"]) {
           map.on("mouseenter", l, () => (map.getCanvas().style.cursor = "pointer"));
@@ -343,7 +353,7 @@ export default function MapView() {
       if (fly && polys.length) {
         const b = new maplibregl.LngLatBounds();
         polys.forEach((g) => g.coordinates[0].forEach((c) => b.extend(c as [number, number])));
-        map.fitBounds(b, { padding: { top: 80, bottom: 80, left: 80, right: 480 }, maxZoom: 9 });
+        map.fitBounds(b, { padding: fitPadding(map), maxZoom: 9 });
       }
     });
   }, []);
@@ -373,7 +383,7 @@ export default function MapView() {
         else if (Array.isArray(c)) c.forEach(walk);
       };
       walk((g as GeoJSON.Polygon | GeoJSON.MultiPolygon).coordinates);
-      map.fitBounds(b, { padding: { top: 80, bottom: 80, left: 80, right: 480 }, maxZoom: 9 });
+      map.fitBounds(b, { padding: fitPadding(map), maxZoom: 9 });
     }
     const pt: GeoJSON.Feature = { type: "Feature", geometry: { type: "Point", coordinates: [inspect.lon, inspect.lat] },
       properties: {} };
@@ -407,38 +417,44 @@ export default function MapView() {
         <b>{hoverZone}</b> · click for forecast
       </div>
       <div className="mapside">
-        <PlaceSearch
-          near={() => { const c = mapRef.current?.getCenter(); return c ? [c.lng, c.lat] : undefined; }}
-          onPick={(lon, lat) => { flyToZone.current = true; open({ kind: "zone", lon, lat }); }}
-        />
-        <div className="layers">
-          {(["warnings", "discussions", "stations", "pireps"] as const).map((k) => (
-            <label key={k}>
-              <input type="checkbox" checked={layers[k]} onChange={(e) => setLayers({ ...layers, [k]: e.target.checked })} />
-              {k === "warnings" ? `Warnings (${legend.reduce((a, l) => a + l.n, 0)})`
-                : k === "discussions" ? `Mesoscale discussions (${nDisc})`
-                : k === "stations" ? `METAR stations (${counts.stations} in view)` : `PIREPs (${counts.pireps})`}
-            </label>
-          ))}
-          {layers.stations && (
-            <div className="catkey">
-              {(["VFR", "MVFR", "IFR", "LIFR"] as const).map((c) => (
-                <span key={c}><span className="sw" style={{ background: CAT_COLOR[c] }} />{c}</span>
+        <div className="maptop">
+          <PlaceSearch
+            near={() => { const c = mapRef.current?.getCenter(); return c ? [c.lng, c.lat] : undefined; }}
+            onPick={(lon, lat) => { flyToZone.current = true; open({ kind: "zone", lon, lat }); }}
+          />
+          <button className={`layerbtn${showLayers ? " on" : ""}`} onClick={() => setShowLayers((v) => !v)}
+            aria-expanded={showLayers} title="Layers and legend">☰</button>
+        </div>
+        <div className={`mapopts${showLayers ? " open" : ""}`}>
+          <div className="layers">
+            {(["warnings", "discussions", "stations", "pireps"] as const).map((k) => (
+              <label key={k}>
+                <input type="checkbox" checked={layers[k]} onChange={(e) => setLayers({ ...layers, [k]: e.target.checked })} />
+                {k === "warnings" ? `Warnings (${legend.reduce((a, l) => a + l.n, 0)})`
+                  : k === "discussions" ? `Mesoscale discussions (${nDisc})`
+                  : k === "stations" ? `METAR stations (${counts.stations} in view)` : `PIREPs (${counts.pireps})`}
+              </label>
+            ))}
+            {layers.stations && (
+              <div className="catkey">
+                {(["VFR", "MVFR", "IFR", "LIFR"] as const).map((c) => (
+                  <span key={c}><span className="sw" style={{ background: CAT_COLOR[c] }} />{c}</span>
+                ))}
+              </div>
+            )}
+          </div>
+          {layers.warnings && legend.length > 0 && (
+            <div className="legend">
+              {legend.map((l) => (
+                <div key={l.name} className="legend-row">
+                  <span className="sw" style={{ background: l.color }} />
+                  {l.name}
+                  <span className="n">{l.n}</span>
+                </div>
               ))}
             </div>
           )}
         </div>
-        {layers.warnings && legend.length > 0 && (
-          <div className="legend">
-            {legend.map((l) => (
-              <div key={l.name} className="legend-row">
-                <span className="sw" style={{ background: l.color }} />
-                {l.name}
-                <span className="n">{l.n}</span>
-              </div>
-            ))}
-          </div>
-        )}
       </div>
       {inspect && (
         <Inspector item={inspect} onClose={() => open(null)} onOpen={open} onZone={showZone}

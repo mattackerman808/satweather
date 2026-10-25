@@ -6,6 +6,8 @@ import { Link, useNavigate, useSearchParams } from "react-router";
 import { ago, api, fmtTime, type Frame, type Outlook, type Sector, type Storm, type TcPoint } from "../api";
 import { useLiveEvents } from "../events";
 import { basemapStyle } from "../map/basemap";
+import Panel from "../map/Panel";
+import { clearOfSheet, fitPadding } from "../narrow";
 
 // Tropical cyclones and the mesoscale picture, all from the dish: NHC/CPHC
 // forecast/advisories (track, forecast points, wind radii, exactly as
@@ -118,6 +120,8 @@ export default function TropicalView() {
   const [discs, setDiscs] = useState<GeoJSON.Feature[]>([]);
   const [sp, setSp] = useSearchParams();
   const selected = storms?.find((s) => s.storm_id === sp.get("storm")) ?? null;
+  // Phone only: the storm list and outlooks fold into a bar over the map.
+  const [listOpen, setListOpen] = useState(false);
   const selectRef = useRef<(id: string | null, fly?: boolean) => void>(() => {});
   const navigate = useNavigate();
   const navigateRef = useRef(navigate);
@@ -141,7 +145,10 @@ export default function TropicalView() {
       map.on("load", () => { addLayers(map); setReady(true); });
       map.on("click", (e) => {
         const hit = map.queryRenderedFeatures(e.point, { layers: ["now", "pts", "radii-fill"] })[0];
-        if (hit) return selectRef.current(hit.properties.storm as string, false);
+        if (hit) {
+          selectRef.current(hit.properties.storm as string, false);
+          return clearOfSheet(map, e.point);
+        }
         const d = map.queryRenderedFeatures(e.point, { layers: ["disc-fill"] })[0];
         if (d) navigateRef.current(`/map?product=${d.properties.product_id}`);
       });
@@ -173,13 +180,14 @@ export default function TropicalView() {
   const select = useCallback((id: string | null, fly = true) => {
     const next = new URLSearchParams(sp);
     if (id) next.set("storm", id); else next.delete("storm");
+    if (id) setListOpen(false);
     setSp(next, { replace: true });
     const s = storms?.find((x) => x.storm_id === id);
     const map = mapRef.current;
     if (s && map && fly) {
       const b = new maplibregl.LngLatBounds([s.lon, s.lat], [s.lon, s.lat]);
       for (const p of [...s.track, ...s.forecast]) if (p.lat != null) b.extend([p.lon!, p.lat]);
-      map.fitBounds(b, { padding: { top: 80, bottom: 80, left: 380, right: 480 }, maxZoom: 6 });
+      map.fitBounds(b, { padding: fitPadding(map, 380), maxZoom: 6 });
     }
   }, [sp, setSp, storms]);
   selectRef.current = select;
@@ -194,7 +202,11 @@ export default function TropicalView() {
     <div className="mapwrap">
       <div ref={el} className="map" />
       {err && <div className="maperr">{err}</div>}
-      <aside className="tropside">
+      <aside className={`tropside${listOpen ? " open" : ""}`}>
+        <button className="tropbar" onClick={() => setListOpen((o) => !o)} aria-expanded={listOpen}>
+          <span>Tropical cyclones <b>{storms?.length ?? "…"}</b> · outlooks · mesoscale</span>
+          <span aria-hidden>{listOpen ? "▴" : "▾"}</span>
+        </button>
         <section className="layers">
           <h3>Tropical cyclones</h3>
           {storms === null && <p className="dim">Loading…</p>}
@@ -260,52 +272,46 @@ function StormPanel({ s, onClose }: { s: Storm; onClose: () => void }) {
   const radii = (r: Record<string, number[]> | undefined) =>
     (["64", "50", "34"] as const).filter((k) => r?.[k]).map((k) => `${k} kt: ${r![k].join("/")}`).join(" · ");
   return (
-    <aside className="inspector">
-      <div className="inspector-bar">
-        <span>{s.storm_id} · {s.basin}</span>
-        <button className="close" onClick={onClose} title="Close">×</button>
+    <Panel bar={<span>{s.storm_id} · {s.basin}</span>} bodyClass="stormpanel" onClose={onClose}>
+      <h2><span className="catbadge2" style={{ background: CAT_COLOR[s.category] }}>{s.category}</span>
+        {s.kind} {s.name}</h2>
+      <div className="times">Advisory {s.number} · {fmtTime(s.issued)}{s.final ? " · last advisory" : ""}</div>
+      <div className="stats">
+        <div><span className="dim">Position</span>{ll(s.lat, s.lon)}</div>
+        <div><span className="dim">Max wind</span>{s.wind_kt} kt ({mph(s.wind_kt)}), gusts {s.gust_kt} kt</div>
+        <div><span className="dim">Pressure</span>{s.pressure_mb} mb</div>
+        <div><span className="dim">Moving</span>
+          {s.move_dir != null ? `${compass(s.move_dir)} (${s.move_dir}°) at ${s.move_kt} kt` : "stationary"}</div>
+        <div><span className="dim">Category</span>{catLabel(s.category)}</div>
+        <div><span className="dim">Wind radii (NE/SE/SW/NW nm)</span>{radii(s.radii) || "—"}</div>
       </div>
-      <div className="inspector-body stormpanel">
-        <h2><span className="catbadge2" style={{ background: CAT_COLOR[s.category] }}>{s.category}</span>
-          {s.kind} {s.name}</h2>
-        <div className="times">Advisory {s.number} · {fmtTime(s.issued)}{s.final ? " · last advisory" : ""}</div>
-        <div className="stats">
-          <div><span className="dim">Position</span>{ll(s.lat, s.lon)}</div>
-          <div><span className="dim">Max wind</span>{s.wind_kt} kt ({mph(s.wind_kt)}), gusts {s.gust_kt} kt</div>
-          <div><span className="dim">Pressure</span>{s.pressure_mb} mb</div>
-          <div><span className="dim">Moving</span>
-            {s.move_dir != null ? `${compass(s.move_dir)} (${s.move_dir}°) at ${s.move_kt} kt` : "stationary"}</div>
-          <div><span className="dim">Category</span>{catLabel(s.category)}</div>
-          <div><span className="dim">Wind radii (NE/SE/SW/NW nm)</span>{radii(s.radii) || "—"}</div>
-        </div>
-        {meso && (
-          <Link className="mesothumb" to={`/satellite?${new URLSearchParams({ src: "GOES-18", sector: s.meso[0], product: IR })}`}>
-            <img src={meso.thumb} alt={s.meso[0]} />
-            <span>{s.meso[0]} · {ago(meso.scan_time)} · loop →</span>
-          </Link>
-        )}
-        <h3>Forecast</h3>
-        <table className="fcsttable">
-          <thead><tr><th>Valid</th><th>Position</th><th>Wind</th><th /></tr></thead>
-          <tbody>
-            {s.forecast.map((p: TcPoint) => (
-              <tr key={p.valid} className={p.outlook ? "outlook" : ""}>
-                <td>{zday(p.valid)}</td>
-                <td>{ll(p.lat, p.lon)}</td>
-                <td>{p.wind_kt != null ? `${p.wind_kt} kt` : "—"}</td>
-                <td>{p.status ? <span className="dim">{p.status.toLowerCase()}</span>
-                  : <span className="catbadge2 sm" style={{ background: CAT_COLOR[p.category ?? "?"] }}>{p.category}</span>}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        <p className="dim small">Shaded rows are NHC's extended outlook (days 4–5), where track and intensity
-          errors are larger. Points exactly as issued; NHC's cone is not in the text products, so none is drawn.</p>
-        <h3>Products</h3>
-        {s.products.map((p) => (
-          <Link key={p.id} className="pick" to={`/text/${p.id}`}>{p.title} <span className="dim">{p.awips} · {ago(p.received)}</span></Link>
-        ))}
-      </div>
-    </aside>
+      {meso && (
+        <Link className="mesothumb" to={`/satellite?${new URLSearchParams({ src: "GOES-18", sector: s.meso[0], product: IR })}`}>
+          <img src={meso.thumb} alt={s.meso[0]} />
+          <span>{s.meso[0]} · {ago(meso.scan_time)} · loop →</span>
+        </Link>
+      )}
+      <h3>Forecast</h3>
+      <table className="fcsttable">
+        <thead><tr><th>Valid</th><th>Position</th><th>Wind</th><th /></tr></thead>
+        <tbody>
+          {s.forecast.map((p: TcPoint) => (
+            <tr key={p.valid} className={p.outlook ? "outlook" : ""}>
+              <td>{zday(p.valid)}</td>
+              <td>{ll(p.lat, p.lon)}</td>
+              <td>{p.wind_kt != null ? `${p.wind_kt} kt` : "—"}</td>
+              <td>{p.status ? <span className="dim">{p.status.toLowerCase()}</span>
+                : <span className="catbadge2 sm" style={{ background: CAT_COLOR[p.category ?? "?"] }}>{p.category}</span>}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p className="dim small">Shaded rows are NHC's extended outlook (days 4–5), where track and intensity
+        errors are larger. Points exactly as issued; NHC's cone is not in the text products, so none is drawn.</p>
+      <h3>Products</h3>
+      {s.products.map((p) => (
+        <Link key={p.id} className="pick" to={`/text/${p.id}`}>{p.title} <span className="dim">{p.awips} · {ago(p.received)}</span></Link>
+      ))}
+    </Panel>
   );
 }

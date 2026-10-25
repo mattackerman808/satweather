@@ -278,8 +278,32 @@ export default function LoopView({ group }: { group: Group }) {
   const cur = frames[idx];
   const loaded = frames.filter((f) => loadedIds.current.has(f.id)).length;
 
+  const srcLabel = (s: ImageSource) => `${group === "satellite" ? `${s.source} ` : ""}${SECTOR_SHORT[s.sector] ?? s.sector}`;
+
   return (
     <div className="satview">
+      {/* On a phone the side list is two pickers above the loop. */}
+      <div className="satpick">
+        {cat && !cat.sources.length && <span className="dim">No images yet.</span>}
+        {sel && <select value={`${sel.source}|${sel.sector}`} aria-label="Source"
+          onChange={(e) => {
+            const [src, sector] = e.target.value.split("|");
+            choose({ src, sector, product: null, hours: null });
+          }}>
+          {cat?.sources.map((s) => (
+            <option key={`${s.source}|${s.sector}`} value={`${s.source}|${s.sector}`}>{srcLabel(s)} · {ago(s.last)}</option>
+          ))}
+        </select>}
+        {source && (
+          <select value={sel?.product ?? ""} aria-label="Product" onChange={(e) => choose({ product: e.target.value })}>
+            {(["rgb", "band", "graphic"] as const).map((k) => {
+              const opts = source.products.filter((p) => p.kind === k)
+                .map((p) => <option key={p.product} value={p.product}>{p.label}</option>);
+              return !opts.length ? null : KIND_HEADING[k] ? <optgroup key={k} label={KIND_HEADING[k]}>{opts}</optgroup> : opts;
+            })}
+          </select>
+        )}
+      </div>
       <aside className="satside">
         <div className="satgroup">
           {cat?.sources.map((s) => (
