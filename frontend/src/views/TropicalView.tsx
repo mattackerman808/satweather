@@ -5,7 +5,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useSearchParams } from "react-router";
 import { ago, api, fmtTime, type Frame, type Outlook, type Sector, type Storm, type TcPoint } from "../api";
 import { useLiveEvents } from "../events";
-import { basemapStyle } from "../map/basemap";
+import { basemapStyle, FLAT } from "../map/basemap";
 import Panel from "../map/Panel";
 import { clearOfSheet, fitPadding } from "../narrow";
 
@@ -138,7 +138,7 @@ export default function TropicalView() {
     let cancelled = false;
     basemapStyle().then((style) => {
       if (cancelled || !el.current) return;
-      const map = new maplibregl.Map({ container: el.current, style, center: [-120, 18], zoom: 2.8,
+      const map = new maplibregl.Map({ container: el.current, style, center: [-120, 18], zoom: 2.8, ...FLAT,
         attributionControl: { compact: true } });
       mapRef.current = map;
       map.addControl(new maplibregl.NavigationControl(), "top-right");

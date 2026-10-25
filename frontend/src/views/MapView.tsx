@@ -3,7 +3,7 @@ import { useSearchParams } from "react-router";
 import * as maplibregl from "maplibre-gl";
 import type { GeoJSONSource, MapGeoJSONFeature } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { basemapStyle } from "../map/basemap";
+import { basemapStyle, FLAT } from "../map/basemap";
 import { api, type PirepDecoded } from "../api";
 import { useLiveEvents } from "../events";
 import Inspector, { type Inspect } from "../map/Inspector";
@@ -220,7 +220,8 @@ export default function MapView() {
     basemapStyle()
       .then((style) => {
         if (cancelled || !el.current) return;
-        const map = new maplibregl.Map({ container: el.current, style, ...START, attributionControl: { compact: true } });
+        const map = new maplibregl.Map({ container: el.current, style, ...START, ...FLAT,
+          attributionControl: { compact: true } });
         mapRef.current = map;
         map.addControl(new maplibregl.NavigationControl(), "top-right");
         map.addControl(new maplibregl.ScaleControl({ unit: "imperial" }), "bottom-left");
