@@ -200,3 +200,6 @@ export async function basemapStyle(): Promise<StyleSpecification> {
     ],
   };
 }
+
+// Both maps stay flat: no tilting into 3D, from a gesture or the compass.
+export const FLAT = { maxPitch: 0, pitchWithRotate: false, touchPitch: false } as const;
