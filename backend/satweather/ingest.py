@@ -1,7 +1,6 @@
-"""`satweather-ingest`: watch the satImages share and store what arrives.
+"""`satweather-ingest`: watch rtl's output and store what arrives.
 
-NFS gives a client no inotify for files another client writes, so this
-polls: every few seconds it lists EMWIN/ and takes every file it has not
+satdump writes it over NFS from rtl. This polls: every few seconds it lists EMWIN/ and takes every file it has not
 seen that has *settled*: non-empty and not modified for SETTLE_S. satdump
 creates files before it fills them, so a fresh 0-byte file is normal and
 must not be ingested yet.
