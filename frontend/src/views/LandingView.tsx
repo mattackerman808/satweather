@@ -24,21 +24,17 @@ const STAGES: { name: string; body: string; detail: string }[] = [
   },
   {
     name: "A Raspberry Pi with a radio",
-    body: "A Raspberry Pi 4 with a USB software-defined radio runs SatDump, which locks onto the signal, "
-      + "demodulates it and decodes it into image files and text bulletins as they come in.",
+    body: "A Raspberry Pi 5 with a USB software-defined radio runs SatDump, which locks onto the signal, "
+      + "demodulates it and decodes it into image files and text bulletins as they come in, writing each one "
+      + "over the house network straight onto the server's disk.",
     detail: "SatDump, decoding live",
-  },
-  {
-    name: "The NAS",
-    body: "SatDump writes straight to the network storage in the house. Originals are kept for two weeks.",
-    detail: "About 13 GB a day",
   },
   {
     name: "satweather",
     body: "A small server picks up each file as it lands. It reads around 1,200 weather service bulletins an "
       + "hour (warnings, forecasts, airport observations, pilot reports, hurricane advisories) and makes "
-      + "web-sized copies of every image.",
-    detail: "Parsed, decoded and mapped",
+      + "web-sized copies of every image. Originals are kept for two weeks, web copies for a month.",
+    detail: "About 13 GB a day, parsed, decoded and mapped",
   },
   {
     name: "This site",
