@@ -1,12 +1,12 @@
 """FastAPI application. Apache proxies /api/ here (uvicorn on 127.0.0.1:8400)."""
 
-import os
 import time
 
 from fastapi import FastAPI
 from sqlalchemy import text
 
-from satweather.api import discussions, events, imagery, offices, products, signal, statements, stations, tropical, warnings, zones
+from satweather.api import discussions, events, imagery, metrics, offices, products, signal, statements, stations, tropical, warnings, zones
+from satweather.api.metrics import newest_mtime
 from satweather.config import get_settings
 from satweather.db import get_engine
 
@@ -22,29 +22,7 @@ app.include_router(tropical.router)
 app.include_router(offices.router)
 app.include_router(statements.router)
 app.include_router(signal.router)
-
-
-def _newest_mtime(root, max_entries: int = 5000) -> float | None:
-    """Newest mtime among the top-level product dirs and EMWIN files.
-
-    Cheap on purpose: health is polled. EMWIN is the busiest directory
-    (~1,200 files an hour), so its newest entry says whether the dish
-    and decoder on rtl are still delivering.
-    """
-    newest = None
-    for sub in ("EMWIN", "IMAGES"):
-        path = root / sub
-        try:
-            with os.scandir(path) as it:
-                for i, entry in enumerate(it):
-                    if i >= max_entries:
-                        break
-                    m = entry.stat(follow_symlinks=False).st_mtime
-                    if newest is None or m > newest:
-                        newest = m
-        except OSError:
-            continue
-    return newest
+app.include_router(metrics.router)
 
 
 @app.get("/api/health")
@@ -75,7 +53,7 @@ def health() -> dict:
         out["db"] = {"ok": False, "error": type(exc).__name__}
         out["status"] = "degraded"
 
-    newest = _newest_mtime(settings.data_root)
+    newest = newest_mtime(settings.data_root)
     if newest is None:
         out["feed"] = {"ok": False, "error": f"no data under {settings.data_root}"}
         out["status"] = "degraded"
