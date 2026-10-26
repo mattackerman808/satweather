@@ -7,9 +7,9 @@ and mesoscale portal. LAN-only at https://satweather.808.org.
 
 ## How it fits together
 
-- **rtl** (Pi 4 + dish) runs SatDump and writes to the unas `satImages` NFS
-  share (`goes-hrit/`). That share is the only input.
-- **satweather** (bespin VM) mounts the share read-only. Ingest workers parse
+- **rtl** (Pi 5 + dish) runs SatDump and writes `goes-hrit/` over NFS to a
+  directory that satweather exports from its data disk. That is the only input.
+- **satweather** (bespin VM) reads it locally. Ingest workers parse
   text products into PostgreSQL/PostGIS and build web-sized images on local
   disk (`/srv/satweather`). A FastAPI app serves the API; Apache serves the
   React UI and proxies `/api`.

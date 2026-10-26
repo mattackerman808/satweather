@@ -16,8 +16,8 @@ class Settings(BaseSettings):
 
     # postgresql+psycopg://satweather:<pw>@127.0.0.1/satweather
     database_url: str = "postgresql+psycopg:///satweather"
-    # Where satdump writes on rtl, seen here through the NFS mount.
-    data_root: Path = Path("/mnt/satImages/goes-hrit")
+    # Where satdump on rtl writes, over NFS to this host's export.
+    data_root: Path = Path("/srv/satweather/satimages/goes-hrit")
     # Derived images (web-sized copies, thumbnails, map tiles). Local disk.
     media_root: Path = Path("/srv/satweather/media")
     # Housekeeping (satweather-housekeep). satweather is the only thing that

@@ -1,10 +1,9 @@
-"""`satweather-housekeep`: housekeeping and retention for the share and
+"""`satweather-housekeep`: housekeeping and retention for rtl's output and
 the web copies. A timer runs it every 10 minutes.
 
-satweather is the only thing that moves or deletes on the satImages
-share; rtl only writes. (unas exports it all_squash, so every client's
-files are 977:988 and any of them may move or delete.) Three jobs, each
-idempotent:
+satweather is the only thing that moves or deletes in data_root; rtl only
+writes. (The NFS export is all_squash to the satweather user, so every
+file is ours to move or delete.) Three jobs, each idempotent:
 
 1. EMWIN archiving. satdump never prunes EMWIN/ (~26,000 files a day),
    and ingest lists it every few seconds, so files older than
