@@ -130,3 +130,21 @@ def test_never_raises_on_garbage():
     assert parse_pfm("", LOT) == []
     assert parse_pfm("ILZ104-042200-\nsomewhere\n41.99N 87.91W\nDate\nCST 3hrly 99 98\n$$", LOT) == []
     assert product_offset("nothing here") is None
+
+
+def test_run_together_cells_are_dropped():
+    """Reception damage ran Thursday's high and Friday's low together
+    (`7143`): that cell is dropped, and the day's high falls back to the
+    hourly temperatures, not 7143."""
+    f = next(FIX.glob("*-PFMLOTIL.TXT"))
+    raw = normalize(f.read_bytes(), parse_name(f.name))
+    seg = raw.index("Chicago O'Hare")
+    row = raw.index("Max/Min", seg)
+    end = raw.index("\n", row)
+    good = raw[row:end]
+    assert good.rstrip().endswith("57          44          52")
+    bad = good.rstrip()[: -len("44          52")] + "4452"
+    pt = next(p for p in parse_pfm(raw[:row] + bad + raw[end:], LOT) if "O'Hare" in p.name)
+    assert all(v < 200 for x in pt.twelve for k, v in x.items() if k in ("max", "min"))
+    days = {r["date"]: r for r in daily(pt)}
+    assert days["2026-11-04"]["hi"] == 64 and days["2026-11-05"]["hi"] == 57
