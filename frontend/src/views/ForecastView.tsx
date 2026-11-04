@@ -74,7 +74,7 @@ export default function ForecastView() {
       </div>
       {!at && (
         <div className="fcempty">
-          <p>Search for a city, zone or airport, or use <b>⌖</b> for where you are.</p>
+          <p>Search for a city ("Davis, CA"), a ZIP code, a forecast zone or an airport, or use <b>⌖</b> for where you are.</p>
           <p className="dim">The 7-day numbers are the National Weather Service's own point forecasts, as received from
             GOES-18; days 8-10 come from the Climate Prediction Center's outlook.</p>
         </div>
