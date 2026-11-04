@@ -10,8 +10,9 @@ set is taken; a set already loaded from the same file is skipped.
 Stations (for METAR/TAF placement) come from aviationweather.gov's
 station cache, which is global: EMWIN carries international reports.
 
-ZIP codes (for the Forecast tab's place search) are the Census Bureau's
-ZIP Code Tabulation Areas gazetteer: each ZIP's internal point. It's
+ZIP codes and cities (for the Forecast tab's place search) come from the
+Census Bureau's gazetteers: each ZIP Code Tabulation Area's internal
+point, and every incorporated place and census-designated place. They're
 published yearly under the year's name, so the newest that exists is used.
 
 Geometry is simplified on load (~200 m): the shapes are drawn on a web
@@ -51,7 +52,7 @@ SETS = {
     "offshore": ("/gis/MarineZones", "oz"),
 }
 STATIONS_URL = "https://aviationweather.gov/data/cache/stations.cache.json.gz"
-ZCTA_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/{y}_Gazetteer/{y}_Gaz_zcta_national.zip"
+GAZETTEER_URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/{y}_Gazetteer/{y}_Gaz_{what}_national.zip"
 
 MONTHS = {"ja": 1, "fe": 2, "mr": 3, "ap": 4, "my": 5, "jn": 6, "jl": 7, "au": 8, "se": 9, "oc": 10,
           "nv": 11, "de": 12}
@@ -189,55 +190,100 @@ def load_stations() -> int:
     return len(rows)
 
 
-def load_zcta(force: bool = False) -> int:
+def _gazetteer(what: str, kind: str, force: bool) -> tuple[str, list[list[str]], list[str]] | None:
+    """(url, rows, header) of the newest Census gazetteer file `what`
+    (zcta, place), or None when that file is already loaded."""
     import zipfile
 
     data, url = None, None
     for y in range(date.today().year, date.today().year - 4, -1):
         try:
-            url = ZCTA_URL.format(y=y)
+            url = GAZETTEER_URL.format(y=y, what=what)
             data = _get(url)
             break
         except OSError:
             continue
     if data is None:
-        raise RuntimeError("no ZCTA gazetteer found")
+        raise RuntimeError(f"no {what} gazetteer found")
     with get_engine().connect() as conn:
-        done = conn.execute(text("SELECT source FROM refdata_load WHERE kind = 'zcta'")).scalar()
+        done = conn.execute(text("SELECT source FROM refdata_load WHERE kind = :k"), {"k": kind}).scalar()
     if done == url and not force:
-        log.info("zcta: %s already loaded", url)
-        return 0
+        log.info("%s: %s already loaded", kind, url)
+        return None
     with zipfile.ZipFile(io.BytesIO(data)) as z:
         body = z.read(next(n for n in z.namelist() if n.endswith(".txt"))).decode("utf-8-sig")
     lines = body.splitlines()
     sep = "|" if "|" in lines[0] else "\t"
     head = [h.strip() for h in lines[0].split(sep)]
+    return url, [[x.strip() for x in ln.split(sep)] for ln in lines[1:] if ln.strip()], head
+
+
+def _loaded(conn, kind: str, url: str, n: int) -> None:
+    conn.execute(text("""
+        INSERT INTO refdata_load (kind, source, rows) VALUES (:k, :s, :n)
+        ON CONFLICT (kind) DO UPDATE SET source = EXCLUDED.source, rows = EXCLUDED.rows, loaded = now()"""),
+        {"k": kind, "s": url, "n": n})
+
+
+def load_zcta(force: bool = False) -> int:
+    got = _gazetteer("zcta", "zcta", force)
+    if got is None:
+        return 0
+    url, lines, head = got
     i_zip, i_lat, i_lon = head.index("GEOID"), head.index("INTPTLAT"), head.index("INTPTLONG")
-    rows = []
-    for ln in lines[1:]:
-        f = [x.strip() for x in ln.split(sep)]
-        if len(f) > max(i_zip, i_lat, i_lon) and re.fullmatch(r"\d{5}", f[i_zip]):
-            rows.append({"z": f[i_zip], "lat": float(f[i_lat]), "lon": float(f[i_lon])})
+    rows = [{"z": f[i_zip], "lat": float(f[i_lat]), "lon": float(f[i_lon])} for f in lines
+            if len(f) > max(i_zip, i_lat, i_lon) and re.fullmatch(r"\d{5}", f[i_zip])]
     with get_engine().begin() as conn:
         conn.execute(text("DELETE FROM zcta"))
         conn.execute(text("INSERT INTO zcta (zip, geom) VALUES (:z, ST_SetSRID(ST_MakePoint(:lon, :lat), 4326))"),
                      rows)
-        conn.execute(text("""
-            INSERT INTO refdata_load (kind, source, rows) VALUES ('zcta', :s, :n)
-            ON CONFLICT (kind) DO UPDATE SET source = EXCLUDED.source, rows = EXCLUDED.rows, loaded = now()"""),
-            {"s": url, "n": len(rows)})
+        _loaded(conn, "zcta", url, len(rows))
     log.info("zcta: loaded %d from %s", len(rows), url)
+    return len(rows)
+
+
+def place_name(name: str) -> str:
+    """"Davis city" -> "Davis", "Boise City city" -> "Boise City",
+    "Athens-Clarke County unified government (balance)" -> "Athens-Clarke County":
+    the gazetteer's type words are the trailing lowercase ones (or CDP)."""
+    words = re.sub(r"\s*\(balance\)$", "", name.strip()).split()
+    while len(words) > 1 and (words[-1] == "CDP" or words[-1][:1].islower()):
+        words.pop()
+    return " ".join(words)
+
+
+def load_places(force: bool = False) -> int:
+    got = _gazetteer("place", "place", force)
+    if got is None:
+        return 0
+    url, lines, head = got
+    i = {k: head.index(k) for k in ("USPS", "NAME", "ALAND", "INTPTLAT", "INTPTLONG")}
+    rows = []
+    for f in lines:
+        if len(f) <= max(i.values()):
+            continue
+        try:
+            rows.append({"n": place_name(f[i["NAME"]]), "s": f[i["USPS"]], "a": int(f[i["ALAND"]] or 0),
+                         "lat": float(f[i["INTPTLAT"]]), "lon": float(f[i["INTPTLONG"]])})
+        except ValueError:
+            continue
+    with get_engine().begin() as conn:
+        conn.execute(text("DELETE FROM place"))
+        conn.execute(text("INSERT INTO place (name, state, aland, geom) "
+                          "VALUES (:n, :s, :a, ST_SetSRID(ST_MakePoint(:lon, :lat), 4326))"), rows)
+        _loaded(conn, "place", url, len(rows))
+    log.info("place: loaded %d from %s", len(rows), url)
     return len(rows)
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(prog="satweather-refdata")
     ap.add_argument("--force", action="store_true", help="reload sets even if the source is unchanged")
-    ap.add_argument("--only", choices=[*SETS, "station", "zcta", "basemap"], action="append")
+    ap.add_argument("--only", choices=[*SETS, "station", "zcta", "place", "basemap"], action="append")
     args = ap.parse_args()
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
     failed = False
-    for kind in args.only or [*SETS, "station", "zcta", "basemap"]:
+    for kind in args.only or [*SETS, "station", "zcta", "place", "basemap"]:
         try:
             if kind == "basemap":
                 from satweather.basemap import refresh_world
@@ -245,6 +291,8 @@ def main() -> None:
                 log.info("basemap: %s", refresh_world(force=args.force))
             elif kind == "zcta":
                 load_zcta(force=args.force)
+            elif kind == "place":
+                load_places(force=args.force)
             else:
                 load_stations() if kind == "station" else load_zones(kind, force=args.force)
         except Exception:

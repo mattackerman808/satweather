@@ -482,6 +482,28 @@ def test_places_zip(db):
     assert ak[0]["detail"] == "ZIP code"  # no zone loaded there
 
 
+def test_places_census_cities(db):
+    """Census places: "city, ST" / "city ST", the bigger of equals first, and
+    the zone-forecast city lists only when the Census list has nothing."""
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+
+    with db.begin() as conn:
+        for name, st, aland, lon, lat in (("Davis", "CA", 26_000_000, -121.74, 38.55),
+                                          ("Davis", "OK", 9_000_000, -97.12, 34.50),
+                                          ("Davisboro", "GA", 3_000_000, -82.60, 32.98)):
+            conn.execute(text("INSERT INTO place (name, state, aland, geom) "
+                              "VALUES (:n, :s, :a, ST_SetSRID(ST_MakePoint(:x, :y), 4326))"),
+                         {"n": name, "s": st, "a": aland, "x": lon, "y": lat})
+    c = TestClient(app)
+    for q in ("davis, ca", "Davis CA", "davis, california"):
+        hits = c.get("/api/places", params={"q": q}).json()
+        assert [h["label"] for h in hits] == ["Davis, CA"], q
+    assert [h["label"] for h in c.get("/api/places", params={"q": "davis"}).json()][:3] == \
+        ["Davis, CA", "Davis, OK", "Davisboro, GA"]
+
+
 def test_offices(db):
     """Office areas (union of public zones) named from their newest AFD."""
     from fastapi.testclient import TestClient

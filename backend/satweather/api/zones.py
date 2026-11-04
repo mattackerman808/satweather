@@ -119,22 +119,60 @@ def _km(a: tuple[float, float], b: tuple[float, float]) -> float:
     return 12742 * math.asin(math.sqrt(h))
 
 
+_STATES = {
+    "alabama": "AL", "alaska": "AK", "arizona": "AZ", "arkansas": "AR", "california": "CA", "colorado": "CO",
+    "connecticut": "CT", "delaware": "DE", "district of columbia": "DC", "florida": "FL", "georgia": "GA",
+    "hawaii": "HI", "idaho": "ID", "illinois": "IL", "indiana": "IN", "iowa": "IA", "kansas": "KS",
+    "kentucky": "KY", "louisiana": "LA", "maine": "ME", "maryland": "MD", "massachusetts": "MA", "michigan": "MI",
+    "minnesota": "MN", "mississippi": "MS", "missouri": "MO", "montana": "MT", "nebraska": "NE", "nevada": "NV",
+    "new hampshire": "NH", "new jersey": "NJ", "new mexico": "NM", "new york": "NY", "north carolina": "NC",
+    "north dakota": "ND", "ohio": "OH", "oklahoma": "OK", "oregon": "OR", "pennsylvania": "PA",
+    "puerto rico": "PR", "rhode island": "RI", "south carolina": "SC", "south dakota": "SD", "tennessee": "TN",
+    "texas": "TX", "utah": "UT", "vermont": "VT", "virginia": "VA", "washington": "WA", "west virginia": "WV",
+    "wisconsin": "WI", "wyoming": "WY", "guam": "GU",
+}
+_CODES = set(_STATES.values())
+
+
+def _split_state(q: str) -> tuple[str, str | None]:
+    """"davis, ca" / "davis ca" / "davis, california" -> ("davis", "CA").
+    A query that is itself a state name ("west virginia") isn't split."""
+    if q.lower() in _STATES:
+        return q, None
+    if "," in q:
+        name, _, st = q.rpartition(",")
+        st = st.strip().lower()
+        code = st.upper() if st.upper() in _CODES else _STATES.get(st)
+        return (name.strip(), code) if code and name.strip() else (q, None)
+    words = q.split()
+    for n in (2, 1):  # "fort worth new mexico" ... "davis ca"
+        if len(words) > n:
+            st = " ".join(words[-n:]).lower()
+            code = st.upper() if n == 1 and len(st) == 2 and st.upper() in _CODES else _STATES.get(st)
+            if code:
+                return " ".join(words[:-n]), code
+    return q, None
+
+
 @router.get("/places")
 def places(
     q: str = Query(min_length=2, max_length=60),
     near: str | None = Query(None, description="lon,lat to rank by (the map's center)"),
     limit: int = Query(8, ge=1, le=20),
 ) -> list[dict]:
-    """"Forecast for..." search: ZIP codes, airports by ICAO/FAA id or name, forecast
-    zones by name, and cities by name from the zone forecasts' "Including
-    the cities of" lines (not every office lists them). Each result has a
-    point inside the zone whose forecast it opens.
+    """"Forecast for..." search: ZIP codes, US cities and towns (the Census
+    places gazetteer, `place`), airports by ICAO/FAA id or name, forecast
+    zones by name, and, where the Census list has nothing, cities from the
+    zone forecasts' "Including the cities of" lines (Guam, say). A trailing
+    state ("davis, ca", "davis ca", "davis, california") narrows the search.
 
-    Ranked: an exact id first, then by distance from `near`, a match at the
-    start of the name counting as 300 km closer than one inside it. Without
-    `near`, prefix matches first, shortest name first."""
-    q = q.strip()
-    pre, anywhere = _like(q) + "%", "%" + _like(q) + "%"
+    Ranked: an exact match first, then by distance from `near`, a match at
+    the start of the name counting as 300 km closer than one inside it.
+    Without `near`, prefix matches first, then bigger places, then the
+    shortest name."""
+    q = " ".join(q.split())
+    term, st = _split_state(q)
+    pre, anywhere = _like(term) + "%", "%" + _like(term) + "%"
     cands: list[dict] = []
     with get_engine().connect() as conn:
         # ZIP codes (3-5 digits: a prefix), labelled with the zone they fall in.
@@ -145,41 +183,56 @@ def places(
                 LEFT JOIN LATERAL (SELECT name, state FROM ugc_zone
                                    WHERE kind = 'public' AND ST_Contains(geom, z.geom) LIMIT 1) u ON true
                 WHERE z.zip LIKE :pre ORDER BY z.zip LIMIT :n"""), {"pre": q + "%", "n": limit}).mappings():
-                cands.append({"kind": "zip", "label": f"ZIP {r['zip']}", "name": r["zip"],
+                cands.append({"kind": "zip", "label": f"ZIP {r['zip']}", "name": r["zip"], "state": r["state"],
                               "detail": ", ".join(filter(None, [r["zone"], r["state"]])) or "ZIP code",
-                              "lon": r["lon"], "lat": r["lat"], "exact": r["zip"] == q})
+                              "lon": r["lon"], "lat": r["lat"], "exact": r["zip"] == q, "size": 0})
+        # Cities and towns (Census), biggest first among equals.
+        for r in conn.execute(text("""
+            SELECT p.name, p.state, p.aland, ST_X(p.geom) AS lon, ST_Y(p.geom) AS lat, u.name AS zone,
+                   lower(p.name) = lower(:t) AS exact
+            FROM place p
+            LEFT JOIN LATERAL (SELECT name FROM ugc_zone
+                               WHERE kind = 'public' AND ST_Contains(geom, p.geom) LIMIT 1) u ON true
+            WHERE lower(p.name) LIKE lower(:pre) AND (CAST(:st AS text) IS NULL OR p.state = :st)
+            ORDER BY lower(p.name) = lower(:t) DESC, p.aland DESC NULLS LAST LIMIT 40"""),
+                {"t": term, "pre": pre, "st": st}).mappings():
+            cands.append({"kind": "city", "label": f"{r['name']}, {r['state']}", "name": r["name"],
+                          "state": r["state"], "detail": r["zone"] or r["state"], "lon": r["lon"], "lat": r["lat"],
+                          "exact": r["exact"], "size": r["aland"] or 0})
+        census = bool(cands and any(c["kind"] == "city" for c in cands))
         for r in conn.execute(text("""
             SELECT id, faa, trim(name) AS name, state, country, ST_X(geom) AS lon, ST_Y(geom) AS lat,
                    upper(id) = upper(:q) OR upper(faa) = upper(:q) AS exact
             FROM station
             WHERE upper(id) = upper(:q) OR upper(faa) = upper(:q)
                OR (id ~ '^[A-Z][A-Z0-9]{3}$' AND name ILIKE :any)
-            LIMIT 60"""), {"q": q, "any": anywhere}).mappings():
+            LIMIT 60"""), {"q": term, "any": anywhere}).mappings():
             cands.append({"kind": "station", "label": f"{r['id']} · {(r['name'] or '').title()}", "name": r["name"] or "",
-                          "detail": ", ".join(filter(None, [r["state"], r["country"]])),
-                          "lon": r["lon"], "lat": r["lat"], "exact": r["exact"]})
+                          "state": r["state"], "detail": ", ".join(filter(None, [r["state"], r["country"]])),
+                          "lon": r["lon"], "lat": r["lat"], "exact": r["exact"], "size": 0})
         for r in conn.execute(text("""
-            SELECT ugc, name, kind, ST_X(p) AS lon, ST_Y(p) AS lat, upper(ugc) = upper(:q) AS exact
-            FROM (SELECT ugc, name, kind, ST_PointOnSurface(geom) AS p FROM ugc_zone
+            SELECT ugc, name, kind, state, ST_X(p) AS lon, ST_Y(p) AS lat, upper(ugc) = upper(:q) AS exact
+            FROM (SELECT ugc, name, kind, state, ST_PointOnSurface(geom) AS p FROM ugc_zone
                   WHERE kind IN ('public', 'marine', 'offshore')
                     AND (name ILIKE :any OR upper(ugc) = upper(:q))) z
-            LIMIT 60"""), {"q": q, "any": anywhere}).mappings():
-            cands.append({"kind": "zone", "label": r["name"], "name": r["name"],
+            LIMIT 60"""), {"q": term, "any": anywhere}).mappings():
+            cands.append({"kind": "zone", "label": r["name"], "name": r["name"], "state": r["state"],
                           "detail": f"{r['ugc']} · {r['kind']} zone", "lon": r["lon"], "lat": r["lat"],
-                          "exact": r["exact"]})
-        # Cities: newest ZFP segment per zone set that names the city.
-        segs = conn.execute(text("""
-            SELECT DISTINCT ON (s.ugcs) s.ugcs, s.body
-            FROM product_segment s JOIN text_product p ON p.id = s.product_id
-            WHERE p.nnn = 'ZFP' AND p.received > now() - interval '3 days' AND s.body ILIKE :any
-            ORDER BY s.ugcs, p.received DESC LIMIT 60"""), {"any": anywhere}).all()
+                          "exact": r["exact"], "size": 0})
+        # Cities the zone forecasts list, where the Census list had none.
         found: set[tuple[str, str]] = set()
-        for ugcs, body in segs:
-            if m := _CITIES.search(body):
-                for city in re.split(r",\s*(?:and\s+)?|\s+and\s+", " ".join(m[1].split())):
-                    city = city.strip(" .")
-                    if q.lower() in city.lower():
-                        found.add((city, ugcs[0]))
+        if not census:
+            segs = conn.execute(text("""
+                SELECT DISTINCT ON (s.ugcs) s.ugcs, s.body
+                FROM product_segment s JOIN text_product p ON p.id = s.product_id
+                WHERE p.nnn = 'ZFP' AND p.received > now() - interval '3 days' AND s.body ILIKE :any
+                ORDER BY s.ugcs, p.received DESC LIMIT 60"""), {"any": anywhere}).all()
+            for ugcs, body in segs:
+                if m := _CITIES.search(body):
+                    for city in re.split(r",\s*(?:and\s+)?|\s+and\s+", " ".join(m[1].split())):
+                        city = city.strip(" .")
+                        if term.lower() in city.lower():
+                            found.add((city, ugcs[0]))
         if found:
             pts = {r[0]: r for r in conn.execute(text("""
                 SELECT ugc, state, ST_X(ST_PointOnSurface(geom)), ST_Y(ST_PointOnSurface(geom)), name
@@ -188,7 +241,9 @@ def places(
                 if ugc in pts:
                     _, state, lon, lat, zname = pts[ugc]
                     cands.append({"kind": "city", "label": f"{city}, {state}" if state else city, "name": city,
-                                  "detail": zname, "lon": lon, "lat": lat, "exact": False})
+                                  "state": state, "detail": zname, "lon": lon, "lat": lat, "exact": False, "size": 0})
+    if st:
+        cands = [c for c in cands if c["kind"] == "zip" or c.get("state") == st]
     center = None
     if near:
         try:
@@ -197,10 +252,10 @@ def places(
             center = None
 
     def score(c: dict) -> tuple:
-        prefix = c["name"].lower().startswith(q.lower())
+        prefix = c["name"].lower().startswith(term.lower())
         if center:
             return (not c["exact"], _km(center, (c["lon"], c["lat"])) - (300 if prefix else 0))
-        return (not c["exact"], not prefix, len(c["label"]))
+        return (not c["exact"], not prefix, -c["size"], len(c["label"]))
 
     seen, out = set(), []
     for c in sorted(cands, key=score):
