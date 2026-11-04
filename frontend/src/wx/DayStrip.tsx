@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { Day, Forecast, Half, Hour, Tilt } from "../api";
+import type { Day, Forecast, Half, Hour, Later, Tilt } from "../api";
 import WxIcon from "./WxIcon";
 import { reflow } from "./ZonePanel";
 
@@ -65,9 +65,8 @@ const TEMP_TILT: Record<Tilt, string> = { above: "Warmer than normal", near: "Ne
 const PRECIP_TILT: Record<Tilt, string> = { above: "Wetter than normal", near: "Near-normal rain and snow",
   below: "Drier than normal", unknown: "" };
 
-type Later = { date: string; temp: Tilt; precip: Tilt };
-
-export function DayStrip({ f, max, compact, later }: { f: Forecast; max?: number; compact?: boolean; later?: Later[] }) {
+export function DayStrip({ f, max, compact }: { f: Forecast; max?: number; compact?: boolean }) {
+  const later: Later[] = f.later ?? [];
   const today = localToday(f.point?.utc_offset_h ?? 0);
   const rows = f.daily.slice(0, max ?? f.daily.length);
   const [open, setOpen] = useState<string | null>(null);
@@ -115,8 +114,9 @@ export function DayStrip({ f, max, compact, later }: { f: Forecast; max?: number
             </button>
           );
         })}
-        {!compact && later?.map((d) => (
-          <div key={d.date} role="listitem" className="daycard later" title="From CPC's 6-10 / 8-14 day outlook">
+        {!compact && later.map((d) => (
+          <div key={d.date} role="listitem" className="daycard later"
+            title={`CPC's ${d.period} day outlook for ${d.region}: odds, not a forecast temperature`}>
             <div className="dname">{weekday(d.date)} <span className="dim">{monthDay(d.date)}</span></div>
             <div className="tilts">
               <span className={`tilt t-${d.temp}`}><Thermo /> {TEMP_TILT[d.temp]}</span>

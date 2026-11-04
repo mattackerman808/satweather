@@ -14,14 +14,15 @@ const TropicalView = lazy(() => import("./views/TropicalView"));
 const SignalView = lazy(() => import("./views/SignalView"));
 const ForecastView = lazy(() => import("./views/ForecastView"));
 
+// The product pages (/text, /text/<id>) have no tab: every product link
+// leads there, and the Live feed covers browsing what's arriving.
 const NAV = [
-  { to: "/live", label: "Live" },
+  { to: "/forecast", label: "Forecast" },
+  { to: "/map", label: "Map" },
   { to: "/satellite", label: "Satellite" },
   { to: "/radar", label: "Radar & charts" },
-  { to: "/map", label: "Map" },
-  { to: "/forecast", label: "Forecast" },
   { to: "/tropical", label: "Tropical & Meso" },
-  { to: "/text", label: "Raw" },
+  { to: "/live", label: "Live" },
   { to: "/signal", label: "Signal" },
 ];
 

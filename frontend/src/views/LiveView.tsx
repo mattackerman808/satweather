@@ -88,8 +88,9 @@ export default function LiveView() {
           <Link className="morelink" to="/map">Show on map →</Link>
         </section>
         <section className="card grow">
-          <h3>
-            Incoming <span className="dim">{rate.length}/min</span>
+          <h3 className="feedhead">
+            <span>Incoming <span className="dim">{rate.length}/min</span></span>
+            <Link className="morelink" to="/text">Search all bulletins →</Link>
           </h3>
           <div className="feed">
             {feed.map((p) => (

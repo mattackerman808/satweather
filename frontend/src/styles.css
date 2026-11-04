@@ -449,6 +449,10 @@ button { font: inherit; color: inherit; }
 @media (max-width: 1000px) { .tiles-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero-fig { grid-column: span 2; }
   .charts { grid-template-columns: minmax(0, 1fr); } }
 
+/* Live: the feed's link to the searchable product list (/text has no tab). */
+.feedhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.feedhead .morelink { margin: 0; font-size: 12.5px; font-weight: 400; }
+
 /* Forecast */
 .forecastview { position: absolute; inset: 0; overflow-y: auto; padding: 16px clamp(16px, 3vw, 32px) 48px; }
 .fcbar { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 14px; }
@@ -461,7 +465,7 @@ button { font: inherit; color: inherit; }
 .fchazards { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
 .fchazards .pick { width: auto; text-decoration: none; color: var(--text); }
 .card .pick { text-decoration: none; color: var(--text); margin-bottom: 4px; }
-.outlookcard { margin-bottom: 14px; max-width: 1100px; overflow: visible; }
+.outlookcard { overflow: visible; }
 .outlookcard p, .outlookcard li { font-size: 15px; line-height: 1.5; margin: 0 0 8px; }
 .outlookhead { font-size: 18px !important; margin: 6px 0 8px !important; line-height: 1.35; }
 .outlookcard .trends { margin: 0 0 8px; padding-left: 20px; }
@@ -536,9 +540,9 @@ button { font: inherit; color: inherit; }
 .tableview { font-size: 13px; }
 .fcchanges { margin-bottom: 14px; max-width: 1100px; }
 .fcchanges ul { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6; }
-.fccols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin-bottom: 14px; align-items: start; }
-.fccols .card { overflow: visible; }
-.fccols .card a { color: var(--accent); font-size: 13px; }
+.fctext { display: grid; gap: 12px; margin-bottom: 14px; max-width: 1100px; }
+.fctext .card { overflow: visible; margin: 0; }
+.fctext .card > a { color: var(--accent); font-size: 13px; }
 .fcnational { max-width: 700px; }
 .afdtext .seg { margin-bottom: 10px; }
 .afdtext .raw { max-height: 70vh; overflow: auto; }
@@ -548,7 +552,6 @@ button { font: inherit; color: inherit; }
 .glossary dl { display: grid; gap: 6px; margin: 8px 0 0; font-size: 13px; }
 .glossary dt { font-weight: 600; }
 .glossary dd { margin: 0; color: var(--muted); }
-@media (max-width: 1000px) { .fccols { grid-template-columns: minmax(0, 1fr); } }
 @media (min-width: 1100px) { .daystrip:not(.compact) .days { overflow-x: visible; } }
 
 /* ── Phone (narrow.ts has the same width) ── */

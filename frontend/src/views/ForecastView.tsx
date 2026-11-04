@@ -118,7 +118,6 @@ function Body({ f }: { f: Forecast }) {
   }, [f.afd]);
 
   const title = z ? `${z.name}${z.state ? `, ${z.state}` : ""}` : p?.name ?? "This spot";
-  const later = outlook?.status === "ready" ? outlook.content?.beyond_day7?.days : undefined;
 
   return (
     <>
@@ -142,11 +141,9 @@ function Body({ f }: { f: Forecast }) {
         </section>
       )}
 
-      {outlook && outlook.status !== "unavailable" && outlook.status !== "none" && <OutlookCard r={outlook} />}
-
       {p && f.daily.length > 0 ? (
         <>
-          <DayStrip f={f} later={later} />
+          <DayStrip f={f} />
           <ForecastCharts f={f} />
         </>
       ) : (
@@ -160,18 +157,21 @@ function Body({ f }: { f: Forecast }) {
         </section>
       )}
 
-      <div className="fccols">
+      {/* The text: the two AI summaries first (the outlook, then the
+          forecasters' discussion in plain English), then the zone forecast. */}
+      <div className="fctext">
+        {outlook && outlook.status !== "unavailable" && outlook.status !== "none" && <OutlookCard r={outlook} />}
+        {f.afd && (
+          <section className="card">
+            <h3>Forecasters' discussion <span className="dim">{f.afd.awips} · {ago(f.afd.issued ?? f.afd.received)}</span></h3>
+            {afdRaw ? <AfdText id={f.afd.id} raw={afdRaw} start={f.llm.enabled ? "plain" : "raw"} /> : <p className="dim">Loading…</p>}
+          </section>
+        )}
         {f.forecast && (
           <section className="card">
             <h3>{f.forecast.title} <span className="dim">{f.forecast.awips} · {ago(f.forecast.issued ?? f.forecast.received)}</span></h3>
             <ZoneForecastText f={f.forecast} />
             <Link to={`/text/${f.forecast.product_id}`}>Whole product →</Link>
-          </section>
-        )}
-        {f.afd && (
-          <section className="card">
-            <h3>Forecasters' discussion <span className="dim">{f.afd.awips} · {ago(f.afd.issued ?? f.afd.received)}</span></h3>
-            {afdRaw ? <AfdText id={f.afd.id} raw={afdRaw} start={f.llm.enabled ? "plain" : "raw"} /> : <p className="dim">Loading…</p>}
           </section>
         )}
       </div>
@@ -231,7 +231,7 @@ function OutlookCard({ r }: { r: LlmResult<OutlookText> }) {
       {c.changes?.length > 0 && (
         <p className="changes"><b>Since the last forecast: </b>{c.changes.map((t, i) => <span key={i}><Tagged text={t} /> </span>)}</p>
       )}
-      {c.beyond_day7?.text && <p className="beyond"><b>Days 8-10: </b><Tagged text={c.beyond_day7.text} /></p>}
+      {typeof c.beyond_day7 === "string" && c.beyond_day7 && <p className="beyond"><b>Days 8-10: </b><Tagged text={c.beyond_day7} /></p>}
       {c.confidence && <p className="dim"><Tagged text={c.confidence} /></p>}
     </section>
   );

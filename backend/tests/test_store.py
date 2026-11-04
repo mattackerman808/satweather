@@ -439,6 +439,10 @@ def test_forecast_from_pfm(db, tmp_path, monkeypatch):
     assert d["changes"] == [] and p["prev_product_id"] is None
     assert d["national"]["PMDEPD"]["id"] and d["national"]["PMDMRD"]["id"] and d["national"]["PMDTHR"]["id"]
     assert d["llm"] == {"enabled": False}
+    # Days 8-10 from CPC's state table (Illinois, from the point's UGC: no zone loaded here).
+    assert [(x["date"], x["temp"], x["precip"], x["period"]) for x in d["later"]] == \
+        [("2026-11-11", "above", "below", "6-10"), ("2026-11-12", "above", "below", "6-10"),
+         ("2026-11-13", "above", "below", "6-10")]
     far = c.get("/api/forecast", params={"lon": -150, "lat": 20}).json()
     assert far["point"] is None and far["daily"] == []
 
@@ -455,6 +459,27 @@ def test_forecast_from_pfm(db, tmp_path, monkeypatch):
     assert ingest.redecode()["pfm_points"] == n  # idempotent
     with db.connect() as conn:
         assert conn.execute(text("SELECT count(*) FROM pfm_point")).scalar() == n
+
+
+def test_places_zip(db):
+    """ZIP codes (Census ZCTA points) in place search, labelled with their zone."""
+    from fastapi.testclient import TestClient
+
+    from satweather.api.app import app
+
+    sq = "ST_Multi(ST_GeomFromText('POLYGON((-88 41.8,-87.5 41.8,-87.5 42.1,-88 42.1,-88 41.8))', 4326))"
+    with db.begin() as conn:
+        conn.execute(text(f"INSERT INTO ugc_zone (kind, ugc, name, state, cwa, geom, centroid, source) VALUES"
+                          f" ('public', 'ILZ104', 'Central Cook', 'IL', 'LOT', {sq}, ST_Centroid({sq}), 't')"))
+        for z, lon, lat in (("60601", -87.62, 41.886), ("60602", -87.63, 41.883), ("99501", -149.88, 61.22)):
+            conn.execute(text("INSERT INTO zcta (zip, geom) VALUES (:z, ST_SetSRID(ST_MakePoint(:x, :y), 4326))"),
+                         {"z": z, "x": lon, "y": lat})
+    c = TestClient(app)
+    hits = c.get("/api/places", params={"q": "60601"}).json()
+    assert hits[0]["kind"] == "zip" and hits[0]["label"] == "ZIP 60601" and hits[0]["detail"] == "Central Cook, IL"
+    assert [h["label"] for h in c.get("/api/places", params={"q": "6060"}).json()] == ["ZIP 60601", "ZIP 60602"]
+    ak = c.get("/api/places", params={"q": "99501"}).json()
+    assert ak[0]["detail"] == "ZIP code"  # no zone loaded there
 
 
 def test_offices(db):

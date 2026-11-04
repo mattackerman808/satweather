@@ -15,7 +15,7 @@ from fastapi import APIRouter, HTTPException, Query
 from sqlalchemy import text
 
 from satweather import forecast_llm as fl
-from satweather import llm, pfm
+from satweather import cpc, llm, pfm
 from satweather.api.zones import zone_at
 from satweather.db import get_engine
 
@@ -48,6 +48,12 @@ def _points(conn, lon: float, lat: float) -> tuple[dict | None, dict | None, flo
     return cur, prev, round(near["km"], 1)
 
 
+def _raw(conn, pid: int | None) -> str | None:
+    if not pid:
+        return None
+    return conn.execute(text("SELECT raw FROM text_product WHERE id = :i"), {"i": pid}).scalar()
+
+
 def _latest(conn, awips: str) -> dict | None:
     r = conn.execute(text("""SELECT id, awips, title, issued, received FROM text_product
                              WHERE awips = :a ORDER BY received DESC LIMIT 1"""), {"a": awips}).mappings().first()
@@ -59,7 +65,7 @@ def _gather(conn, lon: float, lat: float) -> dict:
     cur, prev, km = _points(conn, lon, lat)
     out: dict = {"lon": lon, "lat": lat, "zone": z["zone"], "zones": z["zones"], "forecast": z["forecast"],
                  "hazards": z["hazards"], "point": None, "daily": [], "hours": {}, "changes": [],
-                 "afd": None, "national": {}, "llm": {"enabled": llm.enabled()}}
+                 "afd": None, "national": {}, "later": [], "llm": {"enabled": llm.enabled()}}
     if cur:
         off = cur["utc_offset_h"]
         today = (_now() + timedelta(hours=off)).date().isoformat()
@@ -76,6 +82,13 @@ def _gather(conn, lon: float, lat: float) -> dict:
     if cwa:
         out["afd"] = _latest(conn, f"AFD{cwa}")
     out["national"] = {a: _latest(conn, a) for a in NATIONAL}
+    # Days 8-10: CPC's 6-10/8-14 day state table, for this place's state or region.
+    off = (cur or {}).get("utc_offset_h", 0)
+    today = (_now() + timedelta(hours=off)).date()
+    state = (z["zone"] or {}).get("state") or ((cur or {}).get("ugc") or "")[:2] or None
+    dates = cpc.later_dates(out["daily"][-1]["date"] if out["daily"] else None, today)
+    mrd = (out["national"].get("PMDMRD") or {}).get("id")
+    out["later"] = cpc.later(_raw(conn, mrd), cpc.region(state, lon, lat), dates) if mrd else []
     return out
 
 
@@ -83,12 +96,6 @@ def _gather(conn, lon: float, lat: float) -> dict:
 def forecast(lon: float = Query(ge=-180, le=180), lat: float = Query(ge=-90, le=90)) -> dict:
     with get_engine().connect() as conn:
         return pfm.jsonable(_gather(conn, lon, lat))
-
-
-def _raw(conn, pid: int | None) -> str | None:
-    if not pid:
-        return None
-    return conn.execute(text("SELECT raw FROM text_product WHERE id = :i"), {"i": pid}).scalar()
 
 
 @router.get("/forecast/outlook")
@@ -105,11 +112,10 @@ def outlook(lon: float = Query(ge=-180, le=180), lat: float = Query(ge=-90, le=9
         afd_id = (g["afd"] or {}).get("id")
         zfp_id = (g["forecast"] or {}).get("product_id")
         p = g["point"] or {}
-        today = (_now() + timedelta(hours=p.get("utc_offset_h", 0))).date()
-        later = fl.later_dates(g["daily"], today)
+        later = g["later"]
         key = f"{(g['zone'] or {}).get('ugc', '-')}|{p.get('office', '-')}|{p.get('name', '-')}"
         inputs = [zfp_id, p.get("product_id"), p.get("prev_product_id"), afd_id,
-                  [(nat.get(a) or {}).get("id") for a in NATIONAL], later]
+                  [(nat.get(a) or {}).get("id") for a in NATIONAL], later, fl.PROMPT_VERSION]
         texts = {"afd": _raw(conn, afd_id), "wpc": _raw(conn, (nat.get("PMDEPD") or {}).get("id")),
                  "cpc": _raw(conn, (nat.get("PMDMRD") or {}).get("id"))}
 
@@ -125,7 +131,7 @@ def outlook(lon: float = Query(ge=-180, le=180), lat: float = Query(ge=-90, le=9
                                  texts["wpc"], texts["cpc"], later)
         return fl.OUTLOOK_SYSTEM, user, llm.numbers_in(user)
 
-    return pfm.jsonable(llm.cached("outlook", key, inputs, build, fl.validate_outlook(later)))
+    return pfm.jsonable(llm.cached("outlook", key, inputs, build, fl.validate_outlook))
 
 
 @router.get("/products/{pid}/plain")
@@ -144,4 +150,4 @@ def plain(pid: int) -> dict:
     def build():
         return fl.AFD_SYSTEM, raw, llm.numbers_in(raw)
 
-    return pfm.jsonable(llm.cached("afd", str(pid), [pid], build, fl.validate_afd, max_tokens=4000))
+    return pfm.jsonable(llm.cached("afd", str(pid), [pid, fl.PROMPT_VERSION], build, fl.validate_afd, max_tokens=4000))

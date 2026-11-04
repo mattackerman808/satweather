@@ -5,6 +5,7 @@ from pathlib import Path
 import httpx
 import pytest
 
+from satweather import cpc
 from satweather import forecast_llm as fl
 from satweather import llm
 from satweather.config import get_settings
@@ -67,21 +68,29 @@ def test_afd_sections_drop_aviation_and_marine():
     assert ".AVIATION" not in s and ".MARINE" not in s and "WATCHES/WARNINGS" not in s
 
 
-def test_later_dates_and_validation():
-    rows = [{"date": f"2026-11-{d:02d}"} for d in range(4, 11)]  # PFM covers Nov 4..10
-    later = fl.later_dates(rows, date(2026, 11, 4))
-    assert later == ["2026-11-11", "2026-11-12", "2026-11-13"]
-    ok = {"headline": "h", "summary": "s", "trends": [], "changes": [],
-          "beyond_day7": {"text": "t", "days": [{"date": d, "temp": "above", "precip": "near"} for d in later]}}
-    v = fl.validate_outlook(later)
-    assert v(ok) is None
-    bad = json.loads(json.dumps(ok))
-    bad["beyond_day7"]["days"][0]["temp"] = "hot"
-    assert "invalid" in v(bad)
-    bad["beyond_day7"]["days"] = bad["beyond_day7"]["days"][:2]
-    assert "exactly" in v(bad)
+def test_outlook_validation():
+    ok = {"headline": "h", "summary": "s", "trends": [], "changes": [], "beyond_day7": "t"}
+    assert fl.validate_outlook(ok) is None
+    assert "invalid" in fl.validate_outlook({**ok, "trends": "x"})
+    assert "invalid" in fl.validate_outlook({**ok, "beyond_day7": {"days": []}})
     assert fl.validate_afd({"sections": [{"title": "Key messages", "text": "x"}], "glossary": []}) is None
     assert fl.validate_afd({"sections": []})
+
+
+def test_cpc_tables():
+    raw = _text("*-PMDMRDMD.TXT")
+    t = cpc.parse_tables(raw)
+    assert (t["6-10"]["start"], t["6-10"]["end"]) == (date(2026, 11, 9), date(2026, 11, 13))
+    assert (t["8-14"]["start"], t["8-14"]["end"]) == (date(2026, 11, 11), date(2026, 11, 17))
+    assert len(t["6-10"]["rows"]) == 60
+    assert t["6-10"]["rows"]["AK INT BSN"] == ("A", "A") and t["6-10"]["rows"]["ALABAMA"] == ("N", "B")
+    assert cpc.later_dates("2026-11-10", date(2026, 11, 4)) == ["2026-11-11", "2026-11-12", "2026-11-13"]
+    later = cpc.later(raw, cpc.region("IL", -87.9, 41.98), ["2026-11-13", "2026-11-16", "2026-11-30"])
+    assert later == [{"date": "2026-11-13", "temp": "above", "precip": "below", "period": "6-10", "region": "Illinois"},
+                     {"date": "2026-11-16", "temp": "above", "precip": "below", "period": "8-14", "region": "Illinois"}]
+    assert cpc.region("MT", -112, 46.6) == "W MONTANA" and cpc.region("TX", -106.4, 31.8) == "W TEXAS"
+    assert cpc.region("AK", -147.7, 64.8) == "AK INT BSN" and cpc.region("AK", -134.4, 58.3) == "AK PNHDL"
+    assert cpc.region("HI", -157.9, 21.3) is None and cpc.later(raw, None, ["2026-11-13"]) == []
 
 
 def test_daily_table():
