@@ -449,6 +449,10 @@ button { font: inherit; color: inherit; }
 @media (max-width: 1000px) { .tiles-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero-fig { grid-column: span 2; }
   .charts { grid-template-columns: minmax(0, 1fr); } }
 
+/* Live: the feed's link to the searchable product list (/text has no tab). */
+.feedhead { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.feedhead .morelink { margin: 0; font-size: 12.5px; font-weight: 400; }
+
 /* Forecast */
 .forecastview { position: absolute; inset: 0; overflow-y: auto; padding: 16px clamp(16px, 3vw, 32px) 48px; }
 .fcbar { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 14px; }

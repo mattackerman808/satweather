@@ -35,7 +35,7 @@ export default function Inspector({ item, onClose, onOpen, onShowProduct, onZone
 
   return (
     <Panel onClose={onClose} closeTitle="Close (Esc)" bar={<>
-      {item.kind === "product" && <Link to={`/text/${item.id}`}>Open in Raw ↗</Link>}
+      {item.kind === "product" && <Link to={`/text/${item.id}`}>Open product ↗</Link>}
       {at && (
         <button className="linkbtn" onClick={() => onOpen({ kind: "zone", lon: at[0], lat: at[1] })}>
           Forecast here
