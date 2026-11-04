@@ -118,7 +118,6 @@ function Body({ f }: { f: Forecast }) {
   }, [f.afd]);
 
   const title = z ? `${z.name}${z.state ? `, ${z.state}` : ""}` : p?.name ?? "This spot";
-  const later = outlook?.status === "ready" ? outlook.content?.beyond_day7?.days : undefined;
 
   return (
     <>
@@ -146,7 +145,7 @@ function Body({ f }: { f: Forecast }) {
 
       {p && f.daily.length > 0 ? (
         <>
-          <DayStrip f={f} later={later} />
+          <DayStrip f={f} />
           <ForecastCharts f={f} />
         </>
       ) : (
@@ -231,7 +230,7 @@ function OutlookCard({ r }: { r: LlmResult<OutlookText> }) {
       {c.changes?.length > 0 && (
         <p className="changes"><b>Since the last forecast: </b>{c.changes.map((t, i) => <span key={i}><Tagged text={t} /> </span>)}</p>
       )}
-      {c.beyond_day7?.text && <p className="beyond"><b>Days 8-10: </b><Tagged text={c.beyond_day7.text} /></p>}
+      {typeof c.beyond_day7 === "string" && c.beyond_day7 && <p className="beyond"><b>Days 8-10: </b><Tagged text={c.beyond_day7} /></p>}
       {c.confidence && <p className="dim"><Tagged text={c.confidence} /></p>}
     </section>
   );

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { api, type Place } from "../api";
 
-const KIND_ICON: Record<Place["kind"], string> = { station: "✈", zone: "▢", city: "•" };
+const KIND_ICON: Record<Place["kind"], string> = { station: "✈", zone: "▢", city: "•", zip: "#" };
 
 // "Forecast for…": a place, zone or airport, or where you are. Either opens
 // the zone panel there; results are ranked by distance from the map's
@@ -62,7 +62,7 @@ export default function PlaceSearch({ near, onPick, className }: {
         <input
           className="search"
           value={q}
-          placeholder="Forecast for a city, zone or airport…"
+          placeholder="Forecast for a city, ZIP, zone or airport…"
           onChange={(e) => setQ(e.target.value)}
           onFocus={() => hits.length && setOpen(true)}
           onBlur={() => setTimeout(() => setOpen(false), 150)}

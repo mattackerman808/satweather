@@ -13,9 +13,11 @@ with a glossary of the terms it used.
 from __future__ import annotations
 
 import re
-from datetime import date, timedelta
+from datetime import date
 
-TILTS = {"above", "near", "below", "unknown"}
+# Part of every cache key: bump it when the prompts change, so cached
+# answers written under the old prompt are regenerated.
+PROMPT_VERSION = 2
 
 _SECTION = re.compile(r"^\.([A-Z][A-Z0-9 /&-]*?)(?:\s*/[^\n]*?/)?\.\.\.", re.M)
 _KEEP = ("KEY MESSAGES", "SYNOPSIS", "SHORT TERM", "LONG TERM", "DISCUSSION", "UPDATE", "NEAR TERM",
@@ -70,65 +72,55 @@ def daily_table(rows: list[dict]) -> str:
 OUTLOOK_SYSTEM = """You write the plain-English outlook on a public weather website, for people who are not meteorologists.
 You are given National Weather Service products for one place. Write ONLY from them: never add weather, numbers,
 places or certainty that the products don't contain. Every temperature you mention must appear in the products.
+Keep the products' strength of wording: breezy is not "strong winds", a chance of showers is not "heavy rain",
+37 degrees is not "near freezing". Prefer day names ("Thursday") to "tonight" or "tomorrow".
 Explain jargon in everyday words (no "shortwave", "CAA", "PWATs", "QPF" - say what they mean).
-Tag each sentence with the products it came from, in square brackets at its end: [PFM] the point forecast table,
-[ZFP] the zone forecast, [AFD] the local forecasters' discussion, [WPC] the national 3-7 day discussion,
-[CPC] the 6-10/8-14 day outlook discussion, [CHG] the list of changes since the previous forecast.
-Answer with one JSON object and nothing else:
+End EVERY sentence and list item with the products it came from, in square brackets:
+[PFM] the point forecast table, [ZFP] the zone forecast, [AFD] the local forecasters' discussion,
+[WPC] the national 3-7 day discussion, [CPC] the 6-10/8-14 day outlook, [CHG] the changes since the previous forecast.
+Answer with one JSON object and nothing else, shaped like this example:
 {
- "headline": "one short sentence: the most important thing about the coming week",
- "summary": "3-5 sentences: how the week unfolds, in order",
- "trends": ["1-4 short items: warming or cooling trends, the wettest or windiest stretch, a pattern change"],
- "changes": ["0-3 short items putting the provided changes into words; empty if none were provided"],
- "beyond_day7": {"text": "1-2 sentences on the given later dates from the CPC discussion for this region, as odds (warmer/cooler, wetter/drier than normal); say so if the discussion doesn't cover this region",
-                 "days": [{"date": "YYYY-MM-DD", "temp": "above|near|below|unknown", "precip": "above|near|below|unknown"}]},
- "confidence": "one sentence on how sure the forecasters are, from the AFD/WPC wording"
-}"""
+ "headline": "Rain on and off through Thursday, then a dry, cooler weekend. [ZFP]",
+ "summary": "Showers are likely Wednesday with highs in the mid 60s. [ZFP] Thursday turns cooler, highs near 57. [PFM] The weekend stays dry with highs in the 50s. [ZFP]",
+ "trends": ["Cooling from 64 on Wednesday to 52 by Friday. [PFM]"],
+ "changes": ["Thursday's high was lowered 6 degrees since the last forecast. [CHG]"],
+ "beyond_day7": "The outlook for the days after that favors warmer and drier than normal here. [CPC]",
+ "confidence": "Forecasters are fairly confident about the dry weekend. [AFD]"
+}
+Use 1-4 trends, 0-3 changes (only from the CHANGES list; empty if it says none), 3-5 summary sentences.
+For beyond_day7, say what the CPC TABLE line says for this place (or that there is none), adding detail from the CPC
+discussion only where it names this region."""
+
+_TILT_WORDS = {"above": "above normal", "near": "near normal", "below": "below normal"}
 
 
 def outlook_prompt(place: str, office: str | None, zfp: str | None, table: str, changes: list[dict],
-                   afd: str | None, wpc: str | None, cpc: str | None, later: list[str]) -> str:
+                   afd: str | None, wpc: str | None, cpc: str | None, later: list[dict]) -> str:
     chg = "\n".join(f"- {c['date']}: {c['text']}" for c in changes) or "(none)"
+    tilt = "\n".join(f"- {d['date']}: temperature {_TILT_WORDS[d['temp']]}, precipitation {_TILT_WORDS[d['precip']]}"
+                      f" ({d['region']}, {d['period']} day table)" for d in later) or "(none for this place)"
     parts = [
         f"PLACE: {place}" + (f" (NWS office {office})" if office else ""),
-        f"LATER DATES for beyond_day7.days (exactly these, in order): {', '.join(later)}",
         "POINT FORECAST TABLE [PFM]:\n" + (table or "(none)"),
         "CHANGES SINCE THE PREVIOUS POINT FORECAST [CHG]:\n" + chg,
         "ZONE FORECAST [ZFP]:\n" + (zfp or "(none)"),
         "LOCAL FORECASTERS' DISCUSSION [AFD]:\n" + (afd or "(none)"),
         "NATIONAL 3-7 DAY DISCUSSION [WPC]:\n" + (wpc or "(none)"),
+        "CPC TABLE FOR THIS PLACE, DAYS 8-10 [CPC]:\n" + tilt,
         "6-10 AND 8-14 DAY OUTLOOK DISCUSSION [CPC]:\n" + (cpc or "(none)"),
     ]
     return "\n\n".join(parts)
 
 
-def later_dates(rows: list[dict], today: date) -> list[str]:
-    """Days 8-10 counting today as day 1, past the PFM's last day."""
-    last = max((date.fromisoformat(r["date"]) for r in rows), default=today)
-    out = []
-    for n in (7, 8, 9):
-        d = today + timedelta(days=n)
-        if d > last:
-            out.append(d.isoformat())
-    return out
-
-
-def validate_outlook(later: list[str]):
-    def check(c: dict) -> str | None:
-        if not isinstance(c, dict) or not isinstance(c.get("summary"), str) or not c.get("headline"):
-            return "invalid: missing headline/summary"
-        for k in ("trends", "changes"):
-            if not isinstance(c.get(k, []), list):
-                return f"invalid: {k} is not a list"
-        b = c.get("beyond_day7") or {}
-        days = b.get("days") or []
-        if later:
-            if [d.get("date") for d in days if isinstance(d, dict)] != later:
-                return f"invalid: beyond_day7.days must be exactly {later}"
-            if any(d.get("temp") not in TILTS or d.get("precip") not in TILTS for d in days):
-                return "invalid: temp/precip must be above, near, below or unknown"
-        return None
-    return check
+def validate_outlook(c: dict) -> str | None:
+    if not isinstance(c, dict) or not isinstance(c.get("summary"), str) or not c.get("headline"):
+        return "invalid: missing headline/summary"
+    for k in ("trends", "changes"):
+        if not isinstance(c.get(k, []), list):
+            return f"invalid: {k} is not a list"
+    if not isinstance(c.get("beyond_day7", ""), str):
+        return "invalid: beyond_day7 is not a string"
+    return None
 
 
 AFD_SYSTEM = """You rewrite a National Weather Service Area Forecast Discussion (forecasters' technical notes) into plain

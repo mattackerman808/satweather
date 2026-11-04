@@ -125,7 +125,7 @@ def places(
     near: str | None = Query(None, description="lon,lat to rank by (the map's center)"),
     limit: int = Query(8, ge=1, le=20),
 ) -> list[dict]:
-    """"Forecast for..." search: airports by ICAO/FAA id or name, forecast
+    """"Forecast for..." search: ZIP codes, airports by ICAO/FAA id or name, forecast
     zones by name, and cities by name from the zone forecasts' "Including
     the cities of" lines (not every office lists them). Each result has a
     point inside the zone whose forecast it opens.
@@ -137,6 +137,17 @@ def places(
     pre, anywhere = _like(q) + "%", "%" + _like(q) + "%"
     cands: list[dict] = []
     with get_engine().connect() as conn:
+        # ZIP codes (3-5 digits: a prefix), labelled with the zone they fall in.
+        if re.fullmatch(r"\d{3,5}", q):
+            for r in conn.execute(text("""
+                SELECT z.zip, ST_X(z.geom) AS lon, ST_Y(z.geom) AS lat, u.name AS zone, u.state
+                FROM zcta z
+                LEFT JOIN LATERAL (SELECT name, state FROM ugc_zone
+                                   WHERE kind = 'public' AND ST_Contains(geom, z.geom) LIMIT 1) u ON true
+                WHERE z.zip LIKE :pre ORDER BY z.zip LIMIT :n"""), {"pre": q + "%", "n": limit}).mappings():
+                cands.append({"kind": "zip", "label": f"ZIP {r['zip']}", "name": r["zip"],
+                              "detail": ", ".join(filter(None, [r["zone"], r["state"]])) or "ZIP code",
+                              "lon": r["lon"], "lat": r["lat"], "exact": r["zip"] == q})
         for r in conn.execute(text("""
             SELECT id, faa, trim(name) AS name, state, country, ST_X(geom) AS lon, ST_Y(geom) AS lat,
                    upper(id) = upper(:q) OR upper(faa) = upper(:q) AS exact

@@ -93,7 +93,7 @@ export type Frame = { id: number; scan_time: string; display: string; thumb: str
   orig: string | null };
 export type LoopQuery = { source: string; sector: string; product: string; overlay: boolean; hours: number };
 
-export type Place = { kind: "station" | "zone" | "city"; label: string; detail: string; lon: number; lat: number };
+export type Place = { kind: "station" | "zone" | "city" | "zip"; label: string; detail: string; lon: number; lat: number };
 export type TcPoint = { valid: string; lat: number | null; lon: number | null; wind_kt: number | null;
   gust_kt?: number | null; category?: string; outlook?: boolean; status?: string | null; kind?: string };
 export type Storm = {
@@ -156,10 +156,12 @@ export type Forecast = {
   daily: Day[]; hours: Record<string, Hour[]>;
   changes: { date: string; field: string; text: string }[];
   afd: ProductRef | null; national: Record<string, ProductRef | null>; llm: { enabled: boolean };
+  later: Later[];
 };
+export type Later = { date: string; temp: Tilt; precip: Tilt; period: string; region: string };
 export type Tilt = "above" | "near" | "below" | "unknown";
 export type OutlookText = { headline: string; summary: string; trends: string[]; changes: string[];
-  beyond_day7?: { text: string; days: { date: string; temp: Tilt; precip: Tilt }[] }; confidence?: string };
+  beyond_day7?: string; confidence?: string };
 export type LlmResult<T> = { status: "ready" | "pending" | "unavailable" | "failed" | "none"; content: T | null;
   model?: string; created?: string; stale?: boolean };
 export type PlainAfd = { sections: { title: string; text: string }[]; glossary: { term: string; meaning: string }[] };
