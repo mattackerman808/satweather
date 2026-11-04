@@ -100,6 +100,22 @@ def _num(s: str) -> float | None:
         return None
 
 
+# Plausible values. Reception damage can run two cells together ("71" and
+# "43" become "7143"); where the lost spaces were can't be known, so a value
+# outside these is dropped rather than guessed at.
+_RANGE = {"temp": (-80, 135), "dewpt": (-90, 95), "rh": (0, 100), "wspd": (0, 200), "wgust": (0, 250),
+          "chill": (-120, 60), "heat": (60, 160), "maxmin": (-80, 140), "pop": (0, 100), "qpf": (0, 20)}
+
+
+def _ok(name: str, v: float | None, raw: str = "") -> bool:
+    if v is None:
+        return False
+    lo, hi = _RANGE.get(name, (float("-inf"), float("inf")))
+    if name == "maxmin" and not re.fullmatch(r"-?\d{1,3}", raw):
+        return False
+    return lo <= v <= hi
+
+
 def _key(s: str) -> str:
     return re.sub(r"\s+", "", s.lower())
 
@@ -311,7 +327,7 @@ def _parse_block(lines: list[str], start: datetime, pt: PfmPoint, after: bool,
                 wx[name] = v
             elif name in ("temp", "dewpt", "rh", "wspd", "wgust", "chill", "heat"):
                 n = _num(v)
-                if n is not None:
+                if _ok(name, n):
                     e[name] = int(n)
             elif name == "clouds_pct":
                 n = _num(v)
@@ -339,16 +355,16 @@ def _parse_block(lines: list[str], start: datetime, pt: PfmPoint, after: bool,
             p = by_end.setdefault(col, {"t": times[col]})
             if name == "maxmin":
                 n = _num(v)
-                if n is not None:
+                if _ok("maxmin", n, v):
                     local_h = (times[col] + timedelta(hours=pt.utc_offset_h)).hour
                     p["max" if 10 <= local_h <= 23 else "min"] = int(n)
             elif name == "pop":
                 n = _num(v)
-                if n is not None:
+                if _ok("pop", n):
                     p["pop"] = int(n)
             elif name == "qpf":
                 n = _num(v)
-                if n is not None:
+                if _ok("qpf", n):
                     p["qpf"] = n
             elif name == "snow":
                 p["snow"] = v
