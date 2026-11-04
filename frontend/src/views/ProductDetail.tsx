@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { api, fmtTime, type ProductDetail as PD } from "../api";
 import { ReportList } from "../wx/Wx";
 import { reflow } from "../wx/ZonePanel";
+import AfdText from "../wx/AfdText";
 
 const ACTION: Record<string, string> = {
   NEW: "Issued", CON: "Continued", EXT: "Extended", EXA: "Extended (area)", EXB: "Extended (area+time)",
@@ -129,7 +130,7 @@ export default function ProductDetail({ id, embedded = false, onShowOnMap }:
         <span>Full text</span>
         <a href={`/orig/${p.orig_path}`} download>original file</a>
       </div>
-      <pre className="raw">{p.raw}</pre>
+      {p.nnn === "AFD" ? <AfdText id={p.id} raw={p.raw} /> : <pre className="raw">{p.raw}</pre>}
     </article>
   );
 }

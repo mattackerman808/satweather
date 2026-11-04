@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
-import { ago, api, fmtTime, type ZoneAt } from "../api";
+import { Link } from "react-router";
+import { ago, api, fmtTime, type Forecast, type ZoneAt } from "../api";
 import type { Inspect } from "../map/Inspector";
+import { DayStrip } from "./DayStrip";
 
 // NWS text comes hard-wrapped at 69 columns. Rejoin each paragraph so it
 // wraps to the panel, keep forecast periods (".SATURDAY...") as their own
@@ -10,8 +12,12 @@ import type { Inspect } from "../map/Inspector";
 type Para = { label?: string; text: string; pre?: boolean };
 export function reflow(body: string): Para[] {
   let lines = body.trim().replace(/\$\$$/, "").trimEnd().split("\n");
-  if (/^[A-Z]{2}[CZ]\d{3}/.test(lines[0] ?? "")) {
-    const blank = lines.findIndex((l) => !l.trim());
+  // The segment header ends at the first blank line after its UGC line. The
+  // first segment of a product also carries the product header (WMO line,
+  // AWIPS id, office) above the UGC line; that goes too.
+  const ugc = lines.slice(0, 20).findIndex((l) => /^[A-Z]{2}[CZ]\d{3}/.test(l));
+  if (ugc >= 0) {
+    const blank = lines.findIndex((l, i) => i > ugc && !l.trim());
     lines = blank < 0 ? [] : lines.slice(blank + 1);
   }
   const out: Para[] = [];
@@ -37,6 +43,22 @@ export function reflow(body: string): Para[] {
   }
   flush();
   return out;
+}
+
+// A zone forecast segment: its headlines and its periods, reflowed.
+export function ZoneForecastText({ f }: { f: NonNullable<ZoneAt["forecast"]> }) {
+  const expired = f.ugc_expire && new Date(f.ugc_expire).getTime() < Date.now();
+  return (
+    <>
+      {expired && <p className="parsenote">This forecast has expired and no newer one has been received.</p>}
+      {f.headlines.map((h) => <div key={h} className="headline">{h}</div>)}
+      <div className="fcst">
+        {reflow(f.body).map((p, i) => p.pre ? <pre key={i} className="raw">{p.text}</pre> : (
+          <p key={i}>{p.label && <b>{p.label}: </b>}{p.text}</p>
+        ))}
+      </div>
+    </>
+  );
 }
 
 const KIND: Record<string, string> = {
@@ -71,7 +93,6 @@ export default function ZonePanel({ lon, lat, onOpen, onZone }: {
   if (!d) return <p className="empty">Loading…</p>;
   const z = d.zone;
   const f = d.forecast;
-  const expired = f?.ugc_expire && new Date(f.ugc_expire).getTime() < Date.now();
   return (
     <article className="zonepanel">
       <header>
@@ -84,6 +105,7 @@ export default function ZonePanel({ lon, lat, onOpen, onZone }: {
         <h2>{z ? z.name : "No forecast zone here"}</h2>
         {!z && <p className="dim">Open ocean, or outside NWS forecast zones.</p>}
       </header>
+      {z?.kind === "public" && <MiniStrip lon={lon} lat={lat} />}
       {d.hazards.length > 0 && (
         <section>
           <h3>In effect here</h3>
@@ -101,13 +123,7 @@ export default function ZonePanel({ lon, lat, onOpen, onZone }: {
           <h3>
             {f.title} <span className="dim">{f.awips} · {ago(f.issued ?? f.received)}</span>
           </h3>
-          {expired && <p className="parsenote">This forecast has expired and no newer one has been received.</p>}
-          {f.headlines.map((h) => <div key={h} className="headline">{h}</div>)}
-          <div className="fcst">
-            {reflow(f.body).map((p, i) => p.pre ? <pre key={i} className="raw">{p.text}</pre> : (
-              <p key={i}>{p.label && <b>{p.label}: </b>}{p.text}</p>
-            ))}
-          </div>
+          <ZoneForecastText f={f} />
           <button className="linkbtn" onClick={() => onOpen({ kind: "product", id: f.product_id })}>
             Whole product →
           </button>
@@ -126,5 +142,24 @@ export default function ZonePanel({ lon, lat, onOpen, onZone }: {
         </section>
       )}
     </article>
+  );
+}
+
+// The next three days from the nearest point forecast, and the way to the
+// Forecast tab for the rest.
+function MiniStrip({ lon, lat }: { lon: number; lat: number }) {
+  const [f, setF] = useState<Forecast | null>(null);
+  useEffect(() => {
+    let stale = false;
+    setF(null);
+    api.forecast(lon, lat).then((x) => !stale && setF(x)).catch(() => {});
+    return () => { stale = true; };
+  }, [lon, lat]);
+  const at = `${lon.toFixed(4)},${lat.toFixed(4)}`;
+  return (
+    <section className="ministrip">
+      {f?.point && f.daily.length > 0 && <DayStrip f={f} max={3} compact />}
+      <Link className="linkbtn" to={`/forecast?at=${at}`}>10-day forecast →</Link>
+    </section>
   );
 }

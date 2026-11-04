@@ -13,6 +13,7 @@ from sqlalchemy import Connection, text
 
 from satweather.emwin import EmwinName
 from satweather.parse import Parsed
+from satweather.pfm import store_pfm
 from satweather.reports import metar as decode_metar
 from satweather.tropical import store_tropical
 
@@ -88,6 +89,7 @@ def store_text(conn: Connection, *, name: str, size: int, mtime: float, en: Emwi
         return sid
 
     store_tropical(conn, pid, parsed.nnn, raw)
+    store_pfm(conn, pid, parsed.nnn, parsed.office, raw, issued or en.received)
 
     when = issued or en.received
     for seg in parsed.segments:

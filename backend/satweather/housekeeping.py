@@ -165,6 +165,18 @@ def prune_signal(days: int, dry: bool = False) -> int:
         return conn.execute(text(f"DELETE {sql}"), {"d": days}).rowcount
 
 
+def prune_forecast(dry: bool = False) -> int:
+    """Delete PFM points issued over 3 days ago (the Forecast tab only reads
+    the newest issuance and the one before it) and cached LLM output not
+    regenerated in 14 days."""
+    sqls = ["FROM pfm_point WHERE issued < now() - interval '3 days'",
+            "FROM llm_output WHERE created < now() - interval '14 days'"]
+    with get_engine().begin() as conn:
+        if dry:
+            return sum(conn.execute(text(f"SELECT count(*) {q}")).scalar() for q in sqls)
+        return sum(conn.execute(text(f"DELETE {q}")).rowcount for q in sqls)
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(prog="satweather-housekeep")
     ap.add_argument("--dry-run", action="store_true", help="report what would be done, change nothing")
@@ -178,6 +190,7 @@ def main() -> None:
         ("originals deleted", lambda: prune_originals(s.data_root, s.keep_originals_days, args.dry_run)),
         ("copies deleted", lambda: prune_copies(s.media_root, s.keep_copies_days, args.dry_run)),
         ("signal samples deleted", lambda: prune_signal(s.keep_signal_days, args.dry_run)),
+        ("forecast rows deleted", lambda: prune_forecast(args.dry_run)),
     ]
     for what, job in jobs:
         try:

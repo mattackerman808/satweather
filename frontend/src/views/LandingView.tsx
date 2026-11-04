@@ -48,6 +48,7 @@ const TABS: { to: string; name: string; body: string }[] = [
   { to: "/satellite", name: "Satellite", body: "Loops of GOES-18's full disk and mesoscale sectors, GOES-19, Himawari and derived products, with zoom to full resolution." },
   { to: "/radar", name: "Radar & charts", body: "Weather service radar mosaics by region and forecast charts, looped." },
   { to: "/map", name: "Map", body: "Warnings, discussions, airport weather and pilot reports. Click anywhere for that spot's forecast." },
+  { to: "/forecast", name: "Forecast", body: "Seven days for any US place from the weather service's point forecasts, with icons, charts and what changed, plus the 8-10 day outlook." },
   { to: "/tropical", name: "Tropical & Meso", body: "Active hurricanes with the hurricane center's track and wind radii, outlooks, and where the mesoscale sectors are pointed." },
   { to: "/text", name: "Raw", body: "Every bulletin as it was received, decoded where it can be, and searchable." },
 ];

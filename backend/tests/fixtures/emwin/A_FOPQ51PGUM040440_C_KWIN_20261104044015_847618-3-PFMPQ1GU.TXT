@@ -1,0 +1,122 @@
+FOPQ51 PGUM 040440
+PFMPQ1
+
+POINT FORECAST MATRICES
+NATIONAL WEATHER SERVICE TIYAN GU
+234 PM CHST WED NOV 4 2026
+
+FMZ013-041800-
+POHNPEI INTERNATIONAL AIRPORT-KOLONIA FM
+06.98N 158.21E ELEV. 42 FT
+234 PM CHST WED NOV 4 2026
+
+DATE           11/04/26      THU 11/05/26            FRI 11/06/26            SAT
+GMT 3HRLY     15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06
+UTC 3HRLY     05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20
+
+MIN/MAX                      78          88          77          88          78
+TEMP          86 85 83 80 79 78 82 87 88 86 83 80 78 77 82 87 88 86 83 81 78 78
+DEWPT         75 74 74 74 74 74 74 74 75 75 75 76 76 76 76 76 76 77 77 77 77 77
+RH            70 70 74 82 85 88 77 65 66 70 77 88 94 97 82 70 68 75 82 88 97 97
+WIND DIR       N NE NE  E SE SE SE SE SE SE SE SE SE SE  E  E  E  E  E  E  E NE
+WIND SPD       3  2  3  4  3  3  3  3  4  4  5  5  6  8  9  9  6  6  8  9  8  9
+CLOUDS        B1 B1 B1 B1 B1 B1 B1 B1 B1 B1 B1 B1 B1 SC SC SC SC SC SC SC SC SC
+POP 12HR                     20          20          20          20          20
+QPF 12HR                   0.05        0.03        0.07        0.06        0.05
+RAIN SHWRS     S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S
+TSTMS          S                                                               
+HEAT INDEX    95 93 89 85       88 96 97 95 91 86       89 98 99 97 92 88      
+MAX HEAT         95    91    84    96    97    93    83    98    99    95    85
+
+
+DATE           11/07/26  SUN 11/08/26  MON 11/09/26  TUE 11/10/26  WED 11/11/26
+GMT 6HRLY     12 18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18
+UTC 6HRLY     02 08 14   20 02 08 14   20 02 08 14   20 02 08 14   20 02 08
+
+MAX/MIN          88      78    87      78    88      77    89      77    89
+TEMP          87 86 81   78 86 85 80   78 87 85 80   77 88 87 81   78 88 87
+DEWPT         77 78 78   78 78 78 78   78 78 78 78   77 78 78 78   78 78 78
+PWIND DIR        NE      NE    NE       E    SE      SE    SE       E    NE
+WIND CHAR        GN      GN    GN      GN    LT      LT    LT      LT    LT
+AVG CLOUDS    SC SC B1   B1 B1 B1 B1   B1 B1 B1 B1   B1 B1 B1 SC   SC SC SC
+POP 12HR         20      30    30      40    30      30    30      20    20
+RAIN SHWRS     S  S  C    C  C  C  C    C  C  C  C    C  C  C  S    S  S  S
+TSTMS                                      S  S                            
+
+$$
+FMZ001-041800-
+KOSRAE INTERNATIONAL AIRPORT-GABERT FM
+05.36N 162.96E ELEV. 11 FT
+234 PM CHST WED NOV 4 2026
+
+DATE           11/04/26      THU 11/05/26            FRI 11/06/26            SAT
+GMT 3HRLY     15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06
+UTC 3HRLY     05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20
+
+MIN/MAX                      78          87          78          88          78
+TEMP          86 84 82 80 79 78 82 86 87 85 83 81 79 78 82 87 87 86 83 81 79 78
+DEWPT         76 76 76 76 76 76 76 76 76 76 77 77 77 77 77 77 77 77 78 78 78 78
+RH            72 77 82 88 91 94 82 72 70 75 82 88 94 97 85 72 72 75 85 91 97100
+WIND DIR      NE  E  E SE SE SE SE SE  E  E  E  E  E  E  E  E  E NE NE NE NE NE
+WIND SPD       4  5  4  3  3  4  5  5  5  5  5  5  5  6  6  5  5  6  8  8  8  8
+CLOUDS        SC B1 B1 B1 B1 SC SC SC SC B1 B1 B1 B1 SC SC SC SC B1 B1 B1 B1 SC
+POP 12HR                     30          20          20          20          20
+QPF 12HR                   0.02        0.03        0.07        0.05        0.08
+RAIN SHWRS     S  C  C  C  C  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S  S
+TSTMS             S  S  S  S  S  S  S  S                                       
+HEAT INDEX    95 93 90 86       89 96 97 95 92 87       90 98 99 97 93 89      
+MAX HEAT         95    92    84    96    97    94    85    98    99    96    87
+
+
+DATE           11/07/26  SUN 11/08/26  MON 11/09/26  TUE 11/10/26  WED 11/11/26
+GMT 6HRLY     12 18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18
+UTC 6HRLY     02 08 14   20 02 08 14   20 02 08 14   20 02 08 14   20 02 08
+
+MAX/MIN          87      78    88      78    89      77    89      78    89
+TEMP          86 86 81   78 87 86 81   78 88 87 81   78 88 87 81   78 88 87
+DEWPT         77 77 77   77 77 77 78   78 78 78 78   78 78 78 78   78 78 78
+PWIND DIR        NE       E    SE      SE     S      SE     E      NE    NE
+WIND CHAR        LT      LT    LT      LT    LT      LT    LT      LT    GN
+AVG CLOUDS    SC SC B1   B1 B1 B1 B1   B1 SC SC B1   B1 SC SC SC   SC SC SC
+POP 12HR         20      30    30      30    20      20    20      20    20
+RAIN SHWRS     S  S  C    C  C  C  C    C  S  S  S    S  S  S  S    S  S  S
+
+$$
+MHZ002-041800-
+MARSHALL ISLANDS INTERNATIONAL AIRPORT-MAJURO MH
+07.09N 171.27E ELEV. 4 FT
+234 PM CHST WED NOV 4 2026
+
+DATE           11/04/26      THU 11/05/26            FRI 11/06/26            SAT
+GMT 3HRLY     15 18 21 00 03 06 09 12 15 18 21 00 03 06 09 12 15 18 21 00 03 06
+UTC 3HRLY     05 08 11 14 17 20 23 02 05 08 11 14 17 20 23 02 05 08 11 14 17 20
+
+MIN/MAX                      81          87          81          88          81
+TEMP          87 86 84 83 82 82 84 87 87 86 84 83 82 81 84 87 88 87 85 83 82 81
+DEWPT         76 76 76 76 76 76 76 76 76 77 77 77 77 77 77 77 77 77 77 77 77 77
+RH            70 72 77 80 82 82 77 70 70 75 80 82 85 88 80 72 70 72 77 82 85 88
+WIND DIR       E  E SE SE SE  E  E  E  E  E  E  E NE NE NE  N  N  N NE NE NE  E
+WIND SPD       5  5  5  4  4  5  8  6  5  6  4  3  4  4  4  5  4  5  5  5  5  5
+CLOUDS        SC SC SC SC SC SC SC SC SC B1 B1 B1 B1 SC SC SC SC B1 B1 B1 B1 B1
+POP 12HR                     20          20          30          20          20
+QPF 12HR                   0.01        0.06        0.13        0.05        0.12
+RAIN SHWRS     S  S  S  S  S  S  S  S  S  C  C  C  C  S  S  S  S  S  S  S  S  C
+TSTMS          S                          S  S  S  S                           
+HEAT INDEX    96 96 94 91 87 86 93 97 98 96 94 91 86 86 93 99 99 98 95 92 87 86
+MAX HEAT         99    95    94    98    99    96    95    99   100    99    96
+
+
+DATE           11/07/26  SUN 11/08/26  MON 11/09/26  TUE 11/10/26  WED 11/11/26
+GMT 6HRLY     12 18 00   06 12 18 00   06 12 18 00   06 12 18 00   06 12 18
+UTC 6HRLY     02 08 14   20 02 08 14   20 02 08 14   20 02 08 14   20 02 08
+
+MAX/MIN          88      81    88      81    88      81    88      81    88
+TEMP          87 86 83   81 87 86 83   81 87 86 83   81 88 87 83   82 87 86
+DEWPT         77 77 77   77 78 78 78   78 78 78 78   78 78 78 78   78 78 79
+PWIND DIR         E       E     E       E    NE      NE    NE      NE    NE
+WIND CHAR        LT      LT    LT      LT    LT      LT    GN      GN    LT
+AVG CLOUDS    B1 B1 B1   B1 SC SC B1   B1 SC SC SC   SC SC SC B1   B1 SC SC
+POP 12HR         30      30    20      20    20      20    20      20    20
+RAIN SHWRS     C  C  C    C  S  S  S    S  S  S  S    S  S  S  S    S  S  S
+
+$$
