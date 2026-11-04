@@ -31,6 +31,17 @@
   --nd: #ff9a8f;
   --mark-bg: #4a3b00;
   --mark-text: #ffe08a;
+  /* Weather icons (wx/WxIcon.tsx) and the outlook's warm/cool badges. */
+  --wx-sun: #ffc83d;
+  --wx-moon: #ece6c4;
+  --wx-cloud: #c7d1dc;
+  --wx-cloud-dark: #7d8a99;
+  --wx-rain: #4fa3ff;
+  --wx-snow: #e8f4ff;
+  --wx-bolt: #ffd23f;
+  --wx-fog: #9aa6b3;
+  --wx-warm: #ff8a4c;
+  --wx-cool: #5fb0ff;
   color-scheme: dark;
   font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -62,6 +73,16 @@
   --nd: #b3261e;
   --mark-bg: #ffe08a;
   --mark-text: #3a2a00;
+  --wx-sun: #f2a900;
+  --wx-moon: #9a925f;
+  --wx-cloud: #aab6c3;
+  --wx-cloud-dark: #6b7786;
+  --wx-rain: #1f7fe0;
+  --wx-snow: #6f9fd6;
+  --wx-bolt: #e0a800;
+  --wx-fog: #8a96a3;
+  --wx-warm: #c8501c;
+  --wx-cool: #1f6fc4;
   color-scheme: light;
 }
 :root[data-host] .topbar { display: none; }
@@ -428,6 +449,108 @@ button { font: inherit; color: inherit; }
 @media (max-width: 1000px) { .tiles-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } .hero-fig { grid-column: span 2; }
   .charts { grid-template-columns: minmax(0, 1fr); } }
 
+/* Forecast */
+.forecastview { position: absolute; inset: 0; overflow-y: auto; padding: 16px clamp(16px, 3vw, 32px) 48px; }
+.fcbar { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; margin-bottom: 14px; }
+.fcbar h1 { margin: 0; font-size: 22px; }
+.placesearch.wide { width: min(460px, 100%); }
+.placesearch.wide .psrow .search, .placesearch.wide .locate { background: var(--inset); }
+.fcempty { max-width: 620px; padding: 20px 0; font-size: 15px; line-height: 1.5; }
+.fchead h2 { margin: 0 0 4px; font-size: 24px; }
+.fchead { margin-bottom: 12px; }
+.fchazards { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+.fchazards .pick { width: auto; text-decoration: none; color: var(--text); }
+.card .pick { text-decoration: none; color: var(--text); margin-bottom: 4px; }
+.outlookcard { margin-bottom: 14px; max-width: 1100px; overflow: visible; }
+.outlookcard p, .outlookcard li { font-size: 15px; line-height: 1.5; margin: 0 0 8px; }
+.outlookhead { font-size: 18px !important; margin: 6px 0 8px !important; line-height: 1.35; }
+.outlookcard .trends { margin: 0 0 8px; padding-left: 20px; }
+.ainote { font-size: 12px; color: var(--muted); }
+.srctag { display: inline-block; margin-left: 4px; padding: 0 5px; border-radius: 4px; font-size: 10.5px; font-weight: 600;
+  letter-spacing: .03em; color: var(--muted); border: 1px solid var(--line); vertical-align: 1px; cursor: help; }
+.aiwait { display: flex; align-items: center; gap: 8px; }
+.spinner { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--line); border-top-color: var(--accent);
+  animation: spin 0.9s linear infinite; flex: none; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+
+/* Day panels */
+.daystrip { margin-bottom: 14px; }
+.daystrip .days { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(118px, 1fr); gap: 8px;
+  overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 4px; }
+.daycard { scroll-snap-align: start; display: flex; flex-direction: column; align-items: center; gap: 4px; min-width: 0;
+  padding: 10px 8px 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+  color: var(--text); font: inherit; cursor: pointer; text-align: center; }
+.daycard:hover { background: var(--hover); }
+.daycard.on { border-color: var(--edge); background: var(--sel-2); }
+.daycard:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.dname { font-weight: 600; font-size: 14px; white-space: nowrap; }
+.dname .dim { font-weight: 400; font-size: 12px; }
+.dicons { position: relative; height: 60px; display: flex; align-items: center; justify-content: center; }
+.nighticon { position: absolute; right: -18px; bottom: -4px; opacity: .9; }
+.badge-chance { position: absolute; left: -16px; bottom: 0; font-size: 11px; color: var(--muted); }
+.temps { display: flex; gap: 8px; align-items: baseline; font-variant-numeric: tabular-nums; }
+.temps b { font-size: 22px; font-weight: 600; }
+.temps .lo { font-size: 16px; color: var(--muted); }
+.range { position: relative; width: 80%; height: 4px; border-radius: 2px; background: var(--line); }
+.range i { position: absolute; top: 0; bottom: 0; border-radius: 2px;
+  background: linear-gradient(90deg, var(--wx-cool), var(--wx-warm)); }
+.cond { font-size: 12.5px; line-height: 1.25; min-height: 2.5em; color: var(--text); }
+.meta { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12px; color: var(--muted);
+  font-variant-numeric: tabular-nums; }
+.pop { display: inline-flex; align-items: center; gap: 3px; color: var(--text); }
+.pop.low { color: var(--muted); }
+.wind { display: inline-flex; align-items: center; gap: 3px; white-space: nowrap; }
+.wind .gust { color: var(--text); }
+.windarrow { flex: none; }
+.qpf { color: var(--muted); }
+.daycard.later { cursor: default; opacity: .85; border-style: dashed; justify-content: flex-start; }
+.daycard.later:hover { background: var(--panel); }
+.tilts { display: flex; flex-direction: column; gap: 6px; font-size: 12.5px; line-height: 1.25; padding: 8px 0; }
+.tilt { display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
+.tilt.t-above { color: var(--wx-warm); }
+.tilt.t-below { color: var(--wx-cool); }
+.tilt.t-near, .tilt.t-unknown, .tilt.p-near { color: var(--muted); }
+.daydetail { margin-top: 10px; background: var(--panel); border: 1px solid var(--line); border-radius: 12px;
+  padding: 12px 14px; }
+.daydetail h3 { margin: 0 0 8px; font-size: 15px; }
+.hours { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 6px; }
+.hour { flex: 0 0 auto; min-width: 72px; display: flex; flex-direction: column; align-items: center; gap: 3px;
+  font-size: 12px; padding: 4px 2px; border-radius: 8px; background: var(--card-2); }
+.hour b { font-size: 15px; font-variant-numeric: tabular-nums; }
+.daydetail .fcst { margin-top: 10px; max-width: 900px; }
+.daystrip.compact .days { grid-auto-columns: minmax(84px, 1fr); }
+.daystrip.compact .daycard { cursor: default; padding: 8px 4px; }
+.daystrip.compact .dicons { height: 42px; }
+.daystrip.compact .temps b { font-size: 17px; }
+.daystrip.compact .temps .lo { font-size: 14px; }
+.daystrip.compact .cond { font-size: 11.5px; }
+.ministrip { margin-top: 12px; }
+.ministrip .daystrip { margin-bottom: 6px; }
+
+/* Charts, changes, text */
+.fccharts { display: grid; gap: 10px; margin-bottom: 14px; }
+.legend-row-h.inline { display: inline-flex; margin: 0 0 0 10px; vertical-align: 1px; }
+.sigchart .endlabel { fill: var(--text); font-weight: 600; }
+.tableview summary { cursor: pointer; color: var(--accent); font-size: 13px; }
+.tableview { font-size: 13px; }
+.fcchanges { margin-bottom: 14px; max-width: 1100px; }
+.fcchanges ul { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.6; }
+.fccols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 12px; margin-bottom: 14px; align-items: start; }
+.fccols .card { overflow: visible; }
+.fccols .card a { color: var(--accent); font-size: 13px; }
+.fcnational { max-width: 700px; }
+.afdtext .seg { margin-bottom: 10px; }
+.afdtext .raw { max-height: 70vh; overflow: auto; }
+.plainafd h4 { margin: 12px 0 4px; font-size: 14px; }
+.plainafd p { margin: 0 0 8px; font-size: 14px; line-height: 1.5; }
+.glossary summary { cursor: pointer; color: var(--accent); font-size: 13px; margin-top: 8px; }
+.glossary dl { display: grid; gap: 6px; margin: 8px 0 0; font-size: 13px; }
+.glossary dt { font-weight: 600; }
+.glossary dd { margin: 0; color: var(--muted); }
+@media (max-width: 1000px) { .fccols { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 1100px) { .daystrip:not(.compact) .days { overflow-x: visible; } }
+
 /* ── Phone (narrow.ts has the same width) ── */
 @media (max-width: 760px) {
   /* iOS zooms into any field with text under 16 px. */
@@ -496,4 +619,15 @@ button { font: inherit; color: inherit; }
   .satbar { gap: 8px; padding: 8px; }
   .scrub { order: -1; flex-basis: 100%; }
   .ctl { min-width: 40px; height: 36px; }
+}
+
+/* Forecast on a phone: the day panels scroll sideways, a snap per day. */
+@media (max-width: 760px) {
+  .forecastview { padding: 12px 12px 40px; }
+  .fcbar { gap: 10px; }
+  .fcbar h1 { display: none; }
+  .placesearch.wide { width: 100%; }
+  .fchead h2 { font-size: 20px; }
+  .daystrip .days { grid-auto-columns: 112px; }
+  .outlookcard p, .outlookcard li { font-size: 14.5px; }
 }

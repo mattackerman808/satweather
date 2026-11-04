@@ -410,6 +410,53 @@ def test_zone_at_point(db):
 
 
 
+def test_forecast_from_pfm(db, tmp_path, monkeypatch):
+    """PFM ingest -> pfm_point -> /api/forecast; redecode rebuilds the
+    points; the LLM pieces answer 'unavailable' without an LLM URL."""
+    from fastapi.testclient import TestClient
+
+    from satweather import ingest
+    from satweather.api import forecast as fc
+    from satweather.api.app import app
+
+    monkeypatch.delenv("SATWEATHER_LLM_URL", raising=False)
+    monkeypatch.setattr(fc, "_now", lambda: datetime(2026, 11, 4, 7, 0, tzinfo=UTC))
+    _ingest(list(FIX.glob("*-PFMLOTIL.TXT")) + list(FIX.glob("*-PMD*")) + list(FIX.glob("*-AFDAJKAK.TXT")),
+            tmp_path)
+    with db.connect() as conn:
+        n = conn.execute(text("SELECT count(*) FROM pfm_point")).scalar()
+        office = conn.execute(text("SELECT DISTINCT office FROM pfm_point")).scalar()
+    assert n > 10
+
+    c = TestClient(app)
+    d = c.get("/api/forecast", params={"lon": -87.95, "lat": 42.0}).json()
+    p = d["point"]
+    assert p["name"].startswith("Chicago O'Hare") and p["distance_km"] < 5 and p["office"] == office
+    days = {r["date"]: r for r in d["daily"]}
+    assert (days["2026-11-04"]["hi"], days["2026-11-04"]["lo"]) == (64, 49)
+    assert days["2026-11-04"]["day"]["condition"]["icon"] in ("rain", "showers")
+    assert d["hours"]["2026-11-04"][0]["temp"] == 64
+    assert d["changes"] == [] and p["prev_product_id"] is None
+    assert d["national"]["PMDEPD"]["id"] and d["national"]["PMDMRD"]["id"] and d["national"]["PMDTHR"]["id"]
+    assert d["llm"] == {"enabled": False}
+    far = c.get("/api/forecast", params={"lon": -150, "lat": 20}).json()
+    assert far["point"] is None and far["daily"] == []
+
+    assert c.get("/api/forecast/outlook", params={"lon": -87.95, "lat": 42.0}).json()["status"] == "unavailable"
+    with db.connect() as conn:
+        afd = conn.execute(text("SELECT id FROM text_product WHERE nnn = 'AFD'")).scalar()
+        pfm_id = conn.execute(text("SELECT id FROM text_product WHERE nnn = 'PFM'")).scalar()
+    assert c.get(f"/api/products/{afd}/plain").json()["status"] == "unavailable"
+    assert c.get(f"/api/products/{pfm_id}/plain").status_code == 400
+
+    with db.begin() as conn:
+        conn.execute(text("DELETE FROM pfm_point"))
+    assert ingest.redecode()["pfm_points"] == n
+    assert ingest.redecode()["pfm_points"] == n  # idempotent
+    with db.connect() as conn:
+        assert conn.execute(text("SELECT count(*) FROM pfm_point")).scalar() == n
+
+
 def test_offices(db):
     """Office areas (union of public zones) named from their newest AFD."""
     from fastapi.testclient import TestClient

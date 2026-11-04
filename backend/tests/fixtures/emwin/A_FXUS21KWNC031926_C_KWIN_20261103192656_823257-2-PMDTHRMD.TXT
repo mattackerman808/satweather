@@ -1,0 +1,161 @@
+FXUS21 KWNC 031926
+PMDTHR
+US Hazards Outlook
+NWS Climate Prediction Center College Park MD
+300 PM EST November 03 2026
+
+SYNOPSIS: Dynamical models continue to advertise highly amplified mid-level low 
+pressure encroaching the West Coast during week-2, promoting periods of 
+enhanced onshore flow consistent with atmospheric river activity. Although 
+outlook confidence has decreased due to some drying trends in the guidance 
+since yesterday, there continues to be elevated chances for hazardous impacts 
+including heavy precipitation, high winds, and high elevation snowfall, with 
+possible flooding over the Pacific Northwest and California during the period. 
+Meanwhile, an area of departing mid-level low pressure may bring periods of 
+high winds over portions of the eastern U.S. early in the period. With surface 
+low pressure development also possible in the lee of the Rockies, resulting in 
+enhanced, and possibly heavy precipitation over many parts of the Great Plains, 
+Mississippi, Tennessee and Ohio Valleys towards the middle of the period.  
+
+HAZARDS
+
+Moderate risk of heavy precipitation for parts of the Pacific Northwest, 
+northern and central California, Wed-Sun, Nov 11-15.
+
+Moderate risk of heavy high elevation snow across the Klamath and the Sierra 
+Nevada Mountains, Wed-Sun, Nov 11-15.
+
+Moderate risk of high winds across coastal portions of Washington, Oregon, and 
+much of California, Wed-Sun, Nov 11-15.
+
+Slight risk of heavy precipitation across the West Coast and into parts of the 
+Desert Southwest, Great Basin, and Southern Rockies, Wed-Tue, Nov 11-17.
+
+Slight risk of heavy high elevation snow across the Cascades, Klamath, and 
+northern Sierra Nevada Mountains, Wed-Tue, Nov 11-17.
+
+Slight risk of heavy high elevation snow for parts of the Northern 
+Intermountain, Great Basin, Central and Northern Rockies, Wed-Tue, Nov 11-17. 
+
+Slight risk of high winds for much of the West Coast and Interior West, 
+Wed-Tue, Nov 11-17.
+
+Slight risk of high winds for parts of Northern and Central Appalachians, Lower 
+Great Lakes, Upper Mid-Atlantic, and the Northeast, Wed-Thu, Nov 11-12.
+
+Flooding possible over parts of the Pacific Northwest and northern California. 
+
+DETAILED SUMMARY
+
+FOR FRIDAY NOVEMBER 06 - TUESDAY NOVEMBER 10: 
+https://www.wpc.ncep.noaa.gov/threats/threats.php
+
+FOR WEDNESDAY NOVEMBER 11 - TUESDAY NOVEMBER 17: A highly amplified 500-hPa 
+mean trough is expected to encroach the West Coast next week, and bring an 
+elevated risk of Atmospheric River (AR) activity that could lead to heavy 
+precipitation, high winds, and high elevation heavy snow for portions of the 
+Pacific Northwest and California. However, the latest 500-hPa height anomalies, 
+precipitation, and snow forecasts from the dynamical models have generally 
+backed off somewhat on the likelihood of these potential hazards relative to 
+yesterday. Daily analysis of mid-level heights forecasts from both the GEFS and 
+the ECMWF ensemble runs during the past few days feature a rising height trend 
+over the eastern Pacific and the West Coast, which could contribute to either a 
+delayed onset of AR activity or weaker troughing affecting the West Coast, at 
+least initially during the period. In response to this trend, precipitation 
+guidance continues to paint a rather wet picture, but the uncalibrated tools in 
+particular, favor an overall reduction in probabilities in exceeding various 
+hazardous precipitation thresholds compared to yesterday. On the other hand, 
+Integrated Vapor Transport (IVT) tools still remain robust with the AR 
+potential, while continuing to indicate a coherent evolution of these AR 
+related risks entering the late week-1 timeframe. In addition, these tools are 
+beginning to better resolve a secondary surge of enhanced onshore flow 
+affecting the West Coast tied to a reloading mean mid-level trough in theensembles towards the middle of the period. Taken all together, there is a 
+lesser degree of forecast confidence in the updated hazards outlook over the 
+western U.S., though the favored persistence of strong troughing for the 
+entirety of week-2, continues to support the potential for a series of storms 
+and AR activity being of longer duration through mid-November.  
+
+
+
+In light of these uncertainties with the evolving height pattern and the 
+associated precipitation responses over the West Coast, the high risks of heavy 
+precipitation and heavy high elevation snow are discontinued in the updated 
+outlook. The greatest loss in support is most evident in the uncalibrated 
+ECMWF, which dropped from 60-80% (50-60%) to 40-60% (20-50%) chances for 3-day 
+amounts exceeding an 1 inch (2 inches) over the Pacific Northwest and northern 
+California early in the period. Based on diminished signals in both the GEFS 
+Snow Water Equivalent (SWE) PET and raw snow tools, the moderate risk of heavy 
+snow is also removed over the Cascades of western Washington and parts of 
+western Oregon. The most coherent signal for heavy snow has become more focused 
+over parts of Klamath and Sierra Nevada mountains, where any heavy snowfall 
+remains favored over the highest elevations. Despite the reduced support for 
+the high risk hazard designations, a possible flooding hazard also remains for 
+the lower elevations of northern California and the Pacific Northwest. The 
+increased precipitation favored leads to basin responses during week-2 in some 
+models, as any excess precipitation over burn scarred areas may also trigger 
+localized flooding.
+
+
+
+Probabilistic Extreme Tools (PETs) from the GEFS and ECMWF continue to show 
+elevated chances (30-40%) of 3-day precipitation amounts exceeding the 85th 
+percentile, with little changes in these signals in percentile space compared 
+to yesterday.  Given very good support in the IVT tools indicating high (>80%) 
+chances for values exceeding 250 kg/ms focused approximately between 40N and 
+50N, a moderate risk of heavy precipitation remains posted and an accompanying 
+heavy snow hazard is issued over the higher elevations over California and 
+southern Oregon. Similar to yesterday, much of the enhanced precipitation is 
+expected to shift southward with time, with the highest daily amounts favored 
+from the central California Valley northward along the West Coast. To capture 
+this shift, and any renewal of enhanced onshore flow later in the period as 
+reflected in the IVT and daily precipitation tools, the moderate risk areas are 
+extended through day 12 (Nov 15). Surrounding these moderate risk areas over 
+the West Coast, a corresponding slight risk of heavy precipitation remains 
+issued for the entirety parts of the Desert Southwest, Great Basin and the 
+Rockies, where there are elevated chances for 3-day amounts exceeding the 85th 
+percentile in the PETs and enhanced tropospheric moisture is favored to spread 
+eastward in the GEFS and ECMWF precipitation water anomaly forecasts. A slight 
+risk of heavy, high elevation snow remains posted for parts of the Great Basin, 
+Northern Intermountain, and Rockies, valid for all of week-2.  In regards to 
+hazardous wind potential, a moderate risk of high winds remains posted over 
+much of coastal California and the Pacific Northwest (Nov 11-15) near and ahead 
+of the base of the amplified troughing favored, as well as a broader area of 
+slight risk of high winds covering the western third of the CONUS (Nov 11-17) 
+to capture any shortwave energy propagating across the Interior West during the 
+period.      
+
+
+
+Downstream across the eastern U.S., much of the troughing over the Southeast 
+that was previously favored to lift out and weaken late in week-1, is now 
+expected to reamplify over the Northeast and Canadian Maritimes by the outset 
+of the period. Similar to yesterday, any enhanced precipitation is expected to 
+remain offshore ahead of the trough axis, however, a deep surface low 
+reflection remains favored to induce periods of potentially strong winds over 
+the northeastern CONUS. Therefore, a slight risk of high winds remains posted 
+and valid through Nov 12 across this region, with coverage omitted over parts 
+of the lower Mid-Atlantic and Southeast in the updated outlook based on raw 
+ECMWF wind guidance. 
+
+
+
+Towards the middle of the period, lee side cyclogenesis over the Great Plains 
+is possible with shortwave energy favored to propagate across the Interior 
+West. With the mean surface high established over the Southeast, more return 
+flow from the Gulf and increased precipitation amounts are favored over parts 
+of the Great Plains, Mississippi, Ohio and Tennessee Valleys. However, PETs and 
+raw tools are not quite supportive of a corresponding precipitation risk at 
+this time, but this potential will continue to be monitored in upcoming 
+outlooks. 
+
+
+
+While much of the strong troughing over the northeastern Pacific is likely to 
+result in periods of strong winds and heavy precipitation along the southern 
+and southeastern coast of Alaska as well, hazardous thresholds are not expected 
+to be exceeded so no hazards are posted for Alaska at this time. 
+
+FORECASTER: Nick Novella 
+
+$$
+

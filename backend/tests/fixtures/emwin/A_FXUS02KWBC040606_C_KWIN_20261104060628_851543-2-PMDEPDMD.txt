@@ -1,0 +1,133 @@
+FXUS02 KWBC 040606
+PMDEPD
+
+Extended Forecast Discussion
+NWS Weather Prediction Center College Park MD
+106 AM EST Wed Nov 4 2026
+
+Valid 12Z Sat Nov 07 2026 - 12Z Wed Nov 11 2026
+
+
+...Overview...
+
+An active weather pattern will persist for Pacific Northwest, as
+the northeastern Pacific trough extends into much of western and
+north-central states bringing period of rain and possible high-
+elevation snow. A potential atmospheric river event may begin
+approaching the West Coast towards early next week. Meanwhile, 
+troughing is expected to persist across portions of eastern U.S., 
+as additional shortwave troughs reinforces cyclonic flow,
+prolonging showers across the Great Lakes into the Northeast. The 
+southern- stream disturbance across the Southwest will bring 
+chances for showers and thunderstorms across portions of Texas and 
+western Gulf coast. 
+
+
+
+...Guidance/Predictability Assessment...
+
+The models show fairly good agreement with the deep, slow-moving
+trough over the northeastern Pacific, extending toward the West
+Coast, with anomalous riding downstream over much of the western
+and central U.S.. The models also seem to have decent agreement on
+the trough over eastern U.S. Although the broad pattern is
+relatively consistent, differences remain int he amplitude and 
+phase of individual shortwaves, especially over the Southwest. The 
+GFS/GEFS show an attempt to close off a mid-level circulation over
+the Southwest, which will bring uncertainty with the eastward 
+progression of precipitation. Additionally, a slower solution 
+could prolong conditions across portions of Texas and adjacent 
+areas, while a more progressive scenario would favor a quicker 
+eastward shift toward the lower Mississippi Valley. Along the 
+western Atlantic, uncertainty remains on the development of the 
+secondary coastal low that may bring additional showers along the 
+East Coast. Therefore, the forecast incorporated a multi-model 
+blend through the weekend, with less weight on the GFS. The 
+ensemble means were phased into the forecast for early next week 
+into mid-week. 
+
+
+
+
+...Weather/Hazards Highlights...
+
+Persistent cyclonic flow and frontal boundaries over the 
+northeastern Pacific will maintain an active weather pattern across
+the Pacific Northwest. Expect rain across Oregon and Washington 
+coastal areas and lower elevations, with possible high-elevation 
+snow through the weekend. By early next week, a deeper eastern 
+Pacific trough will increase onshore moisture transport and the 
+potential of a more organized atmospheric river event. This may 
+support showers expanding into California, while stronger winds 
+become possible along portions of the West Coast. Farther south,
+the southern-stream trough will continue to progress eastward and 
+interact with Gulf moisture, bringing scattered showers and 
+thunderstorms across portions of Texas and western Gulf Coast 
+through the weekend.
+
+Across eastern U.S., renewed shortwave energy dropping 
+southeastward from the northern Plains may reinforced troughing,
+which will support additional periods of showers across the Great
+Lakes into the Northeast through the weekend. Additionally, a 
+potential development of a coastal low may bring additional showers
+and gusty winds along the Mid-Atantic and Northeast coast, 
+although the timing and track remains uncertain. Father north, 
+cold-air advection behind the frontal passages may support periods 
+of lake- effect downwind of the Great Lakes into early next week. 
+
+
+ 
+Oudit
+
+
+Additional 3-7 Day Hazard information can be found on the WPC 
+medium range hazards outlook chart at: 
+https://www.wpc.ncep.noaa.gov/threats/threats.php
+
+WPC medium range 500mb heights, surface systems, weather grids, 
+quantitative precipitation forecast, excessive rainfall outlook, 
+winter weather outlook probabilities, heat indices and Key Messages
+are at:
+
+https://www.wpc.ncep.noaa.gov/medr/5dayfcst500_wbg.gif 
+https://www.wpc.ncep.noaa.gov/medr/5dayfcst_wbg_conus.gif 
+https://www.wpc.ncep.noaa.gov/5km_grids/5km_gridsbody.html 
+https://www.wpc.ncep.noaa.gov/qpf/day4-7.shtml 
+https://www.wpc.ncep.noaa.gov/#page=ero 
+https://www.wpc.ncep.noaa.gov/wwd/pwpf_d47/pwpf_medr.php?day=4 
+https://www.wpc.ncep.noaa.gov/heat_index.shtml 
+https://www.wpc.ncep.noaa.gov/#page=ovw
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$$

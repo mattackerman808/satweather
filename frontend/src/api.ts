@@ -136,6 +136,34 @@ export type ZoneAt = {
     received: string; type_name: string }[];
 };
 
+export type Condition = { icon: string; text: string; night: boolean; badge: string | null };
+export type Half = { is_day: boolean; clouds: string | null; pop: number | null; qpf: number | null;
+  temp: number | null; wind_dir: string | null; wind_spd: number | null; wind_gust: number | null;
+  wind_char: string | null; condition: Condition };
+export type Day = { date: string; day: Half | null; night: Half | null; hi: number | null; lo: number | null;
+  pop: number | null; qpf: number | null };
+export type Hour = { t: string; local: string; step: number; temp: number | null; dewpt: number | null;
+  pop: number | null; wind_dir: string | null; wind_spd: number | null; wind_gust: number | null;
+  wind_char: string | null; condition: Condition };
+export type SeriesEntry = { t: string; step: number; temp?: number; dewpt?: number; rh?: number };
+export type ProductRef = { id: number; awips: string; title: string; issued: string | null; received: string };
+export type Forecast = {
+  lon: number; lat: number; zone: ZoneAt["zone"]; zones: ZoneInfo[]; forecast: ZoneAt["forecast"];
+  hazards: ZoneHazard[];
+  point: null | { product_id: number; office: string; ugc: string; name: string; lon: number; lat: number;
+    elev_ft: number | null; issued: string; expires: string | null; utc_offset_h: number; distance_km: number;
+    prev_issued: string | null; series: SeriesEntry[]; twelve: { t: string; pop?: number; qpf?: number }[] };
+  daily: Day[]; hours: Record<string, Hour[]>;
+  changes: { date: string; field: string; text: string }[];
+  afd: ProductRef | null; national: Record<string, ProductRef | null>; llm: { enabled: boolean };
+};
+export type Tilt = "above" | "near" | "below" | "unknown";
+export type OutlookText = { headline: string; summary: string; trends: string[]; changes: string[];
+  beyond_day7?: { text: string; days: { date: string; temp: Tilt; precip: Tilt }[] }; confidence?: string };
+export type LlmResult<T> = { status: "ready" | "pending" | "unavailable" | "failed" | "none"; content: T | null;
+  model?: string; created?: string; stale?: boolean };
+export type PlainAfd = { sections: { title: string; text: string }[]; glossary: { term: string; meaning: string }[] };
+
 export type Filters = { q?: string; category?: string[]; nnn?: string[]; office?: string; ugc?: string };
 
 async function get<T>(path: string, params?: Record<string, string | string[] | number | undefined>): Promise<T> {
@@ -165,6 +193,9 @@ export const api = {
   zoneBrief: (lon: number, lat: number) => get<ZoneAt>("/api/zones/at", { lon, lat, brief: "1" }),
   places: (q: string, near?: [number, number]) =>
     get<Place[]>("/api/places", { q, near: near?.map((x) => x.toFixed(3)).join(",") }),
+  forecast: (lon: number, lat: number) => get<Forecast>("/api/forecast", { lon, lat }),
+  outlook: (lon: number, lat: number) => get<LlmResult<OutlookText>>("/api/forecast/outlook", { lon, lat }),
+  plain: (id: number) => get<LlmResult<PlainAfd>>(`/api/products/${id}/plain`),
   signal: (hours: number) => get<SignalData>("/api/signal", { hours }),
   tropical: () => get<{ storms: Storm[]; sectors: Sector[] }>("/api/tropical/active"),
   outlooks: () => get<Outlook[]>("/api/tropical/outlooks"),

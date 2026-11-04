@@ -124,8 +124,8 @@ def scan(dirs: list[Path], seen: set[str], settle_s: float = SETTLE_S) -> dict[s
 
 
 def redecode() -> dict[str, int]:
-    """Fill decoded METAR fields, TAFs and PIREPs, and tropical advisory
-    numbers, for products stored before those decoders existed.
+    """Fill decoded METAR fields, TAFs and PIREPs, tropical advisory
+    numbers and PFM points, for products stored before those decoders existed.
     Idempotent: inserts ignore or update duplicates."""
     from satweather.reports import PIREP_NNN, TAF_NNN, extract, metar
     from satweather.store import store_reports
@@ -160,6 +160,16 @@ def redecode() -> dict[str, int]:
                                           {"n": sorted(STORM_NNN)}).all():
             store_tropical(conn, pid, nnn, raw)
             counts["tropical"] = counts.get("tropical", 0) + 1
+    # Point Forecast Matrices from the newest 3 days (all the Forecast tab reads).
+    from satweather.pfm import store_pfm
+
+    with engine.connect() as conn:
+        pfms = conn.execute(text("SELECT id, office, raw, coalesce(issued, received) FROM text_product "
+                                 "WHERE nnn = 'PFM' AND received > (SELECT max(received) FROM text_product WHERE nnn = 'PFM') "
+                                 "- interval '3 days'")).all()
+    for pid, office, raw, issued in pfms:
+        with engine.begin() as conn:
+            counts["pfm_points"] = counts.get("pfm_points", 0) + store_pfm(conn, pid, "PFM", office, raw, issued)
     return counts
 
 

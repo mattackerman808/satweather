@@ -12,12 +12,14 @@ const MapView = lazy(() => import("./views/MapView"));
 const LoopView = lazy(() => import("./views/LoopView"));
 const TropicalView = lazy(() => import("./views/TropicalView"));
 const SignalView = lazy(() => import("./views/SignalView"));
+const ForecastView = lazy(() => import("./views/ForecastView"));
 
 const NAV = [
   { to: "/live", label: "Live" },
   { to: "/satellite", label: "Satellite" },
   { to: "/radar", label: "Radar & charts" },
   { to: "/map", label: "Map" },
+  { to: "/forecast", label: "Forecast" },
   { to: "/tropical", label: "Tropical & Meso" },
   { to: "/text", label: "Raw" },
   { to: "/signal", label: "Signal" },
@@ -55,6 +57,7 @@ export default function App() {
           <Route path="/satellite" element={<Suspense fallback={null}><LoopView key="satellite" group="satellite" /></Suspense>} />
           <Route path="/radar" element={<Suspense fallback={null}><LoopView key="nws" group="nws" /></Suspense>} />
           <Route path="/map" element={<Suspense fallback={null}><MapView /></Suspense>} />
+          <Route path="/forecast" element={<Suspense fallback={null}><ForecastView /></Suspense>} />
           <Route path="/text" element={<TextView />} />
           <Route path="/text/:id" element={<TextView />} />
           <Route path="/tropical" element={<Suspense fallback={null}><TropicalView /></Suspense>} />

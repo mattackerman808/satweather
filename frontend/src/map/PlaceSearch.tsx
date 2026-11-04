@@ -6,9 +6,10 @@ const KIND_ICON: Record<Place["kind"], string> = { station: "✈", zone: "▢", 
 // "Forecast for…": a place, zone or airport, or where you are. Either opens
 // the zone panel there; results are ranked by distance from the map's
 // center (`near`).
-export default function PlaceSearch({ near, onPick }: {
+export default function PlaceSearch({ near, onPick, className }: {
   near: () => [number, number] | undefined;
   onPick: (lon: number, lat: number) => void;
+  className?: string;
 }) {
   const [q, setQ] = useState("");
   const [hits, setHits] = useState<Place[]>([]);
@@ -56,7 +57,7 @@ export default function PlaceSearch({ near, onPick }: {
   };
 
   return (
-    <div className="placesearch">
+    <div className={`placesearch${className ? ` ${className}` : ""}`}>
       <div className="psrow">
         <input
           className="search"

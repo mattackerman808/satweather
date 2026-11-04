@@ -37,6 +37,16 @@ class Settings(BaseSettings):
     receiver: dict = {}
     # Signal samples are small but many (one per 10 s).
     keep_signal_days: int = 30
+    # The local LLM (vLLM's OpenAI-compatible API on white) that writes the
+    # Forecast tab's plain-English outlook and AFD rewrites (llm.py). Empty
+    # URL disables them; the rest of the tab works without.
+    llm_url: str = ""
+    llm_api_key: str = ""
+    llm_model: str = "qwen3.8-27b"
+    llm_timeout_s: float = 90
+    # vLLM priority (only with --scheduling-policy priority; lower runs
+    # first). Above 0 lets Tachbase's interactive assistant go ahead of these.
+    llm_priority: int = 0
 
 
 @lru_cache
