@@ -31,7 +31,7 @@ log = logging.getLogger("satweather.basemap")
 
 MAXZOOM = 6
 REBUILD_DAYS = 90
-SWIFTCAMP = "https://cdn.swiftcamp.app"
+SWIFTCAMP = "https://tiles.808.org"  # swiftcamp's R2 bucket, via its 808.org custom domain
 PROTOMAPS_BUILDS = "https://build-metadata.protomaps.dev/builds.json"
 PROTOMAPS = "https://build.protomaps.com"
 
