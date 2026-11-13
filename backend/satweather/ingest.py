@@ -22,7 +22,6 @@ import logging
 import os
 import signal
 import time
-from datetime import UTC, datetime
 from pathlib import Path
 
 from sqlalchemy import text
@@ -75,7 +74,11 @@ def ingest_file(path: Path, st: os.stat_result) -> str:
             store_image(conn, rel, from_emwin(en.awips_long, en.received), st.st_size, st.st_mtime)
             return "image"
         raw = normalize(path.read_bytes(), en)
-        parsed = parse(raw, en, datetime.now(UTC))
+        # pyiem dates day-of-month timestamps (METAR obs, WMO headers) from
+        # utcnow and drops ones that land in the future, so anchor it to
+        # when KWIN received the file, not to when we read it: a backfill or
+        # an old fixture would otherwise put day 23 next month and lose it.
+        parsed = parse(raw, en, en.received)
         store_text(conn, name=name, size=st.st_size, mtime=st.st_mtime, en=en, raw=raw, parsed=parsed)
         return "raw" if parsed.error else "ok"
 
