@@ -19,10 +19,14 @@ maplibregl.setWorkerUrl(workerUrl);
 // A zoom 0-6 world extract of the same Protomaps schema, built by
 // satweather-refdata (satweather.basemap) and served from /media/basemap/, is
 // drawn first: the street layers paint over it wherever they have tiles.
-export const CDN = "https://cdn.swiftcamp.app";
+//
+// The bucket is reached through its 808.org custom domain, not
+// cdn.swiftcamp.app: corporate web filters block the young swiftcamp.app
+// domain. The manifest's `base` names swiftcamp's host, so archive URLs are
+// built from CDN instead.
+export const CDN = "https://tiles.808.org";
 
 type Manifest = {
-  base: string;
   layers: Record<string, { file: string; minzoom: number; maxzoom: number; tileSize?: number; encoding?: string; attribution?: string }>;
 };
 
@@ -44,10 +48,18 @@ async function loadWorld(): Promise<WorldManifest["world"] | null> {
   }
 }
 
-export async function loadManifest(): Promise<Manifest> {
-  const r = await fetch(`${CDN}/manifest.json`);
-  if (!r.ok) throw new Error(`manifest ${r.status}`);
-  return r.json();
+// Null when the CDN can't be reached: some corporate web filters block
+// swiftcamp.app outright, or answer with a block page that isn't JSON. The map
+// then draws on the self-hosted world tier alone instead of failing.
+export async function loadManifest(): Promise<Manifest | null> {
+  try {
+    const r = await fetch(`${CDN}/manifest.json`, { signal: AbortSignal.timeout(5000) });
+    if (!r.ok) return null;
+    const m = (await r.json()) as Manifest;
+    return m.layers?.street && m.layers?.terrain ? m : null;
+  } catch {
+    return null;
+  }
 }
 
 // A muted, dark palette: the basemap is the backdrop for imagery, radar and
@@ -166,25 +178,26 @@ function vectorLayers(src: string, p: string, hillshade: boolean): LayerSpecific
 
 export async function basemapStyle(): Promise<StyleSpecification> {
   ensureProtocol();
-  const m = await loadManifest();
-  const street = m.layers.street;
-  const terrain = m.layers.terrain;
-  const world = await loadWorld();
+  const [m, world] = await Promise.all([loadManifest(), loadWorld()]);
+  const street = m?.layers.street;
+  const terrain = m?.layers.terrain;
   return {
     version: 8,
     glyphs: `${location.origin}/glyphs/{fontstack}/{range}.pbf`,
     sources: {
-      streets: {
-        type: "vector",
-        url: `pmtiles://${m.base}/${street.file}`,
-        attribution: street.attribution ?? "© OpenStreetMap contributors",
-      },
-      terrain: {
-        type: "raster-dem",
-        url: `pmtiles://${m.base}/${terrain.file}`,
-        encoding: (terrain.encoding as "terrarium") ?? "terrarium",
-        tileSize: terrain.tileSize ?? 512,
-      },
+      ...(m && street && terrain ? {
+        streets: {
+          type: "vector" as const,
+          url: `pmtiles://${CDN}/${street.file}`,
+          attribution: street.attribution ?? "© OpenStreetMap contributors",
+        },
+        terrain: {
+          type: "raster-dem" as const,
+          url: `pmtiles://${CDN}/${terrain.file}`,
+          encoding: (terrain.encoding as "terrarium") ?? "terrarium",
+          tileSize: terrain.tileSize ?? 512,
+        },
+      } : {}),
       ...(world ? {
         world: {
           type: "vector" as const,
@@ -196,7 +209,7 @@ export async function basemapStyle(): Promise<StyleSpecification> {
     layers: [
       { id: "background", type: "background", paint: { "background-color": C.background } },
       ...(world ? vectorLayers("world", "w-", false) : []),
-      ...vectorLayers("streets", "", true),
+      ...(m ? vectorLayers("streets", "", true) : []),
     ],
   };
 }
