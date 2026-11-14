@@ -2,56 +2,104 @@ import { useEffect, useState } from "react";
 import { api, ago, type LlmResult, type PlainAfd } from "../api";
 
 // An Area Forecast Discussion as the forecasters wrote it, or rewritten in
-// plain English by the local LLM (with a glossary of the jargon). The
-// rewrite is made on first request and cached per product; while white's
-// model is off, only the original is offered.
-export default function AfdText({ id, raw, start = "raw" }: { id: number; raw: string; start?: "raw" | "plain" }) {
-  const [mode, setMode] = useState<"raw" | "plain">(start);
-  const [plain, setPlain] = useState<LlmResult<PlainAfd> | null>(null);
+// plain English by the local LLM (white's model, on the LAN; with a glossary
+// of the jargon). The rewrite is made on first request (~30 s) and cached per
+// product for everyone. While it is being written the forecasters' text is
+// one click away, and the Plain English tab shows its progress; once asked
+// for, the rewrite keeps loading even while the reader is on the text.
+export default function AfdText(props: { id: number; raw: string; start?: "raw" | "plain" }) {
+  return <Afd key={props.id} {...props} />;
+}
 
-  useEffect(() => { setPlain(null); setMode(start); }, [id, start]);
+function Afd({ id, raw, start = "raw" }: { id: number; raw: string; start?: "raw" | "plain" }) {
+  const [mode, setMode] = useState<"raw" | "plain">(start);
+  const [want, setWant] = useState(start === "plain");  // the rewrite has been asked for
+  const [plain, setPlain] = useState<LlmResult<PlainAfd> | null>(null);
+  const [since, setSince] = useState(() => Date.now());
+
+  useEffect(() => { if (mode === "plain") setWant(true); }, [mode]);
 
   useEffect(() => {
-    if (mode !== "plain" || (plain && plain.status !== "pending")) return;
+    if (!want) return;
     let stale = false;
     let timer: ReturnType<typeof setTimeout> | undefined;
+    setSince(Date.now());
     const load = (tries: number) => {
       api.plain(id).then((r) => {
         if (stale) return;
         setPlain(r);
         // Another request is writing it: look again shortly.
-        if (r.status === "pending" && tries < 20) timer = setTimeout(() => load(tries + 1), 4000);
+        if (r.status === "pending" && tries < 30) timer = setTimeout(() => load(tries + 1), 4000);
       }).catch(() => !stale && setPlain({ status: "unavailable", content: null }));
     };
     load(0);
     return () => { stale = true; clearTimeout(timer); };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, id]);
+  }, [want, id]);
+
+  const writing = want && (!plain || plain.status === "pending");
+  const ready = plain?.status === "ready" && !!plain.content;
 
   return (
     <div className="afdtext">
       <div className="seg" role="tablist">
-        <button className={mode === "raw" ? "on" : ""} onClick={() => setMode("raw")}>Forecasters' text</button>
-        <button className={mode === "plain" ? "on" : ""} onClick={() => setMode("plain")}>Plain English</button>
+        <button role="tab" aria-selected={mode === "raw"} className={mode === "raw" ? "on" : ""}
+          onClick={() => setMode("raw")}>Forecasters' text</button>
+        <button role="tab" aria-selected={mode === "plain"} className={mode === "plain" ? "on" : ""}
+          onClick={() => setMode("plain")}>
+          Plain English
+          {writing && <span className="spinner sm" aria-label="being written" />}
+          {ready && mode === "raw" && <span className="readydot" aria-label="ready" />}
+        </button>
       </div>
-      {mode === "raw" ? <pre className="raw">{raw}</pre> : <Plain r={plain} />}
+      {mode === "raw" ? (
+        <>
+          {writing && <p className="ainote">The plain-English version is still being written by the local AI model;
+            the tab will show a dot when it's ready.</p>}
+          <pre className="raw">{raw}</pre>
+        </>
+      ) : <Plain r={plain} since={since} raw={raw} showRaw={() => setMode("raw")} />}
     </div>
   );
 }
 
-function Plain({ r }: { r: LlmResult<PlainAfd> | null }) {
+function Elapsed({ since }: { since: number }) {
+  const [now, setNow] = useState(Date.now());
+  useEffect(() => {
+    const t = setInterval(() => setNow(Date.now()), 1000);
+    return () => clearInterval(t);
+  }, []);
+  return <>{Math.max(0, Math.round((now - since) / 1000))} s</>;
+}
+
+function Plain({ r, since, raw, showRaw }: {
+  r: LlmResult<PlainAfd> | null; since: number; raw: string; showRaw: () => void;
+}) {
   if (!r || r.status === "pending") {
-    return <p className="dim aiwait"><span className="spinner" aria-hidden /> Writing a plain-English version (this takes
-      about half a minute the first time)…</p>;
+    return (
+      <div className="aiprogress">
+        <p className="aiwait"><span className="spinner" aria-hidden />
+          <span>Writing a plain-English version with a local AI model, on our own server (nothing is sent to an
+            outside service). <b><Elapsed since={since} /></b> so far; it usually takes about half a minute, and is
+            then saved for everyone who reads this discussion.</span></p>
+        <button className="linkish" onClick={showRaw}>Read the forecasters' text meanwhile →</button>
+      </div>
+    );
   }
-  if (r.status === "unavailable") return <p className="dim">The plain-English writer is offline right now; the
-    forecasters' text is the full story.</p>;
-  if (r.status !== "ready" || !r.content) return <p className="dim">Couldn't write a plain-English version of this
-    one; the forecasters' text is the full story.</p>;
+  if (r.status !== "ready" || !r.content) {
+    return (
+      <>
+        <p className="dim">{r.status === "unavailable"
+          ? "The local AI model that writes the plain-English version is offline right now."
+          : "The local AI model couldn't write a plain-English version of this one."} Here is the forecasters' text,
+          which is the full story.</p>
+        <pre className="raw">{raw}</pre>
+      </>
+    );
+  }
   const c = r.content;
   return (
     <div className="plainafd">
-      <p className="ainote">Rewritten by AI from the forecasters' text{r.created ? `, ${ago(r.created)}` : ""}.
+      <p className="ainote">Rewritten by a local AI model from the forecasters' text{r.created ? `, ${ago(r.created)}` : ""}.
         The original is the authority.</p>
       {c.sections.map((s, i) => (
         <section key={i}>

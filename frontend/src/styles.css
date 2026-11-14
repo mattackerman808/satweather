@@ -477,6 +477,16 @@ button { font: inherit; color: inherit; }
   animation: spin 0.9s linear infinite; flex: none; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } }
+.spinner.sm { display: inline-block; width: 10px; height: 10px; border-width: 1.5px; margin-left: 6px; vertical-align: -1px; }
+.readydot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--ok); margin-left: 6px;
+  vertical-align: 1px; }
+.aiprogress { padding: 4px 0 2px; }
+.aiprogress .aiwait { align-items: flex-start; margin: 0 0 8px; font-size: 14px; line-height: 1.5; color: var(--muted); }
+.aiprogress .aiwait .spinner { margin-top: 3px; }
+.aiprogress .aiwait b { color: var(--text); font-variant-numeric: tabular-nums; }
+.linkish { background: none; border: 0; padding: 0; color: var(--accent); cursor: pointer; font-size: 14px; }
+.linkish:hover { text-decoration: underline; }
+.afdtext .ainote { margin: 0 0 8px; }
 
 /* Day panels */
 .daystrip { margin-bottom: 14px; }
