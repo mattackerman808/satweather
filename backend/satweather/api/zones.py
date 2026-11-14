@@ -25,9 +25,11 @@ from satweather.db import get_engine
 router = APIRouter(prefix="/api")
 
 # The zone whose forecast the panel leads with, and the products that are
-# that kind of zone's forecast.
+# that kind of zone's forecast. zone_forecast (migration 0012's trigger)
+# tracks the newest of each of these per zone: keep the two lists the same.
 PRIMARY = ("public", "marine", "offshore")
 FORECAST_NNN = {"public": ["ZFP"], "marine": ["CWF", "NSH"], "offshore": ["OFF"]}
+RECENT = "2 days"  # "other recent products" for a zone
 
 _PT = "ST_SetSRID(ST_MakePoint(:lon, :lat), 4326)"
 
@@ -39,10 +41,23 @@ def at(lon: float = Query(ge=-180, le=180), lat: float = Query(ge=-90, le=90), b
         return zone_at(conn, lon, lat, brief)
 
 
-def zone_at(conn, lon: float, lat: float, brief: bool = False) -> dict:
+def _since_id(conn, interval: str) -> int | None:
+    """A text_product id below every product received in the last
+    `interval`, or None if there are none: product_segment has an index on
+    product_id but not on time, and with this bound Postgres reads only
+    the recent part of the zone's segments instead of its whole history.
+    Ingest stores files in KWIN receive order (ingest.scan), so ids rise
+    with `received`; the 6 hours' margin covers files that settle late.
+    Callers still filter on `received` itself."""
+    return conn.execute(text("""
+        SELECT id FROM text_product WHERE received > now() - CAST(:i AS interval) - interval '6 hours'
+        ORDER BY received, id LIMIT 1"""), {"i": interval}).scalar()
+
+
+def zone_at(conn, lon: float, lat: float, brief: bool = False, products: bool = True) -> dict:
     """The zones at a point, the primary zone's latest forecast segment, the
     hazards in effect there and other recent products for it (also used by
-    the Forecast tab)."""
+    the Forecast tab, which has no use for `products`)."""
     p = {"lon": lon, "lat": lat}
     zones = conn.execute(text(f"""
         SELECT kind, ugc, name, state, cwa,
@@ -65,9 +80,9 @@ def zone_at(conn, lon: float, lat: float, brief: bool = False) -> dict:
     f = conn.execute(text("""
         SELECT p.id AS product_id, p.nnn, p.awips, p.office, p.title, p.issued, p.received,
                s.ugc_expire, s.headlines, s.body
-        FROM product_segment s JOIN text_product p ON p.id = s.product_id
-        WHERE :ugc = ANY(s.ugcs) AND p.nnn = ANY(:nnn)
-        ORDER BY coalesce(p.issued, p.received) DESC LIMIT 1"""),
+        FROM zone_forecast z JOIN product_segment s ON s.id = z.segment_id JOIN text_product p ON p.id = z.product_id
+        WHERE z.ugc = :ugc AND z.nnn = ANY(:nnn)
+        ORDER BY z.issued DESC LIMIT 1"""),
         {"ugc": primary["ugc"], "nnn": FORECAST_NNN[primary["kind"]]}).mappings().first()
     if f:
         out["forecast"] = dict(f)
@@ -87,6 +102,9 @@ def zone_at(conn, lon: float, lat: float, brief: bool = False) -> dict:
             {**p, "ugcs": ugcs}).mappings()
     ]
 
+    since = _since_id(conn, RECENT) if products else None
+    if since is None:
+        return out
     # Newest of each other product type naming one of these zones (the
     # forecast's own type and the hazards' products are shown above). A
     # segment with a polygon (storm-based) counts only if it covers the
@@ -94,11 +112,11 @@ def zone_at(conn, lon: float, lat: float, brief: bool = False) -> dict:
     rows = conn.execute(text(f"""
         SELECT DISTINCT ON (p.nnn) p.id, p.nnn, p.awips, p.office, p.title, p.issued, p.received
         FROM product_segment s JOIN text_product p ON p.id = s.product_id
-        WHERE s.ugcs && :ugcs AND p.received > now() - interval '2 days'
+        WHERE s.ugcs && :ugcs AND s.product_id >= :since AND p.received > now() - CAST(:recent AS interval)
           AND (s.polygon IS NULL OR ST_Contains(s.polygon, {_PT}))
           AND NOT (p.id = ANY(:skip)) AND NOT (p.nnn = ANY(:skip_nnn))
         ORDER BY p.nnn, p.received DESC"""),
-        {**p, "ugcs": ugcs, "skip": [h["product_id"] for h in out["hazards"]],
+        {**p, "ugcs": ugcs, "since": since, "recent": RECENT, "skip": [h["product_id"] for h in out["hazards"]],
          "skip_nnn": [f["nnn"]] if f else []},
     ).mappings().all()
     out["products"] = sorted(({**dict(r), "type_name": describe(r["nnn"])[0]} for r in rows),
@@ -219,14 +237,14 @@ def places(
             cands.append({"kind": "zone", "label": r["name"], "name": r["name"], "state": r["state"],
                           "detail": f"{r['ugc']} · {r['kind']} zone", "lon": r["lon"], "lat": r["lat"],
                           "exact": r["exact"], "size": 0})
-        # Cities the zone forecasts list, where the Census list had none.
+        # Cities the zones' current forecasts list, where the Census list had
+        # none (never for a number: ZIPs are above, and city names have no digits).
         found: set[tuple[str, str]] = set()
-        if not census:
+        if not census and not term.isdigit():
             segs = conn.execute(text("""
-                SELECT DISTINCT ON (s.ugcs) s.ugcs, s.body
-                FROM product_segment s JOIN text_product p ON p.id = s.product_id
-                WHERE p.nnn = 'ZFP' AND p.received > now() - interval '3 days' AND s.body ILIKE :any
-                ORDER BY s.ugcs, p.received DESC LIMIT 60"""), {"any": anywhere}).all()
+                SELECT s.ugcs, s.body FROM product_segment s
+                WHERE s.id IN (SELECT segment_id FROM zone_forecast WHERE nnn = 'ZFP') AND s.body ILIKE :any
+                LIMIT 60"""), {"any": anywhere}).all()
             for ugcs, body in segs:
                 if m := _CITIES.search(body):
                     for city in re.split(r",\s*(?:and\s+)?|\s+and\s+", " ".join(m[1].split())):

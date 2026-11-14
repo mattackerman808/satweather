@@ -15,6 +15,7 @@ export default function PlaceSearch({ near, onPick, className }: {
   const [hits, setHits] = useState<Place[]>([]);
   const [sel, setSel] = useState(0);
   const [open, setOpen] = useState(false);
+  const [busy, setBusy] = useState(false);  // the newest search hasn't answered yet
   const [locating, setLocating] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const seq = useRef(0);
@@ -23,16 +24,18 @@ export default function PlaceSearch({ near, onPick, className }: {
 
   useEffect(() => {
     const term = q.trim();
-    if (term.length < 2 || q === picked.current) { setHits([]); return; }
+    if (term.length < 2 || q === picked.current) { setHits([]); setBusy(false); return; }
     picked.current = null;
     const n = ++seq.current;
     const t = setTimeout(() => {
+      setBusy(true);
+      setOpen(true);
       api.places(term, near()).then((h) => {
         if (n !== seq.current) return;
         setHits(h);
         setSel(0);
-        setOpen(true);
-      }).catch(() => {});
+      }).catch(() => n === seq.current && setHits([]))
+        .finally(() => n === seq.current && setBusy(false));
     }, 200);
     return () => clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -87,7 +90,7 @@ export default function PlaceSearch({ near, onPick, className }: {
               <span className="dim">{p.detail}</span>
             </button>
           ))}
-          {!hits.length && q !== picked.current && <div className="psempty">No matches.</div>}
+          {!hits.length && q !== picked.current && <div className="psempty">{busy ? "Searching…" : "No matches."}</div>}
         </div>
       )}
       {msg && <div className="psmsg">{msg}</div>}
