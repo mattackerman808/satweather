@@ -61,7 +61,7 @@ def _latest(conn, awips: str) -> dict | None:
 
 
 def _gather(conn, lon: float, lat: float) -> dict:
-    z = zone_at(conn, lon, lat)
+    z = zone_at(conn, lon, lat, products=False)
     cur, prev, km = _points(conn, lon, lat)
     out: dict = {"lon": lon, "lat": lat, "zone": z["zone"], "zones": z["zones"], "forecast": z["forecast"],
                  "hazards": z["hazards"], "point": None, "daily": [], "hours": {}, "changes": [],

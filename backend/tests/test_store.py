@@ -408,6 +408,21 @@ def test_zone_at_point(db):
     sea = c.get("/api/zones/at", params={"lon": -150, "lat": 20}).json()
     assert sea["zone"] is None and sea["forecast"] is None
 
+    # zone_forecast (filled by the segment trigger) holds the newest ZFP per
+    # zone; an older one stored afterwards (a late file) doesn't replace it.
+    with db.begin() as conn:
+        conn.execute(text("INSERT INTO source_file (name, kind, size, mtime, status) VALUES ('late', 'emwin_text', 1, now(), 'ok')"))
+        late = conn.execute(text(
+            "INSERT INTO text_product (source_file_id, wmo, cccc, awips, nnn, office, issued, received, priority, title,"
+            " category, raw) SELECT id, 'FPUS56', 'KMTR', 'ZFPMTR', 'ZFP', 'MTR', now() - interval '3 hours',"
+            " now() - interval '3 hours', 3, 'Zone Forecast', 'forecast', 'r' FROM source_file WHERE name = 'late'"
+            " RETURNING id")).scalar()
+        conn.execute(text("INSERT INTO product_segment (product_id, seq, ugcs, headlines, body)"
+                          " VALUES (:p, 1, '{CAZ508,CAZ508,CAZ510}', '{}', 'old')"), {"p": late})
+        zf = dict(conn.execute(text("SELECT ugc, product_id FROM zone_forecast WHERE nnn = 'ZFP'")).all())
+    assert zf == {"CAZ508": ids[1], "CAZ509": ids[1], "CAZ510": late}
+    assert c.get("/api/zones/at", params={"lon": -122.5, "lat": 37.5}).json()["forecast"]["product_id"] == ids[1]
+
 
 
 def test_forecast_from_pfm(db, tmp_path, monkeypatch):
